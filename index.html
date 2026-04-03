@@ -21,6 +21,8 @@
     --dim: #3a4560;
     --blue: #2d7ff9;
     --blue-dim: rgba(45,127,249,0.1);
+    --green: #1ec9a0;
+    --green-dim: rgba(30,201,160,0.08);
     --body: 'DM Sans', sans-serif;
     --mono: 'JetBrains Mono', monospace;
   }
@@ -41,7 +43,7 @@
 
   .card {
     width: 100%;
-    max-width: 720px;
+    max-width: 760px;
     background: var(--bg2);
     border: 1px solid var(--border2);
     border-radius: 16px;
@@ -186,7 +188,7 @@
     border: 2px solid var(--bg2); cursor: pointer;
   }
 
-  .tiers-label {
+  .section-label {
     font-size: 11px;
     font-family: var(--mono);
     letter-spacing: 0.08em;
@@ -194,6 +196,100 @@
     color: var(--muted);
     margin-bottom: 14px;
   }
+
+  /* ── Sport cards ── */
+
+  .sport-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 8px;
+    display: grid;
+    grid-template-columns: 26px 1fr auto;
+    gap: 14px;
+    align-items: center;
+    cursor: pointer;
+    transition: opacity 0.15s, border-color 0.15s;
+    user-select: none;
+  }
+
+  .sport-card:hover { border-color: var(--border2); }
+  .sport-card.off { opacity: 0.35; }
+
+  .sport-toggle {
+    width: 18px; height: 18px;
+    border-radius: 4px;
+    border: 2px solid var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+
+  .sport-card.on .sport-toggle {
+    border-color: var(--blue);
+    background: var(--blue);
+  }
+
+  .sport-toggle svg {
+    width: 12px; height: 12px;
+    stroke: var(--bg);
+    stroke-width: 2.5;
+    fill: none;
+    opacity: 0;
+    transition: opacity 0.1s;
+  }
+
+  .sport-card.on .sport-toggle svg { opacity: 1; }
+
+  .sport-name {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+
+  .sport-stats {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: var(--mono);
+    letter-spacing: 0.02em;
+  }
+
+  .sport-pool {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .sport-pool-label {
+    font-size: 10px;
+    color: var(--muted);
+    font-family: var(--mono);
+    text-align: right;
+    margin-top: 2px;
+    letter-spacing: 0.04em;
+  }
+
+  .combined-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+
+  .combined-label { color: var(--muted); font-size: 12px; }
+
+  .combined-val { font-weight: 500; color: var(--green); font-size: 15px; }
+
+  /* ── Tier rows ── */
 
   .tier-row {
     display: grid;
@@ -243,6 +339,8 @@
     color: var(--text);
   }
 
+  /* ── Chart ── */
+
   .chart-wrap {
     margin-top: 28px;
     padding-top: 24px;
@@ -251,11 +349,61 @@
     height: 160px;
   }
 
+  /* ── Audit ── */
+
+  .audit {
+    margin-top: 24px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+
+  .audit summary {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .audit summary::before {
+    content: '▶';
+    font-size: 9px;
+    transition: transform 0.15s;
+  }
+
+  .audit[open] summary::before { transform: rotate(90deg); }
+
+  .audit-body {
+    margin-top: 16px;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--muted);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+  }
+
+  .audit-body .hl { color: var(--text); font-weight: 500; }
+  .audit-body .gr { color: var(--green); }
+  .audit-body .bl { color: var(--blue); }
+  .audit-body .sep { color: var(--dim); }
+
   @media (max-width: 560px) {
     body { padding: 16px; }
     .card-body { padding: 20px; }
     .card-header { padding: 20px; }
     .metrics { grid-template-columns: 1fr; }
+    .sport-card { grid-template-columns: 26px 1fr; }
+    .sport-pool, .sport-pool-label { display: none; }
     .tier-row { grid-template-columns: 110px 1fr 56px; }
     .tier-rev { display: none; }
   }
@@ -273,7 +421,7 @@
 
     <div class="metrics">
       <div class="metric">
-        <div class="metric-label">Monthly revenue</div>
+        <div class="metric-label">Platform monthly rev</div>
         <div class="metric-value" id="m-total">$0</div>
       </div>
       <div class="metric">
@@ -299,37 +447,79 @@
       </div>
     </div>
 
-    <div class="tiers-label">Users per tier</div>
+    <div class="section-label">Sport models</div>
+    <div id="sport-cards"></div>
+    <div class="combined-row">
+      <span class="combined-label">Combined gross winnings / user / month</span>
+      <span class="combined-val" id="combined-pool">$0</span>
+    </div>
+
+    <div class="section-label">Users per tier</div>
     <div id="tier-rows"></div>
 
     <div class="chart-wrap">
       <canvas id="rev-chart"></canvas>
     </div>
 
+    <details class="audit">
+      <summary>Show math breakdown</summary>
+      <div class="audit-body" id="audit-body"></div>
+    </details>
+
   </div>
 </div>
 
 <script>
-  const models = [
-    { tpm: 33.15, wp: 56,  wr: { best: 0.90, base: 0.60, cons: 0.60 } },
-    { tpm: 30.60, wp: 114, wr: { best: 0.60, base: 0.60, cons: 0.55 } },
-    { tpm: 51.00, wp: 37,  wr: { best: 0.70, base: 0.70, cons: 0.55 } }
+  const sports = [
+    {
+      name: 'NBA Burst 2.0',
+      tpm: 33.15,
+      wp: 56,
+      wr: { best: 0.90, base: 0.60, cons: 0.60 },
+      color: '#f97316',
+      enabled: true
+    },
+    {
+      name: 'NHL Burst',
+      tpm: 30.60,
+      wp: 114,
+      wr: { best: 0.60, base: 0.60, cons: 0.55 },
+      color: '#3b82f6',
+      enabled: true
+    },
+    {
+      name: 'MLB Burst',
+      tpm: 51.00,
+      wp: 37,
+      wr: { best: 0.70, base: 0.70, cons: 0.55 },
+      color: '#22c55e',
+      enabled: true
+    }
   ];
 
   const tiers = [
-    { name: 'Free / Auger', sub: '25% fee', rate: 0.25, color: '#6b7a94', def: 0 },
-    { name: 'Starter',      sub: '25K RAIN · 22%', rate: 0.22, color: '#1D9E75', def: 0 },
-    { name: 'Core',         sub: '100K RAIN · 18%', rate: 0.18, color: '#378ADD', def: 94 },
-    { name: 'Pro',          sub: '500K RAIN · 15%', rate: 0.15, color: '#7F77DD', def: 37 },
-    { name: 'Elite',        sub: '3M RAIN · 10%', rate: 0.10, color: '#BA7517', def: 14 },
-    { name: 'VIP',          sub: '6M RAIN · 5%', rate: 0.05, color: '#D85A30', def: 0 }
+    { name: 'Free / Auger', sub: '25% fee',           rate: 0.25, color: '#6b7a94', def: 0 },
+    { name: 'Starter',      sub: '25K RAIN · 22%',    rate: 0.22, color: '#1D9E75', def: 0 },
+    { name: 'Core',         sub: '100K RAIN · 18%',   rate: 0.18, color: '#378ADD', def: 94 },
+    { name: 'Pro',          sub: '500K RAIN · 15%',   rate: 0.15, color: '#7F77DD', def: 37 },
+    { name: 'Elite',        sub: '3M RAIN · 10%',     rate: 0.10, color: '#BA7517', def: 14 },
+    { name: 'VIP',          sub: '6M RAIN · 5%',      rate: 0.05, color: '#D85A30', def: 0 }
   ];
 
   let sc = 'base';
   let chart;
 
-  function winPool(scenario) {
-    return models.reduce((s, m) => s + m.tpm * m.wr[scenario] * m.wp, 0);
+  function getStake() {
+    return parseInt(document.getElementById('stake-sl').value) * 100;
+  }
+
+  function sportPool(sport, scenario) {
+    if (!sport.enabled) return 0;
+    return sport.tpm * sport.wr[scenario] * sport.wp;
+  }
+
+  function totalPool(scenario) {
+    return sports.reduce((sum, sp) => sum + sportPool(sp, scenario), 0);
   }
 
   function getUsers(i) {
@@ -337,21 +527,161 @@
     return el ? parseInt(el.value) : tiers[i].def;
   }
 
+  function getTotalUsers() {
+    return tiers.reduce((sum, _, i) => sum + getUsers(i), 0);
+  }
+
   function fmt(n) {
     if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
-    if (n >= 1000) return '$' + Math.round(n / 1000) + 'K';
+    if (n >= 1000) return '$' + Math.round(n / 1000).toLocaleString() + 'K';
     return '$' + Math.round(n).toLocaleString();
   }
 
+  function fmtExact(n) {
+    return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  function pct(n) {
+    return (n * 100).toFixed(0) + '%';
+  }
+
+  function toggleSport(idx) {
+    sports[idx].enabled = !sports[idx].enabled;
+    updateSportCards();
+    render();
+  }
+
+  function setSc(key, btn) {
+    sc = key;
+    document.querySelectorAll('.sc-btn').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    updateSportCards();
+    render();
+  }
+
+  function buildSportCards() {
+    document.getElementById('sport-cards').innerHTML = sports.map((sp, i) => `
+      <div class="sport-card ${sp.enabled ? 'on' : 'off'}" id="sc${i}" onclick="toggleSport(${i})">
+        <div class="sport-toggle">
+          <svg viewBox="0 0 12 12"><polyline points="2,6 5,9.5 10,2.5"/></svg>
+        </div>
+        <div>
+          <div class="sport-name" style="color:${sp.color}">${sp.name}</div>
+          <div class="sport-stats" id="ss${i}">
+            ${sp.tpm} trades/mo · WR: ${pct(sp.wr[sc])} · Avg payout: +${sp.wp}%
+          </div>
+        </div>
+        <div>
+          <div class="sport-pool" id="sp${i}">$0</div>
+          <div class="sport-pool-label">/ user / mo</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function updateSportCards() {
+    const stake = getStake();
+    sports.forEach((sp, i) => {
+      const card = document.getElementById('sc' + i);
+      const stats = document.getElementById('ss' + i);
+      const pool = document.getElementById('sp' + i);
+      if (!card) return;
+
+      card.className = 'sport-card ' + (sp.enabled ? 'on' : 'off');
+      stats.textContent = `${sp.tpm} trades/mo · WR: ${pct(sp.wr[sc])} · Avg payout: +${sp.wp}%`;
+
+      const val = sportPool(sp, sc) * (stake / 100);
+      pool.textContent = sp.enabled ? fmt(val) : '$0';
+    });
+  }
+
+  function buildTierRows() {
+    document.getElementById('tier-rows').innerHTML = tiers.map((t, i) => `
+      <div class="tier-row">
+        <div class="tier-info">
+          <div class="tier-dot" style="background:${t.color}"></div>
+          <div>
+            <div class="tier-name">${t.name}</div>
+            <div class="tier-rate">${t.sub}</div>
+          </div>
+        </div>
+        <input type="range" id="u${i}" min="0" max="1000" step="1" value="${t.def}"
+          oninput="render()" style="accent-color:${t.color}">
+        <div class="tier-users-out" id="uout${i}">${t.def}</div>
+        <div class="tier-rev" id="rev${i}">$0</div>
+      </div>
+    `).join('');
+  }
+
+  function buildAudit() {
+    const stake = getStake();
+    const stakeScale = stake / 100;
+    const scLabel = sc === 'best' ? 'Best case' : sc === 'cons' ? 'Conservative' : 'Base case';
+    let lines = [];
+
+    lines.push(`<span class="bl">Scenario: ${scLabel}  ·  Stake: $${stake.toLocaleString()}</span>`);
+    lines.push('');
+    lines.push('<span class="hl">Step 1 — Per-sport gross winnings per user per month</span>');
+    lines.push('<span class="sep">Formula: trades/mo × win_rate × avg_payout × (stake ÷ $100)</span>');
+    lines.push('');
+
+    let poolTotal = 0;
+    sports.forEach(sp => {
+      const wr = sp.wr[sc];
+      const raw = sp.tpm * wr * sp.wp;
+      const scaled = raw * stakeScale;
+      const tag = sp.enabled ? '✓' : '✗';
+      const cls = sp.enabled ? 'hl' : '';
+      poolTotal += sp.enabled ? scaled : 0;
+
+      lines.push(
+        `  ${tag} <span class="${cls}">${sp.name.padEnd(16)}</span>` +
+        `${sp.tpm.toFixed(2)} × ${pct(wr).padStart(3)} × $${sp.wp} × ${stakeScale.toFixed(1)}` +
+        `  = <span class="${sp.enabled ? 'gr' : ''}">${sp.enabled ? fmtExact(scaled) : '$0.00 (off)'}</span>`
+      );
+    });
+
+    lines.push(`<span class="sep">  ${'─'.repeat(56)}</span>`);
+    lines.push(`  Combined pool per user: <span class="gr">${fmtExact(poolTotal)}</span> / month`);
+    lines.push('');
+    lines.push('<span class="hl">Step 2 — Platform fee revenue per tier</span>');
+    lines.push('<span class="sep">Formula: pool_per_user × fee_rate × num_users</span>');
+    lines.push('');
+
+    let revTotal = 0;
+    tiers.forEach((t, i) => {
+      const u = getUsers(i);
+      if (u === 0) return;
+      const rev = poolTotal * t.rate * u;
+      revTotal += rev;
+      lines.push(
+        `  ${t.name.padEnd(14)} ${(t.rate * 100).toFixed(0).padStart(2)}% fee × ${String(u).padStart(4)} users` +
+        `  → ${fmtExact(poolTotal)} × ${t.rate} × ${u} = <span class="hl">${fmtExact(rev)}</span>`
+      );
+    });
+
+    lines.push(`<span class="sep">  ${'─'.repeat(56)}</span>`);
+    lines.push(`  Total platform revenue: <span class="gr">${fmtExact(revTotal)}</span> / month`);
+    lines.push(`  Annual run rate:        <span class="gr">${fmtExact(revTotal * 12)}</span>`);
+
+    document.getElementById('audit-body').innerHTML = lines.join('\n');
+  }
+
   function render() {
-    const pool = winPool(sc);
-    const stake = parseInt(document.getElementById('stake-sl').value) * 100;
+    const stake = getStake();
+    const stakeScale = stake / 100;
     document.getElementById('stake-out').textContent = '$' + stake.toLocaleString();
+
+    const pool = totalPool(sc);
+    const poolDollars = pool * stakeScale;
+    document.getElementById('combined-pool').textContent = fmt(poolDollars);
+
+    updateSportCards();
 
     let total = 0;
     const revs = tiers.map((t, i) => {
       const u = getUsers(i);
-      const rev = pool * t.rate * (stake / 100) * u;
+      const rev = poolDollars * t.rate * u;
       total += rev;
       const rel = document.getElementById('rev' + i);
       const uout = document.getElementById('uout' + i);
@@ -362,37 +692,18 @@
 
     document.getElementById('m-total').textContent = fmt(total);
     document.getElementById('m-annual').textContent = fmt(total * 12);
-    const totalU = tiers.reduce((s, _, i) => s + getUsers(i), 0);
-    document.getElementById('m-users').textContent = totalU.toLocaleString();
+    document.getElementById('m-users').textContent = getTotalUsers().toLocaleString();
 
     if (chart) {
       chart.data.datasets[0].data = revs;
       chart.update('none');
     }
+
+    buildAudit();
   }
 
-  function setSc(key, btn) {
-    sc = key;
-    document.querySelectorAll('.sc-btn').forEach(b => b.classList.remove('on'));
-    btn.classList.add('on');
-    render();
-  }
-
-  document.getElementById('tier-rows').innerHTML = tiers.map((t, i) => `
-    <div class="tier-row">
-      <div class="tier-info">
-        <div class="tier-dot" style="background:${t.color}"></div>
-        <div>
-          <div class="tier-name">${t.name}</div>
-          <div class="tier-rate">${t.sub}</div>
-        </div>
-      </div>
-      <input type="range" id="u${i}" min="0" max="1000" step="1" value="${t.def}" oninput="render()"
-        style="accent-color:${t.color}">
-      <div class="tier-users-out" id="uout${i}">${t.def}</div>
-      <div class="tier-rev" id="rev${i}">$0</div>
-    </div>
-  `).join('');
+  buildSportCards();
+  buildTierRows();
 
   chart = new Chart(document.getElementById('rev-chart'), {
     type: 'bar',
@@ -431,7 +742,7 @@
           ticks: {
             color: '#6b7a94',
             font: { size: 11, family: "'JetBrains Mono'" },
-            callback: v => v >= 1000 ? '$' + Math.round(v/1000) + 'K' : '$' + v
+            callback: v => v >= 1000 ? '$' + Math.round(v / 1000) + 'K' : '$' + v
           }
         }
       }
