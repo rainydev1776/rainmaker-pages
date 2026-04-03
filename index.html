@@ -56,20 +56,12 @@
   }
 
   .card-title {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-family: var(--mono);
+    font-size: 13px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted); font-family: var(--mono);
     margin-bottom: 4px;
   }
 
-  .card-heading {
-    font-size: 22px;
-    font-weight: 500;
-    color: var(--text);
-  }
+  .card-heading { font-size: 22px; font-weight: 500; color: var(--text); }
 
   .card-body { padding: 28px 32px; }
 
@@ -77,7 +69,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
-    margin-bottom: 28px;
+    margin-bottom: 16px;
   }
 
   .metric {
@@ -88,319 +80,188 @@
   }
 
   .metric-label {
-    font-size: 11px;
-    color: var(--muted);
-    font-family: var(--mono);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: 6px;
+    font-size: 11px; color: var(--muted); font-family: var(--mono);
+    letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px;
   }
 
   .metric-value {
-    font-size: 22px;
-    font-weight: 500;
-    color: var(--text);
-    font-family: var(--mono);
+    font-size: 22px; font-weight: 500; color: var(--text); font-family: var(--mono);
   }
 
+  .compound-metrics { display: none; margin-bottom: 28px; }
+
+  .spacer-bottom { margin-bottom: 28px; }
+
   .controls {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: 28px;
-    padding-bottom: 24px;
+    display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+    margin-bottom: 16px; padding-bottom: 16px;
     border-bottom: 1px solid var(--border);
   }
+
+  .controls:last-of-type { margin-bottom: 28px; }
 
   .sc-group { display: flex; gap: 6px; }
 
   .sc-btn {
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 1px solid var(--border2);
-    background: transparent;
-    color: var(--muted);
-    font-size: 12px;
-    font-family: var(--body);
-    cursor: pointer;
-    transition: all 0.15s;
+    padding: 6px 14px; border-radius: 20px;
+    border: 1px solid var(--border2); background: transparent;
+    color: var(--muted); font-size: 12px; font-family: var(--body);
+    cursor: pointer; transition: all 0.15s;
   }
 
   .sc-btn:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
 
-  .sc-btn.on {
-    background: var(--text);
-    color: var(--bg);
-    border-color: var(--text);
+  .sc-btn.on { background: var(--text); color: var(--bg); border-color: var(--text); }
+
+  .slider-group {
+    display: flex; align-items: center; gap: 12px; flex: 1; min-width: 200px;
   }
 
-  .stake-control {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex: 1;
-    min-width: 220px;
+  .slider-label {
+    font-size: 12px; color: var(--muted); white-space: nowrap; font-family: var(--mono);
   }
 
-  .stake-label {
-    font-size: 12px;
-    color: var(--muted);
-    white-space: nowrap;
-    font-family: var(--mono);
-  }
-
-  .stake-val {
-    font-size: 13px;
-    font-weight: 500;
-    min-width: 60px;
-    text-align: right;
-    font-family: var(--mono);
-    color: var(--blue);
+  .slider-val {
+    font-size: 13px; font-weight: 500; min-width: 50px;
+    text-align: right; font-family: var(--mono); color: var(--blue);
   }
 
   input[type=range] {
-    -webkit-appearance: none;
-    appearance: none;
-    flex: 1;
-    height: 4px;
-    background: var(--border2);
-    border-radius: 2px;
-    outline: none;
-    cursor: pointer;
+    -webkit-appearance: none; appearance: none; flex: 1;
+    height: 4px; background: var(--border2); border-radius: 2px;
+    outline: none; cursor: pointer;
   }
 
   input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--text);
-    border: 2px solid var(--bg2);
-    cursor: pointer;
-    transition: transform 0.1s;
+    -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%;
+    background: var(--text); border: 2px solid var(--bg2);
+    cursor: pointer; transition: transform 0.1s;
   }
 
   input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.15); }
   input[type=range]::-moz-range-thumb {
-    width: 16px; height: 16px;
-    border-radius: 50%; background: var(--text);
-    border: 2px solid var(--bg2); cursor: pointer;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--text); border: 2px solid var(--bg2); cursor: pointer;
   }
 
   .section-label {
-    font-size: 11px;
-    font-family: var(--mono);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 14px;
+    font-size: 11px; font-family: var(--mono); letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
   }
 
-  /* ── Sport cards ── */
-
   .sport-card {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px 18px;
-    margin-bottom: 8px;
-    display: grid;
-    grid-template-columns: 26px 1fr auto;
-    gap: 14px;
-    align-items: center;
-    cursor: pointer;
-    transition: opacity 0.15s, border-color 0.15s;
-    user-select: none;
+    background: var(--bg3); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 18px; margin-bottom: 8px;
+    display: grid; grid-template-columns: 26px 1fr auto; gap: 14px;
+    align-items: center; cursor: pointer;
+    transition: opacity 0.15s, border-color 0.15s; user-select: none;
   }
 
   .sport-card:hover { border-color: var(--border2); }
   .sport-card.off { opacity: 0.35; }
 
   .sport-toggle {
-    width: 18px; height: 18px;
-    border-radius: 4px;
+    width: 18px; height: 18px; border-radius: 4px;
     border: 2px solid var(--muted);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.15s;
-    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s; flex-shrink: 0;
   }
 
-  .sport-card.on .sport-toggle {
-    border-color: var(--blue);
-    background: var(--blue);
-  }
+  .sport-card.on .sport-toggle { border-color: var(--blue); background: var(--blue); }
 
   .sport-toggle svg {
-    width: 12px; height: 12px;
-    stroke: var(--bg);
-    stroke-width: 2.5;
-    fill: none;
-    opacity: 0;
-    transition: opacity 0.1s;
+    width: 12px; height: 12px; stroke: var(--bg); stroke-width: 2.5;
+    fill: none; opacity: 0; transition: opacity 0.1s;
   }
 
   .sport-card.on .sport-toggle svg { opacity: 1; }
 
-  .sport-name {
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 2px;
-  }
+  .sport-name { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
 
   .sport-stats {
-    font-size: 11px;
-    color: var(--muted);
-    font-family: var(--mono);
+    font-size: 11px; color: var(--muted); font-family: var(--mono);
     letter-spacing: 0.02em;
   }
 
   .sport-pool {
-    font-family: var(--mono);
-    font-size: 13px;
-    font-weight: 500;
-    text-align: right;
-    white-space: nowrap;
+    font-family: var(--mono); font-size: 13px; font-weight: 500;
+    text-align: right; white-space: nowrap;
   }
 
   .sport-pool-label {
-    font-size: 10px;
-    color: var(--muted);
-    font-family: var(--mono);
-    text-align: right;
-    margin-top: 2px;
-    letter-spacing: 0.04em;
+    font-size: 10px; color: var(--muted); font-family: var(--mono);
+    text-align: right; margin-top: 2px; letter-spacing: 0.04em;
   }
 
   .combined-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 0;
-    margin-bottom: 28px;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 0; margin-bottom: 28px;
     border-bottom: 1px solid var(--border);
-    font-family: var(--mono);
-    font-size: 13px;
+    font-family: var(--mono); font-size: 13px;
   }
 
   .combined-label { color: var(--muted); font-size: 12px; }
-
   .combined-val { font-weight: 500; color: var(--green); font-size: 15px; }
 
-  /* ── Tier rows ── */
-
   .tier-row {
-    display: grid;
-    grid-template-columns: 140px 1fr 72px 88px;
-    align-items: center;
-    gap: 14px;
-    padding: 12px 0;
+    display: grid; grid-template-columns: 140px 1fr 72px 88px;
+    align-items: center; gap: 14px; padding: 12px 0;
     border-bottom: 1px solid var(--border);
   }
 
   .tier-row:last-child { border-bottom: none; }
-
   .tier-info { display: flex; align-items: center; gap: 9px; }
 
-  .tier-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
+  .tier-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
-  .tier-name {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
-    line-height: 1.3;
-  }
+  .tier-name { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.3; }
 
-  .tier-rate {
-    font-size: 11px;
-    color: var(--muted);
-    font-family: var(--mono);
-  }
+  .tier-rate { font-size: 11px; color: var(--muted); font-family: var(--mono); }
 
   .tier-users-out {
-    font-size: 12px;
-    color: var(--muted);
-    font-family: var(--mono);
-    text-align: right;
+    font-size: 12px; color: var(--muted); font-family: var(--mono); text-align: right;
   }
 
   .tier-rev {
-    font-size: 13px;
-    font-weight: 500;
-    text-align: right;
-    font-family: var(--mono);
-    color: var(--text);
+    font-size: 13px; font-weight: 500; text-align: right;
+    font-family: var(--mono); color: var(--text);
   }
-
-  /* ── Chart ── */
 
   .chart-wrap {
-    margin-top: 28px;
-    padding-top: 24px;
+    margin-top: 28px; padding-top: 24px;
     border-top: 1px solid var(--border);
-    position: relative;
-    height: 160px;
+    position: relative; height: 180px;
   }
 
-  /* ── Audit ── */
-
   .audit {
-    margin-top: 24px;
-    border-top: 1px solid var(--border);
-    padding-top: 20px;
+    margin-top: 24px; border-top: 1px solid var(--border); padding-top: 20px;
   }
 
   .audit summary {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--blue);
-    cursor: pointer;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--blue); cursor: pointer;
+    list-style: none; display: flex; align-items: center; gap: 8px;
   }
 
-  .audit summary::before {
-    content: '▶';
-    font-size: 9px;
-    transition: transform 0.15s;
-  }
-
+  .audit summary::before { content: '▶'; font-size: 9px; transition: transform 0.15s; }
   .audit[open] summary::before { transform: rotate(90deg); }
 
   .audit-body {
-    margin-top: 16px;
-    font-family: var(--mono);
-    font-size: 12px;
-    line-height: 1.8;
-    color: var(--muted);
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 18px 20px;
-    overflow-x: auto;
-    white-space: pre-wrap;
+    margin-top: 16px; font-family: var(--mono); font-size: 12px;
+    line-height: 1.8; color: var(--muted); background: var(--bg);
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 18px 20px; overflow-x: auto; white-space: pre-wrap;
   }
 
   .audit-body .hl { color: var(--text); font-weight: 500; }
   .audit-body .gr { color: var(--green); }
   .audit-body .bl { color: var(--blue); }
+  .audit-body .rd { color: #f87171; }
   .audit-body .sep { color: var(--dim); }
 
-  @media (max-width: 560px) {
+  @media (max-width: 600px) {
     body { padding: 16px; }
-    .card-body { padding: 20px; }
-    .card-header { padding: 20px; }
+    .card-body, .card-header { padding: 20px; }
     .metrics { grid-template-columns: 1fr; }
     .sport-card { grid-template-columns: 26px 1fr; }
     .sport-pool, .sport-pool-label { display: none; }
@@ -419,13 +280,13 @@
 
   <div class="card-body">
 
-    <div class="metrics">
+    <div class="metrics spacer-bottom" id="top-metrics">
       <div class="metric">
-        <div class="metric-label">Platform monthly rev</div>
+        <div class="metric-label" id="ml-rev">Platform monthly rev</div>
         <div class="metric-value" id="m-total">$0</div>
       </div>
       <div class="metric">
-        <div class="metric-label">Annual run rate</div>
+        <div class="metric-label" id="ml-annual">Annual run rate</div>
         <div class="metric-value" id="m-annual">$0</div>
       </div>
       <div class="metric">
@@ -434,16 +295,45 @@
       </div>
     </div>
 
+    <div class="metrics compound-metrics" id="compound-metrics">
+      <div class="metric">
+        <div class="metric-label" id="ml-cumul">Period total</div>
+        <div class="metric-value" id="m-cumul">$0</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label" id="ml-flat">Same period flat</div>
+        <div class="metric-value" id="m-flat" style="color:var(--muted)">$0</div>
+      </div>
+      <div class="metric" style="border-color:rgba(30,201,160,0.15)">
+        <div class="metric-label">Compound lift</div>
+        <div class="metric-value" id="m-lift" style="color:var(--green)">+0%</div>
+      </div>
+    </div>
+
+    <!-- Row 1: Scenario + Stake -->
+    <div class="controls">
+      <div class="sc-group" id="sc-btns">
+        <button class="sc-btn" data-sc="best" onclick="setSc('best',this)">Best case</button>
+        <button class="sc-btn on" data-sc="base" onclick="setSc('base',this)">Base case</button>
+        <button class="sc-btn" data-sc="cons" onclick="setSc('cons',this)">Conservative</button>
+      </div>
+      <div class="slider-group">
+        <span class="slider-label">Avg stake</span>
+        <input type="range" id="stake-sl" min="1" max="50" step="1" value="1" oninput="render()">
+        <span class="slider-val" id="stake-out">$100</span>
+      </div>
+    </div>
+
+    <!-- Row 2: Flat/Compound + Months -->
     <div class="controls">
       <div class="sc-group">
-        <button class="sc-btn" onclick="setSc('best',this)">Best case</button>
-        <button class="sc-btn on" onclick="setSc('base',this)">Base case</button>
-        <button class="sc-btn" onclick="setSc('cons',this)">Conservative</button>
+        <button class="sc-btn on" id="flat-btn" onclick="setCompound(false)">Flat stake</button>
+        <button class="sc-btn" id="comp-btn" onclick="setCompound(true)">Compounding</button>
       </div>
-      <div class="stake-control">
-        <span class="stake-label">Avg stake</span>
-        <input type="range" id="stake-sl" min="1" max="50" step="1" value="1" oninput="render()">
-        <span class="stake-val" id="stake-out">$100</span>
+      <div class="slider-group" id="months-wrap" style="display:none">
+        <span class="slider-label">Months</span>
+        <input type="range" id="months-sl" min="1" max="12" step="1" value="6" oninput="render()">
+        <span class="slider-val" id="months-out">6</span>
       </div>
     </div>
 
@@ -454,7 +344,7 @@
       <span class="combined-val" id="combined-pool">$0</span>
     </div>
 
-    <div class="section-label">Users per tier</div>
+    <div class="section-label" id="tier-label">Users per tier — monthly revenue</div>
     <div id="tier-rows"></div>
 
     <div class="chart-wrap">
@@ -465,228 +355,410 @@
       <summary>Show math breakdown</summary>
       <div class="audit-body" id="audit-body"></div>
     </details>
-
   </div>
 </div>
 
 <script>
-  const sports = [
-    {
-      name: 'NBA Burst 2.0',
-      tpm: 33.15,
-      wp: 56,
-      wr: { best: 0.90, base: 0.60, cons: 0.60 },
-      color: '#f97316',
-      enabled: true
+const sports = [
+  {
+    name: 'NBA Burst 2.0', tpm: 33.15, wp: 56,
+    wr: { best: 0.90, base: 0.60, cons: 0.60 },
+    color: '#f97316', enabled: true
+  },
+  {
+    name: 'NHL Burst', tpm: 30.60, wp: 114,
+    wr: { best: 0.60, base: 0.60, cons: 0.55 },
+    color: '#3b82f6', enabled: true
+  },
+  {
+    name: 'MLB Burst', tpm: 51.00, wp: 37,
+    wr: { best: 0.70, base: 0.70, cons: 0.55 },
+    color: '#22c55e', enabled: true
+  }
+];
+
+const tiers = [
+  { name: 'Free / Auger', sub: '25% fee',         rate: 0.25, color: '#6b7a94', def: 0 },
+  { name: 'Starter',      sub: '25K RAIN · 22%',  rate: 0.22, color: '#1D9E75', def: 0 },
+  { name: 'Core',         sub: '100K RAIN · 18%',  rate: 0.18, color: '#378ADD', def: 94 },
+  { name: 'Pro',          sub: '500K RAIN · 15%',  rate: 0.15, color: '#7F77DD', def: 37 },
+  { name: 'Elite',        sub: '3M RAIN · 10%',    rate: 0.10, color: '#BA7517', def: 14 },
+  { name: 'VIP',          sub: '6M RAIN · 5%',     rate: 0.05, color: '#D85A30', def: 0 }
+];
+
+let sc = 'base';
+let compounding = false;
+let chart = null;
+let lastChartKey = '';
+
+function getStake() { return parseInt(document.getElementById('stake-sl').value) * 100; }
+function getMonths() { return parseInt(document.getElementById('months-sl').value); }
+function getUsers(i) {
+  const el = document.getElementById('u' + i);
+  return el ? parseInt(el.value) : tiers[i].def;
+}
+function getTotalUsers() { return tiers.reduce((s, _, i) => s + getUsers(i), 0); }
+
+function sportPool(sp, scenario) {
+  return sp.enabled ? sp.tpm * sp.wr[scenario] * sp.wp : 0;
+}
+function totalPool(scenario) {
+  return sports.reduce((s, sp) => s + sportPool(sp, scenario), 0);
+}
+function enabledTrades() {
+  return sports.reduce((s, sp) => sp.enabled ? s + sp.tpm : 0, 0);
+}
+function losingTrades(scenario) {
+  return sports.reduce((s, sp) => {
+    return sp.enabled ? s + sp.tpm * (1 - sp.wr[scenario]) : s;
+  }, 0);
+}
+
+function tierGrowth(scenario, feeRate) {
+  const stake = getStake();
+  const poolD = totalPool(scenario) * (stake / 100);
+  const fees = poolD * feeRate;
+  const losses = losingTrades(scenario) * stake;
+  const deployed = enabledTrades() * stake;
+  if (deployed === 0) return 0;
+  return Math.max((poolD - fees - losses) / deployed, 0);
+}
+
+function fmt(n) {
+  if (n >= 1e6) return '$' + (n / 1e6).toFixed(1) + 'M';
+  if (n >= 1000) return '$' + Math.round(n / 1000).toLocaleString() + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function fmtX(n) {
+  return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function pct(n) { return (n * 100).toFixed(0) + '%'; }
+function pctD(n) { return (n * 100).toFixed(2) + '%'; }
+
+function toggleSport(idx) {
+  sports[idx].enabled = !sports[idx].enabled;
+  updateSportCards();
+  render();
+}
+
+function setSc(key, btn) {
+  sc = key;
+  document.getElementById('sc-btns').querySelectorAll('.sc-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  updateSportCards();
+  render();
+}
+
+function setCompound(on) {
+  compounding = on;
+  document.getElementById('flat-btn').classList.toggle('on', !on);
+  document.getElementById('comp-btn').classList.toggle('on', on);
+  document.getElementById('months-wrap').style.display = on ? 'flex' : 'none';
+  document.getElementById('compound-metrics').style.display = on ? 'grid' : 'none';
+  document.getElementById('top-metrics').classList.toggle('spacer-bottom', !on);
+  render();
+}
+
+function buildSportCards() {
+  document.getElementById('sport-cards').innerHTML = sports.map((sp, i) => `
+    <div class="sport-card ${sp.enabled ? 'on' : 'off'}" id="sc${i}" onclick="toggleSport(${i})">
+      <div class="sport-toggle">
+        <svg viewBox="0 0 12 12"><polyline points="2,6 5,9.5 10,2.5"/></svg>
+      </div>
+      <div>
+        <div class="sport-name" style="color:${sp.color}">${sp.name}</div>
+        <div class="sport-stats" id="ss${i}"></div>
+      </div>
+      <div>
+        <div class="sport-pool" id="sp${i}">$0</div>
+        <div class="sport-pool-label">/ user / mo</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function updateSportCards() {
+  const stake = getStake();
+  sports.forEach((sp, i) => {
+    const card = document.getElementById('sc' + i);
+    const stats = document.getElementById('ss' + i);
+    const pool = document.getElementById('sp' + i);
+    if (!card) return;
+    card.className = 'sport-card ' + (sp.enabled ? 'on' : 'off');
+    stats.textContent = `${sp.tpm} trades/mo · WR: ${pct(sp.wr[sc])} · Avg payout: +${sp.wp}%`;
+    const val = sportPool(sp, sc) * (stake / 100);
+    pool.textContent = sp.enabled ? fmt(val) : '$0';
+  });
+}
+
+function buildTierRows() {
+  document.getElementById('tier-rows').innerHTML = tiers.map((t, i) => `
+    <div class="tier-row">
+      <div class="tier-info">
+        <div class="tier-dot" style="background:${t.color}"></div>
+        <div>
+          <div class="tier-name">${t.name}</div>
+          <div class="tier-rate">${t.sub}</div>
+        </div>
+      </div>
+      <input type="range" id="u${i}" min="0" max="1000" step="1" value="${t.def}"
+        oninput="render()" style="accent-color:${t.color}">
+      <div class="tier-users-out" id="uout${i}">${t.def}</div>
+      <div class="tier-rev" id="rev${i}">$0</div>
+    </div>
+  `).join('');
+}
+
+function ensureChart() {
+  const mo = compounding ? getMonths() : 0;
+  const key = compounding ? `c${mo}` : 'flat';
+  if (key === lastChartKey && chart) return;
+  lastChartKey = key;
+
+  if (chart) chart.destroy();
+  const canvas = document.getElementById('rev-chart');
+
+  const baseOpts = {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#0d1420', borderColor: 'rgba(255,255,255,0.1)',
+        borderWidth: 1, titleColor: '#e8edf5', bodyColor: '#6b7a94',
+        callbacks: { label: ctx => '  $' + ctx.raw.toLocaleString() + ' / mo' }
+      }
     },
-    {
-      name: 'NHL Burst',
-      tpm: 30.60,
-      wp: 114,
-      wr: { best: 0.60, base: 0.60, cons: 0.55 },
-      color: '#3b82f6',
-      enabled: true
-    },
-    {
-      name: 'MLB Burst',
-      tpm: 51.00,
-      wp: 37,
-      wr: { best: 0.70, base: 0.70, cons: 0.55 },
-      color: '#22c55e',
-      enabled: true
+    scales: {
+      x: {
+        grid: { display: false }, border: { display: false },
+        ticks: { color: '#6b7a94', font: { size: 11, family: "'JetBrains Mono'" } }
+      },
+      y: {
+        grid: { color: 'rgba(255,255,255,0.05)' }, border: { display: false },
+        ticks: {
+          color: '#6b7a94', font: { size: 11, family: "'JetBrains Mono'" },
+          callback: v => v >= 1e6 ? '$' + (v/1e6).toFixed(1)+'M' : v >= 1000 ? '$' + Math.round(v/1000)+'K' : '$'+v
+        }
+      }
     }
-  ];
+  };
 
-  const tiers = [
-    { name: 'Free / Auger', sub: '25% fee',           rate: 0.25, color: '#6b7a94', def: 0 },
-    { name: 'Starter',      sub: '25K RAIN · 22%',    rate: 0.22, color: '#1D9E75', def: 0 },
-    { name: 'Core',         sub: '100K RAIN · 18%',   rate: 0.18, color: '#378ADD', def: 94 },
-    { name: 'Pro',          sub: '500K RAIN · 15%',   rate: 0.15, color: '#7F77DD', def: 37 },
-    { name: 'Elite',        sub: '3M RAIN · 10%',     rate: 0.10, color: '#BA7517', def: 14 },
-    { name: 'VIP',          sub: '6M RAIN · 5%',      rate: 0.05, color: '#D85A30', def: 0 }
-  ];
-
-  let sc = 'base';
-  let chart;
-
-  function getStake() {
-    return parseInt(document.getElementById('stake-sl').value) * 100;
-  }
-
-  function sportPool(sport, scenario) {
-    if (!sport.enabled) return 0;
-    return sport.tpm * sport.wr[scenario] * sport.wp;
-  }
-
-  function totalPool(scenario) {
-    return sports.reduce((sum, sp) => sum + sportPool(sp, scenario), 0);
-  }
-
-  function getUsers(i) {
-    const el = document.getElementById('u' + i);
-    return el ? parseInt(el.value) : tiers[i].def;
-  }
-
-  function getTotalUsers() {
-    return tiers.reduce((sum, _, i) => sum + getUsers(i), 0);
-  }
-
-  function fmt(n) {
-    if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
-    if (n >= 1000) return '$' + Math.round(n / 1000).toLocaleString() + 'K';
-    return '$' + Math.round(n).toLocaleString();
-  }
-
-  function fmtExact(n) {
-    return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  }
-
-  function pct(n) {
-    return (n * 100).toFixed(0) + '%';
-  }
-
-  function toggleSport(idx) {
-    sports[idx].enabled = !sports[idx].enabled;
-    updateSportCards();
-    render();
-  }
-
-  function setSc(key, btn) {
-    sc = key;
-    document.querySelectorAll('.sc-btn').forEach(b => b.classList.remove('on'));
-    btn.classList.add('on');
-    updateSportCards();
-    render();
-  }
-
-  function buildSportCards() {
-    document.getElementById('sport-cards').innerHTML = sports.map((sp, i) => `
-      <div class="sport-card ${sp.enabled ? 'on' : 'off'}" id="sc${i}" onclick="toggleSport(${i})">
-        <div class="sport-toggle">
-          <svg viewBox="0 0 12 12"><polyline points="2,6 5,9.5 10,2.5"/></svg>
-        </div>
-        <div>
-          <div class="sport-name" style="color:${sp.color}">${sp.name}</div>
-          <div class="sport-stats" id="ss${i}">
-            ${sp.tpm} trades/mo · WR: ${pct(sp.wr[sc])} · Avg payout: +${sp.wp}%
-          </div>
-        </div>
-        <div>
-          <div class="sport-pool" id="sp${i}">$0</div>
-          <div class="sport-pool-label">/ user / mo</div>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  function updateSportCards() {
-    const stake = getStake();
-    sports.forEach((sp, i) => {
-      const card = document.getElementById('sc' + i);
-      const stats = document.getElementById('ss' + i);
-      const pool = document.getElementById('sp' + i);
-      if (!card) return;
-
-      card.className = 'sport-card ' + (sp.enabled ? 'on' : 'off');
-      stats.textContent = `${sp.tpm} trades/mo · WR: ${pct(sp.wr[sc])} · Avg payout: +${sp.wp}%`;
-
-      const val = sportPool(sp, sc) * (stake / 100);
-      pool.textContent = sp.enabled ? fmt(val) : '$0';
+  if (compounding) {
+    const labels = Array.from({length: mo}, (_, i) => `Mo ${i + 1}`);
+    chart = new Chart(canvas, {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [
+          { label: 'Compounding', data: Array(mo).fill(0), backgroundColor: '#2d7ff9', borderRadius: 4, borderSkipped: false },
+          { label: 'Flat', data: Array(mo).fill(0), backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 4, borderSkipped: false }
+        ]
+      },
+      options: {
+        ...baseOpts,
+        plugins: {
+          ...baseOpts.plugins,
+          legend: { display: true, labels: { color: '#6b7a94', font: { size: 11, family: "'JetBrains Mono'" }, boxWidth: 12, boxHeight: 12 } }
+        }
+      }
+    });
+  } else {
+    chart = new Chart(canvas, {
+      type: 'bar',
+      data: {
+        labels: tiers.map(t => t.name),
+        datasets: [{ data: tiers.map(() => 0), backgroundColor: tiers.map(t => t.color), borderRadius: 4, borderSkipped: false }]
+      },
+      options: baseOpts
     });
   }
+}
 
-  function buildTierRows() {
-    document.getElementById('tier-rows').innerHTML = tiers.map((t, i) => `
-      <div class="tier-row">
-        <div class="tier-info">
-          <div class="tier-dot" style="background:${t.color}"></div>
-          <div>
-            <div class="tier-name">${t.name}</div>
-            <div class="tier-rate">${t.sub}</div>
-          </div>
-        </div>
-        <input type="range" id="u${i}" min="0" max="1000" step="1" value="${t.def}"
-          oninput="render()" style="accent-color:${t.color}">
-        <div class="tier-users-out" id="uout${i}">${t.def}</div>
-        <div class="tier-rev" id="rev${i}">$0</div>
-      </div>
-    `).join('');
-  }
+function buildAudit() {
+  const stake = getStake();
+  const ss = stake / 100;
+  const scName = sc === 'best' ? 'Best case' : sc === 'cons' ? 'Conservative' : 'Base case';
+  const L = [];
 
-  function buildAudit() {
-    const stake = getStake();
-    const stakeScale = stake / 100;
-    const scLabel = sc === 'best' ? 'Best case' : sc === 'cons' ? 'Conservative' : 'Base case';
-    let lines = [];
+  L.push(`<span class="bl">Scenario: ${scName}  ·  Stake: $${stake.toLocaleString()}</span>`);
+  L.push('');
+  L.push('<span class="hl">Step 1 — Gross winnings per user per month</span>');
+  L.push('<span class="sep">trades/mo × win_rate × avg_payout × (stake ÷ $100)</span>');
+  L.push('');
 
-    lines.push(`<span class="bl">Scenario: ${scLabel}  ·  Stake: $${stake.toLocaleString()}</span>`);
-    lines.push('');
-    lines.push('<span class="hl">Step 1 — Per-sport gross winnings per user per month</span>');
-    lines.push('<span class="sep">Formula: trades/mo × win_rate × avg_payout × (stake ÷ $100)</span>');
-    lines.push('');
+  let poolTotal = 0;
+  sports.forEach(sp => {
+    const wr = sp.wr[sc];
+    const val = sp.tpm * wr * sp.wp * ss;
+    const on = sp.enabled;
+    poolTotal += on ? val : 0;
+    L.push(
+      `  ${on ? '✓' : '✗'} <span class="${on ? 'hl' : ''}">${sp.name.padEnd(16)}</span>` +
+      `${sp.tpm.toFixed(2)} × ${pct(wr)} × $${sp.wp} × ${ss.toFixed(1)}` +
+      ` = <span class="${on ? 'gr' : ''}">${on ? fmtX(val) : '$0 (off)'}</span>`
+    );
+  });
 
-    let poolTotal = 0;
-    sports.forEach(sp => {
-      const wr = sp.wr[sc];
-      const raw = sp.tpm * wr * sp.wp;
-      const scaled = raw * stakeScale;
-      const tag = sp.enabled ? '✓' : '✗';
-      const cls = sp.enabled ? 'hl' : '';
-      poolTotal += sp.enabled ? scaled : 0;
+  L.push(`<span class="sep">  ${'─'.repeat(54)}</span>`);
+  L.push(`  Combined: <span class="gr">${fmtX(poolTotal)}</span> / user / month`);
+  L.push('');
+  L.push('<span class="hl">Step 2 — Platform fee revenue per tier</span>');
+  L.push('<span class="sep">pool × fee_rate × users</span>');
+  L.push('');
 
-      lines.push(
-        `  ${tag} <span class="${cls}">${sp.name.padEnd(16)}</span>` +
-        `${sp.tpm.toFixed(2)} × ${pct(wr).padStart(3)} × $${sp.wp} × ${stakeScale.toFixed(1)}` +
-        `  = <span class="${sp.enabled ? 'gr' : ''}">${sp.enabled ? fmtExact(scaled) : '$0.00 (off)'}</span>`
-      );
-    });
+  let revTotal = 0;
+  tiers.forEach((t, i) => {
+    const u = getUsers(i);
+    if (u === 0) return;
+    const rev = poolTotal * t.rate * u;
+    revTotal += rev;
+    L.push(
+      `  ${t.name.padEnd(14)} ${(t.rate*100).toFixed(0).padStart(2)}% × ${String(u).padStart(4)} users` +
+      ` → <span class="hl">${fmtX(rev)}</span>/mo`
+    );
+  });
 
-    lines.push(`<span class="sep">  ${'─'.repeat(56)}</span>`);
-    lines.push(`  Combined pool per user: <span class="gr">${fmtExact(poolTotal)}</span> / month`);
-    lines.push('');
-    lines.push('<span class="hl">Step 2 — Platform fee revenue per tier</span>');
-    lines.push('<span class="sep">Formula: pool_per_user × fee_rate × num_users</span>');
-    lines.push('');
+  L.push(`<span class="sep">  ${'─'.repeat(54)}</span>`);
+  L.push(`  Monthly total: <span class="gr">${fmtX(revTotal)}</span>`);
 
-    let revTotal = 0;
+  if (compounding) {
+    const mo = getMonths();
+    const totalTr = enabledTrades();
+    const deployed = totalTr * stake;
+    const lostTr = losingTrades(sc);
+
+    L.push('');
+    L.push('<span class="hl">Step 3 — Compounding growth rates</span>');
+    L.push('<span class="sep">growth = (gross_wins − fees − losses) ÷ total_capital</span>');
+    L.push('<span class="sep">Losing trades lose full stake. Negative growth capped at 0%.</span>');
+    L.push('');
+    L.push(`  Total trades/mo: ${totalTr.toFixed(2)}  ·  Losing: ${lostTr.toFixed(2)}`);
+    L.push(`  Capital deployed/mo: ${totalTr.toFixed(2)} × $${stake} = <span class="hl">${fmtX(deployed)}</span>`);
+    L.push(`  Monthly losses/user: ${lostTr.toFixed(2)} × $${stake} = <span class="rd">${fmtX(lostTr * stake)}</span>`);
+    L.push('');
+
     tiers.forEach((t, i) => {
       const u = getUsers(i);
       if (u === 0) return;
-      const rev = poolTotal * t.rate * u;
-      revTotal += rev;
-      lines.push(
-        `  ${t.name.padEnd(14)} ${(t.rate * 100).toFixed(0).padStart(2)}% fee × ${String(u).padStart(4)} users` +
-        `  → ${fmtExact(poolTotal)} × ${t.rate} × ${u} = <span class="hl">${fmtExact(rev)}</span>`
+      const fees = poolTotal * t.rate;
+      const losses = lostTr * stake;
+      const net = poolTotal - fees - losses;
+      const g = deployed > 0 ? net / deployed : 0;
+      const gCapped = Math.max(g, 0);
+      const netCls = net >= 0 ? 'gr' : 'rd';
+      const gCls = gCapped > 0 ? 'gr' : 'rd';
+
+      L.push(
+        `  ${t.name.padEnd(14)} net: <span class="${netCls}">${fmtX(net)}</span>` +
+        ` → <span class="${gCls}">${g >= 0 ? '+' : ''}${pctD(g)}</span>` +
+        `${g < 0 ? ' → <span class="rd">capped 0%</span>' : ''}`
       );
     });
 
-    lines.push(`<span class="sep">  ${'─'.repeat(56)}</span>`);
-    lines.push(`  Total platform revenue: <span class="gr">${fmtExact(revTotal)}</span> / month`);
-    lines.push(`  Annual run rate:        <span class="gr">${fmtExact(revTotal * 12)}</span>`);
+    L.push('');
+    L.push(`<span class="hl">Step 4 — ${mo}-month cumulative revenue</span>`);
+    L.push('');
 
-    document.getElementById('audit-body').innerHTML = lines.join('\n');
+    let grandCumul = 0, grandFlat = 0;
+    tiers.forEach((t, i) => {
+      const u = getUsers(i);
+      if (u === 0) return;
+      const g = tierGrowth(sc, t.rate);
+      let cum = 0;
+      for (let m = 0; m < mo; m++) cum += poolTotal * Math.pow(1 + g, m) * t.rate * u;
+      const flat = poolTotal * t.rate * u * mo;
+      grandCumul += cum;
+      grandFlat += flat;
+      const lift = flat > 0 ? ((cum / flat - 1) * 100) : 0;
+      L.push(
+        `  ${t.name.padEnd(14)} ${fmtX(cum).padStart(14)}` +
+        `  (flat: ${fmtX(flat)})` +
+        `${lift > 0 ? `  <span class="gr">+${lift.toFixed(1)}%</span>` : ''}`
+      );
+    });
+
+    L.push(`<span class="sep">  ${'─'.repeat(54)}</span>`);
+    const totalLift = grandFlat > 0 ? ((grandCumul / grandFlat - 1) * 100) : 0;
+    L.push(`  ${mo}-month total: <span class="gr">${fmtX(grandCumul)}</span>`);
+    L.push(`  Same period flat: ${fmtX(grandFlat)}`);
+    if (totalLift > 0) L.push(`  Compound lift:    <span class="gr">+${totalLift.toFixed(1)}%</span>`);
   }
 
-  function render() {
-    const stake = getStake();
-    const stakeScale = stake / 100;
-    document.getElementById('stake-out').textContent = '$' + stake.toLocaleString();
+  document.getElementById('audit-body').innerHTML = L.join('\n');
+}
 
-    const pool = totalPool(sc);
-    const poolDollars = pool * stakeScale;
-    document.getElementById('combined-pool').textContent = fmt(poolDollars);
+function render() {
+  const stake = getStake();
+  const ss = stake / 100;
+  document.getElementById('stake-out').textContent = '$' + stake.toLocaleString();
 
-    updateSportCards();
+  const pool = totalPool(sc);
+  const poolD = pool * ss;
+  document.getElementById('combined-pool').textContent = fmt(poolD);
+  updateSportCards();
+
+  ensureChart();
+
+  if (compounding) {
+    const mo = getMonths();
+    document.getElementById('months-out').textContent = mo;
+    document.getElementById('ml-rev').textContent = `Month ${mo} revenue`;
+    document.getElementById('ml-cumul').textContent = `${mo}-month total`;
+    document.getElementById('ml-flat').textContent = `${mo}-month flat`;
+    document.getElementById('tier-label').textContent = `Users per tier — ${mo}-month cumulative`;
+
+    let grandCumul = 0, grandFlat = 0, lastMonthTotal = 0;
+    const monthlyComp = Array(mo).fill(0);
+    const monthlyFlat = Array(mo).fill(0);
+
+    const tierRevs = tiers.map((t, i) => {
+      const u = getUsers(i);
+      const g = tierGrowth(sc, t.rate);
+      let cum = 0;
+      for (let m = 0; m < mo; m++) {
+        const mRev = pool * (stake * Math.pow(1 + g, m) / 100) * t.rate * u;
+        const mFlat = poolD * t.rate * u;
+        cum += mRev;
+        monthlyComp[m] += mRev;
+        monthlyFlat[m] += mFlat;
+      }
+      const flat = poolD * t.rate * u * mo;
+      const lastM = pool * (stake * Math.pow(1 + g, mo - 1) / 100) * t.rate * u;
+
+      grandCumul += cum;
+      grandFlat += flat;
+      lastMonthTotal += lastM;
+
+      document.getElementById('rev' + i).textContent = fmt(cum);
+      document.getElementById('uout' + i).textContent = u;
+      return Math.round(cum);
+    });
+
+    document.getElementById('m-total').textContent = fmt(lastMonthTotal);
+    document.getElementById('m-annual').textContent = fmt(lastMonthTotal * 12);
+    document.getElementById('m-users').textContent = getTotalUsers().toLocaleString();
+    document.getElementById('m-cumul').textContent = fmt(grandCumul);
+    document.getElementById('m-flat').textContent = fmt(grandFlat);
+
+    const lift = grandFlat > 0 ? ((grandCumul / grandFlat - 1) * 100) : 0;
+    document.getElementById('m-lift').textContent = lift > 0.05 ? `+${lift.toFixed(1)}%` : '0%';
+    document.getElementById('m-lift').style.color = lift > 0 ? 'var(--green)' : 'var(--muted)';
+
+    chart.data.datasets[0].data = monthlyComp.map(Math.round);
+    chart.data.datasets[1].data = monthlyFlat.map(Math.round);
+    chart.update('none');
+
+  } else {
+    document.getElementById('ml-rev').textContent = 'Platform monthly rev';
+    document.getElementById('tier-label').textContent = 'Users per tier — monthly revenue';
 
     let total = 0;
     const revs = tiers.map((t, i) => {
       const u = getUsers(i);
-      const rev = poolDollars * t.rate * u;
+      const rev = poolD * t.rate * u;
       total += rev;
-      const rel = document.getElementById('rev' + i);
-      const uout = document.getElementById('uout' + i);
-      if (rel) rel.textContent = fmt(rev);
-      if (uout) uout.textContent = u;
+      document.getElementById('rev' + i).textContent = fmt(rev);
+      document.getElementById('uout' + i).textContent = u;
       return Math.round(rev);
     });
 
@@ -694,62 +766,17 @@
     document.getElementById('m-annual').textContent = fmt(total * 12);
     document.getElementById('m-users').textContent = getTotalUsers().toLocaleString();
 
-    if (chart) {
-      chart.data.datasets[0].data = revs;
-      chart.update('none');
-    }
-
-    buildAudit();
+    chart.data.datasets[0].data = revs;
+    chart.update('none');
   }
 
-  buildSportCards();
-  buildTierRows();
+  buildAudit();
+}
 
-  chart = new Chart(document.getElementById('rev-chart'), {
-    type: 'bar',
-    data: {
-      labels: tiers.map(t => t.name),
-      datasets: [{
-        data: tiers.map(() => 0),
-        backgroundColor: tiers.map(t => t.color),
-        borderRadius: 4,
-        borderSkipped: false
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          backgroundColor: '#0d1420',
-          borderColor: 'rgba(255,255,255,0.1)',
-          borderWidth: 1,
-          titleColor: '#e8edf5',
-          bodyColor: '#6b7a94',
-          callbacks: { label: ctx => '  $' + ctx.raw.toLocaleString() + ' / mo' }
-        }
-      },
-      scales: {
-        x: {
-          grid: { display: false },
-          border: { display: false },
-          ticks: { color: '#6b7a94', font: { size: 11, family: "'JetBrains Mono'" } }
-        },
-        y: {
-          grid: { color: 'rgba(255,255,255,0.05)', drawBorder: false },
-          border: { display: false },
-          ticks: {
-            color: '#6b7a94',
-            font: { size: 11, family: "'JetBrains Mono'" },
-            callback: v => v >= 1000 ? '$' + Math.round(v / 1000) + 'K' : '$' + v
-          }
-        }
-      }
-    }
-  });
-
-  render();
+buildSportCards();
+buildTierRows();
+ensureChart();
+render();
 </script>
 
 </body>
