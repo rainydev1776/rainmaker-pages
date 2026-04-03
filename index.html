@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rainmaker — Fee Revenue Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #080c12;
+    --bg2: #0d1420;
+    --bg3: #131d2e;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.13);
+    --text: #e8edf5;
+    --muted: #6b7a94;
+    --dim: #3a4560;
+    --blue: #2d7ff9;
+    --blue-dim: rgba(45,127,249,0.1);
+    --body: 'DM Sans', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 48px 24px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 720px;
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .card-header {
+    padding: 28px 32px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .card-title {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: var(--mono);
+    margin-bottom: 4px;
+  }
+
+  .card-heading {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .card-body { padding: 28px 32px; }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .metric {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+
+  .metric-label {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: var(--mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .metric-value {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text);
+    font-family: var(--mono);
+  }
+
+  .controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sc-group { display: flex; gap: 6px; }
+
+  .sc-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border2);
+    background: transparent;
+    color: var(--muted);
+    font-size: 12px;
+    font-family: var(--body);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .sc-btn:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+
+  .sc-btn.on {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+  }
+
+  .stake-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 220px;
+  }
+
+  .stake-label {
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+    font-family: var(--mono);
+  }
+
+  .stake-val {
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 60px;
+    text-align: right;
+    font-family: var(--mono);
+    color: var(--blue);
+  }
+
+  input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    flex: 1;
+    height: 4px;
+    background: var(--border2);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--text);
+    border: 2px solid var(--bg2);
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+
+  input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+  input[type=range]::-moz-range-thumb {
+    width: 16px; height: 16px;
+    border-radius: 50%; background: var(--text);
+    border: 2px solid var(--bg2); cursor: pointer;
+  }
+
+  .tiers-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .tier-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 72px 88px;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tier-row:last-child { border-bottom: none; }
+
+  .tier-info { display: flex; align-items: center; gap: 9px; }
+
+  .tier-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .tier-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .tier-rate {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+
+  .tier-users-out {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: var(--mono);
+    text-align: right;
+  }
+
+  .tier-rev {
+    font-size: 13px;
+    font-weight: 500;
+    text-align: right;
+    font-family: var(--mono);
+    color: var(--text);
+  }
+
+  .chart-wrap {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    position: relative;
+    height: 160px;
+  }
+
+  @media (max-width: 560px) {
+    body { padding: 16px; }
+    .card-body { padding: 20px; }
+    .card-header { padding: 20px; }
+    .metrics { grid-template-columns: 1fr; }
+    .tier-row { grid-template-columns: 110px 1fr 56px; }
+    .tier-rev { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">Rainmaker</div>
+    <div class="card-heading">Fee revenue calculator</div>
+  </div>
+
+  <div class="card-body">
+
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-label">Monthly revenue</div>
+        <div class="metric-value" id="m-total">$0</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Annual run rate</div>
+        <div class="metric-value" id="m-annual">$0</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Total users</div>
+        <div class="metric-value" id="m-users">0</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="sc-group">
+        <button class="sc-btn" onclick="setSc('best',this)">Best case</button>
+        <button class="sc-btn on" onclick="setSc('base',this)">Base case</button>
+        <button class="sc-btn" onclick="setSc('cons',this)">Conservative</button>
+      </div>
+      <div class="stake-control">
+        <span class="stake-label">Avg stake</span>
+        <input type="range" id="stake-sl" min="1" max="50" step="1" value="1" oninput="render()">
+        <span class="stake-val" id="stake-out">$100</span>
+      </div>
+    </div>
+
+    <div class="tiers-label">Users per tier</div>
+    <div id="tier-rows"></div>
+
+    <div class="chart-wrap">
+      <canvas id="rev-chart"></canvas>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const models = [
+    { tpm: 33.15, wp: 56,  wr: { best: 0.90, base: 0.60, cons: 0.60 } },
+    { tpm: 30.60, wp: 114, wr: { best: 0.60, base: 0.60, cons: 0.55 } },
+    { tpm: 51.00, wp: 37,  wr: { best: 0.70, base: 0.70, cons: 0.55 } }
+  ];
+
+  const tiers = [
+    { name: 'Free / Auger', sub: '25% fee', rate: 0.25, color: '#6b7a94', def: 0 },
+    { name: 'Starter',      sub: '25K RAIN · 22%', rate: 0.22, color: '#1D9E75', def: 0 },
+    { name: 'Core',         sub: '100K RAIN · 18%', rate: 0.18, color: '#378ADD', def: 94 },
+    { name: 'Pro',          sub: '500K RAIN · 15%', rate: 0.15, color: '#7F77DD', def: 37 },
+    { name: 'Elite',        sub: '3M RAIN · 10%', rate: 0.10, color: '#BA7517', def: 14 },
+    { name: 'VIP',          sub: '6M RAIN · 5%', rate: 0.05, color: '#D85A30', def: 0 }
+  ];
+
+  let sc = 'base';
+  let chart;
+
+  function winPool(scenario) {
+    return models.reduce((s, m) => s + m.tpm * m.wr[scenario] * m.wp, 0);
+  }
+
+  function getUsers(i) {
+    const el = document.getElementById('u' + i);
+    return el ? parseInt(el.value) : tiers[i].def;
+  }
+
+  function fmt(n) {
+    if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
+    if (n >= 1000) return '$' + Math.round(n / 1000) + 'K';
+    return '$' + Math.round(n).toLocaleString();
+  }
+
+  function render() {
+    const pool = winPool(sc);
+    const stake = parseInt(document.getElementById('stake-sl').value) * 100;
+    document.getElementById('stake-out').textContent = '$' + stake.toLocaleString();
+
+    let total = 0;
+    const revs = tiers.map((t, i) => {
+      const u = getUsers(i);
+      const rev = pool * t.rate * (stake / 100) * u;
+      total += rev;
+      const rel = document.getElementById('rev' + i);
+      const uout = document.getElementById('uout' + i);
+      if (rel) rel.textContent = fmt(rev);
+      if (uout) uout.textContent = u;
+      return Math.round(rev);
+    });
+
+    document.getElementById('m-total').textContent = fmt(total);
+    document.getElementById('m-annual').textContent = fmt(total * 12);
+    const totalU = tiers.reduce((s, _, i) => s + getUsers(i), 0);
+    document.getElementById('m-users').textContent = totalU.toLocaleString();
+
+    if (chart) {
+      chart.data.datasets[0].data = revs;
+      chart.update('none');
+    }
+  }
+
+  function setSc(key, btn) {
+    sc = key;
+    document.querySelectorAll('.sc-btn').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    render();
+  }
+
+  document.getElementById('tier-rows').innerHTML = tiers.map((t, i) => `
+    <div class="tier-row">
+      <div class="tier-info">
+        <div class="tier-dot" style="background:${t.color}"></div>
+        <div>
+          <div class="tier-name">${t.name}</div>
+          <div class="tier-rate">${t.sub}</div>
+        </div>
+      </div>
+      <input type="range" id="u${i}" min="0" max="1000" step="1" value="${t.def}" oninput="render()"
+        style="accent-color:${t.color}">
+      <div class="tier-users-out" id="uout${i}">${t.def}</div>
+      <div class="tier-rev" id="rev${i}">$0</div>
+    </div>
+  `).join('');
+
+  chart = new Chart(document.getElementById('rev-chart'), {
+    type: 'bar',
+    data: {
+      labels: tiers.map(t => t.name),
+      datasets: [{
+        data: tiers.map(() => 0),
+        backgroundColor: tiers.map(t => t.color),
+        borderRadius: 4,
+        borderSkipped: false
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#0d1420',
+          borderColor: 'rgba(255,255,255,0.1)',
+          borderWidth: 1,
+          titleColor: '#e8edf5',
+          bodyColor: '#6b7a94',
+          callbacks: { label: ctx => '  $' + ctx.raw.toLocaleString() + ' / mo' }
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          border: { display: false },
+          ticks: { color: '#6b7a94', font: { size: 11, family: "'JetBrains Mono'" } }
+        },
+        y: {
+          grid: { color: 'rgba(255,255,255,0.05)', drawBorder: false },
+          border: { display: false },
+          ticks: {
+            color: '#6b7a94',
+            font: { size: 11, family: "'JetBrains Mono'" },
+            callback: v => v >= 1000 ? '$' + Math.round(v/1000) + 'K' : '$' + v
+          }
+        }
+      }
+    }
+  });
+
+  render();
+</script>
+
+</body>
+</html>

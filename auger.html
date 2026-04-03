@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rainmaker × Auger — Partner Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #080c12;
+    --bg2: #0d1420;
+    --bg3: #111b2a;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --blue: #2d7ff9;
+    --blue-dim: rgba(45,127,249,0.12);
+    --teal: #1ec9a0;
+    --teal-dim: rgba(30,201,160,0.1);
+    --amber: #f5a623;
+    --amber-dim: rgba(245,166,35,0.1);
+    --purple: #9b6dff;
+    --purple-dim: rgba(155,109,255,0.1);
+    --coral: #ff6b6b;
+    --text: #e8edf5;
+    --muted: #6b7a94;
+    --mono: 'JetBrains Mono', monospace;
+    --display: 'Barlow Condensed', sans-serif;
+    --body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .noise {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+
+  .glow-top {
+    position: fixed; top: -200px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 400px;
+    background: radial-gradient(ellipse, rgba(45,127,249,0.08) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(8,12,18,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+  }
+
+  .nav-inner {
+    max-width: 880px; margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .logo {
+    font-family: var(--display);
+    font-size: 20px; font-weight: 800; letter-spacing: 0.04em;
+    color: var(--text);
+  }
+
+  .logo span { color: var(--blue); }
+
+  .badge {
+    font-family: var(--mono); font-size: 11px; font-weight: 500;
+    background: var(--blue-dim); color: var(--blue);
+    border: 1px solid rgba(45,127,249,0.2);
+    padding: 4px 10px; border-radius: 4px; letter-spacing: 0.06em;
+  }
+
+  section { padding: 80px 0; }
+
+  .hero { padding: 100px 0 80px; text-align: center; }
+
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+    color: var(--blue); text-transform: uppercase; margin-bottom: 20px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: ''; display: block; width: 40px; height: 1px; background: var(--blue); opacity: 0.4;
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(52px, 9vw, 88px);
+    font-weight: 800; line-height: 0.95;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+
+  h1 .line2 { color: var(--blue); }
+
+  .hero-sub {
+    font-size: 17px; color: var(--muted); max-width: 520px; margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+
+  .hero-code {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--bg3); border: 1px solid var(--border2);
+    border-radius: 8px; padding: 12px 20px;
+    font-family: var(--mono); font-size: 14px;
+  }
+
+  .hero-code .label { color: var(--muted); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .hero-code .code { color: var(--teal); font-weight: 500; font-size: 18px; }
+
+  .stat-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden; margin-top: 60px;
+  }
+
+  .stat {
+    background: var(--bg2); padding: 28px 24px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+
+  .stat-num {
+    font-family: var(--display); font-size: 36px; font-weight: 800;
+    line-height: 1; color: var(--text);
+  }
+
+  .stat-num .accent { color: var(--teal); }
+
+  .stat-label { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
+
+  h2 {
+    font-family: var(--display); font-size: 40px; font-weight: 800;
+    letter-spacing: 0.01em; line-height: 1; margin-bottom: 8px;
+  }
+
+  .section-sub { color: var(--muted); font-size: 15px; margin-bottom: 48px; }
+
+  .section-tag {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--blue);
+    margin-bottom: 12px; display: block;
+  }
+
+  .steps-grid {
+    display: grid; gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+  }
+
+  .step {
+    background: var(--bg2); padding: 20px 24px;
+    display: grid; grid-template-columns: 40px 1fr; gap: 16px; align-items: start;
+  }
+
+  .step:hover { background: var(--bg3); transition: background 0.15s; }
+
+  .step-num {
+    font-family: var(--mono); font-size: 11px; font-weight: 500;
+    color: var(--blue); background: var(--blue-dim);
+    border-radius: 6px; width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    letter-spacing: 0.04em; flex-shrink: 0; margin-top: 1px;
+  }
+
+  .step-title { font-weight: 500; font-size: 14px; margin-bottom: 3px; }
+  .step-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  .step-toast {
+    font-family: var(--mono); font-size: 12px;
+    background: var(--bg3); border-left: 2px solid var(--teal);
+    color: var(--teal); padding: 8px 12px; border-radius: 0 6px 6px 0;
+    margin-top: 8px; line-height: 1.5;
+  }
+
+  .branch-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 0;
+  }
+
+  .branch-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+  }
+
+  .branch-header {
+    padding: 16px 20px; border-bottom: 1px solid var(--border);
+    font-family: var(--display); font-size: 20px; font-weight: 700;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .branch-header .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+
+  .branch-step {
+    padding: 14px 20px; border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+
+  .branch-step:last-child { border-bottom: none; }
+
+  .branch-step .bs-label {
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); font-family: var(--mono); margin-bottom: 4px;
+  }
+
+  .bs-toast {
+    font-family: var(--mono); font-size: 11px; color: var(--teal);
+    background: var(--teal-dim); border-radius: 4px; padding: 6px 10px;
+    margin-top: 6px; line-height: 1.5;
+  }
+
+  .locked {
+    color: var(--muted); text-decoration: line-through; font-size: 12px;
+  }
+
+  .countdown {
+    font-family: var(--mono); font-size: 11px;
+    background: var(--amber-dim); color: var(--amber);
+    border-radius: 4px; padding: 4px 8px; margin-left: 8px;
+  }
+
+  .tier-table-wrap {
+    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  thead th {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted);
+    padding: 12px 20px; text-align: left;
+    background: var(--bg3); border-bottom: 1px solid var(--border);
+  }
+
+  tbody td { padding: 16px 20px; border-bottom: 1px solid var(--border); font-size: 14px; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: var(--bg3); transition: background 0.1s; }
+
+  .tier-badge {
+    font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 4px;
+    font-family: var(--mono); letter-spacing: 0.06em;
+  }
+
+  .fee-bar-bg {
+    width: 100px; height: 4px; background: rgba(255,255,255,0.06);
+    border-radius: 2px; display: inline-block; vertical-align: middle; margin-right: 8px;
+  }
+
+  .fee-bar-fill { height: 100%; border-radius: 2px; }
+  .fee-val { font-family: var(--mono); font-weight: 500; font-size: 14px; }
+
+  .save-pill {
+    font-family: var(--mono); font-size: 11px; font-weight: 500;
+    padding: 2px 8px; border-radius: 3px;
+  }
+
+  .divider {
+    border: none; border-top: 1px solid var(--border); margin: 0;
+  }
+
+  .phantom-box {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 32px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;
+  }
+
+  .phantom-title {
+    font-family: var(--display); font-size: 28px; font-weight: 800;
+    margin-bottom: 10px; line-height: 1;
+  }
+
+  .phantom-sub { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  .phantom-steps { display: flex; flex-direction: column; gap: 12px; }
+
+  .phantom-step {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 13px;
+  }
+
+  .ps-num {
+    font-family: var(--mono); font-size: 10px; font-weight: 500;
+    background: var(--blue-dim); color: var(--blue);
+    border-radius: 4px; width: 22px; height: 22px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .email-box {
+    background: var(--bg2); border: 1px solid rgba(245,166,35,0.2);
+    border-radius: 12px; padding: 32px; margin-top: 16px;
+  }
+
+  .email-tag {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--amber); margin-bottom: 16px; display: block;
+  }
+
+  .email-subject {
+    font-family: var(--display); font-size: 22px; font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .email-body { font-size: 14px; color: var(--muted); line-height: 1.8; }
+  .email-body strong { color: var(--text); }
+
+  footer {
+    border-top: 1px solid var(--border); padding: 40px 0; text-align: center;
+    font-size: 12px; color: var(--muted); font-family: var(--mono);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero > * { animation: fadeUp 0.5s ease both; }
+  .hero .hero-eyebrow { animation-delay: 0.05s; }
+  .hero h1 { animation-delay: 0.1s; }
+  .hero .hero-sub { animation-delay: 0.15s; }
+  .hero .hero-code { animation-delay: 0.2s; }
+  .hero .stat-row { animation-delay: 0.25s; }
+
+  @media (max-width: 640px) {
+    .stat-row { grid-template-columns: 1fr; }
+    .branch-grid { grid-template-columns: 1fr; }
+    .phantom-box { grid-template-columns: 1fr; }
+    h1 { font-size: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="noise"></div>
+<div class="glow-top"></div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">RAIN<span>MAKER</span></div>
+    <span class="badge">PARTNER BRIEF</span>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-eyebrow">Partner Overview</div>
+    <h1>Rainmaker<br><span class="line2">× Auger</span></h1>
+    <p class="hero-sub">AI-powered sports prediction markets. Your community trades, wins, and earns — starting with $50 on us.</p>
+    <div class="hero-code">
+      <span class="label">Referral code</span>
+      <span class="code">auger2026</span>
+    </div>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-num"><span class="accent">$50</span></div>
+        <div class="stat-label">Free JUPUSD credit per user</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="accent">14–0</span></div>
+        <div class="stat-label">Burst 2.0 model record (live)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="accent">0</span></div>
+        <div class="stat-label">Crypto knowledge required to start</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <section>
+    <span class="section-tag">The pitch</span>
+    <h2>What you tell them</h2>
+    <p class="section-sub">Four lines on stream. That's all they need.</p>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">Send them to the site</div>
+          <div class="step-desc">Go to <strong>rainmaker.fun</strong></div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">Sign up with email</div>
+          <div class="step-desc">Standard sign up — just an email address, no wallet required</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">Click the confirmation link</div>
+          <div class="step-desc">Email arrives instantly with a one-click confirm</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div>
+          <div class="step-title">Enter your referral code</div>
+          <div class="step-desc">Type in <strong style="color: var(--teal); font-family: var(--mono);">auger2026</strong> — $50 JUPUSD loads immediately</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section>
+    <span class="section-tag">Onboarding</span>
+    <h2>What they see next</h2>
+    <p class="section-sub">Four toasts walk them through everything. Zero friction.</p>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">Balance confirmed</div>
+          <div class="step-toast">"Your $50 JUPUSD is loaded — we got you"</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">Model selected</div>
+          <div class="step-toast">"We've pre-selected our highest win rate model for you"</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">Future models unlocked after win 1</div>
+          <div class="step-toast">"After your first win, you can explore all other models"</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div>
+          <div class="step-title">Sit back and wait</div>
+          <div class="step-toast">"Leave the model on — we'll push notify you when you're in a trade"</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section>
+    <span class="section-tag">After the first win</span>
+    <h2>Two paths</h2>
+    <p class="section-sub">After their first trade wins, they choose how to proceed.</p>
+    <div class="branch-grid">
+
+      <div class="branch-card">
+        <div class="branch-header" style="color: var(--teal);">
+          <div class="dot" style="background: var(--teal);"></div>
+          Withdraw profit
+        </div>
+        <div class="branch-step">
+          <div class="bs-label">Toast fires</div>
+          <div>"Congrats! You won your first trade — want to withdraw your profit?"</div>
+        </div>
+        <div class="branch-step">
+          <div class="bs-label">Note shown</div>
+          <div>Your original $50 JUPUSD stake unlocks for withdrawal after <strong>5 trades</strong></div>
+        </div>
+        <div class="branch-step">
+          <div class="bs-label">Phantom setup</div>
+          <div>Set up your Phantom wallet — it only takes 60 seconds.</div>
+          <div style="margin-top: 8px; font-size: 12px; color: var(--muted);">Once you're done, come back and connect your Phantom wallet to Rainmaker. When you come back your profit will be ready to withdraw.</div>
+        </div>
+        <div class="branch-step">
+          <div class="bs-label">Withdrawal</div>
+          <div>Connect Phantom → profit processes instantly</div>
+        </div>
+        <div class="branch-step">
+          <div class="bs-label">Re-engagement email</div>
+          <div style="font-size: 13px; color: var(--muted);">Sent 1 week after withdrawal — shows what they would have made if they'd stayed in</div>
+        </div>
+      </div>
+
+      <div class="branch-card">
+        <div class="branch-header" style="color: var(--blue);">
+          <div class="dot" style="background: var(--blue);"></div>
+          Let it compound
+        </div>
+        <div class="branch-step">
+          <div class="bs-label">Toast fires</div>
+          <div>"Smart move — your winnings compound automatically. We'll notify you every win."</div>
+        </div>
+        <div class="branch-step">
+          <div class="bs-label">Balance grows</div>
+          <div>Stake increases after each winning trade. Push notification per win.</div>
+        </div>
+        <div class="branch-step">
+          <div class="bs-label">Withdrawal buttons</div>
+          <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+            <div style="background: var(--teal-dim); border: 1px solid rgba(30,201,160,0.2); border-radius: 6px; padding: 8px 12px; font-size: 13px; color: var(--teal);">✓ Withdraw profit — available now</div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; align-items: center;">
+              <span class="locked">Withdraw everything</span>
+              <span class="countdown">X of 5 trades</span>
+            </div>
+          </div>
+        </div>
+        <div class="branch-step">
+          <div class="bs-label">5 trades reached</div>
+          <div>Toast: <span style="color: var(--teal); font-family: var(--mono); font-size: 12px;">"Withdraw everything is now unlocked"</span></div>
+        </div>
+        <div class="branch-step">
+          <div class="bs-label">Phantom setup</div>
+          <div>Same 60-second Phantom flow as withdraw path</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section>
+    <span class="section-tag">After Phantom connects</span>
+    <h2>The RAIN moment</h2>
+    <p class="section-sub">Once their wallet is connected — and only then — we introduce RAIN. They're profitable, they understand crypto, and now they have a real reason to care about fees.</p>
+
+    <div style="background: var(--purple-dim); border: 1px solid rgba(155,109,255,0.2); border-radius: 10px; padding: 20px 24px; margin-bottom: 32px; font-family: var(--mono); font-size: 14px; color: var(--purple);">
+      "By the way — holding 25K RAIN in your wallet drops your fee from 25% to 22%. You can buy it right here."
+    </div>
+
+    <div class="tier-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>RAIN required</th>
+            <th>Est. value</th>
+            <th>Your fee</th>
+            <th>You save</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tier-badge" style="background: rgba(107,122,148,0.15); color: var(--muted);">Free</span></td>
+            <td style="color: var(--muted);">None</td>
+            <td style="color: var(--muted);">—</td>
+            <td>
+              <div class="fee-bar-bg"><div class="fee-bar-fill" style="width:100%; background: var(--muted);"></div></div>
+              <span class="fee-val">25%</span>
+            </td>
+            <td style="color: var(--muted);">—</td>
+          </tr>
+          <tr>
+            <td><span class="tier-badge" style="background: var(--teal-dim); color: var(--teal);">Starter</span></td>
+            <td>25K RAIN</td>
+            <td style="color: var(--muted);">~$500</td>
+            <td>
+              <div class="fee-bar-bg"><div class="fee-bar-fill" style="width:88%; background: var(--teal);"></div></div>
+              <span class="fee-val">22%</span>
+            </td>
+            <td><span class="save-pill" style="background: var(--teal-dim); color: var(--teal);">−3%</span></td>
+          </tr>
+          <tr>
+            <td><span class="tier-badge" style="background: var(--blue-dim); color: var(--blue);">Core</span></td>
+            <td>100K RAIN</td>
+            <td style="color: var(--muted);">~$2K</td>
+            <td>
+              <div class="fee-bar-bg"><div class="fee-bar-fill" style="width:72%; background: var(--blue);"></div></div>
+              <span class="fee-val">18%</span>
+            </td>
+            <td><span class="save-pill" style="background: var(--blue-dim); color: var(--blue);">−7%</span></td>
+          </tr>
+          <tr>
+            <td><span class="tier-badge" style="background: var(--purple-dim); color: var(--purple);">Pro</span></td>
+            <td>500K RAIN</td>
+            <td style="color: var(--muted);">~$10K</td>
+            <td>
+              <div class="fee-bar-bg"><div class="fee-bar-fill" style="width:60%; background: var(--purple);"></div></div>
+              <span class="fee-val">15%</span>
+            </td>
+            <td><span class="save-pill" style="background: var(--purple-dim); color: var(--purple);">−10%</span></td>
+          </tr>
+          <tr>
+            <td><span class="tier-badge" style="background: var(--amber-dim); color: var(--amber);">Elite</span></td>
+            <td>3M RAIN</td>
+            <td style="color: var(--muted);">~$60K</td>
+            <td>
+              <div class="fee-bar-bg"><div class="fee-bar-fill" style="width:40%; background: var(--amber);"></div></div>
+              <span class="fee-val">10%</span>
+            </td>
+            <td><span class="save-pill" style="background: var(--amber-dim); color: var(--amber);">−15%</span></td>
+          </tr>
+          <tr>
+            <td><span class="tier-badge" style="background: rgba(255,107,107,0.1); color: var(--coral);">VIP</span></td>
+            <td>6M RAIN</td>
+            <td style="color: var(--muted);">~$120K</td>
+            <td>
+              <div class="fee-bar-bg"><div class="fee-bar-fill" style="width:20%; background: var(--coral);"></div></div>
+              <span class="fee-val">5%</span>
+            </td>
+            <td><span class="save-pill" style="background: rgba(255,107,107,0.1); color: var(--coral);">−20%</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 11px; color: var(--muted); margin-top: 12px; font-family: var(--mono);">RAIN prices approximate. Buy in-app. Tiers update automatically when wallet balance changes.</p>
+  </section>
+
+  <hr class="divider">
+
+  <section>
+    <span class="section-tag">Wallet setup</span>
+    <h2>The Phantom moment</h2>
+    <p class="section-sub">Crypto stays invisible until they have money to collect. Then it's a 60-second setup with a clear reason to do it.</p>
+    <div class="phantom-box">
+      <div>
+        <div class="phantom-title">Set up Phantom.<br><span style="color: var(--blue);">60 seconds.</span></div>
+        <p class="phantom-sub">Shown at withdrawal — when they're already motivated. Crypto learning curve feels worth it when there's real money on the other side.</p>
+      </div>
+      <div class="phantom-steps">
+        <div class="phantom-step">
+          <div class="ps-num">1</div>
+          <div>Download Phantom wallet (link provided in app)</div>
+        </div>
+        <div class="phantom-step">
+          <div class="ps-num">2</div>
+          <div>Create your wallet — takes under 60 seconds</div>
+        </div>
+        <div class="phantom-step">
+          <div class="ps-num">3</div>
+          <div>Come back to Rainmaker and connect your wallet</div>
+        </div>
+        <div class="phantom-step">
+          <div class="ps-num">4</div>
+          <div style="color: var(--teal);">Profit is ready to withdraw instantly</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="email-box">
+      <span class="email-tag">Re-engagement · sent 1 week after withdrawal</span>
+      <div class="email-subject">You left money on the table.</div>
+      <div class="email-body">
+        Hey — you withdrew your profit last week, which was a <strong>great first trade.</strong><br><br>
+        Since then, the Burst 2.0 model has hit <strong>[X] more wins.</strong> If you'd kept your stake running, your balance would be <strong style="color: var(--teal);">$[Y]</strong> right now.<br><br>
+        Your account is still active. Come back, reload, and let it run.
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    RAINMAKER × AUGER PARTNER BRIEF · CONFIDENTIAL · rainmaker.fun
+  </div>
+</footer>
+
+</body>
+</html>
