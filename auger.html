@@ -51,7 +51,7 @@
   .glow-top {
     position: fixed; top: -200px; left: 50%; transform: translateX(-50%);
     width: 800px; height: 400px;
-    background: radial-gradient(ellipse, rgba(45,127,249,0.08) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(45,127,249,0.05) 0%, transparent 70%);
     pointer-events: none; z-index: 0;
   }
 
@@ -59,24 +59,16 @@
 
   nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(8,12,18,0.85);
+    background: #000;
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
-    padding: 16px 0;
+    padding: 12px 0;
   }
 
   .nav-inner {
     max-width: 880px; margin: 0 auto; padding: 0 24px;
     display: flex; align-items: center; justify-content: space-between;
   }
-
-  .logo {
-    font-family: var(--display);
-    font-size: 20px; font-weight: 800; letter-spacing: 0.04em;
-    color: var(--text);
-  }
-
-  .logo span { color: var(--blue); }
 
   .badge {
     font-family: var(--mono); font-size: 11px; font-weight: 500;
@@ -85,9 +77,15 @@
     padding: 4px 10px; border-radius: 4px; letter-spacing: 0.06em;
   }
 
+  .nav-logo-img { height: 32px; }
+
   section { padding: 80px 0; }
 
-  .hero { padding: 100px 0 80px; text-align: center; }
+  .hero {
+    padding: 100px 0 80px; text-align: center;
+    background: #000;
+    margin: 0 -24px; padding-left: 24px; padding-right: 24px;
+  }
 
   .hero-eyebrow {
     font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
@@ -126,13 +124,13 @@
 
   .stat-row {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
     border-radius: 12px; overflow: hidden; margin-top: 60px;
   }
 
   .stat {
-    background: var(--bg2); padding: 28px 24px;
+    background: #0a0a0a; padding: 28px 24px;
     display: flex; flex-direction: column; gap: 6px;
   }
 
@@ -353,8 +351,8 @@
 
 <nav>
   <div class="nav-inner">
-    <div class="logo">RAIN<span>MAKER</span></div>
     <span class="badge">PARTNER BRIEF</span>
+    <img src="rainmaker-logo.png" alt="Rainmaker" class="nav-logo-img">
   </div>
 </nav>
 
@@ -383,44 +381,6 @@
       </div>
     </div>
   </div>
-
-  <hr class="divider">
-
-  <section>
-    <span class="section-tag">The pitch</span>
-    <h2>What you tell them</h2>
-    <p class="section-sub">Four lines on stream. That's all they need.</p>
-    <div class="steps-grid">
-      <div class="step">
-        <div class="step-num">01</div>
-        <div>
-          <div class="step-title">Send them to the site</div>
-          <div class="step-desc">Go to <strong>rainmaker.fun</strong></div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <div>
-          <div class="step-title">Sign up with email</div>
-          <div class="step-desc">Standard sign up — just an email address, no wallet required</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <div>
-          <div class="step-title">Click the confirmation link</div>
-          <div class="step-desc">Email arrives instantly with a one-click confirm</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <div>
-          <div class="step-title">Enter your referral code</div>
-          <div class="step-desc">Type in <strong style="color: var(--teal); font-family: var(--mono);">auger2026</strong> — $50 JUPUSD loads immediately</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <hr class="divider">
 
