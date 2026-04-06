@@ -274,33 +274,6 @@
     border: none; border-top: 1px solid var(--border); margin: 0;
   }
 
-  .phantom-box {
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: 12px; padding: 32px;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;
-  }
-
-  .phantom-title {
-    font-family: var(--display); font-size: 28px; font-weight: 800;
-    margin-bottom: 10px; line-height: 1;
-  }
-
-  .phantom-sub { font-size: 14px; color: var(--muted); line-height: 1.6; }
-
-  .phantom-steps { display: flex; flex-direction: column; gap: 12px; }
-
-  .phantom-step {
-    display: flex; align-items: flex-start; gap: 12px;
-    font-size: 13px;
-  }
-
-  .ps-num {
-    font-family: var(--mono); font-size: 10px; font-weight: 500;
-    background: var(--blue-dim); color: var(--blue);
-    border-radius: 4px; width: 22px; height: 22px; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-  }
-
   .email-box {
     background: var(--bg2); border: 1px solid rgba(245,166,35,0.2);
     border-radius: 12px; padding: 32px; margin-top: 16px;
@@ -339,7 +312,6 @@
   @media (max-width: 640px) {
     .stat-row { grid-template-columns: 1fr; }
     .branch-grid { grid-template-columns: 1fr; }
-    .phantom-box { grid-template-columns: 1fr; }
     h1 { font-size: 48px; }
   }
 </style>
@@ -387,7 +359,7 @@
   <section>
     <span class="section-tag">Entry</span>
     <h2>The entry point</h2>
-    <p class="section-sub">Six steps from Twitch to trading. Zero friction.</p>
+    <p class="section-sub">Three steps from Twitch to trading. Zero friction.</p>
     <div class="steps-grid">
       <div class="step">
         <div class="step-num">01</div>
@@ -399,29 +371,15 @@
       <div class="step">
         <div class="step-num">02</div>
         <div>
-          <div class="step-title">User goes to rainmaker.fun</div>
-          <div class="step-desc">Direct link from stream — one click to get started</div>
+          <div class="step-title">Sign in with your email address</div>
+          <div class="step-desc">No wallet, no crypto knowledge — just an email. Account created instantly.</div>
         </div>
       </div>
       <div class="step">
         <div class="step-num">03</div>
         <div>
-          <div class="step-title">Sign up with email address</div>
-          <div class="step-desc">No wallet, no crypto knowledge — just an email</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <div>
-          <div class="step-title">Click confirmation link in email</div>
-          <div class="step-desc">Arrives instantly — one-click confirm</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">05</div>
-        <div>
           <div class="step-title">Enter referral code</div>
-          <div class="step-desc">Type in <strong style="color: var(--teal); font-family: var(--mono);">auger2026</strong></div>
+          <div class="step-desc">Type in <strong style="color: var(--teal); font-family: var(--mono);">auger2026</strong> — $20 JUPUSD loaded instantly</div>
         </div>
       </div>
     </div>
