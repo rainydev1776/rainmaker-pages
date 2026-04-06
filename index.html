@@ -222,6 +222,21 @@
     font-size: 12px; color: var(--muted); font-family: var(--mono); text-align: right;
   }
 
+  input[type=number] {
+    background: var(--bg); border: 1px solid var(--border2); border-radius: 6px;
+    color: var(--text); font-family: var(--mono); font-size: 13px; font-weight: 500;
+    padding: 4px 8px; width: 72px; text-align: right; outline: none;
+    -moz-appearance: textfield;
+  }
+
+  input[type=number]:focus { border-color: var(--blue); }
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+  .stake-input {
+    width: 80px; color: var(--blue);
+  }
+
   .tier-rev {
     font-size: 13px; font-weight: 500; text-align: right;
     font-family: var(--mono); color: var(--text);
@@ -265,7 +280,7 @@
     .metrics { grid-template-columns: 1fr; }
     .sport-card { grid-template-columns: 26px 1fr; }
     .sport-pool, .sport-pool-label { display: none; }
-    .tier-row { grid-template-columns: 110px 1fr 56px; }
+    .tier-row { grid-template-columns: 110px 1fr 60px; }
     .tier-rev { display: none; }
   }
 </style>
@@ -318,9 +333,9 @@
         <button class="sc-btn" data-sc="cons" onclick="setSc('cons',this)">Conservative</button>
       </div>
       <div class="slider-group">
-        <span class="slider-label">Avg stake</span>
-        <input type="range" id="stake-sl" min="1" max="50" step="1" value="1" oninput="render()">
-        <span class="slider-val" id="stake-out">$100</span>
+        <span class="slider-label">Avg stake $</span>
+        <input type="range" id="stake-sl" min="1" max="50" step="1" value="1" oninput="onStakeSlider()">
+        <input type="number" id="stake-in" class="stake-input" min="100" max="5000" step="100" value="100" oninput="onStakeInput()">
       </div>
     </div>
 
@@ -391,11 +406,37 @@ let compounding = false;
 let chart = null;
 let lastChartKey = '';
 
-function getStake() { return parseInt(document.getElementById('stake-sl').value) * 100; }
+function getStake() { return parseInt(document.getElementById('stake-in').value) || 100; }
 function getMonths() { return parseInt(document.getElementById('months-sl').value); }
 function getUsers(i) {
-  const el = document.getElementById('u' + i);
-  return el ? parseInt(el.value) : tiers[i].def;
+  const el = document.getElementById('uin' + i);
+  return el ? (parseInt(el.value) || 0) : tiers[i].def;
+}
+
+function onStakeSlider() {
+  const v = parseInt(document.getElementById('stake-sl').value) * 100;
+  document.getElementById('stake-in').value = v;
+  render();
+}
+
+function onStakeInput() {
+  let v = parseInt(document.getElementById('stake-in').value) || 100;
+  const sliderVal = Math.min(Math.max(Math.round(v / 100), 1), 50);
+  document.getElementById('stake-sl').value = sliderVal;
+  render();
+}
+
+function onTierSlider(i) {
+  const v = parseInt(document.getElementById('u' + i).value);
+  document.getElementById('uin' + i).value = v;
+  render();
+}
+
+function onTierInput(i) {
+  let v = parseInt(document.getElementById('uin' + i).value) || 0;
+  const slider = document.getElementById('u' + i);
+  slider.value = Math.min(v, parseInt(slider.max));
+  render();
 }
 function getTotalUsers() { return tiers.reduce((s, _, i) => s + getUsers(i), 0); }
 
@@ -501,9 +542,10 @@ function buildTierRows() {
           <div class="tier-rate">${t.sub}</div>
         </div>
       </div>
-      <input type="range" id="u${i}" min="0" max="1000" step="1" value="${t.def}"
-        oninput="render()" style="accent-color:${t.color}">
-      <div class="tier-users-out" id="uout${i}">${t.def}</div>
+      <input type="range" id="u${i}" min="0" max="5000" step="1" value="${t.def}"
+        oninput="onTierSlider(${i})" style="accent-color:${t.color}">
+      <input type="number" id="uin${i}" min="0" max="99999" step="1" value="${t.def}"
+        oninput="onTierInput(${i})">
       <div class="tier-rev" id="rev${i}">$0</div>
     </div>
   `).join('');
@@ -690,7 +732,7 @@ function buildAudit() {
 function render() {
   const stake = getStake();
   const ss = stake / 100;
-  document.getElementById('stake-out').textContent = '$' + stake.toLocaleString();
+  document.getElementById('stake-in').value = stake;
 
   const pool = totalPool(sc);
   const poolD = pool * ss;
@@ -730,7 +772,6 @@ function render() {
       lastMonthTotal += lastM;
 
       document.getElementById('rev' + i).textContent = fmt(cum);
-      document.getElementById('uout' + i).textContent = u;
       return Math.round(cum);
     });
 
@@ -758,7 +799,6 @@ function render() {
       const rev = poolD * t.rate * u;
       total += rev;
       document.getElementById('rev' + i).textContent = fmt(rev);
-      document.getElementById('uout' + i).textContent = u;
       return Math.round(rev);
     });
 
