@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rainmaker — Ramp Up Plan</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #0a0a0c; color: #fff; -webkit-font-smoothing: antialiased; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  ::selection { background: rgba(245,158,11,0.2); }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  a { color: inherit; text-decoration: none; }
+
+  /* HERO */
+  .hero { padding: 64px 0 40px; text-align: center; position: relative; overflow: hidden; }
+  .hero-glow { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245,158,11,0.1), transparent 60%); }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: #fff; background: #141415; border: 1px solid #202022; border-radius: 9999px; padding: 8px 16px; margin-bottom: 20px; }
+  .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #f59e0b; }
+  .hero h1 { font-size: 56px; font-weight: 700; letter-spacing: -2px; line-height: 1; background: linear-gradient(180deg, #FFF 40%, #f59e0b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  @media (min-width: 640px) { .hero h1 { font-size: 72px; } }
+  .hero .dates { color: rgba(255,255,255,0.3); font-size: 13px; margin-top: 8px; }
+  .hero p { color: rgba(255,255,255,0.45); font-size: 16px; max-width: 500px; margin: 16px auto 0; line-height: 1.6; }
+
+  /* SECTIONS */
+  section { padding: 48px 0; }
+  .section-title { font-size: 28px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .section-sub { color: rgba(255,255,255,0.4); font-size: 14px; margin-bottom: 32px; line-height: 1.5; }
+
+  /* TABLE */
+  .table-card { background: #111113; border: 1px solid #1e1e20; border-radius: 16px; overflow: hidden; }
+  table { width: 100%; border-collapse: collapse; }
+  th { font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.3); font-weight: 500; text-align: left; padding: 12px 16px; white-space: nowrap; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  td { padding: 12px 16px; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+  tr:last-child td { border: none; }
+  tr:hover { background: rgba(255,255,255,0.02); }
+  .table-footer { padding: 12px 20px; border-top: 1px solid rgba(255,255,255,0.04); background: rgba(255,255,255,0.01); }
+  .table-footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
+  .overflow-x { overflow-x: auto; }
+
+  /* CARDS */
+  .card { background: #111113; border: 1px solid #1e1e20; border-radius: 16px; padding: 24px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  @media (min-width: 768px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+
+  /* ROADMAP */
+  .month-card { background: #111113; border: 1px solid #1e1e20; border-radius: 16px; padding: 20px; margin-bottom: 12px; }
+  .month-num { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600; margin-bottom: 4px; }
+  .month-title { font-size: 18px; font-weight: 700; margin-bottom: 2px; }
+  .month-dates { font-size: 12px; color: rgba(255,255,255,0.3); margin-bottom: 12px; }
+  .month-stats { display: flex; flex-wrap: wrap; gap: 16px; }
+  .month-stat { min-width: 100px; }
+  .month-stat-val { font-size: 16px; font-weight: 700; display: block; }
+  .month-stat-label { font-size: 10px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* GRADIENT */
+  .gradient-amber { background: linear-gradient(to right, rgba(245,158,11,0.08), rgba(245,158,11,0.02), transparent); border: 1px solid rgba(245,158,11,0.15); border-radius: 16px; padding: 24px; text-align: center; }
+
+  /* MODEL CARDS */
+  .model-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; margin-bottom: 8px; }
+  .rev-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 8px; margin-bottom: 8px; }
+  .rev-row:last-child { border: none; margin: 0; padding: 0; }
+  .rev-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .rev-value { font-size: 13px; font-weight: 700; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid rgba(255,255,255,0.04); padding: 24px 0; text-align: center; }
+  footer span { color: rgba(255,255,255,0.15); font-size: 12px; }
+  footer a { color: rgba(255,255,255,0.3); font-size: 12px; margin-left: 16px; text-decoration: none; }
+  footer a:hover { color: rgba(255,255,255,0.6); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="container" style="position:relative">
+    <div class="hero-badge"><span class="dot"></span> 5.5 Months · April → September · MLB Season</div>
+    <h1>$1M / Night</h1>
+    <div class="dates mono">April 14, 2026 → September 28, 2026</div>
+    <p>$1K/night to $1M/night in 5.5 months. Every month has a profit target, a user count, and a stake size. The math is real.</p>
+  </div>
+</section>
+
+<!-- PROFIT LADDER -->
+<section style="border-top:1px solid rgba(255,255,255,0.04)">
+  <div class="container">
+    <h2 class="section-title">The Profit Ladder</h2>
+    <p class="section-sub">Month by month targets. Based on $600/day PnL per $1K staked (MLB Burst 2.0 + Comeback combined).</p>
+    <div class="table-card">
+      <div class="overflow-x">
+        <table>
+          <thead><tr><th>Month</th><th>Dates</th><th>Daily Profit</th><th>Active Users</th><th>Avg Stake</th><th>Total Stake/Day</th></tr></thead>
+          <tbody>
+            <tr><td class="mono" style="color:#0ea5e9;font-weight:600">Month 1</td><td style="color:rgba(255,255,255,0.4)">Apr 14 – May 14</td><td class="mono" style="color:#fff;font-weight:700">$1,000</td><td class="mono" style="color:rgba(255,255,255,0.5)">10</td><td class="mono" style="color:rgba(255,255,255,0.5)">$170</td><td class="mono" style="color:rgba(255,255,255,0.5)">$1.7K</td></tr>
+            <tr><td class="mono" style="color:#06b6d4;font-weight:600">Month 2</td><td style="color:rgba(255,255,255,0.4)">May 15 – Jun 14</td><td class="mono" style="color:#fff;font-weight:700">$10,000</td><td class="mono" style="color:rgba(255,255,255,0.5)">50</td><td class="mono" style="color:rgba(255,255,255,0.5)">$340</td><td class="mono" style="color:rgba(255,255,255,0.5)">$17K</td></tr>
+            <tr><td class="mono" style="color:#22d3ee;font-weight:600">Month 3</td><td style="color:rgba(255,255,255,0.4)">Jun 15 – Jul 14</td><td class="mono" style="color:#fff;font-weight:700">$50,000</td><td class="mono" style="color:rgba(255,255,255,0.5)">200</td><td class="mono" style="color:rgba(255,255,255,0.5)">$420</td><td class="mono" style="color:rgba(255,255,255,0.5)">$84K</td></tr>
+            <tr><td class="mono" style="color:#67e8f9;font-weight:600">Month 4</td><td style="color:rgba(255,255,255,0.4)">Jul 15 – Aug 14</td><td class="mono" style="color:#fff;font-weight:700">$100,000</td><td class="mono" style="color:rgba(255,255,255,0.5)">400</td><td class="mono" style="color:rgba(255,255,255,0.5)">$420</td><td class="mono" style="color:rgba(255,255,255,0.5)">$167K</td></tr>
+            <tr><td class="mono" style="color:#a78bfa;font-weight:600">Month 5</td><td style="color:rgba(255,255,255,0.4)">Aug 15 – Sep 14</td><td class="mono" style="color:#fff;font-weight:700">$500,000</td><td class="mono" style="color:rgba(255,255,255,0.5)">1,500</td><td class="mono" style="color:rgba(255,255,255,0.5)">$556</td><td class="mono" style="color:rgba(255,255,255,0.5)">$834K</td></tr>
+            <tr style="background:rgba(245,158,11,0.03)"><td class="mono" style="color:#f59e0b;font-weight:700">Month 5.5</td><td style="color:rgba(255,255,255,0.4)">Sep 15 – Sep 28</td><td class="mono" style="color:#f59e0b;font-weight:700;font-size:14px">$1,000,000</td><td class="mono" style="color:rgba(255,255,255,0.5)">2,500</td><td class="mono" style="color:rgba(255,255,255,0.5)">$667</td><td class="mono" style="color:rgba(255,255,255,0.5)">$1.67M</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-footer"><p>$600/day per $1K stake = combined Burst 2.0 (95% WR, 3-5 trades/day) + Comeback Underdog (47-77% WR, 1-2 trades/day).</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MODELS -->
+<section style="border-top:1px solid rgba(255,255,255,0.04)">
+  <div class="container">
+    <h2 class="section-title">The Models</h2>
+    <p class="section-sub">Two MLB models running simultaneously. Combined edge: ~$600/day per $1K staked.</p>
+    <div class="grid-2">
+      <div class="card">
+        <div class="model-label" style="color:#0ea5e9">Burst 2.0 — Favorite Dip</div>
+        <div class="rev-row"><span class="rev-label">Strategy</span><span class="rev-value" style="color:rgba(255,255,255,0.7)">Buy pregame favorite when it dips mid-game</span></div>
+        <div class="rev-row"><span class="rev-label">Win rate</span><span class="rev-value mono" style="color:#34d399">94–96%</span></div>
+        <div class="rev-row"><span class="rev-label">Trades/day</span><span class="rev-value mono">3–5</span></div>
+        <div class="rev-row"><span class="rev-label">Avg winner</span><span class="rev-value mono" style="color:#34d399">+$96 / $1K</span></div>
+        <div class="rev-row"><span class="rev-label">Avg loser</span><span class="rev-value mono" style="color:#ef4444">−$58 / $1K</span></div>
+        <div class="rev-row"><span class="rev-label">Daily PnL</span><span class="rev-value mono" style="color:#f59e0b">$250–$400 / $1K</span></div>
+      </div>
+      <div class="card">
+        <div class="model-label" style="color:#a78bfa">Burst — Comeback Underdog</div>
+        <div class="rev-row"><span class="rev-label">Strategy</span><span class="rev-value" style="color:rgba(255,255,255,0.7)">Buy underdog when favorite surges past 72-74¢</span></div>
+        <div class="rev-row"><span class="rev-label">Win rate</span><span class="rev-value mono" style="color:#34d399">47–77% (settle)</span></div>
+        <div class="rev-row"><span class="rev-label">Trades/day</span><span class="rev-value mono">1–2</span></div>
+        <div class="rev-row"><span class="rev-label">Avg winner</span><span class="rev-value mono" style="color:#34d399">+$2,000–$2,500 / $1K</span></div>
+        <div class="rev-row"><span class="rev-label">Avg loser</span><span class="rev-value mono" style="color:#ef4444">−$750 / $1K</span></div>
+        <div class="rev-row"><span class="rev-label">Daily PnL</span><span class="rev-value mono" style="color:#f59e0b">$115–$430 / $1K</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6-MONTH ROADMAP -->
+<section style="border-top:1px solid rgba(255,255,255,0.04)">
+  <div class="container">
+    <h2 class="section-title">The Roadmap</h2>
+    <p class="section-sub">What we do each month to hit the targets.</p>
+
+    <div class="month-card">
+      <div class="month-num" style="color:#0ea5e9">Month 1</div>
+      <div class="month-title">Foundation</div>
+      <div class="month-dates">Apr 14 – May 14 · Ship it. Prove it. Start the drumbeat.</div>
+      <div class="month-stats">
+        <div class="month-stat"><span class="month-stat-val mono" style="color:#0ea5e9">$1K</span><span class="month-stat-label">Daily Profit</span></div>
+        <div class="month-stat"><span class="month-stat-val mono">10</span><span class="month-stat-label">Users</span></div>
+        <div class="month-stat"><span class="month-stat-val mono">$30K</span><span class="month-stat-label">Monthly</span></div>
+      </div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;line-height:1.5">iPhone fixes + app release · Coverage 2.0 article · Announce MLB on socials · Win streak video · Nightly KPIs on X · Gold checkmark + @RainmakerSports · Auger ambassador launch · Song release + campaign · TikTok/IG challenge</p>
+    </div>
+
+    <div class="month-card">
+      <div class="month-num" style="color:#06b6d4">Month 2</div>
+      <div class="month-title">Amplify</div>
+      <div class="month-dates">May 15 – Jun 14 · Streets. Screens. Venues. Press. Everywhere.</div>
+      <div class="month-stats">
+        <div class="month-stat"><span class="month-stat-val mono" style="color:#06b6d4">$10K</span><span class="month-stat-label">Daily Profit</span></div>
+        <div class="month-stat"><span class="month-stat-val mono">50</span><span class="month-stat-label">Users</span></div>
+        <div class="month-stat"><span class="month-stat-val mono">$300K</span><span class="month-stat-label">Monthly</span></div>
+      </div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;line-height:1.5">Wild posting (NYC, LA, Miami, ATL) · Auger gift cards at shows + Ye events · Clippers partnership · Merch drop · NYT article · Referral program launch</p>
+    </div>
+
+    <div class="month-card">
+      <div class="month-num" style="color:#22d3ee">Month 3</div>
+      <div class="month-title">Scale</div>
+      <div class="month-dates">Jun 15 – Jul 14 · MLB All-Star Break. Product-market fit locked in.</div>
+      <div class="month-stats">
+        <div class="month-stat"><span class="month-stat-val mono" style="color:#22d3ee">$50K</span><span class="month-stat-label">Daily Profit</span></div>
+        <div class="month-stat"><span class="month-stat-val mono">200</span><span class="month-stat-label">Users</span></div>
+        <div class="month-stat"><span class="month-stat-val mono">$1.5M</span><span class="month-stat-label">Monthly</span></div>
+      </div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;line-height:1.5">All-Star Game content blitz · Whale tier launch · Podcast tour (5+ shows) · Athlete partnerships (2-3 signed) · Wild posting wave 2 (Chicago, Houston) · Series A conversations</p>
+    </div>
+
+    <div class="month-card">
+      <div class="month-num" style="color:#67e8f9">Month 4</div>
+      <div class="month-title">Dominate</div>
+      <div class="month-dates">Jul 15 – Aug 14 · MLB trade deadline. Volume ramps.</div>
+      <div class="month-stats">
+        <div class="month-stat"><span class="month-stat-val mono" style="color:#67e8f9">$100K</span><span class="month-stat-label">Daily Profit</span></div>
+        <div class="month-stat"><span class="month-stat-val mono">400</span><span class="month-stat-label">Users</span></div>
+        <div class="month-stat"><span class="month-stat-val mono">$3M</span><span class="month-stat-label">Monthly</span></div>
+      </div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;line-height:1.5">Trade deadline content · Major brand partnership · TV/streaming ad · Power user content program · Forbes/Bloomberg/TechCrunch press · Whale onboarding ($5K+ dedicated support)</p>
+    </div>
+
+    <div class="month-card">
+      <div class="month-num" style="color:#a78bfa">Month 5</div>
+      <div class="month-title">Mainstream</div>
+      <div class="month-dates">Aug 15 – Sep 14 · Peak MLB stretch run. Pennant race volatility.</div>
+      <div class="month-stats">
+        <div class="month-stat"><span class="month-stat-val mono" style="color:#a78bfa">$500K</span><span class="month-stat-label">Daily Profit</span></div>
+        <div class="month-stat"><span class="month-stat-val mono">1,500</span><span class="month-stat-label">Users</span></div>
+        <div class="month-stat"><span class="month-stat-val mono">$15M</span><span class="month-stat-label">Monthly</span></div>
+      </div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;line-height:1.5">National ad campaign · Celebrity endorsement · App Store feature · Institutional onboarding (funds & syndicates) · Hiring sprint (10+ roles)</p>
+    </div>
+
+    <div class="month-card" style="border-color:rgba(245,158,11,0.2);background:linear-gradient(to right, rgba(245,158,11,0.03), #111113)">
+      <div class="month-num" style="color:#f59e0b">Month 5.5 — THE TARGET</div>
+      <div class="month-title" style="font-size:22px">$1M / Night</div>
+      <div class="month-dates">Sep 15 – Sep 28 · MLB playoffs begin. Maximum edge.</div>
+      <div class="month-stats">
+        <div class="month-stat"><span class="month-stat-val mono" style="color:#f59e0b;font-size:20px">$1M</span><span class="month-stat-label">Daily Profit</span></div>
+        <div class="month-stat"><span class="month-stat-val mono">2,500</span><span class="month-stat-label">Users</span></div>
+        <div class="month-stat"><span class="month-stat-val mono">$1.67M</span><span class="month-stat-label">Stake/Day</span></div>
+        <div class="month-stat"><span class="month-stat-val mono" style="color:#f59e0b">$36.8M</span><span class="month-stat-label">5.5-Mo Total</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM LINE -->
+<section style="border-top:1px solid rgba(255,255,255,0.04)">
+  <div class="container">
+    <div class="gradient-amber">
+      <p style="font-size:22px;font-weight:700;letter-spacing:-0.5px;margin-bottom:8px">10 users → 2,500 users. $1K/night → $1M/night. 5.5 months.</p>
+      <p style="font-size:13px;color:rgba(255,255,255,0.4)">The models are built. The edge is proven. This is the execution plan.</p>
+      <div style="margin-top:20px"><a href="autopilot.html" style="display:inline-block;background:#f59e0b;color:#000;font-weight:600;padding:12px 24px;border-radius:9999px;font-size:14px">See the AutoPilot System →</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Rainmaker Ramp Up — Internal</span>
+  <a href="autopilot.html">AutoPilot</a>
+  <a href="index.html">Home</a>
+</footer>
+
+</body>
+</html>
