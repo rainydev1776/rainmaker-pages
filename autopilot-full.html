@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rainmaker AutoPilot — Internal Proposal</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #09090b; color: #fff; -webkit-font-smoothing: antialiased; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  a { color: inherit; text-decoration: none; }
+  .container { max-width: 1440px; margin: 0 auto; padding: 0 24px; }
+  ::selection { background: rgba(34,211,238,0.2); }
+
+  /* NAV */
+  header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(9,9,11,0.8); border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .nav-inner { max-width: 1440px; margin: 0 auto; padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-links { display: flex; gap: 4px; }
+  .nav-links a { color: rgba(255,255,255,0.7); font-size: 14px; padding: 8px 12px; transition: color 0.2s; }
+  .nav-links a:hover { color: #fff; }
+  .logo { font-weight: 700; font-size: 18px; letter-spacing: -0.5px; }
+  @media (max-width: 768px) { .nav-links { display: none; } }
+
+  /* SECTIONS */
+  section { padding: 64px 0; }
+  @media (min-width: 768px) { section { padding: 96px 0; } }
+  .bg-dark { background: #0a0a0c; }
+  .bg-darker { background: #09090b; }
+  .scroll-target { scroll-margin-top: 80px; }
+
+  /* HEADINGS */
+  .section-title { font-size: 32px; font-weight: 500; text-align: center; margin-bottom: 16px; letter-spacing: -0.8px; background: linear-gradient(180deg, #FFF 63%, #A7A7A8 89%, #1B1B1E 104%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  @media (min-width: 768px) { .section-title { font-size: 40px; } }
+  .section-sub { text-align: center; color: #afafb6; font-size: 14px; margin-bottom: 48px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+
+  /* CARDS */
+  .card { background: #111113; border: 1px solid #1e1e20; border-radius: 20px; padding: 24px; }
+  .card-16 { background: #111113; border: 1px solid #1e1e20; border-radius: 16px; padding: 24px; }
+
+  /* GRIDS */
+  .grid-2 { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 768px) { .grid-2 { grid-template-columns: 1fr 1fr; } .grid-3 { grid-template-columns: 1fr 1fr 1fr; } }
+  @media (min-width: 1024px) { .grid-4 { grid-template-columns: 1fr 1fr 1fr 1fr; } }
+  @media (min-width: 768px) and (max-width: 1023px) { .grid-4 { grid-template-columns: 1fr 1fr; } }
+
+  /* DATA ROW */
+  .data-row { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 10px; margin-bottom: 10px; }
+  .data-row:last-child { border-bottom: none; margin-bottom: 0; }
+  .data-row .label { font-size: 14px; color: rgba(255,255,255,0.5); }
+  .data-row .value { font-size: 14px; font-weight: 700; }
+  .data-row .value.mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* STEPS */
+  .step-row { display: flex; gap: 16px; margin-bottom: 16px; }
+  .step-num { width: 32px; height: 32px; border-radius: 50%; border: 1px solid; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+  .step-title { font-size: 14px; font-weight: 600; color: #fff; }
+  .step-desc { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; margin-top: 2px; }
+
+  /* HERO */
+  .hero { position: relative; padding: 80px 0; overflow: hidden; text-align: center; }
+  @media (min-width: 768px) { .hero { padding: 112px 0; } }
+  .hero-glow { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(52,211,153,0.05), transparent); }
+  .hero-badge { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.25em; color: rgba(52,211,153,0.6); font-weight: 500; margin-bottom: 16px; border: 1px solid rgba(52,211,153,0.2); border-radius: 9999px; padding: 6px 16px; }
+  .hero-title { font-size: 48px; font-weight: 700; letter-spacing: -2px; line-height: 0.95; background: linear-gradient(180deg, #FFF 40%, #34d399 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  @media (min-width: 640px) { .hero-title { font-size: 60px; } }
+  @media (min-width: 768px) { .hero-title { font-size: 72px; } }
+  @media (min-width: 1024px) { .hero-title { font-size: 88px; } }
+  .hero-desc { color: rgba(255,255,255,0.4); font-size: 16px; max-width: 640px; margin: 24px auto 0; line-height: 1.6; }
+  .hero-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-top: 40px; }
+  .hero-stat { text-align: center; min-width: 120px; }
+  .hero-stat-val { font-size: 24px; font-weight: 700; color: #34d399; display: block; }
+  @media (min-width: 768px) { .hero-stat-val { font-size: 30px; } }
+  .hero-stat-label { font-size: 10px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* TABLES */
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.3); font-weight: 500; text-align: left; padding: 12px 16px; white-space: nowrap; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  td { padding: 12px 16px; white-space: nowrap; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 12px; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover { background: rgba(255,255,255,0.02); }
+  .table-footer { padding: 12px 24px; border-top: 1px solid rgba(255,255,255,0.04); background: rgba(255,255,255,0.01); }
+  .table-footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+  /* GRADIENT CARDS */
+  .gradient-card-cyan { background: linear-gradient(to right, rgba(34,211,238,0.1), rgba(34,211,238,0.05), transparent); border: 1px solid rgba(34,211,238,0.2); border-radius: 20px; padding: 24px 32px; }
+  .gradient-card-green { background: linear-gradient(to right, rgba(52,211,153,0.1), rgba(52,211,153,0.05), transparent); border: 1px solid rgba(52,211,153,0.2); border-radius: 16px; padding: 24px; }
+  .gradient-card-amber { background: linear-gradient(to right, rgba(245,158,11,0.1), rgba(245,158,11,0.05), transparent); border: 1px solid rgba(245,158,11,0.2); border-radius: 20px; padding: 24px; }
+  .gradient-card-green-20 { background: linear-gradient(to right, rgba(52,211,153,0.1), rgba(52,211,153,0.05), transparent); border: 1px solid rgba(52,211,153,0.2); border-radius: 20px; padding: 24px; }
+  .gradient-card-purple { background: linear-gradient(to right, rgba(167,139,250,0.1), rgba(167,139,250,0.05), transparent); border: 1px solid rgba(167,139,250,0.2); border-radius: 20px; padding: 24px 32px; }
+
+  /* BULLET */
+  .bullet { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 10px; }
+  .bullet span:first-child { flex-shrink: 0; margin-top: 2px; font-size: 12px; }
+  .bullet span:last-child { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+  /* TIER CIRCLE */
+  .tier-circle { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; border-width: 2px; border-style: solid; }
+  .small-circle { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+
+  /* FEE CARD */
+  .fee-card h3 { font-weight: 600; }
+  .fee-rate { font-size: 20px; font-weight: 700; }
+
+  /* COMPARISON */
+  .compare-item { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 10px; }
+  .compare-item .icon { flex-shrink: 0; margin-top: 2px; font-size: 12px; }
+  .compare-item .text { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+  /* FLOW BOX */
+  .flow-box { padding: 16px; border-radius: 8px; }
+  .flow-box h4 { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+  .flow-row { display: flex; align-items: center; justify-content: space-between; font-size: 12px; margin-bottom: 8px; }
+  .flow-row .fl { color: rgba(255,255,255,0.4); }
+  .flow-row .fv { color: rgba(255,255,255,0.6); }
+
+  /* EFFORT BADGE */
+  .effort-badge { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; padding: 2px 8px; border-radius: 9999px; border-width: 1px; border-style: solid; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid rgba(255,255,255,0.04); padding: 32px 0; background: #09090b; }
+  .footer-inner { max-width: 1440px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-inner span { color: rgba(255,255,255,0.2); font-size: 12px; }
+  .footer-inner a { color: rgba(255,255,255,0.3); font-size: 12px; transition: color 0.2s; margin-left: 16px; }
+  .footer-inner a:hover { color: rgba(255,255,255,0.6); }
+
+  /* CTA */
+  .cta-btn { display: inline-block; background: #34d399; color: #000; font-weight: 600; padding: 12px 24px; border-radius: 9999px; font-size: 14px; transition: background 0.2s; }
+  .cta-btn:hover { background: #6ee7b7; }
+
+  /* HELPERS */
+  .mb-8 { margin-bottom: 32px; }
+  .mb-4 { margin-bottom: 16px; }
+  .mb-2 { margin-bottom: 8px; }
+  .mb-1 { margin-bottom: 4px; }
+  .mt-4 { margin-top: 16px; }
+  .mt-6 { margin-top: 24px; }
+  .text-white { color: #fff; }
+  .text-white-50 { color: rgba(255,255,255,0.5); }
+  .text-white-40 { color: rgba(255,255,255,0.4); }
+  .text-white-30 { color: rgba(255,255,255,0.3); }
+  .text-xs { font-size: 12px; }
+  .text-sm { font-size: 14px; }
+  .text-lg { font-size: 18px; }
+  .font-semibold { font-weight: 600; }
+  .font-bold { font-weight: 700; }
+  .leading-relaxed { line-height: 1.6; }
+  .uppercase-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.3); display: block; margin-bottom: 4px; }
+
+  .border-cyan { border-color: rgba(34,211,238,0.2); }
+  .border-red { border-color: rgba(239,68,68,0.2); }
+  .border-green { border-color: rgba(52,211,153,0.2); }
+
+  .bg-subtle { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 16px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <div class="nav-inner">
+    <span class="logo">Rainmaker</span>
+    <div class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#shield">Shield</a>
+      <a href="#fees">Fees</a>
+      <a href="#buyback">Buyback</a>
+      <a href="#walkthrough">Walkthrough</a>
+      <a href="#funding">Funding</a>
+      <a href="#numbers">Numbers</a>
+    </div>
+  </div>
+</header>
+
+<div style="height:56px"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="container" style="position:relative">
+    <div class="hero-badge">Internal Proposal — Cofounder Review</div>
+    <h1 class="hero-title">Rainmaker AutoPilot</h1>
+    <p class="hero-desc">A system where users deposit money, flip one switch, and the platform handles everything — stake sizing, loss protection, fee collection, and RAIN accumulation. This document explains exactly how it works, where the money comes from, and what Rainmaker earns.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="hero-stat-val">10%</span><span class="hero-stat-label">Auto-Stake Per Trade</span></div>
+      <div class="hero-stat"><span class="hero-stat-val">95%</span><span class="hero-stat-label">Model Win Rate</span></div>
+      <div class="hero-stat"><span class="hero-stat-val">$0</span><span class="hero-stat-label">Shield Cost to Rainmaker</span></div>
+      <div class="hero-stat"><span class="hero-stat-val">400K RAIN</span><span class="hero-stat-label">Treasury Backs the Shield</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 1. OVERVIEW -->
+<section id="overview" class="bg-dark scroll-target">
+  <div class="container">
+    <h2 class="section-title">What Is AutoPilot?</h2>
+    <p class="section-sub">Three systems that remove every decision from the user. They deposit, flip the switch, and walk away.</p>
+    <div class="grid-3">
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <div class="tier-circle" style="border-color:#34d399;color:#34d399">1</div>
+          <h3 class="text-lg font-semibold">Smart Stake</h3>
+        </div>
+        <div class="mb-4"><span class="uppercase-label">What</span><p class="text-sm text-white-50 leading-relaxed">Every trade is automatically sized at 10% of the user's balance. No manual input.</p></div>
+        <div class="mb-4"><span class="uppercase-label">Why</span><p class="text-sm text-white-50 leading-relaxed">Prevents emotional sizing. A loss only hits 10% of the balance. Recoverable in ~1 winning trade.</p></div>
+        <div class="bg-subtle"><span class="uppercase-label">Example</span><p class="text-xs text-white-50 leading-relaxed">$10,000 balance → $1,000 per trade. Win → balance grows → stake grows. Proportional. Automatic.</p></div>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <div class="tier-circle" style="border-color:#22d3ee;color:#22d3ee">2</div>
+          <h3 class="text-lg font-semibold">Recovery Shield</h3>
+        </div>
+        <div class="mb-4"><span class="uppercase-label">What</span><p class="text-sm text-white-50 leading-relaxed">When a user loses, the platform issues them locked RAIN credits equal to the loss. Their balance looks unchanged.</p></div>
+        <div class="mb-4"><span class="uppercase-label">Why</span><p class="text-sm text-white-50 leading-relaxed">Compounding never breaks. The user's next trade is the same size as if the loss never happened.</p></div>
+        <div class="bg-subtle"><span class="uppercase-label">Example</span><p class="text-xs text-white-50 leading-relaxed">User loses $1,000 → receives $1,000 in locked RAIN → next trade still stakes $1,000 → credit repays over 2-3 wins.</p></div>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <div class="tier-circle" style="border-color:#f59e0b;color:#f59e0b">3</div>
+          <h3 class="text-lg font-semibold">Circuit Breaker</h3>
+        </div>
+        <div class="mb-4"><span class="uppercase-label">What</span><p class="text-sm text-white-50 leading-relaxed">If a user's balance drops 15% from its peak, stake cuts to 5%. At 25% drop, trading pauses 24h.</p></div>
+        <div class="mb-4"><span class="uppercase-label">Why</span><p class="text-sm text-white-50 leading-relaxed">Catches regime changes (NBA play-ins, model recalibration) before they cause cascading losses.</p></div>
+        <div class="bg-subtle"><span class="uppercase-label">Example</span><p class="text-xs text-white-50 leading-relaxed">Model has 2 losses in a row → breaker cuts stake in half → 3rd loss does half damage → model recalibrates → auto-resumes.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. RECOVERY SHIELD -->
+<section id="shield" class="bg-darker scroll-target">
+  <div class="container">
+    <h2 class="section-title">Recovery Shield</h2>
+    <p class="section-sub">The core innovation. Users who deposit $10K+ ($1K/stake) get 100% loss coverage. Everyone else gets 50%. Shield is backed by our RAIN treasury — costs Rainmaker $0 in USD.</p>
+
+    <div class="grid-2 mb-8">
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
+          <div class="small-circle" style="background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.4)">50%</div>
+          <div><h3 class="font-semibold">Standard Shield</h3><p class="text-xs text-white-40">Under $1K/stake (under $10K deposit)</p></div>
+        </div>
+        <div class="data-row"><span class="label">User loses $100 (10% of $1K)</span><span class="value mono">−$100</span></div>
+        <div class="data-row"><span class="label">Shield covers 50%</span><span class="value mono" style="color:#22d3ee">+$50 credit</span></div>
+        <div class="data-row"><span class="label">Actual damage to balance</span><span class="value mono">−$50</span></div>
+        <div class="data-row"><span class="label">Trades to recover</span><span class="value mono">~1 win</span></div>
+        <p class="text-xs text-white-30 mt-4 leading-relaxed">Loss stings, but it's halved. User stays on platform. Doesn't rage quit.</p>
+      </div>
+      <div class="card border-cyan">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
+          <div class="small-circle" style="background:rgba(34,211,238,0.1);color:#22d3ee">100%</div>
+          <div><h3 class="font-semibold">Pro Shield</h3><p class="text-xs" style="color:rgba(34,211,238,0.6)">$1K+/stake ($10K+ deposit) — the incentive</p></div>
+        </div>
+        <div class="data-row"><span class="label">User loses $1,000 (10% of $10K)</span><span class="value mono">−$1,000</span></div>
+        <div class="data-row"><span class="label">Shield covers 100%</span><span class="value mono" style="color:#22d3ee">+$1,000 in RAIN (locked)</span></div>
+        <div class="data-row"><span class="label">Actual damage to balance</span><span class="value mono" style="color:#34d399">$0</span></div>
+        <div class="data-row"><span class="label">Dashboard shows</span><span class="value mono" style="color:#34d399">$10,000 (unchanged)</span></div>
+        <div class="data-row"><span class="label">Credit repays over</span><span class="value mono">2-3 winning trades</span></div>
+        <p class="text-xs mt-4 leading-relaxed" style="color:rgba(34,211,238,0.6)">Loss disappears completely. This is the incentive to deposit $10K. Compounding never breaks.</p>
+      </div>
+    </div>
+
+    <!-- How the credit works -->
+    <div class="card mb-8" style="padding:24px 32px">
+      <h3 class="text-lg font-semibold mb-2">How the RAIN Credit Works</h3>
+      <p class="text-sm text-white-40 mb-4">Step by step, what happens when a Pro user loses a trade.</p>
+      <div class="step-row"><div class="step-num" style="border-color:#ef4444;color:#ef4444">1</div><div><div class="step-title">User loses $1,000</div><div class="step-desc">Burst 2.0 trade goes wrong. 10% stake is lost.</div></div></div>
+      <div class="step-row"><div class="step-num" style="border-color:#22d3ee;color:#22d3ee">2</div><div><div class="step-title">Platform issues $1,000 worth of RAIN from our treasury (400K RAIN)</div><div class="step-desc">This RAIN is deposited into the user's account as a LOCKED credit. They cannot withdraw or sell it.</div></div></div>
+      <div class="step-row"><div class="step-num" style="border-color:#34d399;color:#34d399">3</div><div><div class="step-title">User's dashboard still shows $10,000 effective balance</div><div class="step-desc">Under the hood: $9,000 real USDC + $1,000 in locked RAIN credit. But the user sees $10,000.</div></div></div>
+      <div class="step-row"><div class="step-num" style="border-color:#f59e0b;color:#f59e0b">4</div><div><div class="step-title">The locked RAIN also counts toward their RAIN tier (500K, 3M, 6M)</div><div class="step-desc">Getting a Shield credit can actually push a user closer to their next fee discount tier. Losing a trade = closer to Bronze.</div></div></div>
+      <div class="step-row"><div class="step-num" style="border-color:#a78bfa;color:#a78bfa">5</div><div><div class="step-title">Next trade stakes $1,000 (10% of effective balance)</div><div class="step-desc">The USDC for this trade comes from the idle deposit pool (see 'Where the Money Comes From' section below). Stake size did NOT shrink.</div></div></div>
+      <div class="step-row"><div class="step-num" style="border-color:#34d399;color:#34d399">6</div><div><div class="step-title">User wins. 50% of net profit repays the credit.</div><div class="step-desc">Win $960 gross → $691 net after fees → $346 goes to repayment (buys RAIN back for treasury) → $345 to user.</div></div></div>
+      <div class="step-row"><div class="step-num" style="border-color:#34d399;color:#34d399">7</div><div><div class="step-title">1-2 more wins → credit fully repaid → RAIN returns to treasury</div><div class="step-desc">Treasury is whole again. User's balance is all real USDC. Compounding resumes at full speed. Total time with credit: ~48 hours.</div></div></div>
+    </div>
+
+    <!-- 3% explanation -->
+    <div class="gradient-card-cyan">
+      <h3 class="text-lg font-semibold mb-2">Everyone Pays 3% — Not Everyone Gets the Same Coverage</h3>
+      <p class="text-sm text-white-40 mb-4">The 3% Shield fee on every winning trade is the same for all users. The difference is what you get back.</p>
+      <div class="grid-2">
+        <div>
+          <h4 class="text-sm font-semibold text-white-50 mb-2">The Pool Math (at 95% win rate)</h4>
+          <div class="data-row"><span class="label">Wins paying 3% into pool</span><span class="value mono">95 out of 100 trades</span></div>
+          <div class="data-row"><span class="label">Losses drawing from pool</span><span class="value mono">5 out of 100 trades</span></div>
+          <div class="data-row"><span class="label">Ratio of inflow to outflow</span><span class="value mono" style="color:#34d399">19:1</span></div>
+          <div class="data-row"><span class="label">Pool net per day (100 users)</span><span class="value mono" style="color:#34d399">+$600 surplus</span></div>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-white-50 mb-2">The Incentive</h4>
+          <div class="data-row"><span class="label">Under $10K deposit</span><span class="value mono">50% loss coverage</span></div>
+          <div class="data-row"><span class="label">$10K+ deposit (Pro)</span><span class="value mono" style="color:#22d3ee">100% loss coverage</span></div>
+          <div class="data-row"><span class="label">Compounding impact (5.5 mo)</span><span class="value mono" style="color:#22d3ee">+$150K more at Pro</span></div>
+          <div class="data-row"><span class="label">This is the nudge to deposit $10K</span><span class="value mono" style="color:#22d3ee">↑</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. FEE STRUCTURE -->
+<section id="fees" class="bg-dark scroll-target">
+  <div class="container">
+    <h2 class="section-title">Fee Structure</h2>
+    <p class="section-sub">Three fees on every winning trade. Fees are ONLY on profit — never on deposits, never on losses. All three serve a purpose.</p>
+
+    <div class="grid-3 mb-8">
+      <div class="card fee-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px"><h3 class="font-semibold">Platform Fee</h3><span class="fee-rate mono" style="color:#a78bfa">10–20%</span></div>
+        <p class="text-xs text-white-30 mb-1">Paid by: Everyone</p><p class="text-xs text-white-30 mb-4">Goes to: Rainmaker revenue</p>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Retail (no RAIN): 20%</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Bronze (500K RAIN): 15%</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Silver (3M RAIN): 12%</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Gold (6M RAIN): 10%</span></div>
+      </div>
+      <div class="card fee-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px"><h3 class="font-semibold">RAIN Auto-Buyback</h3><span class="fee-rate mono" style="color:#f59e0b">5%</span></div>
+        <p class="text-xs text-white-30 mb-1">Paid by: Retail users only</p><p class="text-xs text-white-30 mb-4">Goes to: Auto-buys RAIN token</p>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Retail users' profit auto-buys RAIN</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>RAIN accumulates in their account</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Pro stakers ($1K+) get 1.5× rate</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Stops when user hits 500K RAIN (Bronze)</span></div>
+      </div>
+      <div class="card fee-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px"><h3 class="font-semibold">Recovery Shield</h3><span class="fee-rate mono" style="color:#22d3ee">3%</span></div>
+        <p class="text-xs text-white-30 mb-1">Paid by: Everyone</p><p class="text-xs text-white-30 mb-4">Goes to: Self-funding loss protection pool</p>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Funds the Shield pool</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Standard users: 50% loss coverage</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Pro users ($1K+/stake): 100% coverage</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Pool is self-sustaining at 95% WR</span></div>
+      </div>
+    </div>
+
+    <!-- Tier matrix -->
+    <div class="card mb-8" style="padding:0;overflow:hidden">
+      <div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04)">
+        <h3 class="font-semibold">Complete Tier Matrix — What Each User Pays</h3>
+        <p class="text-xs text-white-30" style="margin-top:4px">Pro = $1K+/stake ($10K+ deposit). RAIN tier determined by holdings.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tier</th><th>RAIN Held</th><th>Deposit</th><th>Platform</th><th>Buyback</th><th>Shield</th><th>Total Fees</th><th>Net PnL / $1K / day</th><th>Shield Coverage</th></tr></thead>
+          <tbody>
+            <tr><td style="color:rgba(255,255,255,0.6)" class="mono font-bold">Retail</td><td class="mono" style="color:rgba(255,255,255,0.4)">0</td><td class="mono" style="color:rgba(255,255,255,0.4)">&lt;$10K</td><td style="color:rgba(255,255,255,0.5)">20%</td><td style="color:rgba(255,255,255,0.5)">5%</td><td style="color:rgba(255,255,255,0.5)">3%</td><td class="mono font-bold">28%</td><td class="mono" style="color:#34d399">$432</td><td style="color:rgba(255,255,255,0.4)" class="font-bold">50%</td></tr>
+            <tr><td style="color:#22d3ee" class="mono font-bold">Retail Pro</td><td class="mono" style="color:rgba(255,255,255,0.4)">0</td><td class="mono" style="color:rgba(255,255,255,0.4)">$10K+</td><td style="color:rgba(255,255,255,0.5)">20%</td><td style="color:rgba(255,255,255,0.5)">5% (1.5×)</td><td style="color:rgba(255,255,255,0.5)">3%</td><td class="mono font-bold">28%</td><td class="mono" style="color:#34d399">$432</td><td style="color:#22d3ee" class="font-bold">100%</td></tr>
+            <tr><td style="color:rgba(245,158,11,0.5)" class="mono font-bold">Bronze</td><td class="mono" style="color:rgba(255,255,255,0.4)">500K</td><td class="mono" style="color:rgba(255,255,255,0.4)">&lt;$10K</td><td style="color:rgba(255,255,255,0.5)">15%</td><td style="color:rgba(255,255,255,0.5)">0%</td><td style="color:rgba(255,255,255,0.5)">3%</td><td class="mono font-bold">18%</td><td class="mono" style="color:#34d399">$492</td><td style="color:rgba(255,255,255,0.4)" class="font-bold">50%</td></tr>
+            <tr><td style="color:#f59e0b" class="mono font-bold">Bronze Pro</td><td class="mono" style="color:rgba(255,255,255,0.4)">500K</td><td class="mono" style="color:rgba(255,255,255,0.4)">$10K+</td><td style="color:rgba(255,255,255,0.5)">15%</td><td style="color:rgba(255,255,255,0.5)">0%</td><td style="color:rgba(255,255,255,0.5)">3%</td><td class="mono font-bold">18%</td><td class="mono" style="color:#34d399">$492</td><td style="color:#22d3ee" class="font-bold">100%</td></tr>
+            <tr><td style="color:#a78bfa" class="mono font-bold">Silver Pro</td><td class="mono" style="color:rgba(255,255,255,0.4)">3M</td><td class="mono" style="color:rgba(255,255,255,0.4)">$10K+</td><td style="color:rgba(255,255,255,0.5)">12%</td><td style="color:rgba(255,255,255,0.5)">0%</td><td style="color:rgba(255,255,255,0.5)">3%</td><td class="mono font-bold">15%</td><td class="mono" style="color:#34d399">$510</td><td style="color:#22d3ee" class="font-bold">100%</td></tr>
+            <tr><td style="color:#34d399" class="mono font-bold">Gold Pro</td><td class="mono" style="color:rgba(255,255,255,0.4)">6M</td><td class="mono" style="color:rgba(255,255,255,0.4)">$10K+</td><td style="color:rgba(255,255,255,0.5)">10%</td><td style="color:rgba(255,255,255,0.5)">0%</td><td style="color:rgba(255,255,255,0.5)">3%</td><td class="mono font-bold">13%</td><td class="mono" style="color:#34d399">$522</td><td style="color:#22d3ee" class="font-bold">100%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-footer"><p>Net PnL based on $600/day gross per $1K stake (MLB Burst 2.0 + Comeback combined). Fees only on profit.</p></div>
+    </div>
+
+    <div class="gradient-card-green">
+      <h3 class="font-semibold mb-2">Even at 28% total fees, a user still makes 30-46× their money in 5.5 months.</h3>
+      <p class="text-sm text-white-40">The model edge ($600/day per $1K) is so large that fees barely dent compounding. A retail user turns $10K into $460K. A Gold Pro turns $10K into $1.08M. Same model. Different fee load.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. RAIN AUTO-BUYBACK -->
+<section id="buyback" class="bg-darker scroll-target">
+  <div class="container">
+    <h2 class="section-title">RAIN Auto-Buyback</h2>
+    <p class="section-sub">5% of every retail user's profit automatically buys RAIN. That RAIN is LOCKED in their account until they hit 500K — the first fee discount tier. They cannot sell it, withdraw it, or move it.</p>
+
+    <!-- Step by step -->
+    <div class="card mb-8" style="padding:24px 32px">
+      <h3 class="text-lg font-semibold mb-2">How It Works — Step by Step</h3>
+      <p class="text-sm text-white-40 mb-4">Every time a retail user (someone who doesn't yet hold 500K RAIN) wins a trade, this happens automatically:</p>
+      <div class="step-row"><div class="step-num" style="border-color:#34d399;color:#34d399">1</div><div><div class="step-title">User wins a trade — gross profit: $960</div><div class="step-desc">Burst 2.0 fires. $1,000 stake returns $1,960. Gross profit = $960.</div></div></div>
+      <div class="step-row"><div class="step-num" style="border-color:#f59e0b;color:#f59e0b">2</div><div><div class="step-title">Fees are calculated on the $960 profit</div><div class="step-desc">20% platform fee ($192) + 5% RAIN buyback ($48) + 3% Shield ($29) = $269 total fees. User keeps $691.</div></div></div>
+      <div class="step-row"><div class="step-num" style="border-color:#f59e0b;color:#f59e0b">3</div><div><div class="step-title">The 5% ($48) immediately buys RAIN at market price</div><div class="step-desc">This happens automatically on every winning trade settlement. The user doesn't click anything. It just happens.</div></div></div>
+      <div class="step-row"><div class="step-num" style="border-color:#ef4444;color:#ef4444">4</div><div><div class="step-title">The purchased RAIN is deposited into the user's account — LOCKED</div><div class="step-desc">The user can see their RAIN balance growing on their dashboard. But they CANNOT sell it, withdraw it, or transfer it. It is locked.</div></div></div>
+      <div class="step-row"><div class="step-num" style="border-color:#a78bfa;color:#a78bfa">5</div><div><div class="step-title">RAIN keeps accumulating trade after trade</div><div class="step-desc">Every winning trade adds more locked RAIN. The balance grows daily. The user watches it approach the 500K threshold.</div></div></div>
+      <div class="step-row"><div class="step-num" style="border-color:#34d399;color:#34d399">6</div><div><div class="step-title">User hits 500K RAIN → auto-promotes to Bronze tier</div><div class="step-desc">The moment their locked RAIN hits 500K, they are promoted. Platform fee drops from 20% to 15%. The 5% buyback STOPS — they no longer pay it.</div></div></div>
+      <div class="step-row"><div class="step-num" style="border-color:#34d399;color:#34d399">7</div><div><div class="step-title">RAIN unlocks at Bronze</div><div class="step-desc">Once promoted, their RAIN is unlocked. They can hold it (to maintain Bronze), sell some, or keep accumulating toward Silver (3M) and Gold (6M).</div></div></div>
+    </div>
+
+    <!-- Locked vs Unlocked -->
+    <div class="grid-2 mb-8">
+      <div class="card border-red">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
+          <div class="small-circle" style="background:rgba(239,68,68,0.1);color:#f87171">🔒</div>
+          <div><h3 class="font-semibold">Locked RAIN (Under 500K)</h3><p class="text-xs text-white-40">Retail users before reaching Bronze</p></div>
+        </div>
+        <div class="data-row"><span class="label">Can withdraw?</span><span class="value mono" style="color:#ef4444">NO</span></div>
+        <div class="data-row"><span class="label">Can sell?</span><span class="value mono" style="color:#ef4444">NO</span></div>
+        <div class="data-row"><span class="label">Can transfer?</span><span class="value mono" style="color:#ef4444">NO</span></div>
+        <div class="data-row"><span class="label">Visible on dashboard?</span><span class="value mono" style="color:#34d399">YES — user sees it growing</span></div>
+        <div class="data-row"><span class="label">Counts toward Shield credits?</span><span class="value mono" style="color:#34d399">YES — locked RAIN from Shield also counts</span></div>
+        <div class="data-row"><span class="label">Counts toward 500K goal?</span><span class="value mono" style="color:#34d399">YES — every RAIN token counts</span></div>
+        <p class="text-xs text-white-30 mt-4">The user is accumulating RAIN whether they want to or not. It is mandatory for retail. They are slowly building toward their first fee discount.</p>
+      </div>
+      <div class="card border-green">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
+          <div class="small-circle" style="background:rgba(52,211,153,0.1);color:#34d399">🔓</div>
+          <div><h3 class="font-semibold">Unlocked RAIN (500K+ Bronze)</h3><p class="text-xs text-white-40">After hitting the first tier</p></div>
+        </div>
+        <div class="data-row"><span class="label">Can withdraw?</span><span class="value mono" style="color:#34d399">YES</span></div>
+        <div class="data-row"><span class="label">Can sell?</span><span class="value mono" style="color:#f59e0b">YES (but drops tier if below 500K)</span></div>
+        <div class="data-row"><span class="label">5% buyback still active?</span><span class="value mono" style="color:#34d399">NO — stops at Bronze</span></div>
+        <div class="data-row"><span class="label">Platform fee</span><span class="value mono" style="color:#34d399">15% (down from 20%)</span></div>
+        <div class="data-row"><span class="label">Extra profit kept per trade</span><span class="value mono" style="color:#34d399">+$48 per $960 win</span></div>
+        <div class="data-row"><span class="label">Net effect</span><span class="value mono" style="color:#34d399">More compounding, lower fees</span></div>
+        <p class="text-xs text-white-30 mt-4">The carrot: reach 500K RAIN and your fees drop permanently (as long as you hold). The buyback stops. You keep more of every win. Compounding accelerates.</p>
+      </div>
+    </div>
+
+    <!-- Accumulation table -->
+    <div class="card mb-8" style="padding:0;overflow:hidden">
+      <div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04)">
+        <h3 class="font-semibold">How Fast Does a Retail User Hit 500K RAIN?</h3>
+        <p class="text-xs text-white-30" style="margin-top:4px">Depends on RAIN price and stake size. Pro stakers (1.5× rate) get there faster.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Deposit</th><th>Stake</th><th>Daily Gross Profit</th><th>5% Buyback/Day</th><th>Pro (1.5×)</th><th>RAIN @ $0.005</th><th>RAIN @ $0.01</th><th>RAIN @ $0.05</th></tr></thead>
+          <tbody>
+            <tr><td class="mono" style="color:rgba(255,255,255,0.6)">$1,000</td><td class="mono" style="color:rgba(255,255,255,0.5)">$100</td><td class="mono" style="color:rgba(255,255,255,0.5)">$600</td><td class="mono" style="color:rgba(255,255,255,0.5)">$30/day</td><td class="mono" style="color:#f59e0b">$45/day</td><td class="mono" style="color:#34d399">~11 days</td><td class="mono" style="color:rgba(52,211,153,0.7)">~22 days</td><td class="mono" style="color:rgba(255,255,255,0.5)">~111 days</td></tr>
+            <tr><td class="mono" style="color:rgba(255,255,255,0.6)">$5,000</td><td class="mono" style="color:rgba(255,255,255,0.5)">$500</td><td class="mono" style="color:rgba(255,255,255,0.5)">$3,000</td><td class="mono" style="color:rgba(255,255,255,0.5)">$150/day</td><td class="mono" style="color:#f59e0b">$225/day</td><td class="mono" style="color:#34d399">~2 days</td><td class="mono" style="color:rgba(52,211,153,0.7)">~4 days</td><td class="mono" style="color:rgba(255,255,255,0.5)">~22 days</td></tr>
+            <tr><td class="mono" style="color:#22d3ee">$10,000</td><td class="mono" style="color:rgba(255,255,255,0.5)">$1,000</td><td class="mono" style="color:rgba(255,255,255,0.5)">$6,000</td><td class="mono" style="color:rgba(255,255,255,0.5)">$300/day</td><td class="mono" style="color:#f59e0b">$450/day</td><td class="mono" style="color:#34d399">~1 day</td><td class="mono" style="color:rgba(52,211,153,0.7)">~2 days</td><td class="mono" style="color:rgba(255,255,255,0.5)">~11 days</td></tr>
+            <tr><td class="mono" style="color:#f59e0b">$25,000</td><td class="mono" style="color:rgba(255,255,255,0.5)">$2,500</td><td class="mono" style="color:rgba(255,255,255,0.5)">$15,000</td><td class="mono" style="color:rgba(255,255,255,0.5)">$750/day</td><td class="mono" style="color:#f59e0b">$1,125/day</td><td class="mono" style="color:#34d399">&lt;1 day</td><td class="mono" style="color:rgba(52,211,153,0.7)">~1 day</td><td class="mono" style="color:rgba(255,255,255,0.5)">~4 days</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-footer"><p>Pro stakers ($10K+ deposit) get 1.5× accumulation rate. Days to 500K depend on RAIN market price at time of purchase.</p></div>
+    </div>
+
+    <!-- Token impact + flywheel -->
+    <div class="grid-2 mb-8">
+      <div class="gradient-card-amber">
+        <h3 class="font-semibold mb-4">What This Means for RAIN Token</h3>
+        <div class="data-row"><span class="label">Every retail win = automatic buy pressure</span><span class="value mono" style="color:#f59e0b">Mandatory</span></div>
+        <div class="data-row"><span class="label">RAIN is locked = cannot be sold</span><span class="value mono" style="color:#34d399">No sell pressure</span></div>
+        <div class="data-row"><span class="label">New users join = more buyers</span><span class="value mono" style="color:#f59e0b">Flywheel</span></div>
+        <div class="data-row"><span class="label">Users promote to Bronze = buyback stops</span><span class="value mono" style="color:#f59e0b">But they HOLD (to keep tier)</span></div>
+        <div class="data-row"><span class="label">Month 1 aggregate buy pressure</span><span class="value mono">$300/day</span></div>
+        <div class="data-row"><span class="label">Month 3 aggregate buy pressure</span><span class="value mono" style="color:#f59e0b">$4,500/day</span></div>
+        <div class="data-row"><span class="label">Month 5 aggregate buy pressure</span><span class="value mono" style="color:#f59e0b">$15,000/day</span></div>
+        <div class="data-row"><span class="label">5.5-month total</span><span class="value mono" style="color:#f59e0b">$900K+ in buys</span></div>
+      </div>
+      <div class="gradient-card-green-20">
+        <h3 class="font-semibold mb-4">The Flywheel</h3>
+        <div style="margin-bottom:16px"><span class="mono font-bold text-xs" style="color:#0ea5e9">01</span> <span class="text-xs font-semibold">User profits → 5% auto-buys RAIN</span><p class="text-xs text-white-40" style="margin-left:24px">Mandatory. Automatic. Every winning trade.</p></div>
+        <div style="margin-bottom:16px"><span class="mono font-bold text-xs" style="color:#f59e0b">02</span> <span class="text-xs font-semibold">RAIN locked → no sell pressure</span><p class="text-xs text-white-40" style="margin-left:24px">Tokens can't hit the market. Only buy pressure exists.</p></div>
+        <div style="margin-bottom:16px"><span class="mono font-bold text-xs" style="color:#a78bfa">03</span> <span class="text-xs font-semibold">RAIN price rises from constant buys</span><p class="text-xs text-white-40" style="margin-left:24px">More users = more buys = price goes up.</p></div>
+        <div style="margin-bottom:16px"><span class="mono font-bold text-xs" style="color:#34d399">04</span> <span class="text-xs font-semibold">User hits 500K → promotes to Bronze</span><p class="text-xs text-white-40" style="margin-left:24px">Fees drop. Buyback stops. User keeps more profit.</p></div>
+        <div style="margin-bottom:16px"><span class="mono font-bold text-xs" style="color:#ef4444">05</span> <span class="text-xs font-semibold">User holds RAIN to maintain tier</span><p class="text-xs text-white-40" style="margin-left:24px">If they sell below 500K, they lose Bronze and go back to 20% fees + 5% buyback.</p></div>
+        <div><span class="mono font-bold text-xs" style="color:#0ea5e9">06</span> <span class="text-xs font-semibold">New users replace promoted users' buy pressure</span><p class="text-xs text-white-40" style="margin-left:24px">Constant inflow of new retail users keeps the buyback engine running.</p></div>
+      </div>
+    </div>
+
+    <!-- Why locking matters -->
+    <div class="card-16">
+      <h3 class="font-semibold mb-2">Why Locking Matters</h3>
+      <div class="grid-3" style="margin-top:16px">
+        <div class="bg-subtle"><span class="uppercase-label">Without locking</span><p class="text-xs text-white-50 leading-relaxed">User receives RAIN → immediately sells it → no price impact → token goes nowhere → tier system is meaningless.</p></div>
+        <div style="background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.1);border-radius:8px;padding:16px"><span class="uppercase-label" style="color:rgba(245,158,11,0.6)">With locking</span><p class="text-xs text-white-50 leading-relaxed">User receives RAIN → locked until 500K → only buy pressure on the market → price goes up → reaching 500K costs less in dollar terms over time → more users can afford tiers.</p></div>
+        <div style="background:rgba(52,211,153,0.05);border:1px solid rgba(52,211,153,0.1);border-radius:8px;padding:16px"><span class="uppercase-label" style="color:rgba(52,211,153,0.6)">After unlocking (Bronze+)</span><p class="text-xs text-white-50 leading-relaxed">User CAN sell — but won't. Selling below 500K means going back to 20% fees + 5% mandatory buyback. The economic incentive to hold is stronger than the incentive to sell.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. FULL TRADE WALKTHROUGH -->
+<section id="walkthrough" class="bg-dark scroll-target">
+  <div class="container">
+    <h2 class="section-title">Full Trade Walkthrough</h2>
+    <p class="section-sub">Pro user. $10,000 balance. AutoPilot ON. Four trades: win, loss, win, win. Exactly what happens to every dollar.</p>
+    <div class="card" style="padding:0;overflow:hidden">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Trade</th><th>Balance</th><th>Stake (10%)</th><th>Result</th><th>Fees (28%)</th><th>Shield</th><th>Real Balance</th><th>Credit</th><th>Effective Balance</th></tr></thead>
+          <tbody>
+            <tr><td class="mono font-semibold">Start</td><td class="mono" style="color:rgba(255,255,255,0.7)">$10,000</td><td class="mono" style="color:rgba(255,255,255,0.5)">—</td><td class="mono">—</td><td class="mono" style="color:rgba(251,191,36,0.6)">—</td><td class="mono" style="color:#22d3ee">—</td><td class="mono" style="color:rgba(255,255,255,0.5)">$10,000</td><td class="mono" style="color:rgba(255,255,255,0.12)">$0</td><td class="mono font-bold">$10,000</td></tr>
+            <tr><td class="mono font-semibold" style="color:#34d399">Trade 1</td><td class="mono" style="color:rgba(255,255,255,0.7)">$10,000</td><td class="mono" style="color:rgba(255,255,255,0.5)">$1,000</td><td class="mono font-medium" style="color:#34d399">Win +$960</td><td class="mono" style="color:rgba(251,191,36,0.6)">−$269</td><td class="mono" style="color:#22d3ee">—</td><td class="mono" style="color:rgba(255,255,255,0.5)">$10,691</td><td class="mono" style="color:rgba(255,255,255,0.12)">$0</td><td class="mono font-bold">$10,691</td></tr>
+            <tr><td class="mono font-semibold" style="color:#ef4444">Trade 2</td><td class="mono" style="color:rgba(255,255,255,0.7)">$10,691</td><td class="mono" style="color:rgba(255,255,255,0.5)">$1,069</td><td class="mono font-medium" style="color:#ef4444">Loss −$620</td><td class="mono" style="color:rgba(251,191,36,0.6)">$0</td><td class="mono" style="color:#22d3ee">+$620 RAIN</td><td class="mono" style="color:rgba(255,255,255,0.5)">$10,071</td><td class="mono" style="color:#22d3ee">$620</td><td class="mono font-bold">$10,691</td></tr>
+            <tr><td class="mono font-semibold" style="color:#34d399">Trade 3</td><td class="mono" style="color:rgba(255,255,255,0.7)">$10,691</td><td class="mono" style="color:rgba(255,255,255,0.5)">$1,069</td><td class="mono font-medium" style="color:#34d399">Win +$1,026</td><td class="mono" style="color:rgba(251,191,36,0.6)">−$287</td><td class="mono" style="color:#22d3ee">Repay $370</td><td class="mono" style="color:rgba(255,255,255,0.5)">$10,440</td><td class="mono" style="color:#22d3ee">$250</td><td class="mono font-bold">$10,690</td></tr>
+            <tr><td class="mono font-semibold" style="color:#34d399">Trade 4</td><td class="mono" style="color:rgba(255,255,255,0.7)">$10,690</td><td class="mono" style="color:rgba(255,255,255,0.5)">$1,069</td><td class="mono font-medium" style="color:#34d399">Win +$1,026</td><td class="mono" style="color:rgba(251,191,36,0.6)">−$287</td><td class="mono" style="color:#22d3ee">Repay $250</td><td class="mono" style="color:rgba(255,255,255,0.5)">$10,929</td><td class="mono" style="color:rgba(255,255,255,0.12)">$0</td><td class="mono font-bold">$10,929</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="padding:16px 24px;border-top:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.01)">
+        <p class="text-xs text-white-50 mb-2"><strong class="text-white">Key line — Trade 2 (the loss):</strong> Effective balance stays at $10,691. Stake on Trade 3 is still $1,069 — same as if the loss never happened. This is the Shield.</p>
+        <p class="text-xs text-white-50 mb-2"><strong class="text-white">Key line — Trade 4:</strong> Credit fully repaid. RAIN back in treasury. User's entire $10,929 balance is real. Took 2 trades (~48 hours) to clear.</p>
+        <p class="text-xs text-white-50"><strong class="text-white">What the user sees:</strong> $10,000 → $10,691 → $10,691 → $10,690 → $10,929. A smooth upward curve. The loss is invisible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. WHERE THE MONEY COMES FROM -->
+<section id="funding" class="bg-darker scroll-target">
+  <div class="container">
+    <h2 class="section-title">Where the Money Comes From</h2>
+    <p class="section-sub">Rainmaker doesn't need to put in any USD. The Shield is backed by two things we already have: our RAIN treasury and our users' idle deposits.</p>
+
+    <div class="grid-2 mb-8">
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
+          <div class="small-circle" style="background:rgba(245,158,11,0.1);color:#f59e0b">R</div>
+          <h3 class="font-semibold">RAIN Treasury (the credit)</h3>
+        </div>
+        <p class="text-xs text-white-40 mb-4">When a user loses, we issue RAIN from our treasury as a locked credit. This is the IOU.</p>
+        <div class="data-row"><span class="label">Our RAIN treasury</span><span class="value mono" style="color:#f59e0b">~400K RAIN</span></div>
+        <div class="data-row"><span class="label">Max outstanding credits (worst case)</span><span class="value mono">~5% of treasury</span></div>
+        <div class="data-row"><span class="label">Average time credit is outstanding</span><span class="value mono">~48 hours</span></div>
+        <div class="data-row"><span class="label">RAIN always returns to treasury</span><span class="value mono" style="color:#34d399">Yes — via repayments</span></div>
+        <div class="data-row"><span class="label">Net RAIN spent</span><span class="value mono" style="color:#34d399">$0 over time</span></div>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
+          <div class="small-circle" style="background:rgba(52,211,153,0.1);color:#34d399">$</div>
+          <h3 class="font-semibold">Idle Deposits (the USDC)</h3>
+        </div>
+        <p class="text-xs text-white-40 mb-4">Users only stake 10% per trade. The other 90% sits idle. That idle USDC is the float for the next trade.</p>
+        <div class="data-row"><span class="label">User deposits $10K</span><span class="value mono">$1K staked, $9K idle</span></div>
+        <div class="data-row"><span class="label">Total deposits (100 users)</span><span class="value mono">$1M</span></div>
+        <div class="data-row"><span class="label">Total staked at any moment (10%)</span><span class="value mono">$100K</span></div>
+        <div class="data-row"><span class="label">Total idle USDC available</span><span class="value mono" style="color:#34d399">$900K</span></div>
+        <div class="data-row"><span class="label">Max Shield credit needed</span><span class="value mono">~$20K</span></div>
+        <div class="data-row"><span class="label">Coverage ratio</span><span class="value mono" style="color:#34d399">45:1</span></div>
+      </div>
+    </div>
+
+    <!-- Full Money Flow -->
+    <div class="card mb-8" style="padding:24px 32px">
+      <h3 class="text-lg font-semibold mb-2">The Full Money Flow</h3>
+      <p class="text-xs text-white-40 mb-4">What happens on every trade, where every dollar goes.</p>
+      <div class="grid-3">
+        <div class="flow-box" style="border:1px solid rgba(52,211,153,0.1);background:rgba(52,211,153,0.02);border-radius:8px">
+          <h4 style="color:#34d399">On a WIN ($960 gross profit)</h4>
+          <div class="flow-row"><span class="fl">20% platform fee</span><span class="fv mono">$192 → Rainmaker</span></div>
+          <div class="flow-row"><span class="fl">5% RAIN buyback</span><span class="fv mono">$48 → buys RAIN</span></div>
+          <div class="flow-row"><span class="fl">3% Shield pool</span><span class="fv mono">$29 → Shield pool</span></div>
+          <div class="flow-row"><span class="fl">User keeps (72%)</span><span class="fv mono">$691 → balance</span></div>
+        </div>
+        <div class="flow-box" style="border:1px solid rgba(239,68,68,0.1);background:rgba(239,68,68,0.02);border-radius:8px">
+          <h4 style="color:#f87171">On a LOSS ($620 lost, Pro user)</h4>
+          <div class="flow-row"><span class="fl">Platform fee</span><span class="fv mono">$0 (no profit)</span></div>
+          <div class="flow-row"><span class="fl">RAIN buyback</span><span class="fv mono">$0 (no profit)</span></div>
+          <div class="flow-row"><span class="fl">Shield fee</span><span class="fv mono">$0 (no profit)</span></div>
+          <div class="flow-row"><span class="fl">Shield credit issued</span><span class="fv mono">$620 in RAIN (locked)</span></div>
+          <div class="flow-row"><span class="fl">USDC for next trade</span><span class="fv mono">From idle deposit pool</span></div>
+        </div>
+        <div class="flow-box" style="border:1px solid rgba(34,211,238,0.1);background:rgba(34,211,238,0.02);border-radius:8px">
+          <h4 style="color:#22d3ee">CREDIT REPAYMENT (next 2-3 wins)</h4>
+          <div class="flow-row"><span class="fl">50% of net profit</span><span class="fv mono">Buys RAIN at market</span></div>
+          <div class="flow-row"><span class="fl">RAIN returned to treasury</span><span class="fv mono">Treasury restored</span></div>
+          <div class="flow-row"><span class="fl">Locked RAIN in user account</span><span class="fv mono">Burned/cleared</span></div>
+          <div class="flow-row"><span class="fl">Time to full repayment</span><span class="fv mono">~48 hours</span></div>
+          <div class="flow-row"><span class="fl">Net cost to Rainmaker</span><span class="fv mono">$0</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gradient-card-green">
+      <h3 class="font-semibold mb-2">Bottom Line</h3>
+      <p class="text-sm text-white-50 leading-relaxed">Rainmaker puts in <strong style="color:#34d399">$0 USD</strong>. The RAIN treasury backs the credits — RAIN goes out, RAIN comes back within 48 hours. The actual USDC for trades comes from the 90% of user deposits sitting idle. At 95% win rate, the system is self-funding from Day 1. The only scenario where this breaks is if every user withdraws simultaneously AND the model starts losing — which is why Circuit Breaker exists.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. THE NUMBERS -->
+<section id="numbers" class="bg-dark scroll-target">
+  <div class="container">
+    <h2 class="section-title">The Numbers</h2>
+    <p class="section-sub">What users make. What Rainmaker earns. Same model, different tiers.</p>
+
+    <div class="card mb-8" style="padding:0;overflow:hidden">
+      <div style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.04)">
+        <h3 class="font-semibold">$10K Deposit → 5.5 Months (AutoPilot, all fees paid)</h3>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tier</th><th>Total Fees</th><th>Month 1</th><th>Month 2</th><th>Month 3</th><th>Month 4</th><th>Month 5</th><th>Month 5.5</th><th>Return</th></tr></thead>
+          <tbody>
+            <tr><td class="mono font-bold" style="color:#22d3ee">Retail Pro</td><td class="mono" style="color:rgba(255,255,255,0.5)">28%</td><td class="mono" style="color:rgba(255,255,255,0.7)">$38K</td><td class="mono" style="color:rgba(255,255,255,0.7)">$86K</td><td class="mono" style="color:rgba(255,255,255,0.7)">$155K</td><td class="mono" style="color:rgba(255,255,255,0.7)">$250K</td><td class="mono" style="color:rgba(255,255,255,0.7)">$380K</td><td class="mono font-bold" style="color:#22d3ee">$460K</td><td class="mono font-bold" style="color:#34d399">46×</td></tr>
+            <tr><td class="mono font-bold" style="color:#f59e0b">Bronze Pro</td><td class="mono" style="color:rgba(255,255,255,0.5)">18%</td><td class="mono" style="color:rgba(255,255,255,0.7)">$44K</td><td class="mono" style="color:rgba(255,255,255,0.7)">$110K</td><td class="mono" style="color:rgba(255,255,255,0.7)">$220K</td><td class="mono" style="color:rgba(255,255,255,0.7)">$385K</td><td class="mono" style="color:rgba(255,255,255,0.7)">$620K</td><td class="mono font-bold" style="color:#f59e0b">$780K</td><td class="mono font-bold" style="color:#34d399">78×</td></tr>
+            <tr><td class="mono font-bold" style="color:#a78bfa">Silver Pro</td><td class="mono" style="color:rgba(255,255,255,0.5)">15%</td><td class="mono" style="color:rgba(255,255,255,0.7)">$46K</td><td class="mono" style="color:rgba(255,255,255,0.7)">$120K</td><td class="mono" style="color:rgba(255,255,255,0.7)">$250K</td><td class="mono" style="color:rgba(255,255,255,0.7)">$450K</td><td class="mono" style="color:rgba(255,255,255,0.7)">$740K</td><td class="mono font-bold" style="color:#a78bfa">$940K</td><td class="mono font-bold" style="color:#34d399">94×</td></tr>
+            <tr><td class="mono font-bold" style="color:#34d399">Gold Pro</td><td class="mono" style="color:rgba(255,255,255,0.5)">13%</td><td class="mono" style="color:rgba(255,255,255,0.7)">$48K</td><td class="mono" style="color:rgba(255,255,255,0.7)">$130K</td><td class="mono" style="color:rgba(255,255,255,0.7)">$275K</td><td class="mono" style="color:rgba(255,255,255,0.7)">$500K</td><td class="mono" style="color:rgba(255,255,255,0.7)">$840K</td><td class="mono font-bold" style="color:#34d399">$1.08M</td><td class="mono font-bold" style="color:#34d399">108×</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Platform revenue -->
+    <div class="gradient-card-purple mb-8">
+      <h3 class="text-lg font-semibold mb-2">Rainmaker Platform Revenue</h3>
+      <p class="text-xs text-white-40 mb-4">Platform fee only (10-20% of user profit). Shield costs $0. RAIN buyback goes to token, not Rainmaker.</p>
+      <div class="grid-3" style="margin-bottom:24px">
+        <div style="text-align:center;padding:20px;border-radius:8px;border:1px solid rgba(255,255,255,0.04)">
+          <span class="text-xs text-white-40" style="display:block;margin-bottom:8px">10 users (Month 1)</span>
+          <span class="mono font-bold" style="font-size:20px;color:#0ea5e9;display:block">$1,200/day</span>
+          <span class="mono text-sm text-white-50" style="display:block;margin-top:4px">$36K/mo</span>
+        </div>
+        <div style="text-align:center;padding:20px;border-radius:8px;border:1px solid rgba(255,255,255,0.04)">
+          <span class="text-xs text-white-40" style="display:block;margin-bottom:8px">100 users (Month 3)</span>
+          <span class="mono font-bold" style="font-size:20px;color:#a78bfa;display:block">$12,000/day</span>
+          <span class="mono text-sm text-white-50" style="display:block;margin-top:4px">$360K/mo</span>
+        </div>
+        <div style="text-align:center;padding:20px;border-radius:8px;border:1px solid rgba(255,255,255,0.04)">
+          <span class="text-xs text-white-40" style="display:block;margin-bottom:8px">400 users (Month 5.5)</span>
+          <span class="mono font-bold" style="font-size:20px;color:#f59e0b;display:block">$48,000/day</span>
+          <span class="mono text-sm text-white-50" style="display:block;margin-top:4px">$1.44M/mo</span>
+        </div>
+      </div>
+      <div class="grid-3" style="text-align:center">
+        <div style="padding:12px;border-radius:8px;background:rgba(255,255,255,0.02)"><span class="text-xs text-white-40" style="display:block;margin-bottom:4px">5.5-month total platform revenue</span><span class="mono font-bold" style="font-size:24px;color:#f59e0b">$3.6M+</span></div>
+        <div style="padding:12px;border-radius:8px;background:rgba(255,255,255,0.02)"><span class="text-xs text-white-40" style="display:block;margin-bottom:4px">USD invested by Rainmaker</span><span class="mono font-bold" style="font-size:24px;color:#34d399">$0</span></div>
+        <div style="padding:12px;border-radius:8px;background:rgba(255,255,255,0.02)"><span class="text-xs text-white-40" style="display:block;margin-bottom:4px">RAIN token buy pressure</span><span class="mono font-bold" style="font-size:24px;color:#f59e0b">$900K+</span></div>
+      </div>
+    </div>
+
+    <!-- Comparison -->
+    <div class="grid-2">
+      <div class="card border-red">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px"><div style="width:12px;height:12px;border-radius:50%;background:#ef4444"></div><h3 class="font-semibold">Without AutoPilot</h3></div>
+        <div class="compare-item"><span class="icon" style="color:#f87171">✗</span><span class="text">User picks their own stake — emotional, inconsistent</span></div>
+        <div class="compare-item"><span class="icon" style="color:#f87171">✗</span><span class="text">Loss → panic → reduces stake → misses next 10 wins</span></div>
+        <div class="compare-item"><span class="icon" style="color:#f87171">✗</span><span class="text">No Shield → every loss is permanent damage to compounding</span></div>
+        <div class="compare-item"><span class="icon" style="color:#f87171">✗</span><span class="text">No auto-buyback → never accumulates RAIN → stays at highest fee tier</span></div>
+        <div class="compare-item"><span class="icon" style="color:#f87171">✗</span><span class="text">No Circuit Breaker → regime change wipes weeks of gains</span></div>
+        <div class="compare-item"><span class="icon" style="color:#f87171">✗</span><span class="text">$10K → $40K in 5.5 months (4× return)</span></div>
+      </div>
+      <div class="card border-green">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px"><div style="width:12px;height:12px;border-radius:50%;background:#34d399"></div><h3 class="font-semibold">With AutoPilot (Pro, $10K deposit)</h3></div>
+        <div class="compare-item"><span class="icon" style="color:#34d399">✓</span><span class="text">10% auto-stake every trade — consistent, automatic</span></div>
+        <div class="compare-item"><span class="icon" style="color:#34d399">✓</span><span class="text">Loss → Shield covers 100% → next trade same size → compounding intact</span></div>
+        <div class="compare-item"><span class="icon" style="color:#34d399">✓</span><span class="text">RAIN credit keeps balance whole → user doesn't even notice the loss</span></div>
+        <div class="compare-item"><span class="icon" style="color:#34d399">✓</span><span class="text">5% auto-buyback → hits Bronze in ~55 days → fees drop automatically</span></div>
+        <div class="compare-item"><span class="icon" style="color:#34d399">✓</span><span class="text">Circuit Breaker catches regime changes → limits damage → auto-resumes</span></div>
+        <div class="compare-item"><span class="icon" style="color:#34d399">✓</span><span class="text">$10K → $460K in 5.5 months (46× return, all fees paid)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. IMPLEMENTATION -->
+<section class="bg-darker">
+  <div class="container">
+    <h2 class="section-title">What Needs to Be Built</h2>
+    <p class="section-sub">Four systems. Estimated effort for each.</p>
+    <div class="grid-4">
+      <div class="card-16">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><h3 class="text-sm font-semibold">Smart Stake Engine</h3><span class="effort-badge" style="color:#f59e0b;border-color:rgba(245,158,11,0.25);background:rgba(245,158,11,0.1)">Medium</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Auto-size trades at 10% of balance</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Pro threshold detection ($10K+ deposit)</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Single UI toggle: AutoPilot ON/OFF</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Balance tracking per user in real-time</span></div>
+      </div>
+      <div class="card-16">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><h3 class="text-sm font-semibold">Recovery Shield</h3><span class="effort-badge" style="color:#ef4444;border-color:rgba(239,68,68,0.25);background:rgba(239,68,68,0.1)">High</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>RAIN credit issuance from treasury on loss</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Tiered coverage: 50% (standard) / 100% (Pro)</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Locked credit tracking per user</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Auto-repayment (50% of net wins until clear)</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>RAIN buyback on repayment → return to treasury</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Pool health dashboard</span></div>
+      </div>
+      <div class="card-16">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><h3 class="text-sm font-semibold">Fee Engine + RAIN Buyback</h3><span class="effort-badge" style="color:#ef4444;border-color:rgba(239,68,68,0.25);background:rgba(239,68,68,0.1)">High</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Tiered platform fee by RAIN holdings</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>5% auto-buyback on retail user profits</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>1.5× accelerated rate for Pro stakers</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Auto-promote at 500K RAIN → stop buyback</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Real-time fee calc per trade settlement</span></div>
+      </div>
+      <div class="card-16">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><h3 class="text-sm font-semibold">Circuit Breaker</h3><span class="effort-badge" style="color:#34d399;border-color:rgba(52,211,153,0.25);background:rgba(52,211,153,0.1)">Low</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Track ATH balance per user</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>15% drawdown → 5% stake</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>25% drawdown → pause 24h</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Auto-resume within 10% of ATH</span></div>
+        <div class="bullet"><span style="color:rgba(255,255,255,0.2)">•</span><span>Notification system for events</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-dark">
+  <div class="container" style="text-align:center">
+    <div class="gradient-card-green-20" style="padding:32px 48px">
+      <h2 style="font-size:24px;font-weight:700;letter-spacing:-0.5px;margin-bottom:16px">The model prints. AutoPilot compounds. Shield protects. Rainmaker earns.</h2>
+      <p class="text-sm text-white-50 leading-relaxed" style="max-width:640px;margin:0 auto 32px">Users deposit, flip the switch, and their money grows. Losses are invisible. RAIN accumulates automatically. Fees are only on profit. Rainmaker collects platform fees on every winning trade with zero capital at risk. The RAIN treasury backs the Shield and comes back within 48 hours. The system funds itself from Day 1.</p>
+      <a href="rampup.html" class="cta-btn">View Ramp Up Plan</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span>Rainmaker AutoPilot — Internal Proposal</span>
+    <div><a href="index.html">Home</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
