@@ -164,7 +164,7 @@
         <div class="month-stat"><span class="month-stat-val mono">300</span><span class="month-stat-label">Users</span></div>
         <div class="month-stat"><span class="month-stat-val mono">$1.8M</span><span class="month-stat-label">Monthly</span></div>
       </div>
-      <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;line-height:1.5">Wild posting (NYC, LA, Miami, ATL) · <strong style="color:#06b6d4">Guerra campaign live — QR → $100 test-run dashboard → city leaderboards</strong> · <strong style="color:#06b6d4">Top 10 nightly leaderboard → $100 real credit on signup</strong> · Auger gift cards at shows + Ye events · Clippers partnership · Merch drop · NYT article · Referral program launch</p>
+      <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;line-height:1.5">Wild posting (NYC, LA, Miami, ATL) · <strong style="color:#06b6d4">Guerra campaign live — QR → "$50 Free" funnel → city leaderboards</strong> · <strong style="color:#06b6d4">Top 10 weekly leaderboard → extra $50 bonus</strong> · Auger gift cards at shows + Ye events · Clippers partnership · Merch drop · NYT article · Referral program launch</p>
     </div>
 
     <div class="month-card">
@@ -221,35 +221,80 @@
 <section style="border-top:1px solid rgba(255,255,255,0.04)">
   <div class="container">
     <h2 class="section-title">Wild Posting Funnel</h2>
-    <p class="section-sub">Black poster. White logo. QR code. "$100 free." That's it. Here's what happens when they scan.</p>
+    <p class="section-sub">Black poster. White umbrella. QR code. "<strong style="color:#34d399">$50 free.</strong>" That's it. Here's what happens when they scan.</p>
     <div style="display:flex;flex-direction:column;gap:12px">
       <div class="card" style="display:flex;gap:16px;align-items:flex-start">
         <div style="width:36px;height:36px;border-radius:50%;border:2px solid #f59e0b;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#f59e0b;flex-shrink:0">1</div>
         <div>
           <h3 style="font-size:15px;font-weight:600;margin-bottom:4px">Scan → 5-Second Explainer</h3>
-          <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5">"Rainmaker is an AI that trades live MLB games and wins 95% of the time. Tonight's games are live. Watch it work — $100 on us." One button: Start Watching.</p>
+          <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5">"Rainmaker is an AI that trades live MLB games and wins 95% of the time. Sign up, and our AI earns you $50 — free. No deposit. No catch." One button: <strong style="color:#34d399">Claim My $50</strong>.</p>
         </div>
       </div>
       <div class="card" style="display:flex;gap:16px;align-items:flex-start">
         <div style="width:36px;height:36px;border-radius:50%;border:2px solid #f59e0b;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#f59e0b;flex-shrink:0">2</div>
         <div>
-          <h3 style="font-size:15px;font-weight:600;margin-bottom:4px">Live Test-Run Dashboard</h3>
-          <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5">No signup. No email. Instant guest session with a $100 play balance. They watch Burst 2.0 fire on real MLB games tonight. Balance ticks up with every win: $100 → $129 → $158 → $187. Real trades, play money.</p>
+          <h3 style="font-size:15px;font-weight:600;margin-bottom:4px">Account Created → AI Starts Trading</h3>
+          <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5">Quick sign-up (email + wallet). Rainmaker funds the account behind the scenes — user never sees or touches the capital. AutoPilot turns on. The AI starts trading tonight's MLB games on their behalf. They watch it work in real time.</p>
         </div>
       </div>
       <div class="card" style="display:flex;gap:16px;align-items:flex-start">
         <div style="width:36px;height:36px;border-radius:50%;border:2px solid #f59e0b;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#f59e0b;flex-shrink:0">3</div>
         <div>
-          <h3 style="font-size:15px;font-weight:600;margin-bottom:4px">City Leaderboard Drops In</h3>
-          <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5">After the first win, a card slides up: "You're #34 in New York tonight. Top 10 get $100 real credit." Each city has its own leaderboard (NYC, LA, Miami, ATL). Competition drives retention — they check back after every game.</p>
+          <h3 style="font-size:15px;font-weight:600;margin-bottom:4px">$50 Progress Bar — The Hook</h3>
+          <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5">A progress bar tracks how close they are to unlocking their <strong style="color:#34d399">$50 free</strong>. As the AI wins trades, profit accumulates. They check back daily: "$38… $41… $44…" building trust with every win. When it hits $50 — <strong style="color:#34d399">it's unlocked, withdrawable, theirs</strong>. Typically takes 1–2 weeks.</p>
+          <!-- $50 FREE PROGRESS UI -->
+          <div style="margin-top:16px;background:#0a0a0c;border:1px solid #1e1e20;border-radius:12px;padding:20px;font-family:'JetBrains Mono',monospace">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+              <span style="font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:#34d399;font-weight:600">Your $50 Free</span>
+              <span style="font-size:18px;font-weight:700;color:#fff">$41.20</span>
+            </div>
+            <div style="background:#1a1a1c;border-radius:8px;height:10px;overflow:hidden;margin-bottom:12px">
+              <div style="width:82%;height:100%;background:linear-gradient(90deg,#34d399,#06b6d4);border-radius:8px"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+              <span style="font-size:11px;color:rgba(255,255,255,0.3)">~3 days until unlock</span>
+              <span style="font-size:11px;color:rgba(255,255,255,0.3)">$50.00</span>
+            </div>
+            <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:12px;display:flex;flex-direction:column;gap:6px">
+              <div style="display:flex;justify-content:space-between;font-size:12px">
+                <span style="color:rgba(255,255,255,0.4)">Today</span>
+                <span style="color:#34d399;font-weight:600">+$4.80 <span style="color:rgba(255,255,255,0.25);font-weight:400">(3 wins, 1 loss)</span></span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:12px">
+                <span style="color:rgba(255,255,255,0.4)">This week</span>
+                <span style="color:#34d399;font-weight:600">+$22.40</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="card" style="display:flex;gap:16px;align-items:flex-start">
-        <div style="width:36px;height:36px;border-radius:50%;border:2px solid #34d399;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#34d399;flex-shrink:0">4</div>
+        <div style="width:36px;height:36px;border-radius:50%;border:2px solid #f59e0b;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#f59e0b;flex-shrink:0">4</div>
         <div>
-          <h3 style="font-size:15px;font-weight:600;margin-bottom:4px">Convert → Real Account</h3>
-          <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5">"You made $87 tonight. That was real. Those games happened. Want to do it for real tomorrow?" Sign up → $20 real credit (or $100 if top 10 on leaderboard). First real trade hits, they're hooked.</p>
+          <h3 style="font-size:15px;font-weight:600;margin-bottom:4px">City Leaderboard Drops In</h3>
+          <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5">After their first win, a card slides up: "You're #34 in New York tonight." Each city has its own leaderboard (NYC, LA, Miami, ATL). Competition drives retention — they check back after every game. Top 10 weekly get an extra $50 bonus.</p>
         </div>
+      </div>
+      <div class="card" style="display:flex;gap:16px;align-items:flex-start">
+        <div style="width:36px;height:36px;border-radius:50%;border:2px solid #34d399;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#34d399;flex-shrink:0">5</div>
+        <div>
+          <h3 style="font-size:15px;font-weight:600;margin-bottom:4px">$50 Unlocked → Convert to Depositor</h3>
+          <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5">"You just earned $50 for free. The AI did it for you in 10 days. Imagine what it does with $500." They've watched 30+ winning trades. Trust is built. The conversion prompt is natural — not a sales pitch, just math. Deposit → AutoPilot → compounding begins.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- $50 FREE ECONOMICS -->
+    <div class="card" style="margin-top:24px;border-color:rgba(52,211,153,0.15);background:linear-gradient(to right, rgba(52,211,153,0.03), #111113)">
+      <h3 style="font-size:15px;font-weight:600;margin-bottom:12px;color:#34d399">$50 Free — Unit Economics</h3>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="rev-row"><span class="rev-label">Rainmaker capital per user</span><span class="rev-value mono" style="color:rgba(255,255,255,0.7)">~$100 (recycled)</span></div>
+        <div class="rev-row"><span class="rev-label">Cost per acquisition</span><span class="rev-value mono" style="color:#34d399">$50 (the profit they keep)</span></div>
+        <div class="rev-row"><span class="rev-label">Capital recycled after unlock</span><span class="rev-value mono" style="color:rgba(255,255,255,0.7)">$100 back to next user</span></div>
+        <div class="rev-row"><span class="rev-label">Concurrent test drives at $10K float</span><span class="rev-value mono" style="color:rgba(255,255,255,0.7)">100 users</span></div>
+        <div class="rev-row"><span class="rev-label">New users per month (2-week cycle)</span><span class="rev-value mono" style="color:rgba(255,255,255,0.7)">~200</span></div>
+        <div class="rev-row"><span class="rev-label">Expected conversion rate</span><span class="rev-value mono" style="color:#f59e0b">40-60%</span></div>
+        <div class="rev-row" style="border:none"><span class="rev-label">Why it works</span><span class="rev-value" style="font-size:12px;color:rgba(255,255,255,0.5);text-align:right;max-width:55%">The model's edge funds its own growth. Net CAC is $50 — and the $100 capital recycles infinitely.</span></div>
       </div>
     </div>
   </div>
