@@ -66,11 +66,11 @@
   .rev-value { font-size: 13px; font-weight: 700; }
 
   /* POSTER GALLERY */
-  .poster-grid { display: grid; grid-template-columns: repeat(9, 1fr); gap: 4px; margin: 0 auto 32px; overflow: visible; border-radius: 12px; }
-  .poster-cell { border-radius: 4px; overflow: visible; aspect-ratio: 2/3; cursor: pointer; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease; position: relative; z-index: 1; }
-  .poster-cell img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 4px; }
-  .poster-cell:hover { transform: scale(3); z-index: 100; box-shadow: 0 12px 48px rgba(0,0,0,0.9); }
-  .poster-grid-wrap { margin: 0 auto 32px; overflow: visible; padding: 30px 20px; }
+  .poster-grid { display: grid; grid-template-columns: repeat(9, 1fr); gap: 4px; margin: 0 auto; }
+  .poster-cell { border-radius: 4px; aspect-ratio: 2/3; cursor: pointer; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease; position: relative; z-index: 1; }
+  .poster-cell img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 4px; pointer-events: none; }
+  .poster-cell:hover { transform: scale(2.5); z-index: 100; box-shadow: 0 12px 48px rgba(0,0,0,0.9); }
+  .poster-grid-wrap { margin: 0 -24px 32px; padding: 60px 60px; position: relative; z-index: 10; }
 
   /* FOOTER */
   footer { border-top: 1px solid rgba(255,255,255,0.04); padding: 24px 0; text-align: center; }
@@ -226,8 +226,8 @@
 </section>
 
 <!-- WILD POSTING FUNNEL -->
-<section style="border-top:1px solid rgba(255,255,255,0.04)">
-  <div class="container">
+<section style="border-top:1px solid rgba(255,255,255,0.04);overflow:visible">
+  <div class="container" style="overflow:visible">
     <h2 class="section-title">Wild Posting Funnel</h2>
     <p class="section-sub"><span class="mono" style="color:rgba(255,255,255,0.5)">Wave 1: Jun 1 – Jun 14</span> · <span class="mono" style="color:rgba(255,255,255,0.5)">Wave 2: Jul 1 – Jul 14</span><br>Black poster. White umbrella. QR code. "<strong style="color:#34d399">$50 free.</strong>" That's it. Here's what happens when they scan.</p>
 
