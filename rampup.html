@@ -65,6 +65,12 @@
   .rev-label { font-size: 13px; color: rgba(255,255,255,0.5); }
   .rev-value { font-size: 13px; font-weight: 700; }
 
+  /* POSTER GALLERY */
+  .poster-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; max-width: 600px; margin: 0 auto 32px; }
+  .poster-cell { border-radius: 6px; overflow: hidden; aspect-ratio: 2/3; cursor: pointer; transition: transform 0.3s ease, z-index 0s; position: relative; }
+  .poster-cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .poster-cell:hover { transform: scale(2.5); z-index: 100; box-shadow: 0 8px 40px rgba(0,0,0,0.8); border-radius: 8px; }
+
   /* FOOTER */
   footer { border-top: 1px solid rgba(255,255,255,0.04); padding: 24px 0; text-align: center; }
   footer span { color: rgba(255,255,255,0.15); font-size: 12px; }
@@ -224,16 +230,37 @@
     <h2 class="section-title">Wild Posting Funnel</h2>
     <p class="section-sub"><span class="mono" style="color:rgba(255,255,255,0.5)">Wave 1: Jun 1 – Jun 14</span> · <span class="mono" style="color:rgba(255,255,255,0.5)">Wave 2: Jul 1 – Jul 14</span><br>Black poster. White umbrella. QR code. "<strong style="color:#34d399">$50 free.</strong>" That's it. Here's what happens when they scan.</p>
 
-    <!-- POSTER GRID 3x2 -->
-    <div style="max-width:600px;margin:0 auto 32px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;border-radius:12px;overflow:hidden;border:1px solid #1e1e20;background:#000;padding:6px">
-      <div style="border-radius:8px;overflow:hidden;aspect-ratio:2/3"><img src="posters/poster-logo.png" alt="Rainmaker logo" style="width:100%;height:100%;object-fit:cover"></div>
-      <div style="border-radius:8px;overflow:hidden;aspect-ratio:2/3"><img src="posters/poster-qr.png" alt="QR code" style="width:100%;height:100%;object-fit:cover"></div>
-      <div style="border-radius:8px;overflow:hidden;aspect-ratio:2/3"><img src="posters/poster-logo.png" alt="Rainmaker logo" style="width:100%;height:100%;object-fit:cover"></div>
-      <div style="border-radius:8px;overflow:hidden;aspect-ratio:2/3"><img src="posters/poster-0in50out.png" alt="$0 in. $50 out." style="width:100%;height:100%;object-fit:cover"></div>
-      <div style="border-radius:8px;overflow:hidden;aspect-ratio:2/3"><img src="posters/poster-webet.png" alt="We bet. You cash out." style="width:100%;height:100%;object-fit:cover"></div>
-      <div style="border-radius:8px;overflow:hidden;aspect-ratio:2/3"><img src="posters/poster-50free.png" alt="$50 free." style="width:100%;height:100%;object-fit:cover"></div>
+    <!-- POSTER GALLERY 9x3 -->
+    <div class="poster-grid">
+      <div class="poster-cell"><img src="posters/p01-gf-dinner.png" alt="take your hot gf to dinner"></div>
+      <div class="poster-cell"><img src="posters/p02-qr.png" alt="QR code"></div>
+      <div class="poster-cell"><img src="posters/p03-delete-ex.png" alt="delete your ex's photos"></div>
+      <div class="poster-cell"><img src="posters/p04-edible.png" alt="wait for that edible to kick in"></div>
+      <div class="poster-cell"><img src="posters/p05-call-sick.png" alt="call in sick"></div>
+      <div class="poster-cell"><img src="posters/p06-overthink.png" alt="overthink"></div>
+      <div class="poster-cell"><img src="posters/p07-make-money.png" alt="make money"></div>
+      <div class="poster-cell"><img src="posters/p08-argue-x.png" alt="argue on X"></div>
+      <div class="poster-cell"><img src="posters/p09-clear-tabs.png" alt="clear 48 tabs on your phone"></div>
+      <div class="poster-cell"><img src="posters/p10-screenshot.png" alt="screenshot and don't reply"></div>
+      <div class="poster-cell"><img src="posters/p11-pretend-work.png" alt="pretend to work"></div>
+      <div class="poster-cell"><img src="posters/p12-crypto-parents.png" alt="explain crypto to your parents"></div>
+      <div class="poster-cell"><img src="posters/p13-lose-parlay.png" alt="lose your parlay"></div>
+      <div class="poster-cell"><img src="posters/p14-stretch.png" alt="stretch for 45 min then leave"></div>
+      <div class="poster-cell"><img src="posters/p15-fck.png" alt="f*ck"></div>
+      <div class="poster-cell"><img src="posters/p16-boss-credit.png" alt="boss takes credit for your work"></div>
+      <div class="poster-cell"><img src="posters/p17-pick-filter.png" alt="pick a filter"></div>
+      <div class="poster-cell"><img src="posters/p18-snooze.png" alt="snooze the alarm"></div>
+      <div class="poster-cell"><img src="posters/p19-doom-scroll.png" alt="doom scroll at 2am"></div>
+      <div class="poster-cell"><img src="posters/p20-argue-girl.png" alt="argue with your girl"></div>
+      <div class="poster-cell"><img src="posters/p21-skip-leg.png" alt="skip leg day"></div>
+      <div class="poster-cell"><img src="posters/p22-text-omw.png" alt="text omw from your couch"></div>
+      <div class="poster-cell"><img src="posters/p23-crypto-parents2.png" alt="explain crypto to your parents"></div>
+      <div class="poster-cell"><img src="posters/p24-yell-ref.png" alt="yell at the ref"></div>
+      <div class="poster-cell"><img src="posters/p25-forgot-room.png" alt="forget why you walked into the room"></div>
+      <div class="poster-cell"><img src="posters/p26-raid-fridge.png" alt="raid the fridge for your midnight snack"></div>
+      <div class="poster-cell"><img src="posters/p27-fight-aux.png" alt="fight over the aux"></div>
     </div>
-    <p style="font-size:11px;color:rgba(255,255,255,0.2);text-align:center;margin-bottom:32px;margin-top:-24px">Guerra wild posting campaign — poster variations for NYC, LA, Miami, ATL</p>
+    <p style="font-size:11px;color:rgba(255,255,255,0.2);text-align:center;margin-bottom:32px;margin-top:-24px">27 poster variations — hover to expand · Guerra wild posting campaign</p>
     <div style="display:flex;flex-direction:column;gap:12px">
       <div class="card" style="display:flex;gap:16px;align-items:flex-start">
         <div style="width:36px;height:36px;border-radius:50%;border:2px solid #f59e0b;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#f59e0b;flex-shrink:0">1</div>
