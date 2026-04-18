@@ -1,41 +1,96 @@
 {
-  "updated": "2026-04-18T06:00:00Z",
+  "updated": "2026-04-18T17:34:28.234Z",
   "period": "Apr 4 – Apr 18",
   "summary": {
-    "wins": 34,
+    "wins": 7,
     "losses": 3,
-    "winRate": 92,
+    "winRate": 70,
     "startBalance": 100,
-    "endBalance": 247,
+    "endBalance": 117,
     "days": 14
   },
   "featured": [
-    { "game": "Yankees vs Red Sox", "date": "Apr 17", "pnl": 96, "result": "win" },
-    { "game": "Dodgers vs Giants", "date": "Apr 17", "pnl": 96, "result": "win" },
-    { "game": "Astros vs Mets", "date": "Apr 16", "pnl": 96, "result": "win" },
-    { "game": "Cubs vs Braves", "date": "Apr 16", "pnl": -58, "result": "loss" },
-    { "game": "Phillies vs Padres", "date": "Apr 15", "pnl": 96, "result": "win" }
+    {
+      "game": "Rays vs Pirates",
+      "date": "Apr 17",
+      "pnl": -4.78,
+      "result": "loss"
+    },
+    {
+      "game": "Rays vs White Sox",
+      "date": "Apr 16",
+      "pnl": 10.08,
+      "result": "win"
+    },
+    {
+      "game": "Angels vs Yankees",
+      "date": "Apr 16",
+      "pnl": -9.35,
+      "result": "loss"
+    },
+    {
+      "game": "Orioles vs Guardians",
+      "date": "Apr 16",
+      "pnl": 1.81,
+      "result": "win"
+    },
+    {
+      "game": "Royals vs Tigers",
+      "date": "Apr 16",
+      "pnl": 3.26,
+      "result": "win"
+    }
   ],
   "feed": [
-    { "game": "NYY vs BOS", "pnl": 96, "result": "win" },
-    { "game": "LAD vs SF", "pnl": 96, "result": "win" },
-    { "game": "HOU vs NYM", "pnl": 96, "result": "win" },
-    { "game": "CHC vs ATL", "pnl": -58, "result": "loss" },
-    { "game": "PHI vs SD", "pnl": 96, "result": "win" },
-    { "game": "TB vs BAL", "pnl": 96, "result": "win" },
-    { "game": "MIN vs CLE", "pnl": 96, "result": "win" },
-    { "game": "SEA vs TEX", "pnl": -58, "result": "loss" },
-    { "game": "MIL vs STL", "pnl": 96, "result": "win" },
-    { "game": "ARI vs COL", "pnl": 96, "result": "win" },
-    { "game": "DET vs KC", "pnl": 96, "result": "win" },
-    { "game": "LAA vs OAK", "pnl": 96, "result": "win" },
-    { "game": "CIN vs PIT", "pnl": 96, "result": "win" },
-    { "game": "WSH vs MIA", "pnl": 96, "result": "win" },
-    { "game": "TOR vs BOS", "pnl": 96, "result": "win" },
-    { "game": "CHW vs DET", "pnl": -58, "result": "loss" },
-    { "game": "ATL vs NYM", "pnl": 96, "result": "win" },
-    { "game": "SF vs ARI", "pnl": 96, "result": "win" },
-    { "game": "TEX vs HOU", "pnl": 96, "result": "win" },
-    { "game": "SD vs LAD", "pnl": 96, "result": "win" }
+    {
+      "game": "TB vs PIT",
+      "pnl": -4.78,
+      "result": "loss"
+    },
+    {
+      "game": "TB vs CWS",
+      "pnl": 10.08,
+      "result": "win"
+    },
+    {
+      "game": "LAA vs NYY",
+      "pnl": -9.35,
+      "result": "loss"
+    },
+    {
+      "game": "BAL vs CLE",
+      "pnl": 1.81,
+      "result": "win"
+    },
+    {
+      "game": "KC vs DET",
+      "pnl": 3.26,
+      "result": "win"
+    },
+    {
+      "game": "TOR vs MIL",
+      "pnl": 2.24,
+      "result": "win"
+    },
+    {
+      "game": "AZ vs PHI",
+      "pnl": 10.77,
+      "result": "win"
+    },
+    {
+      "game": "NYY vs TB",
+      "pnl": 6.99,
+      "result": "win"
+    },
+    {
+      "game": "MIA vs DET",
+      "pnl": -6.35,
+      "result": "loss"
+    },
+    {
+      "game": "STL vs WSH",
+      "pnl": 2.04,
+      "result": "win"
+    }
   ]
 }

@@ -205,14 +205,16 @@ function renderTrades(featured){
     if(!el)return;
     const w=t.result==='win';
     const sign=w?'+':'';
+    const amt=Math.abs(Math.round(t.pnl*100)/100);
+    const fmtAmt=amt%1===0?amt:amt.toFixed(2);
     el.innerHTML=`
       <div class="tcard anim-scale">
         <div class="tcard-game">${t.game}</div>
         <div class="tcard-date">${t.date}</div>
-        <div class="tcard-pnl mono ${w?'green':'red'}">${sign}$${Math.abs(t.pnl)}</div>
+        <div class="tcard-pnl mono ${w?'green':'red'}">${sign}$${fmtAmt}</div>
         <div class="tcard-tag ${t.result}">${w?'WIN':'LOSS'}</div>
       </div>
-      <p class="dim anim-up-d1">Real trade · per $1,000 staked</p>`;
+      <p class="dim anim-up-d1">Real trade · per $10 bet</p>`;
   });
 }
 
@@ -227,9 +229,11 @@ function renderFeed(feed){
   const el=document.getElementById('feedList');
   el.innerHTML=feed.map(t=>{
     const w=t.result==='win';
+    const fa=Math.abs(Math.round(t.pnl*100)/100);
+    const ff=fa%1===0?fa:fa.toFixed(2);
     return `<div class="frow">
       <span class="fgame">${t.game}</span>
-      <span class="fpnl mono ${w?'green':'red'}">${w?'+':''}$${Math.abs(t.pnl)}</span>
+      <span class="fpnl mono ${w?'green':'red'}">${w?'+':''}$${ff}</span>
       <span class="ftag ${w?'w':'l'}">${w?'W':'L'}</span>
     </div>`;
   }).join('');
