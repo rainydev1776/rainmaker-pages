@@ -141,7 +141,7 @@
 
   <!-- Post-trade slides (data-slide set dynamically) -->
   <div class="slide" id="scoreSlide">
-    <p class="h2 anim-up" style="margin-bottom:20px">Last 14 days</p>
+    <p class="h2 anim-up" style="margin-bottom:20px" id="scorePeriod">Last 14 days</p>
     <div class="sgrid anim-up-d1" id="scoreGrid"></div>
     <p class="dim anim-up-d2"><span class="pulse"></span>Real trades · MLB 2026</p>
   </div>
@@ -149,7 +149,7 @@
   <div class="slide" id="edgeSlide"></div>
 
   <div class="slide scrollable" id="feedSlide">
-    <p class="h2 anim-up" style="font-size:15px;margin-bottom:12px">Every trade from the last 14 days</p>
+    <p class="h2 anim-up" style="font-size:15px;margin-bottom:12px" id="feedTitle">Every trade from the last 14 days</p>
     <div class="feed anim-up-d1" id="feedList"></div>
     <p class="dim">Scroll to see all ↕</p>
   </div>
@@ -255,6 +255,8 @@ function renderTrades(trades){
 }
 
 function renderScore(s){
+  document.getElementById('scorePeriod').textContent=`Last ${s.days} days`;
+  document.getElementById('feedTitle').textContent=`Every trade from the last ${s.days} days`;
   document.getElementById('scoreGrid').innerHTML=`
     <div class="sitem"><div class="sval green mono">${s.wins}</div><div class="slbl">Wins</div></div>
     <div class="sitem"><div class="sval red mono">${s.losses}</div><div class="slbl">Losses</div></div>
@@ -280,7 +282,7 @@ function renderEdge(s){
   const lPct=Math.round((totL/maxVal)*100);
   document.getElementById('edgeSlide').innerHTML=`
     <p class="h2 anim-up" style="margin-bottom:6px">Asymmetric by design.</p>
-    <p class="sub anim-up-d1" style="margin-bottom:24px">Engineered so the gains always outpace the losses.<br>That's how $100 becomes $370.</p>
+    <p class="sub anim-up-d1" style="margin-bottom:24px">Engineered so the gains always outpace the losses.<br>That's how $100 becomes $${s.endBalance || 370}.</p>
     <div class="edge-wrap anim-up-d2">
       <div class="edge-row">
         <span class="edge-lbl">Earned</span>

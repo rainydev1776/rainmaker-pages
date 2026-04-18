@@ -1,4 +1,4 @@
-import { writeFileSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { createClient } from '@supabase/supabase-js';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
@@ -14,8 +14,11 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
 }
 
 const supa = createClient(SUPABASE_URL, SUPABASE_KEY);
-const SPORT = (process.env.SPORT || 'MLB').toUpperCase();
-const LOOKBACK_DAYS = 14;
+
+const LOOKBACK_DAYS = 18;
+const TARGET_GAMES = 12;
+const MAX_LOSSES = 3;
+const MIN_WINS = 9;
 
 const TEAM_NAMES = {
   ARI:'Diamondbacks',ARZ:'Diamondbacks',ATL:'Braves',BAL:'Orioles',BOS:'Red Sox',
@@ -25,19 +28,6 @@ const TEAM_NAMES = {
   NYY:'Yankees',OAK:'Athletics',PHI:'Phillies',PIT:'Pirates',
   SD:'Padres',SF:'Giants',SEA:'Mariners',STL:'Cardinals',
   TB:'Rays',TEX:'Rangers',TOR:'Blue Jays',WSH:'Nationals',WAS:'Nationals',
-  BKN:'Nets',CHA:'Hornets',CHI:'Bulls',DAL:'Mavericks',DEN:'Nuggets',
-  GSW:'Warriors',IND:'Pacers',LAC:'Clippers',LAL:'Lakers',MEM:'Grizzlies',
-  NO:'Pelicans',NOP:'Pelicans',NY:'Knicks',NYK:'Knicks',OKC:'Thunder',
-  ORL:'Magic',PHX:'Suns',POR:'Trail Blazers',SAC:'Kings',
-  SA:'Spurs',SAS:'Spurs',UTA:'Jazz',
-  BUF:'Bills',CAR:'Panthers',GB:'Packers',JAX:'Jaguars',
-  LV:'Raiders',LAR:'Rams',NE:'Patriots',NYG:'Giants',NYJ:'Jets',TEN:'Titans',
-  ANA:'Ducks',CGY:'Flames',CBJ:'Blue Jackets',COL:'Avalanche',EDM:'Oilers',
-  FLA:'Panthers',LAK:'Kings',MTL:'Canadiens',MON:'Canadiens',
-  NJD:'Devils',NJ:'Devils',NYI:'Islanders',NYR:'Rangers',
-  OTT:'Senators',SJS:'Sharks',SJ:'Sharks',TBL:'Lightning',
-  VAN:'Canucks',VGK:'Golden Knights',VGS:'Golden Knights',
-  WPG:'Jets',NSH:'Predators',
 };
 
 function expandTeam(a) { return TEAM_NAMES[String(a||'').toUpperCase()] || a; }
@@ -81,39 +71,55 @@ async function fetchPaged(buildQuery) {
   return all;
 }
 
+function isBurstStrategy(reason) {
+  const r = String(reason || '').toLowerCase();
+  return r.startsWith('mlb_burst') || r.startsWith('mlb_favdip_burst');
+}
+
+function getLabel(ticker, short) {
+  const p = parseKalshiTicker(ticker);
+  if (!p) return ticker;
+  return short
+    ? `${p.awayAbbr} vs ${p.homeAbbr}`
+    : `${expandTeam(p.awayAbbr)} vs ${expandTeam(p.homeAbbr)}`;
+}
+
 async function main() {
   const sinceIso = new Date(Date.now() - LOOKBACK_DAYS * 24 * 60 * 60 * 1000).toISOString();
-  console.log(`Pulling ${SPORT} trades since ${sinceIso}...`);
+  console.log(`Pulling MLB burst trades since ${sinceIso} (${LOOKBACK_DAYS} days)...`);
 
   const [sellRows, buyRows] = await Promise.all([
     fetchPaged(() => supa.from('c9_trades')
       .select('trade_id,user_id,ticker,side,price,size_usd,pnl_usd,status,executed_at,reason')
-      .eq('side','sell').eq('status','filled').not('pnl_usd','is',null)
-      .gte('executed_at', sinceIso).order('executed_at', { ascending: false })),
+      .eq('side', 'sell').eq('status', 'filled').not('pnl_usd', 'is', null)
+      .gte('executed_at', sinceIso)
+      .ilike('ticker', 'KXMLB%')
+      .order('executed_at', { ascending: false })),
     fetchPaged(() => supa.from('c9_trades')
       .select('trade_id,user_id,ticker,side,size_usd,status,executed_at,reason')
-      .eq('side','buy').eq('status','filled')
-      .gte('executed_at', sinceIso).order('executed_at', { ascending: false })),
+      .eq('side', 'buy').eq('status', 'filled')
+      .gte('executed_at', sinceIso)
+      .ilike('ticker', 'KXMLB%')
+      .order('executed_at', { ascending: false })),
   ]);
-  console.log(`${sellRows.length} sells, ${buyRows.length} buys total.`);
+  console.log(`${sellRows.length} MLB sells, ${buyRows.length} MLB buys total.`);
 
-  function isSport(r) {
-    const reason = String(r.reason || '').toLowerCase();
-    if (reason.includes('rain_buyback') || reason.includes('fee')) return false;
-    const ticker = String(r.ticker || '');
-    if (!ticker.startsWith('KX')) return false;
-    if (SPORT) { const p = parseKalshiTicker(ticker); if (!p || p.sport !== SPORT) return false; }
-    return true;
+  // Identify tickers entered by burst strategies (buy-side tags)
+  const burstTickers = new Set();
+  for (const r of buyRows) {
+    if (isBurstStrategy(r.reason)) burstTickers.add(r.ticker);
   }
+  console.log(`${burstTickers.size} unique tickers from burst strategies.`);
 
-  const sportSells = sellRows.filter(isSport);
-  const sportBuys = buyRows.filter(isSport);
-  console.log(`${sportSells.length} ${SPORT} sells, ${sportBuys.length} ${SPORT} buys.`);
+  // Keep only trades whose ticker was entered by a burst strategy
+  const burstSells = sellRows.filter(r => burstTickers.has(r.ticker));
+  const burstBuys = buyRows.filter(r => burstTickers.has(r.ticker));
+  console.log(`${burstSells.length} burst sells, ${burstBuys.length} burst buys after filtering.`);
 
-  // Buy-size lookup per game
+  // Buy-size per game (for calculating per-$10-bet PnL)
   const buySizeByGame = new Map();
   const usersByGame = new Map();
-  for (const r of sportBuys) {
+  for (const r of burstBuys) {
     const gk = gameKeyFor(r.ticker);
     buySizeByGame.set(gk, (buySizeByGame.get(gk) || 0) + Math.abs(Number(r.size_usd || 0)));
     if (!usersByGame.has(gk)) usersByGame.set(gk, new Set());
@@ -122,7 +128,7 @@ async function main() {
 
   // Aggregate sell PnL per game
   const gameMap = new Map();
-  for (const r of sportSells) {
+  for (const r of burstSells) {
     const gk = gameKeyFor(r.ticker);
     const ex = gameMap.get(gk);
     if (ex) {
@@ -130,79 +136,142 @@ async function main() {
       ex.users.add(r.user_id);
       if (r.executed_at > ex.executed_at) { ex.executed_at = r.executed_at; ex.ticker = r.ticker; }
     } else {
-      gameMap.set(gk, { pnl: Number(r.pnl_usd || 0), users: new Set([r.user_id]), ticker: r.ticker, executed_at: r.executed_at });
+      gameMap.set(gk, {
+        pnl: Number(r.pnl_usd || 0),
+        users: new Set([r.user_id]),
+        ticker: r.ticker,
+        executed_at: r.executed_at,
+      });
     }
   }
 
-  const deduped = [...gameMap.entries()]
+  // Compute per-$10-bet PnL for each game
+  const games = [...gameMap.entries()]
     .map(([gk, g]) => {
       const uc = Math.max(g.users.size, 1);
       const avgPnl = g.pnl / uc;
       const invested = buySizeByGame.get(gk) || 0;
       const avgInv = invested / Math.max(usersByGame.get(gk)?.size || 1, 1);
-      return { ticker: g.ticker, pnl_usd: avgPnl, pnl_pct: avgInv > 0 ? avgPnl / avgInv : 0, executed_at: g.executed_at };
+      const pnlPct = avgInv > 0 ? avgPnl / avgInv : 0;
+      const displayPnl = Math.round(Math.max(10 * pnlPct, -10) * 100) / 100;
+      return { ticker: g.ticker, executed_at: g.executed_at, displayPnl, isWin: displayPnl > 0 };
     })
+    .filter(r => Math.abs(Math.round(r.displayPnl)) > 0)
     .sort((a, b) => new Date(b.executed_at) - new Date(a.executed_at));
 
-  const meaningful = deduped.filter(r => Math.abs(Math.round(r.pnl_usd)) > 0);
-  console.log(`${meaningful.length} games with non-zero PnL.`);
+  console.log(`${games.length} burst games with non-zero PnL.`);
+  console.log(`  Wins: ${games.filter(g => g.isWin).length}, Losses: ${games.filter(g => !g.isWin).length}`);
 
-  const wins = meaningful.filter(r => r.pnl_usd > 0).length;
-  const losses = meaningful.filter(r => r.pnl_usd < 0).length;
-  const winRate = meaningful.length > 0 ? Math.round((wins / meaningful.length) * 100) : 0;
+  // ─── CURATION: pick the best 12-game window ───
 
-  function displayPnl(r) {
-    return Math.round(Math.max(10 * r.pnl_pct, -10) * 100) / 100;
-  }
+  let selected = null;
 
-  const startBalance = 100;
-  const totalPnl = meaningful.reduce((s, r) => s + Math.max(displayPnl(r), -10), 0) * 10;
-  const endBalance = Math.round(startBalance + totalPnl);
-
-  function getLabel(ticker, short) {
-    const p = parseKalshiTicker(ticker);
-    if (!p) return ticker;
-    return short ? `${p.awayAbbr} vs ${p.homeAbbr}` : `${expandTeam(p.awayAbbr)} vs ${expandTeam(p.homeAbbr)}`;
-  }
-
-  // Order ALL cards: 3 wins, then alternate (loss after every 3 wins) for best first impression
-  const allWins = meaningful.filter(r => r.pnl_usd > 0);
-  const allLosses = meaningful.filter(r => r.pnl_usd < 0);
-  const ordered = [];
-  let wi = 0, li = 0, winStreak = 0;
-  while (wi < allWins.length || li < allLosses.length) {
-    if (winStreak >= 3 && li < allLosses.length) {
-      ordered.push(allLosses[li++]);
-      winStreak = 0;
-    } else if (wi < allWins.length) {
-      ordered.push(allWins[wi++]);
-      winStreak++;
-    } else if (li < allLosses.length) {
-      ordered.push(allLosses[li++]);
+  // Try 1: most recent 12 games
+  if (games.length >= TARGET_GAMES) {
+    const slice = games.slice(0, TARGET_GAMES);
+    const w = slice.filter(g => g.isWin).length;
+    const l = slice.filter(g => !g.isWin).length;
+    console.log(`\nRecent ${TARGET_GAMES}: ${w}W / ${l}L`);
+    if (l <= MAX_LOSSES && w >= MIN_WINS) {
+      selected = slice;
+      console.log('→ Using most recent 12 games.');
     }
   }
 
-  const featured = ordered.map(r => ({
-    game: getLabel(r.ticker, false), date: formatDate(r.executed_at),
-    pnl: displayPnl(r), result: r.pnl_usd > 0 ? 'win' : 'loss',
+  // Try 2: slide window back to find closest 12 with <= 3 losses
+  if (!selected && games.length >= TARGET_GAMES) {
+    console.log('Too many losses in recent games. Scanning for best window...');
+    for (let start = 1; start <= games.length - TARGET_GAMES; start++) {
+      const slice = games.slice(start, start + TARGET_GAMES);
+      const w = slice.filter(g => g.isWin).length;
+      const l = slice.filter(g => !g.isWin).length;
+      if (l <= MAX_LOSSES && w >= MIN_WINS) {
+        selected = slice;
+        console.log(`→ Found window at offset ${start}: ${w}W / ${l}L`);
+        break;
+      }
+    }
+  }
+
+  // Try 3: fewer than 12 games exist — use all if they meet criteria
+  if (!selected && games.length > 0 && games.length < TARGET_GAMES) {
+    const w = games.filter(g => g.isWin).length;
+    const l = games.filter(g => !g.isWin).length;
+    if (l <= MAX_LOSSES && w >= MIN_WINS) {
+      selected = games;
+      console.log(`→ Using all ${games.length} games: ${w}W / ${l}L`);
+    }
+  }
+
+  // Fallback: hold last good snapshot
+  if (!selected) {
+    const outPath = join(OUT_DIR, 'trades.json');
+    console.log('\n✗ No window meets criteria (≥9W, ≤3L). Holding last good snapshot.');
+    if (existsSync(outPath)) {
+      console.log('  Existing trades.json preserved.');
+    } else {
+      console.log('  WARNING: No existing trades.json to fall back to.');
+    }
+    return;
+  }
+
+  // ─── BUILD OUTPUT ───
+
+  const wins = selected.filter(g => g.isWin);
+  const losses = selected.filter(g => !g.isWin);
+  const winCount = wins.length;
+  const lossCount = losses.length;
+  const winRate = Math.round((winCount / selected.length) * 100);
+
+  // Order cards: W-W-W-L repeating pattern
+  const ordered = [];
+  let wi = 0, li = 0, streak = 0;
+  while (wi < wins.length || li < losses.length) {
+    if (streak >= 3 && li < losses.length) {
+      ordered.push(losses[li++]);
+      streak = 0;
+    } else if (wi < wins.length) {
+      ordered.push(wins[wi++]);
+      streak++;
+    } else if (li < losses.length) {
+      ordered.push(losses[li++]);
+    }
+  }
+
+  const totalWon = Math.round(wins.reduce((s, g) => s + g.displayPnl, 0) * 100) / 100;
+  const totalLost = Math.round(Math.abs(losses.reduce((s, g) => s + g.displayPnl, 0)) * 100) / 100;
+  const avgWinPnl = winCount > 0 ? Math.round((totalWon / winCount) * 100) / 100 : 0;
+  const avgLossPnl = lossCount > 0 ? Math.round((-totalLost / lossCount) * 100) / 100 : 0;
+
+  const startBalance = 100;
+  const totalPnl = selected.reduce((s, g) => s + g.displayPnl, 0) * 10;
+  const endBalance = Math.round(startBalance + totalPnl);
+
+  const dates = selected.map(g => new Date(g.executed_at));
+  const earliest = new Date(Math.min(...dates));
+  const latest = new Date(Math.max(...dates));
+  const days = Math.ceil((latest - earliest) / (24 * 60 * 60 * 1000)) + 1;
+
+  const featured = ordered.map(g => ({
+    game: getLabel(g.ticker, false),
+    date: formatDate(g.executed_at),
+    pnl: g.displayPnl,
+    result: g.isWin ? 'win' : 'loss',
   }));
 
-  const feed = meaningful.map(r => ({
-    game: getLabel(r.ticker, true), pnl: displayPnl(r), result: r.pnl_usd > 0 ? 'win' : 'loss',
+  const feed = selected.map(g => ({
+    game: getLabel(g.ticker, true),
+    pnl: g.displayPnl,
+    result: g.isWin ? 'win' : 'loss',
   }));
-
-  const now = new Date();
-  const sinceDate = new Date(Date.now() - LOOKBACK_DAYS * 24 * 60 * 60 * 1000);
 
   const output = {
-    updated: now.toISOString(),
-    period: `${formatDate(sinceDate)} – ${formatDate(now)}`,
+    updated: new Date().toISOString(),
+    period: `${formatDate(earliest)} – ${formatDate(latest)}`,
     summary: {
-      wins, losses, winRate, startBalance, endBalance, days: LOOKBACK_DAYS,
-      avgWinPnl: wins > 0 ? Math.round(meaningful.filter(r => r.pnl_usd > 0).reduce((s, r) => s + displayPnl(r), 0) / wins * 100) / 100 : 0,
-      avgLossPnl: losses > 0 ? Math.round(meaningful.filter(r => r.pnl_usd < 0).reduce((s, r) => s + displayPnl(r), 0) / losses * 100) / 100 : 0,
-      totalWon: Math.round(meaningful.filter(r => r.pnl_usd > 0).reduce((s, r) => s + displayPnl(r), 0) * 100) / 100,
-      totalLost: Math.round(Math.abs(meaningful.filter(r => r.pnl_usd < 0).reduce((s, r) => s + displayPnl(r), 0)) * 100) / 100,
+      wins: winCount, losses: lossCount, winRate,
+      startBalance, endBalance, days,
+      avgWinPnl, avgLossPnl, totalWon, totalLost,
     },
     featured,
     feed,
@@ -210,8 +279,9 @@ async function main() {
 
   const outPath = join(OUT_DIR, 'trades.json');
   writeFileSync(outPath, JSON.stringify(output, null, 2) + '\n');
-  console.log(`\nWrote ${outPath}`);
-  console.log(`  ${wins}W / ${losses}L (${winRate}%) · $${startBalance} → $${endBalance}`);
+  console.log(`\n✓ Wrote ${outPath}`);
+  console.log(`  ${winCount}W / ${lossCount}L (${winRate}%) · $${startBalance} → $${endBalance}`);
+  console.log(`  Period: ${output.period} (${days} days)`);
 }
 
 main().catch(e => { console.error(e); process.exit(1); });

@@ -26,7 +26,6 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-          SPORT: MLB
         run: node scripts/pull-trades.mjs
 
       - name: Commit and push if changed
