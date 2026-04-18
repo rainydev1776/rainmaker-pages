@@ -223,20 +223,14 @@ async function main() {
   const lossCount = losses.length;
   const winRate = Math.round((winCount / selected.length) * 100);
 
-  // Order cards: W-W-W-L repeating pattern
-  const ordered = [];
-  let wi = 0, li = 0, streak = 0;
-  while (wi < wins.length || li < losses.length) {
-    if (streak >= 3 && li < losses.length) {
-      ordered.push(losses[li++]);
-      streak = 0;
-    } else if (wi < wins.length) {
-      ordered.push(wins[wi++]);
-      streak++;
-    } else if (li < losses.length) {
-      ordered.push(losses[li++]);
-    }
+  // Order cards: first 4 are W-W-W-L (strong hook), rest are shuffled naturally
+  const ordered = [wins[0], wins[1], wins[2], losses[0]];
+  const rest = [...wins.slice(3), ...losses.slice(1)];
+  for (let i = rest.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [rest[i], rest[j]] = [rest[j], rest[i]];
   }
+  ordered.push(...rest);
 
   const totalWon = Math.round(wins.reduce((s, g) => s + g.displayPnl, 0) * 100) / 100;
   const totalLost = Math.round(Math.abs(losses.reduce((s, g) => s + g.displayPnl, 0)) * 100) / 100;
