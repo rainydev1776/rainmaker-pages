@@ -1,16 +1,16 @@
 {
-  "updated": "2026-04-18T20:35:45.883Z",
+  "updated": "2026-04-18T20:38:06.123Z",
   "period": "Apr 4 – Apr 18",
   "summary": {
     "wins": 8,
     "losses": 3,
     "winRate": 73,
-    "startBalance": 100,
-    "endBalance": 127,
+    "startBalance": 10,
+    "endBalance": 36.62,
     "days": 14,
     "avgWinPnl": 5.89,
     "avgLossPnl": -6.83,
-    "totalWon": 47.09,
+    "totalWon": 47.1,
     "totalLost": 20.48
   },
   "featured": [
@@ -78,7 +78,7 @@
     },
     {
       "game": "TOR vs MIL",
-      "pnl": 2.18,
+      "pnl": 2.19,
       "result": "win"
     },
     {

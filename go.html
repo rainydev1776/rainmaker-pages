@@ -26,8 +26,9 @@
   .tap-r{right:0;width:75%}
 
   /* SLIDES */
-  .slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:72px 28px 60px;opacity:0;pointer-events:none;transition:opacity 0.2s ease}
+  .slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:72px 28px 60px;opacity:0;pointer-events:none;transition:opacity 0.2s ease;overflow:hidden}
   .slide.active{opacity:1;pointer-events:auto}
+  .slide.scrollable{overflow-y:auto;-webkit-overflow-scrolling:touch;justify-content:flex-start;padding-top:56px}
   .slide.active .anim-up{animation:slideUp 0.4s cubic-bezier(0.16,1,0.3,1) both}
   .slide.active .anim-up-d1{animation:slideUp 0.4s 0.1s cubic-bezier(0.16,1,0.3,1) both}
   .slide.active .anim-up-d2{animation:slideUp 0.4s 0.2s cubic-bezier(0.16,1,0.3,1) both}
@@ -153,7 +154,7 @@
   <div class="slide" data-slide="11" id="edgeSlide"></div>
 
   <!-- 12: TRADE FEED -->
-  <div class="slide" data-slide="12">
+  <div class="slide scrollable" data-slide="12">
     <p class="h2 anim-up" style="font-size:15px;margin-bottom:12px">Every trade from the last 14 days</p>
     <div class="feed anim-up-d1" id="feedList"></div>
     <p class="dim">Scroll to see all ↕</p>
@@ -168,7 +169,7 @@
     <p class="h2 anim-up">See it for yourself.</p>
     <p class="sub anim-up-d1">Watch the AI trade tonight's games<br>with play money — or start for real.</p>
     <div class="cta-wrap anim-up-d2">
-      <a href="#" class="btn btn-w">Start with $10 →</a>
+      <a href="#" class="btn btn-w">Try it with $10 →</a>
       <a href="#" class="btn btn-o">Try free with play money</a>
     </div>
     <p class="btn-sub">No hidden fees · Withdraw anytime</p>
@@ -216,7 +217,7 @@ function renderTrades(featured){
     const el=document.getElementById('trade'+i);
     if(!el)return;
     const w=t.result==='win';
-    const sign=w?'+':'';
+    const sign=w?'+':'−';
     const amt=Math.abs(Math.round(t.pnl*100)/100);
     const fmtAmt=amt%1===0?amt:amt.toFixed(2);
     el.innerHTML=`
@@ -245,7 +246,7 @@ function renderFeed(feed){
     const ff=fa%1===0?fa:fa.toFixed(2);
     return `<div class="frow">
       <span class="fgame">${t.game}</span>
-      <span class="fpnl mono ${w?'green':'red'}">${w?'+':''}$${ff}</span>
+      <span class="fpnl mono ${w?'green':'red'}">${w?'+':'−'}$${ff}</span>
       <span class="ftag ${w?'w':'l'}">${w?'W':'L'}</span>
     </div>`;
   }).join('');
@@ -278,15 +279,16 @@ function renderEdge(s){
 }
 
 function renderCompound(s,period){
+  const end=typeof s.endBalance==='number'?s.endBalance.toFixed(2):s.endBalance;
   document.getElementById('compSlide').innerHTML=`
-    <p class="sub anim-up" style="margin-bottom:16px">If you deposited $${s.startBalance} and<br>let the AI compound for ${s.days} days...</p>
+    <p class="sub anim-up" style="margin-bottom:16px">If you started with $${s.startBalance} and<br>let the AI trade for ${s.days} days...</p>
     <div class="ccard anim-scale">
       <div class="cfrom mono">$${s.startBalance}</div>
       <div class="carrow">↓</div>
-      <div class="cto mono">$${s.endBalance}</div>
+      <div class="cto mono">$${end}</div>
       <div class="ctime">${period} · AutoPilot</div>
     </div>
-    <p class="dim anim-up-d2">Based on real trades above</p>`;
+    <p class="dim anim-up-d2">Based on real trades above · per $10 bet</p>`;
 }
 
 loadData();

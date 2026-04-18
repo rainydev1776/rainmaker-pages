@@ -155,9 +155,9 @@ async function main() {
     return Math.round(Math.max(10 * r.pnl_pct, -10) * 100) / 100;
   }
 
-  const startBalance = 100;
+  const startBalance = 10;
   const totalPnl = meaningful.reduce((s, r) => s + Math.max(displayPnl(r), -10), 0);
-  const endBalance = Math.round(startBalance + totalPnl);
+  const endBalance = Math.round((startBalance + totalPnl) * 100) / 100;
 
   function getLabel(ticker, short) {
     const p = parseKalshiTicker(ticker);
