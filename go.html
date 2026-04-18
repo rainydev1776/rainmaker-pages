@@ -62,6 +62,14 @@
   .sval{font-size:32px;font-weight:900;letter-spacing:-1px}
   .slbl{font-size:9px;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:0.14em;margin-top:4px}
 
+  /* EDGE (asymmetric gains) */
+  .edge-wrap{width:100%;max-width:300px;display:flex;flex-direction:column;gap:14px}
+  .edge-row{display:flex;align-items:center;gap:12px}
+  .edge-lbl{font-size:11px;color:rgba(255,255,255,0.3);width:56px;text-align:right;flex-shrink:0;text-transform:uppercase;letter-spacing:0.08em}
+  .edge-bar{height:32px;border-radius:8px;display:flex;align-items:center;padding:0 12px;font-size:14px;font-weight:800;font-family:'JetBrains Mono',monospace;min-width:40px;transition:width 0.6s cubic-bezier(0.16,1,0.3,1)}
+  .edge-bar.win{background:rgba(52,211,153,0.15);color:#34d399}
+  .edge-bar.loss{background:rgba(239,68,68,0.12);color:#ef4444}
+
   /* FEED */
   .feed{width:100%;max-width:320px;display:flex;flex-direction:column;gap:4px;max-height:52vh;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:8px}
   .feed::-webkit-scrollbar{display:none}
@@ -141,18 +149,21 @@
     <p class="dim anim-up-d2"><span class="pulse"></span>Real trades · MLB 2026</p>
   </div>
 
-  <!-- 11: TRADE FEED -->
-  <div class="slide" data-slide="11">
+  <!-- 11: ASYMMETRIC EDGE -->
+  <div class="slide" data-slide="11" id="edgeSlide"></div>
+
+  <!-- 12: TRADE FEED -->
+  <div class="slide" data-slide="12">
     <p class="h2 anim-up" style="font-size:15px;margin-bottom:12px">Every trade from the last 14 days</p>
     <div class="feed anim-up-d1" id="feedList"></div>
     <p class="dim">Scroll to see all ↕</p>
   </div>
 
-  <!-- 12: COMPOUND -->
-  <div class="slide" data-slide="12" id="compSlide"></div>
+  <!-- 13: COMPOUND -->
+  <div class="slide" data-slide="13" id="compSlide"></div>
 
-  <!-- 13: CTA -->
-  <div class="slide" data-slide="13">
+  <!-- 14: CTA -->
+  <div class="slide" data-slide="14">
     <img src="logo.png" alt="Rainmaker" style="width:48px;height:48px;margin-bottom:20px" class="anim-scale">
     <p class="h2 anim-up">See it for yourself.</p>
     <p class="sub anim-up-d1">Watch the AI trade tonight's games<br>with play money — or start for real.</p>
@@ -165,7 +176,7 @@
 </div>
 
 <script>
-const TOTAL_SLIDES = 14;
+const TOTAL_SLIDES = 15;
 let cur = 0;
 
 const bar = document.getElementById('pbar');
@@ -194,6 +205,7 @@ async function loadData(){
     const d=await r.json();
     renderTrades(d.featured||[]);
     renderScore(d.summary||{});
+    renderEdge(d.summary||{});
     renderFeed(d.feed||[]);
     renderCompound(d.summary||{},d.period||'');
   }catch(e){console.error('Failed to load trades.json',e)}
@@ -222,7 +234,7 @@ function renderScore(s){
   document.getElementById('scoreGrid').innerHTML=`
     <div class="sitem"><div class="sval green mono">${s.wins}</div><div class="slbl">Wins</div></div>
     <div class="sitem"><div class="sval red mono">${s.losses}</div><div class="slbl">Losses</div></div>
-    <div class="sitem"><div class="sval mono">${s.winRate}%</div><div class="slbl">Win Rate</div></div>`;
+    <div class="sitem"><div class="sval green mono">${s.winRate}%</div><div class="slbl">Win Rate</div></div>`;
 }
 
 function renderFeed(feed){
@@ -237,6 +249,32 @@ function renderFeed(feed){
       <span class="ftag ${w?'w':'l'}">${w?'W':'L'}</span>
     </div>`;
   }).join('');
+}
+
+function renderEdge(s){
+  const totW=Math.abs(s.totalWon||0);
+  const totL=Math.abs(s.totalLost||0);
+  const maxVal=Math.max(totW,totL,1);
+  const wPct=Math.round((totW/maxVal)*100);
+  const lPct=Math.round((totL/maxVal)*100);
+  const wFmt=Math.round(totW);
+  const lFmt=Math.round(totL);
+  const net=Math.round(totW-totL);
+  document.getElementById('edgeSlide').innerHTML=`
+    <p class="h2 anim-up" style="margin-bottom:6px">You keep more<br>than you lose.</p>
+    <p class="sub anim-up-d1" style="margin-bottom:24px">Per $10 bet across ${s.wins+s.losses} games</p>
+    <div class="edge-wrap anim-up-d2">
+      <div class="edge-row">
+        <span class="edge-lbl">Earned</span>
+        <div class="edge-bar win" style="width:${wPct}%">+$${wFmt}</div>
+      </div>
+      <div class="edge-row">
+        <span class="edge-lbl">Lost</span>
+        <div class="edge-bar loss" style="width:${lPct}%">−$${lFmt}</div>
+      </div>
+    </div>
+    <p class="sub anim-up-d2" style="margin-top:20px;color:#34d399;font-weight:600">Net: +$${net}</p>
+    <p class="dim" style="margin-top:8px">The AI wins often enough that<br>the math works in your favor.</p>`;
 }
 
 function renderCompound(s,period){

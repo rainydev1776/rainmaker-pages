@@ -180,7 +180,13 @@ async function main() {
   const output = {
     updated: now.toISOString(),
     period: `${formatDate(sinceDate)} – ${formatDate(now)}`,
-    summary: { wins, losses, winRate, startBalance, endBalance, days: LOOKBACK_DAYS },
+    summary: {
+      wins, losses, winRate, startBalance, endBalance, days: LOOKBACK_DAYS,
+      avgWinPnl: wins > 0 ? Math.round(meaningful.filter(r => r.pnl_usd > 0).reduce((s, r) => s + displayPnl(r), 0) / wins * 100) / 100 : 0,
+      avgLossPnl: losses > 0 ? Math.round(meaningful.filter(r => r.pnl_usd < 0).reduce((s, r) => s + displayPnl(r), 0) / losses * 100) / 100 : 0,
+      totalWon: Math.round(meaningful.filter(r => r.pnl_usd > 0).reduce((s, r) => s + displayPnl(r), 0) * 100) / 100,
+      totalLost: Math.round(Math.abs(meaningful.filter(r => r.pnl_usd < 0).reduce((s, r) => s + displayPnl(r), 0)) * 100) / 100,
+    },
     featured,
     feed,
   };
