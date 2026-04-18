@@ -127,11 +127,15 @@
   <!-- 3: HOOK -->
   <div class="slide" data-slide="3">
     <p class="h1 anim-up">You just get paid.</p>
-    <p class="sub anim-up-d1" style="position:absolute;top:calc(50% + 40px);left:28px;right:28px">Rainmaker is an AI that bets on live<br>sports games — so you don't have to.</p>
   </div>
 
-  <!-- 4: CONTEXT -->
+  <!-- 4: EXPLAINER -->
   <div class="slide" data-slide="4">
+    <p class="sub anim-up" style="color:rgba(255,255,255,0.55)">Rainmaker is an AI that bets on live<br>sports games — so you don't have to.</p>
+  </div>
+
+  <!-- 5: CONTEXT -->
+  <div class="slide" data-slide="5">
     <p class="h2 anim-up">Every night, our AI watches<br>live MLB games.</p>
     <p class="sub anim-up-d1">It spots patterns mid-game and<br>places trades automatically.</p>
     <p class="sub anim-up-d2" style="color:rgba(255,255,255,0.25);margin-top:20px">Here's what happened<br>in the last 2 weeks. ↓</p>
@@ -170,7 +174,7 @@
 </div>
 
 <script>
-const FIXED_PRE = 5;  // slides 0-4 (logo, hook×3, context)
+const FIXED_PRE = 6;  // slides 0-5 (logo, hook×3, explainer, context)
 const FIXED_POST = 5; // scoreboard, edge, feed, compound, cta
 let TOTAL_SLIDES = FIXED_PRE + FIXED_POST;
 let cur = 0;
