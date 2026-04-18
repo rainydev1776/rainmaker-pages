@@ -262,8 +262,8 @@ function renderEdge(s){
   const lFmt=Math.round(totL);
   const net=Math.round(totW-totL);
   document.getElementById('edgeSlide').innerHTML=`
-    <p class="h2 anim-up" style="margin-bottom:6px">You keep more<br>than you lose.</p>
-    <p class="sub anim-up-d1" style="margin-bottom:24px">Per $10 bet across ${s.wins+s.losses} games</p>
+    <p class="h2 anim-up" style="margin-bottom:6px">Asymmetric by design.</p>
+    <p class="sub anim-up-d1" style="margin-bottom:24px">Engineered so the gains always outpace the losses.<br>That's how $100 becomes $370.</p>
     <div class="edge-wrap anim-up-d2">
       <div class="edge-row">
         <span class="edge-lbl">Earned</span>
@@ -279,16 +279,15 @@ function renderEdge(s){
 }
 
 function renderCompound(s,period){
-  const end=typeof s.endBalance==='number'?s.endBalance.toFixed(2):s.endBalance;
   document.getElementById('compSlide').innerHTML=`
     <p class="sub anim-up" style="margin-bottom:16px">If you started with $${s.startBalance} and<br>let the AI trade for ${s.days} days...</p>
     <div class="ccard anim-scale">
       <div class="cfrom mono">$${s.startBalance}</div>
       <div class="carrow">↓</div>
-      <div class="cto mono">$${end}</div>
+      <div class="cto mono">$${s.endBalance}</div>
       <div class="ctime">${period} · AutoPilot</div>
     </div>
-    <p class="dim anim-up-d2">Based on real trades above · per $10 bet</p>`;
+    <p class="dim anim-up-d2">Based on real trades above</p>`;
 }
 
 loadData();

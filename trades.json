@@ -1,23 +1,29 @@
 {
-  "updated": "2026-04-18T20:38:06.123Z",
+  "updated": "2026-04-18T20:55:49.899Z",
   "period": "Apr 4 – Apr 18",
   "summary": {
-    "wins": 8,
+    "wins": 9,
     "losses": 3,
-    "winRate": 73,
-    "startBalance": 10,
-    "endBalance": 36.62,
+    "winRate": 75,
+    "startBalance": 100,
+    "endBalance": 283,
     "days": 14,
-    "avgWinPnl": 5.89,
+    "avgWinPnl": 4.31,
     "avgLossPnl": -6.83,
-    "totalWon": 47.1,
+    "totalWon": 38.78,
     "totalLost": 20.48
   },
   "featured": [
     {
       "game": "Mets vs Cubs",
       "date": "Apr 18",
-      "pnl": 9.96,
+      "pnl": 0.93,
+      "result": "win"
+    },
+    {
+      "game": "Reds vs Twins",
+      "date": "Apr 18",
+      "pnl": 0.69,
       "result": "win"
     },
     {
@@ -27,28 +33,27 @@
       "result": "win"
     },
     {
-      "game": "Orioles vs Guardians",
-      "date": "Apr 16",
-      "pnl": 1.81,
-      "result": "win"
-    },
-    {
       "game": "Rays vs Pirates",
       "date": "Apr 17",
       "pnl": -4.78,
       "result": "loss"
     },
     {
-      "game": "Royals vs Tigers",
+      "game": "Orioles vs Guardians",
       "date": "Apr 16",
-      "pnl": 3.26,
+      "pnl": 1.81,
       "result": "win"
     }
   ],
   "feed": [
     {
       "game": "NYM vs CHC",
-      "pnl": 9.96,
+      "pnl": 0.93,
+      "result": "win"
+    },
+    {
+      "game": "CIN vs MIN",
+      "pnl": 0.69,
       "result": "win"
     },
     {
@@ -88,7 +93,7 @@
     },
     {
       "game": "NYY vs TB",
-      "pnl": 6.99,
+      "pnl": 7.01,
       "result": "win"
     },
     {
