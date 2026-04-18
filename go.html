@@ -53,6 +53,7 @@
   .tcard-game{font-size:13px;color:rgba(255,255,255,0.35);letter-spacing:0.05em;margin-bottom:8px}
   .tcard-date{font-size:11px;color:rgba(255,255,255,0.15);margin-bottom:16px}
   .tcard-pnl{font-size:56px;font-weight:900;letter-spacing:-2px;line-height:1}
+  .tcard-pct{font-size:15px;font-weight:700;margin-top:6px;letter-spacing:-0.5px}
   .tcard-tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;padding:5px 14px;border-radius:8px;margin-top:14px}
   .tcard-tag.win{background:rgba(52,211,153,0.1);color:#34d399}
   .tcard-tag.loss{background:rgba(239,68,68,0.1);color:#ef4444}
@@ -244,6 +245,7 @@ function renderTrades(trades){
         <div class="tcard-game">${t.game}</div>
         <div class="tcard-date">${t.date}</div>
         <div class="tcard-pnl mono ${w?'green':'red'}">${sign}$${fmtPnl(t.pnl)}</div>
+        <div class="tcard-pct ${w?'green':'red'}">${sign}${Math.abs(t.pct).toFixed(1)}%</div>
         <div class="tcard-tag ${t.result}">${w?'WIN':'LOSS'}</div>
       </div>
       <p class="dim anim-up-d1">Real trade · per $10 bet</p>`;
@@ -266,9 +268,10 @@ function renderScore(s){
 function renderFeed(feed){
   document.getElementById('feedList').innerHTML=feed.map(t=>{
     const w=t.result==='win';
+    const pctSign=w?'+':'−';
     return `<div class="frow">
       <span class="fgame">${t.game}</span>
-      <span class="fpnl mono ${w?'green':'red'}">${w?'+':'−'}$${fmtPnl(t.pnl)}</span>
+      <span class="fpnl mono ${w?'green':'red'}">${w?'+':'−'}$${fmtPnl(t.pnl)} <span style="font-size:10px;opacity:0.6">${pctSign}${Math.abs(t.pct).toFixed(1)}%</span></span>
       <span class="ftag ${w?'w':'l'}">${w?'W':'L'}</span>
     </div>`;
   }).join('');

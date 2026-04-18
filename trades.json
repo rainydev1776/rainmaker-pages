@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-18T22:43:25.961Z",
+  "updated": "2026-04-18T22:50:18.616Z",
   "period": "Apr 10 – Apr 18",
   "summary": {
     "wins": 9,
@@ -18,72 +18,84 @@
       "game": "Brewers vs Marlins",
       "date": "Apr 18",
       "pnl": 2.06,
+      "pct": 20.6,
       "result": "win"
     },
     {
       "game": "Reds vs Twins",
       "date": "Apr 18",
       "pnl": 12.91,
+      "pct": 129.1,
       "result": "win"
     },
     {
       "game": "Mets vs Cubs",
       "date": "Apr 18",
       "pnl": 0.91,
+      "pct": 9.1,
       "result": "win"
     },
     {
       "game": "Rays vs Pirates",
       "date": "Apr 17",
       "pnl": -4.91,
+      "pct": -49.1,
       "result": "loss"
     },
     {
       "game": "Rays vs White Sox",
       "date": "Apr 16",
       "pnl": 10.02,
+      "pct": 100.2,
       "result": "win"
     },
     {
       "game": "Angels vs Yankees",
       "date": "Apr 16",
       "pnl": -9.52,
+      "pct": -95.2,
       "result": "loss"
     },
     {
       "game": "Orioles vs Guardians",
       "date": "Apr 16",
       "pnl": 1.82,
+      "pct": 18.2,
       "result": "win"
     },
     {
       "game": "Royals vs Tigers",
       "date": "Apr 16",
       "pnl": 3.19,
+      "pct": 31.9,
       "result": "win"
     },
     {
       "game": "Blue Jays vs Brewers",
       "date": "Apr 16",
       "pnl": 2.26,
+      "pct": 22.6,
       "result": "win"
     },
     {
       "game": "AZ vs Phillies",
       "date": "Apr 12",
       "pnl": 11.86,
+      "pct": 118.6,
       "result": "win"
     },
     {
       "game": "Marlins vs Tigers",
       "date": "Apr 10",
       "pnl": -6.15,
+      "pct": -61.5,
       "result": "loss"
     },
     {
       "game": "Yankees vs Rays",
       "date": "Apr 11",
       "pnl": 7.05,
+      "pct": 70.5,
       "result": "win"
     }
   ],
@@ -91,61 +103,73 @@
     {
       "game": "MIL vs MIA",
       "pnl": 2.06,
+      "pct": 20.6,
       "result": "win"
     },
     {
       "game": "CIN vs MIN",
       "pnl": 12.91,
+      "pct": 129.1,
       "result": "win"
     },
     {
       "game": "NYM vs CHC",
       "pnl": 0.91,
+      "pct": 9.1,
       "result": "win"
     },
     {
       "game": "TB vs PIT",
       "pnl": -4.91,
+      "pct": -49.1,
       "result": "loss"
     },
     {
       "game": "TB vs CWS",
       "pnl": 10.02,
+      "pct": 100.2,
       "result": "win"
     },
     {
       "game": "LAA vs NYY",
       "pnl": -9.52,
+      "pct": -95.2,
       "result": "loss"
     },
     {
       "game": "BAL vs CLE",
       "pnl": 1.82,
+      "pct": 18.2,
       "result": "win"
     },
     {
       "game": "KC vs DET",
       "pnl": 3.19,
+      "pct": 31.9,
       "result": "win"
     },
     {
       "game": "TOR vs MIL",
       "pnl": 2.26,
+      "pct": 22.6,
       "result": "win"
     },
     {
       "game": "AZ vs PHI",
       "pnl": 11.86,
+      "pct": 118.6,
       "result": "win"
     },
     {
       "game": "NYY vs TB",
       "pnl": 7.05,
+      "pct": 70.5,
       "result": "win"
     },
     {
       "game": "MIA vs DET",
       "pnl": -6.15,
+      "pct": -61.5,
       "result": "loss"
     }
   ]

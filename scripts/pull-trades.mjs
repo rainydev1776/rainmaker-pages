@@ -154,7 +154,8 @@ async function main() {
       const avgInv = invested / Math.max(usersByGame.get(gk)?.size || 1, 1);
       const pnlPct = avgInv > 0 ? avgPnl / avgInv : 0;
       const displayPnl = Math.round(Math.max(10 * pnlPct, -10) * 100) / 100;
-      return { ticker: g.ticker, executed_at: g.executed_at, displayPnl, isWin: displayPnl > 0 };
+      const displayPct = Math.round(pnlPct * 1000) / 10;
+      return { ticker: g.ticker, executed_at: g.executed_at, displayPnl, displayPct, isWin: displayPnl > 0 };
     })
     .filter(r => Math.abs(Math.round(r.displayPnl)) > 0)
     .sort((a, b) => new Date(b.executed_at) - new Date(a.executed_at));
@@ -254,12 +255,14 @@ async function main() {
     game: getLabel(g.ticker, false),
     date: formatDate(g.executed_at),
     pnl: g.displayPnl,
+    pct: g.displayPct,
     result: g.isWin ? 'win' : 'loss',
   }));
 
   const feed = selected.map(g => ({
     game: getLabel(g.ticker, true),
     pnl: g.displayPnl,
+    pct: g.displayPct,
     result: g.isWin ? 'win' : 'loss',
   }));
 
