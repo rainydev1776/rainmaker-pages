@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-18T22:41:38.246Z",
+  "updated": "2026-04-18T22:43:25.961Z",
   "period": "Apr 10 – Apr 18",
   "summary": {
     "wins": 9,
@@ -75,16 +75,16 @@
       "result": "win"
     },
     {
-      "game": "Yankees vs Rays",
-      "date": "Apr 11",
-      "pnl": 7.05,
-      "result": "win"
-    },
-    {
       "game": "Marlins vs Tigers",
       "date": "Apr 10",
       "pnl": -6.15,
       "result": "loss"
+    },
+    {
+      "game": "Yankees vs Rays",
+      "date": "Apr 11",
+      "pnl": 7.05,
+      "result": "win"
     }
   ],
   "feed": [
