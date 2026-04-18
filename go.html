@@ -297,7 +297,8 @@ function renderEdge(s){
 
 function renderCompound(s,period){
   document.getElementById('compSlide').innerHTML=`
-    <p class="sub anim-up" style="margin-bottom:16px">If you started with $${s.startBalance} and<br>let the AI trade for ${s.days} days...</p>
+    <p class="h2 anim-up" style="margin-bottom:6px">Let it compound.</p>
+    <p class="sub anim-up-d1" style="margin-bottom:16px">Start with $${s.startBalance}. Let the AI reinvest your wins.<br>${s.days} days later...</p>
     <div class="ccard anim-scale">
       <div class="cfrom mono">$${s.startBalance}</div>
       <div class="carrow">↓</div>
