@@ -134,11 +134,22 @@
     <p class="sub anim-up" style="color:rgba(255,255,255,0.55)">Rainmaker is an AI that bets on live<br>sports games — so you don't have to.</p>
   </div>
 
-  <!-- 5: CONTEXT -->
+  <!-- 5: CONTEXT - line 1 -->
   <div class="slide" data-slide="5">
     <p class="h2 anim-up">Every night, our AI watches<br>live MLB games.</p>
-    <p class="sub anim-up-d1">It spots patterns mid-game and<br>places trades automatically.</p>
-    <p class="sub anim-up-d2" style="color:rgba(255,255,255,0.25);margin-top:20px">Here's what happened<br>in the last 2 weeks. ↓</p>
+  </div>
+
+  <!-- 6: CONTEXT - lines 1+2 -->
+  <div class="slide" data-slide="6">
+    <p class="h2">Every night, our AI watches<br>live MLB games.</p>
+    <p class="sub anim-up" style="margin-top:14px">It spots patterns mid-game and<br>places trades automatically.</p>
+  </div>
+
+  <!-- 7: CONTEXT - lines 1+2+3 -->
+  <div class="slide" data-slide="7">
+    <p class="h2">Every night, our AI watches<br>live MLB games.</p>
+    <p class="sub" style="margin-top:14px">It spots patterns mid-game and<br>places trades automatically.</p>
+    <p class="sub anim-up" style="color:rgba(255,255,255,0.25);margin-top:20px">Here's what happened<br>in the last 2 weeks. ↓</p>
   </div>
 
   <!-- TRADE CARDS: injected dynamically by JS -->
@@ -174,7 +185,7 @@
 </div>
 
 <script>
-const FIXED_PRE = 6;  // slides 0-5 (logo, hook×3, explainer, context)
+const FIXED_PRE = 8;  // slides 0-7 (logo, hook×3, explainer, context×3)
 const FIXED_POST = 5; // scoreboard, edge, feed, compound, cta
 let TOTAL_SLIDES = FIXED_PRE + FIXED_POST;
 let cur = 0;
