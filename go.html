@@ -284,14 +284,14 @@ function renderEdge(s){
     <div class="edge-wrap anim-up-d2">
       <div class="edge-row">
         <span class="edge-lbl">Earned</span>
-        <div class="edge-bar win" style="width:${wPct}%">+$${Math.round(totW)}</div>
+        <div class="edge-bar win" style="width:${wPct}%">+$${totW.toFixed(2)}</div>
       </div>
       <div class="edge-row">
         <span class="edge-lbl">Lost</span>
-        <div class="edge-bar loss" style="width:${lPct}%">−$${Math.round(totL)}</div>
+        <div class="edge-bar loss" style="width:${lPct}%">−$${totL.toFixed(2)}</div>
       </div>
     </div>
-    <p class="sub anim-up-d2" style="margin-top:20px;color:#34d399;font-weight:600">Net: +$${Math.round(totW-totL)}</p>
+    <p class="sub anim-up-d2" style="margin-top:20px;color:#34d399;font-weight:600">Net: +$${(totW-totL).toFixed(2)}</p>
     <p class="dim" style="margin-top:8px">The AI wins often enough that<br>the math works in your favor.</p>`;
 }
 
