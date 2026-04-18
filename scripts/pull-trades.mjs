@@ -165,16 +165,18 @@ async function main() {
     return short ? `${p.awayAbbr} vs ${p.homeAbbr}` : `${expandTeam(p.awayAbbr)} vs ${expandTeam(p.homeAbbr)}`;
   }
 
-  // Order featured cards: W W W L W — hook with wins, show a loss for credibility, close strong
+  // Order ALL cards: 3 wins, then alternate (loss after every 3 wins) for best first impression
   const allWins = meaningful.filter(r => r.pnl_usd > 0);
   const allLosses = meaningful.filter(r => r.pnl_usd < 0);
   const ordered = [];
-  let wi = 0, li = 0;
-  for (let slot = 0; slot < 5; slot++) {
-    if (slot === 3 && li < allLosses.length) {
+  let wi = 0, li = 0, winStreak = 0;
+  while (wi < allWins.length || li < allLosses.length) {
+    if (winStreak >= 3 && li < allLosses.length) {
       ordered.push(allLosses[li++]);
+      winStreak = 0;
     } else if (wi < allWins.length) {
       ordered.push(allWins[wi++]);
+      winStreak++;
     } else if (li < allLosses.length) {
       ordered.push(allLosses[li++]);
     }

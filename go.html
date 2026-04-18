@@ -136,35 +136,27 @@
     <p class="sub anim-up-d2" style="color:rgba(255,255,255,0.25);margin-top:20px">Here's what happened<br>in the last 2 weeks. ↓</p>
   </div>
 
-  <!-- 5-9: TRADE CARDS (injected by JS) -->
-  <div class="slide" data-slide="5" id="trade0"></div>
-  <div class="slide" data-slide="6" id="trade1"></div>
-  <div class="slide" data-slide="7" id="trade2"></div>
-  <div class="slide" data-slide="8" id="trade3"></div>
-  <div class="slide" data-slide="9" id="trade4"></div>
+  <!-- TRADE CARDS: injected dynamically by JS -->
+  <div id="tradeSlots"></div>
 
-  <!-- 10: SCOREBOARD -->
-  <div class="slide" data-slide="10" id="scoreSlide">
+  <!-- Post-trade slides (data-slide set dynamically) -->
+  <div class="slide" id="scoreSlide">
     <p class="h2 anim-up" style="margin-bottom:20px">Last 14 days</p>
     <div class="sgrid anim-up-d1" id="scoreGrid"></div>
     <p class="dim anim-up-d2"><span class="pulse"></span>Real trades · MLB 2026</p>
   </div>
 
-  <!-- 11: ASYMMETRIC EDGE -->
-  <div class="slide" data-slide="11" id="edgeSlide"></div>
+  <div class="slide" id="edgeSlide"></div>
 
-  <!-- 12: TRADE FEED -->
-  <div class="slide scrollable" data-slide="12">
+  <div class="slide scrollable" id="feedSlide">
     <p class="h2 anim-up" style="font-size:15px;margin-bottom:12px">Every trade from the last 14 days</p>
     <div class="feed anim-up-d1" id="feedList"></div>
     <p class="dim">Scroll to see all ↕</p>
   </div>
 
-  <!-- 13: COMPOUND -->
-  <div class="slide" data-slide="13" id="compSlide"></div>
+  <div class="slide" id="compSlide"></div>
 
-  <!-- 14: CTA -->
-  <div class="slide" data-slide="14">
+  <div class="slide" id="ctaSlide">
     <img src="logo.png" alt="Rainmaker" style="width:48px;height:48px;margin-bottom:20px" class="anim-scale">
     <p class="h2 anim-up">See it for yourself.</p>
     <p class="sub anim-up-d1">Watch the AI trade tonight's games<br>with play money — or start for real.</p>
@@ -177,12 +169,27 @@
 </div>
 
 <script>
-const TOTAL_SLIDES = 15;
+const FIXED_PRE = 5;  // slides 0-4 (logo, hook×3, context)
+const FIXED_POST = 5; // scoreboard, edge, feed, compound, cta
+let TOTAL_SLIDES = FIXED_PRE + FIXED_POST;
 let cur = 0;
-
 const bar = document.getElementById('pbar');
-for(let i=0;i<TOTAL_SLIDES;i++){
-  const s=document.createElement('div');s.className='s';s.innerHTML='<div class="f"></div>';bar.appendChild(s);
+const phone = document.querySelector('.phone');
+
+function buildBar(){
+  bar.innerHTML='';
+  for(let i=0;i<TOTAL_SLIDES;i++){
+    const s=document.createElement('div');s.className='s';s.innerHTML='<div class="f"></div>';bar.appendChild(s);
+  }
+}
+
+function assignPostSlides(tradeCount){
+  const offset = FIXED_PRE + tradeCount;
+  document.getElementById('scoreSlide').setAttribute('data-slide', offset);
+  document.getElementById('edgeSlide').setAttribute('data-slide', offset+1);
+  document.getElementById('feedSlide').setAttribute('data-slide', offset+2);
+  document.getElementById('compSlide').setAttribute('data-slide', offset+3);
+  document.getElementById('ctaSlide').setAttribute('data-slide', offset+4);
 }
 
 function go(idx){
@@ -200,11 +207,17 @@ document.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:tru
 document.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>40){d<0?go(cur+1):go(cur-1)}},{passive:true});
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
 
+function fmtPnl(pnl){
+  const a=Math.abs(Math.round(pnl*100)/100);
+  return a%1===0?String(a):a.toFixed(2);
+}
+
 async function loadData(){
   try{
     const r=await fetch('trades.json');
     const d=await r.json();
-    renderTrades(d.featured||[]);
+    const allTrades=d.featured||[];
+    renderTrades(allTrades);
     renderScore(d.summary||{});
     renderEdge(d.summary||{});
     renderFeed(d.feed||[]);
@@ -212,23 +225,33 @@ async function loadData(){
   }catch(e){console.error('Failed to load trades.json',e)}
 }
 
-function renderTrades(featured){
-  featured.forEach((t,i)=>{
-    const el=document.getElementById('trade'+i);
-    if(!el)return;
+function renderTrades(trades){
+  const container=document.getElementById('tradeSlots');
+  container.innerHTML='';
+  TOTAL_SLIDES = FIXED_PRE + trades.length + FIXED_POST;
+  buildBar();
+  assignPostSlides(trades.length);
+
+  trades.forEach((t,i)=>{
+    const slideIdx = FIXED_PRE + i;
     const w=t.result==='win';
     const sign=w?'+':'−';
-    const amt=Math.abs(Math.round(t.pnl*100)/100);
-    const fmtAmt=amt%1===0?amt:amt.toFixed(2);
-    el.innerHTML=`
+    const div=document.createElement('div');
+    div.className='slide';
+    div.setAttribute('data-slide', slideIdx);
+    div.innerHTML=`
       <div class="tcard anim-scale">
         <div class="tcard-game">${t.game}</div>
         <div class="tcard-date">${t.date}</div>
-        <div class="tcard-pnl mono ${w?'green':'red'}">${sign}$${fmtAmt}</div>
+        <div class="tcard-pnl mono ${w?'green':'red'}">${sign}$${fmtPnl(t.pnl)}</div>
         <div class="tcard-tag ${t.result}">${w?'WIN':'LOSS'}</div>
       </div>
       <p class="dim anim-up-d1">Real trade · per $10 bet</p>`;
+    container.appendChild(div);
   });
+
+  // Re-activate current slide
+  go(cur);
 }
 
 function renderScore(s){
@@ -239,14 +262,11 @@ function renderScore(s){
 }
 
 function renderFeed(feed){
-  const el=document.getElementById('feedList');
-  el.innerHTML=feed.map(t=>{
+  document.getElementById('feedList').innerHTML=feed.map(t=>{
     const w=t.result==='win';
-    const fa=Math.abs(Math.round(t.pnl*100)/100);
-    const ff=fa%1===0?fa:fa.toFixed(2);
     return `<div class="frow">
       <span class="fgame">${t.game}</span>
-      <span class="fpnl mono ${w?'green':'red'}">${w?'+':'−'}$${ff}</span>
+      <span class="fpnl mono ${w?'green':'red'}">${w?'+':'−'}$${fmtPnl(t.pnl)}</span>
       <span class="ftag ${w?'w':'l'}">${w?'W':'L'}</span>
     </div>`;
   }).join('');
@@ -258,23 +278,20 @@ function renderEdge(s){
   const maxVal=Math.max(totW,totL,1);
   const wPct=Math.round((totW/maxVal)*100);
   const lPct=Math.round((totL/maxVal)*100);
-  const wFmt=Math.round(totW);
-  const lFmt=Math.round(totL);
-  const net=Math.round(totW-totL);
   document.getElementById('edgeSlide').innerHTML=`
     <p class="h2 anim-up" style="margin-bottom:6px">Asymmetric by design.</p>
     <p class="sub anim-up-d1" style="margin-bottom:24px">Engineered so the gains always outpace the losses.<br>That's how $100 becomes $370.</p>
     <div class="edge-wrap anim-up-d2">
       <div class="edge-row">
         <span class="edge-lbl">Earned</span>
-        <div class="edge-bar win" style="width:${wPct}%">+$${wFmt}</div>
+        <div class="edge-bar win" style="width:${wPct}%">+$${Math.round(totW)}</div>
       </div>
       <div class="edge-row">
         <span class="edge-lbl">Lost</span>
-        <div class="edge-bar loss" style="width:${lPct}%">−$${lFmt}</div>
+        <div class="edge-bar loss" style="width:${lPct}%">−$${Math.round(totL)}</div>
       </div>
     </div>
-    <p class="sub anim-up-d2" style="margin-top:20px;color:#34d399;font-weight:600">Net: +$${net}</p>
+    <p class="sub anim-up-d2" style="margin-top:20px;color:#34d399;font-weight:600">Net: +$${Math.round(totW-totL)}</p>
     <p class="dim" style="margin-top:8px">The AI wins often enough that<br>the math works in your favor.</p>`;
 }
 
@@ -290,6 +307,8 @@ function renderCompound(s,period){
     <p class="dim anim-up-d2">Based on real trades above</p>`;
 }
 
+buildBar();
+assignPostSlides(0);
 loadData();
 go(0);
 </script>

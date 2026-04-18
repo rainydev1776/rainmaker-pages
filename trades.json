@@ -1,29 +1,29 @@
 {
-  "updated": "2026-04-18T20:55:49.899Z",
+  "updated": "2026-04-18T21:29:19.904Z",
   "period": "Apr 4 – Apr 18",
   "summary": {
     "wins": 9,
     "losses": 3,
     "winRate": 75,
     "startBalance": 100,
-    "endBalance": 283,
+    "endBalance": 403,
     "days": 14,
-    "avgWinPnl": 4.31,
+    "avgWinPnl": 5.64,
     "avgLossPnl": -6.83,
-    "totalWon": 38.78,
+    "totalWon": 50.8,
     "totalLost": 20.48
   },
   "featured": [
     {
-      "game": "Mets vs Cubs",
+      "game": "Reds vs Twins",
       "date": "Apr 18",
-      "pnl": 0.93,
+      "pnl": 12.79,
       "result": "win"
     },
     {
-      "game": "Reds vs Twins",
+      "game": "Mets vs Cubs",
       "date": "Apr 18",
-      "pnl": 0.69,
+      "pnl": 0.9,
       "result": "win"
     },
     {
@@ -43,17 +43,59 @@
       "date": "Apr 16",
       "pnl": 1.81,
       "result": "win"
+    },
+    {
+      "game": "Royals vs Tigers",
+      "date": "Apr 16",
+      "pnl": 3.18,
+      "result": "win"
+    },
+    {
+      "game": "Blue Jays vs Brewers",
+      "date": "Apr 16",
+      "pnl": 2.24,
+      "result": "win"
+    },
+    {
+      "game": "Angels vs Yankees",
+      "date": "Apr 16",
+      "pnl": -9.35,
+      "result": "loss"
+    },
+    {
+      "game": "AZ vs Phillies",
+      "date": "Apr 12",
+      "pnl": 10.77,
+      "result": "win"
+    },
+    {
+      "game": "Yankees vs Rays",
+      "date": "Apr 11",
+      "pnl": 6.99,
+      "result": "win"
+    },
+    {
+      "game": "Cardinals vs Nationals",
+      "date": "Apr 6",
+      "pnl": 2.04,
+      "result": "win"
+    },
+    {
+      "game": "Marlins vs Tigers",
+      "date": "Apr 10",
+      "pnl": -6.35,
+      "result": "loss"
     }
   ],
   "feed": [
     {
-      "game": "NYM vs CHC",
-      "pnl": 0.93,
+      "game": "CIN vs MIN",
+      "pnl": 12.79,
       "result": "win"
     },
     {
-      "game": "CIN vs MIN",
-      "pnl": 0.69,
+      "game": "NYM vs CHC",
+      "pnl": 0.9,
       "result": "win"
     },
     {
@@ -78,12 +120,12 @@
     },
     {
       "game": "KC vs DET",
-      "pnl": 3.26,
+      "pnl": 3.18,
       "result": "win"
     },
     {
       "game": "TOR vs MIL",
-      "pnl": 2.19,
+      "pnl": 2.24,
       "result": "win"
     },
     {
@@ -93,7 +135,7 @@
     },
     {
       "game": "NYY vs TB",
-      "pnl": 7.01,
+      "pnl": 6.99,
       "result": "win"
     },
     {
