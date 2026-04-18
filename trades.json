@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-18T17:34:28.234Z",
+  "updated": "2026-04-18T17:38:23.011Z",
   "period": "Apr 4 – Apr 18",
   "summary": {
     "wins": 7,
@@ -12,19 +12,19 @@
   "featured": [
     {
       "game": "Rays vs Pirates",
-      "date": "Apr 17",
+      "date": "Apr 18",
       "pnl": -4.78,
       "result": "loss"
     },
     {
       "game": "Rays vs White Sox",
-      "date": "Apr 16",
+      "date": "Apr 17",
       "pnl": 10.08,
       "result": "win"
     },
     {
       "game": "Angels vs Yankees",
-      "date": "Apr 16",
+      "date": "Apr 17",
       "pnl": -9.35,
       "result": "loss"
     },
