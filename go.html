@@ -8,484 +8,247 @@
 <title>Rainmaker</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { height: 100%; overflow: hidden; background: #000; font-family: 'Inter', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;overflow:hidden;background:#000;font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
 
-  /* PHONE FRAME — caps at 430px on desktop */
-  .phone {
-    max-width: 430px;
-    height: 100vh;
-    height: 100dvh;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-    background: #000;
-  }
+  .phone{max-width:430px;height:100vh;height:100dvh;margin:0 auto;position:relative;overflow:hidden;background:#000}
 
-  /* PROGRESS BAR (IG style) */
-  .progress-bar {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    right: 12px;
-    display: flex;
-    gap: 4px;
-    z-index: 200;
-  }
-  .progress-bar .seg {
-    flex: 1;
-    height: 3px;
-    background: rgba(255,255,255,0.15);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  .progress-bar .seg .fill {
-    height: 100%;
-    width: 0%;
-    background: #fff;
-    border-radius: 3px;
-    transition: width 0.3s ease;
-  }
-  .progress-bar .seg.done .fill { width: 100%; }
-  .progress-bar .seg.active .fill { width: 100%; }
+  /* PROGRESS BAR */
+  .pbar{position:absolute;top:env(safe-area-inset-top,12px);left:12px;right:12px;display:flex;gap:3px;z-index:200;padding-top:12px}
+  .pbar .s{flex:1;height:2px;background:rgba(255,255,255,0.12);border-radius:2px;overflow:hidden}
+  .pbar .s .f{height:100%;width:0;background:#fff;border-radius:2px;transition:width 0.3s ease}
+  .pbar .s.done .f{width:100%}
+  .pbar .s.active .f{width:100%}
 
   /* TAP ZONES */
-  .tap-left, .tap-right {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 100;
-  }
-  .tap-left { left: 0; width: 30%; }
-  .tap-right { right: 0; width: 70%; }
+  .tap-l,.tap-r{position:absolute;top:0;bottom:0;z-index:100}
+  .tap-l{left:0;width:25%}
+  .tap-r{right:0;width:75%}
 
   /* SLIDES */
-  .slide {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 32px 80px;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-    pointer-events: none;
-  }
-  .slide.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
+  .slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:72px 28px 60px;opacity:0;pointer-events:none;transition:opacity 0.2s ease}
+  .slide.active{opacity:1;pointer-events:auto}
+  .slide.active .anim-up{animation:slideUp 0.4s cubic-bezier(0.16,1,0.3,1) both}
+  .slide.active .anim-up-d1{animation:slideUp 0.4s 0.1s cubic-bezier(0.16,1,0.3,1) both}
+  .slide.active .anim-up-d2{animation:slideUp 0.4s 0.2s cubic-bezier(0.16,1,0.3,1) both}
+  .slide.active .anim-scale{animation:popIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both}
+  @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes popIn{from{opacity:0;transform:scale(0.85)}to{opacity:1;transform:scale(1)}}
 
-  /* TYPOGRAPHY */
-  .hero-text {
-    font-size: 28px;
-    font-weight: 700;
-    color: #fff;
-    text-align: center;
-    line-height: 1.3;
-    letter-spacing: -0.5px;
-  }
-  .sub-text {
-    font-size: 16px;
-    color: rgba(255,255,255,0.5);
-    text-align: center;
-    line-height: 1.5;
-    margin-top: 12px;
-  }
-  .mono { font-family: 'JetBrains Mono', monospace; }
+  /* TYPE */
+  .h1{font-size:32px;font-weight:800;color:#fff;text-align:center;line-height:1.2;letter-spacing:-1px}
+  .h2{font-size:24px;font-weight:700;color:#fff;text-align:center;line-height:1.3;letter-spacing:-0.5px}
+  .sub{font-size:15px;color:rgba(255,255,255,0.45);text-align:center;line-height:1.5;margin-top:10px}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .dim{font-size:12px;color:rgba(255,255,255,0.2);text-align:center;margin-top:14px}
+  .green{color:#34d399}
+  .red{color:#ef4444}
 
   /* LOGO */
-  .logo { width: 100px; height: 100px; margin-bottom: 20px; }
+  .logo{width:88px;height:88px}
 
   /* TRADE CARD */
-  .trade-card {
-    width: 100%;
-    max-width: 320px;
-    background: #111;
-    border: 1px solid #1e1e20;
-    border-radius: 16px;
-    padding: 24px;
-    text-align: center;
-  }
-  .trade-teams {
-    font-size: 14px;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 12px;
-    letter-spacing: 0.05em;
-  }
-  .trade-result {
-    font-size: 48px;
-    font-weight: 800;
-    letter-spacing: -1px;
-  }
-  .trade-result.win { color: #34d399; }
-  .trade-result.loss { color: #ef4444; }
-  .trade-label {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-top: 8px;
-    font-weight: 600;
-  }
-  .trade-label.win { color: rgba(52,211,153,0.6); }
-  .trade-label.loss { color: rgba(239,68,68,0.6); }
+  .tcard{width:100%;max-width:300px;background:#0a0a0a;border:1px solid #1a1a1c;border-radius:20px;padding:28px 24px;text-align:center}
+  .tcard-game{font-size:13px;color:rgba(255,255,255,0.35);letter-spacing:0.05em;margin-bottom:8px}
+  .tcard-date{font-size:11px;color:rgba(255,255,255,0.15);margin-bottom:16px}
+  .tcard-pnl{font-size:56px;font-weight:900;letter-spacing:-2px;line-height:1}
+  .tcard-tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;padding:5px 14px;border-radius:8px;margin-top:14px}
+  .tcard-tag.win{background:rgba(52,211,153,0.1);color:#34d399}
+  .tcard-tag.loss{background:rgba(239,68,68,0.1);color:#ef4444}
 
-  /* SCOREBOARD */
-  .score-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-    width: 100%;
-    max-width: 320px;
-  }
-  .score-item {
-    background: #111;
-    border: 1px solid #1e1e20;
-    border-radius: 12px;
-    padding: 16px 8px;
-    text-align: center;
-  }
-  .score-val {
-    font-size: 28px;
-    font-weight: 800;
-    color: #fff;
-  }
-  .score-label {
-    font-size: 10px;
-    color: rgba(255,255,255,0.3);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-top: 4px;
-  }
+  /* SCORE GRID */
+  .sgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;width:100%;max-width:300px}
+  .sitem{background:#0a0a0a;border:1px solid #1a1a1c;border-radius:14px;padding:18px 8px;text-align:center}
+  .sval{font-size:32px;font-weight:900;letter-spacing:-1px}
+  .slbl{font-size:9px;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:0.14em;margin-top:4px}
 
-  /* COMPOUND CARD */
-  .compound-card {
-    width: 100%;
-    max-width: 320px;
-    background: linear-gradient(135deg, rgba(52,211,153,0.08), rgba(6,182,212,0.08));
-    border: 1px solid rgba(52,211,153,0.2);
-    border-radius: 16px;
-    padding: 28px 24px;
-    text-align: center;
-  }
-  .compound-from {
-    font-size: 16px;
-    color: rgba(255,255,255,0.4);
-  }
-  .compound-arrow {
-    font-size: 24px;
-    color: rgba(255,255,255,0.15);
-    margin: 8px 0;
-  }
-  .compound-to {
-    font-size: 52px;
-    font-weight: 900;
-    color: #34d399;
-    letter-spacing: -2px;
-  }
-  .compound-time {
-    font-size: 13px;
-    color: rgba(255,255,255,0.3);
-    margin-top: 8px;
-  }
+  /* FEED */
+  .feed{width:100%;max-width:320px;display:flex;flex-direction:column;gap:4px;max-height:52vh;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:8px}
+  .feed::-webkit-scrollbar{display:none}
+  .frow{display:flex;justify-content:space-between;align-items:center;background:#0a0a0a;border:1px solid #141416;border-radius:10px;padding:11px 14px}
+  .fgame{font-size:12px;color:rgba(255,255,255,0.4)}
+  .fpnl{font-size:13px;font-weight:700}
+  .ftag{font-size:9px;font-weight:700;padding:2px 7px;border-radius:5px;text-transform:uppercase;letter-spacing:0.08em}
+  .ftag.w{background:rgba(52,211,153,0.08);color:#34d399}
+  .ftag.l{background:rgba(239,68,68,0.08);color:#ef4444}
 
-  /* CTA BUTTONS */
-  .cta-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-    max-width: 320px;
-    margin-top: 24px;
-  }
-  .cta-btn {
-    display: block;
-    width: 100%;
-    padding: 18px;
-    border-radius: 14px;
-    font-size: 16px;
-    font-weight: 700;
-    text-align: center;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .cta-btn:active { transform: scale(0.97); }
-  .cta-primary {
-    background: #fff;
-    color: #000;
-    box-shadow: 0 4px 24px rgba(255,255,255,0.1);
-  }
-  .cta-secondary {
-    background: transparent;
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.2);
-  }
-  .cta-small {
-    font-size: 12px;
-    color: rgba(255,255,255,0.25);
-    text-align: center;
-    margin-top: 8px;
-  }
+  /* COMPOUND */
+  .ccard{width:100%;max-width:300px;background:linear-gradient(160deg,rgba(52,211,153,0.06),rgba(6,182,212,0.06));border:1px solid rgba(52,211,153,0.15);border-radius:20px;padding:32px 24px;text-align:center}
+  .cfrom{font-size:18px;color:rgba(255,255,255,0.35);font-weight:500}
+  .carrow{font-size:20px;color:rgba(255,255,255,0.1);margin:6px 0}
+  .cto{font-size:56px;font-weight:900;color:#34d399;letter-spacing:-2px;line-height:1}
+  .ctime{font-size:12px;color:rgba(255,255,255,0.25);margin-top:10px}
 
-  /* TRADE FEED (scrollable slide) */
-  .feed {
-    width: 100%;
-    max-width: 340px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    max-height: 55vh;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .feed::-webkit-scrollbar { display: none; }
-  .feed-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #111;
-    border: 1px solid #1a1a1c;
-    border-radius: 10px;
-    padding: 12px 16px;
-  }
-  .feed-game {
-    font-size: 13px;
-    color: rgba(255,255,255,0.5);
-  }
-  .feed-pnl {
-    font-size: 14px;
-    font-weight: 700;
-    font-family: 'JetBrains Mono', monospace;
-  }
-  .feed-pnl.win { color: #34d399; }
-  .feed-pnl.loss { color: #ef4444; }
-  .feed-tag {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .feed-tag.win { background: rgba(52,211,153,0.1); color: #34d399; }
-  .feed-tag.loss { background: rgba(239,68,68,0.1); color: #ef4444; }
+  /* CTA */
+  .cta-wrap{display:flex;flex-direction:column;gap:10px;width:100%;max-width:300px;margin-top:20px}
+  .btn{display:block;width:100%;padding:16px;border-radius:14px;font-size:16px;font-weight:700;text-align:center;text-decoration:none;border:none;cursor:pointer;transition:transform 0.15s ease}
+  .btn:active{transform:scale(0.97)}
+  .btn-w{background:#fff;color:#000}
+  .btn-o{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.15)}
+  .btn-sub{font-size:11px;color:rgba(255,255,255,0.2);text-align:center;margin-top:6px}
 
-  /* PULSE DOT */
-  .pulse-dot {
-    width: 8px; height: 8px; border-radius: 50%; background: #34d399; display: inline-block; margin-right: 6px;
-    animation: pulse 1.5s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.8); }
-  }
-
-  /* SLIDE-SPECIFIC */
-  .slide-dim { color: rgba(255,255,255,0.3); font-size: 13px; margin-top: 16px; text-align: center; }
+  /* PULSE */
+  .pulse{width:6px;height:6px;border-radius:50%;background:#34d399;display:inline-block;margin-right:5px;animation:p 1.5s infinite}
+  @keyframes p{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
 </style>
 </head>
 <body>
 
 <div class="phone">
-  <!-- PROGRESS BAR -->
-  <div class="progress-bar" id="progressBar"></div>
+  <div class="pbar" id="pbar"></div>
+  <div class="tap-l" id="tapL"></div>
+  <div class="tap-r" id="tapR"></div>
 
-  <!-- TAP ZONES -->
-  <div class="tap-left" id="tapLeft"></div>
-  <div class="tap-right" id="tapRight"></div>
-
-  <!-- SLIDE 0: Logo -->
+  <!-- 0: LOGO -->
   <div class="slide active" data-slide="0">
-    <img src="logo.png" alt="Rainmaker" class="logo">
+    <img src="logo.png" alt="Rainmaker" class="logo anim-scale">
   </div>
 
-  <!-- SLIDE 1: Hook line 1 -->
+  <!-- 1: HOOK pt1 -->
   <div class="slide" data-slide="1">
-    <p class="hero-text">You don't pick the games.</p>
+    <p class="h1 anim-up">You don't pick<br>the games.</p>
   </div>
 
-  <!-- SLIDE 2: Hook line 2 -->
+  <!-- 2: HOOK pt2 -->
   <div class="slide" data-slide="2">
-    <p class="hero-text">You don't place the bets.</p>
+    <p class="h1 anim-up">You don't place<br>the bets.</p>
   </div>
 
-  <!-- SLIDE 3: Hook line 3 -->
+  <!-- 3: HOOK pt3 -->
   <div class="slide" data-slide="3">
-    <p class="hero-text" style="font-size:32px">You just get paid.</p>
-    <p class="sub-text">An AI that bets on live sports for you.</p>
+    <p class="h1 anim-up" style="font-size:36px">You just<br>get paid.</p>
+    <p class="sub anim-up-d1">Rainmaker is an AI that bets on live<br>sports games — so you don't have to.</p>
   </div>
 
-  <!-- SLIDE 4: Trade 1 — WIN -->
+  <!-- 4: CONTEXT -->
   <div class="slide" data-slide="4">
-    <div class="trade-card">
-      <div class="trade-teams">Yankees vs Red Sox</div>
-      <div class="trade-result win mono">+$96</div>
-      <div class="trade-label win">WIN</div>
-    </div>
-    <p class="slide-dim">Real trade · April 12, 2026</p>
+    <p class="h2 anim-up">Every night, our AI watches<br>live MLB games.</p>
+    <p class="sub anim-up-d1">It spots patterns mid-game and<br>places trades automatically.</p>
+    <p class="sub anim-up-d2" style="color:rgba(255,255,255,0.25);margin-top:20px">Here's what happened<br>in the last 2 weeks. ↓</p>
   </div>
 
-  <!-- SLIDE 5: Trade 2 — WIN -->
-  <div class="slide" data-slide="5">
-    <div class="trade-card">
-      <div class="trade-teams">Dodgers vs Giants</div>
-      <div class="trade-result win mono">+$96</div>
-      <div class="trade-label win">WIN</div>
-    </div>
-    <p class="slide-dim">Real trade · April 12, 2026</p>
+  <!-- 5-9: TRADE CARDS (injected by JS) -->
+  <div class="slide" data-slide="5" id="trade0"></div>
+  <div class="slide" data-slide="6" id="trade1"></div>
+  <div class="slide" data-slide="7" id="trade2"></div>
+  <div class="slide" data-slide="8" id="trade3"></div>
+  <div class="slide" data-slide="9" id="trade4"></div>
+
+  <!-- 10: SCOREBOARD -->
+  <div class="slide" data-slide="10" id="scoreSlide">
+    <p class="h2 anim-up" style="margin-bottom:20px">Last 14 days</p>
+    <div class="sgrid anim-up-d1" id="scoreGrid"></div>
+    <p class="dim anim-up-d2"><span class="pulse"></span>Real trades · MLB 2026</p>
   </div>
 
-  <!-- SLIDE 6: Trade 3 — WIN -->
-  <div class="slide" data-slide="6">
-    <div class="trade-card">
-      <div class="trade-teams">Astros vs Mets</div>
-      <div class="trade-result win mono">+$96</div>
-      <div class="trade-label win">WIN</div>
-    </div>
-    <p class="slide-dim">Real trade · April 11, 2026</p>
-  </div>
-
-  <!-- SLIDE 7: Trade 4 — LOSS -->
-  <div class="slide" data-slide="7">
-    <div class="trade-card">
-      <div class="trade-teams">Cubs vs Braves</div>
-      <div class="trade-result loss mono">−$58</div>
-      <div class="trade-label loss">LOSS</div>
-    </div>
-    <p class="slide-dim">Real trade · April 11, 2026</p>
-  </div>
-
-  <!-- SLIDE 8: Trade 5 — WIN -->
-  <div class="slide" data-slide="8">
-    <div class="trade-card">
-      <div class="trade-teams">Phillies vs Padres</div>
-      <div class="trade-result win mono">+$96</div>
-      <div class="trade-label win">WIN</div>
-    </div>
-    <p class="slide-dim">Real trade · April 10, 2026</p>
-  </div>
-
-  <!-- SLIDE 9: Scoreboard -->
-  <div class="slide" data-slide="9">
-    <p class="hero-text" style="font-size:20px;margin-bottom:24px">This week's results</p>
-    <div class="score-grid">
-      <div class="score-item">
-        <div class="score-val" style="color:#34d399">18</div>
-        <div class="score-label">Wins</div>
-      </div>
-      <div class="score-item">
-        <div class="score-val" style="color:#ef4444">2</div>
-        <div class="score-label">Losses</div>
-      </div>
-      <div class="score-item">
-        <div class="score-val" style="color:#fff">90%</div>
-        <div class="score-label">Win Rate</div>
-      </div>
-    </div>
-    <p class="slide-dim"><span class="pulse-dot"></span>Live · MLB Season 2026</p>
-  </div>
-
-  <!-- SLIDE 10: Full trade feed -->
-  <div class="slide" data-slide="10">
-    <p class="hero-text" style="font-size:16px;margin-bottom:16px">Last 14 days — real trades</p>
-    <div class="feed">
-      <div class="feed-row"><span class="feed-game">NYY vs BOS</span><span class="feed-pnl win mono">+$96</span><span class="feed-tag win">W</span></div>
-      <div class="feed-row"><span class="feed-game">LAD vs SF</span><span class="feed-pnl win mono">+$96</span><span class="feed-tag win">W</span></div>
-      <div class="feed-row"><span class="feed-game">HOU vs NYM</span><span class="feed-pnl win mono">+$96</span><span class="feed-tag win">W</span></div>
-      <div class="feed-row"><span class="feed-game">CHC vs ATL</span><span class="feed-pnl loss mono">−$58</span><span class="feed-tag loss">L</span></div>
-      <div class="feed-row"><span class="feed-game">PHI vs SD</span><span class="feed-pnl win mono">+$96</span><span class="feed-tag win">W</span></div>
-      <div class="feed-row"><span class="feed-game">TB vs BAL</span><span class="feed-pnl win mono">+$96</span><span class="feed-tag win">W</span></div>
-      <div class="feed-row"><span class="feed-game">MIN vs CLE</span><span class="feed-pnl win mono">+$96</span><span class="feed-tag win">W</span></div>
-      <div class="feed-row"><span class="feed-game">SEA vs TEX</span><span class="feed-pnl loss mono">−$58</span><span class="feed-tag loss">L</span></div>
-      <div class="feed-row"><span class="feed-game">MIL vs STL</span><span class="feed-pnl win mono">+$96</span><span class="feed-tag win">W</span></div>
-      <div class="feed-row"><span class="feed-game">ARI vs COL</span><span class="feed-pnl win mono">+$96</span><span class="feed-tag win">W</span></div>
-      <div class="feed-row"><span class="feed-game">DET vs KC</span><span class="feed-pnl win mono">+$96</span><span class="feed-tag win">W</span></div>
-      <div class="feed-row"><span class="feed-game">LAA vs OAK</span><span class="feed-pnl win mono">+$96</span><span class="feed-tag win">W</span></div>
-      <div class="feed-row"><span class="feed-game">CIN vs PIT</span><span class="feed-pnl win mono">+$96</span><span class="feed-tag win">W</span></div>
-      <div class="feed-row"><span class="feed-game">WSH vs MIA</span><span class="feed-pnl win mono">+$96</span><span class="feed-tag win">W</span></div>
-      <div class="feed-row"><span class="feed-game">TOR vs BOS</span><span class="feed-pnl win mono">+$96</span><span class="feed-tag win">W</span></div>
-      <div class="feed-row"><span class="feed-game">CHW vs DET</span><span class="feed-pnl win mono">+$96</span><span class="feed-tag win">W</span></div>
-      <div class="feed-row"><span class="feed-game">ATL vs NYM</span><span class="feed-pnl win mono">+$96</span><span class="feed-tag win">W</span></div>
-      <div class="feed-row"><span class="feed-game">SF vs ARI</span><span class="feed-pnl win mono">+$96</span><span class="feed-tag win">W</span></div>
-    </div>
-  </div>
-
-  <!-- SLIDE 11: Compound math -->
+  <!-- 11: TRADE FEED -->
   <div class="slide" data-slide="11">
-    <p class="sub-text" style="margin-bottom:20px">If you deposited $100 two weeks ago<br>and let it compound...</p>
-    <div class="compound-card">
-      <div class="compound-from mono">$100</div>
-      <div class="compound-arrow">↓</div>
-      <div class="compound-to mono">$247</div>
-      <div class="compound-time">14 days · AutoPilot on</div>
-    </div>
+    <p class="h2 anim-up" style="font-size:15px;margin-bottom:12px">Every trade from the last 14 days</p>
+    <div class="feed anim-up-d1" id="feedList"></div>
+    <p class="dim">Scroll to see all ↕</p>
   </div>
 
-  <!-- SLIDE 12: CTA -->
-  <div class="slide" data-slide="12">
-    <img src="logo.png" alt="Rainmaker" style="width:56px;height:56px;margin-bottom:24px">
-    <p class="hero-text" style="font-size:22px;margin-bottom:8px">Ready?</p>
-    <p class="sub-text" style="margin-bottom:0">See it work with play money,<br>or start earning for real.</p>
-    <div class="cta-wrap">
-      <a href="#" class="cta-btn cta-primary">Deposit $10 →</a>
-      <a href="#" class="cta-btn cta-secondary">Try with play money</a>
-    </div>
-    <p class="cta-small">No hidden fees. Withdraw anytime.</p>
-  </div>
+  <!-- 12: COMPOUND -->
+  <div class="slide" data-slide="12" id="compSlide"></div>
 
+  <!-- 13: CTA -->
+  <div class="slide" data-slide="13">
+    <img src="logo.png" alt="Rainmaker" style="width:48px;height:48px;margin-bottom:20px" class="anim-scale">
+    <p class="h2 anim-up">See it for yourself.</p>
+    <p class="sub anim-up-d1">Watch the AI trade tonight's games<br>with play money — or start for real.</p>
+    <div class="cta-wrap anim-up-d2">
+      <a href="#" class="btn btn-w">Start with $10 →</a>
+      <a href="#" class="btn btn-o">Try free with play money</a>
+    </div>
+    <p class="btn-sub">No hidden fees · Withdraw anytime</p>
+  </div>
 </div>
 
 <script>
-const slides = document.querySelectorAll('.slide');
-const total = slides.length;
-let current = 0;
+const TOTAL_SLIDES = 14;
+let cur = 0;
 
-const bar = document.getElementById('progressBar');
-for (let i = 0; i < total; i++) {
-  const seg = document.createElement('div');
-  seg.className = 'seg';
-  seg.innerHTML = '<div class="fill"></div>';
-  bar.appendChild(seg);
+const bar = document.getElementById('pbar');
+for(let i=0;i<TOTAL_SLIDES;i++){
+  const s=document.createElement('div');s.className='s';s.innerHTML='<div class="f"></div>';bar.appendChild(s);
 }
 
-function goTo(idx) {
-  if (idx < 0) idx = 0;
-  if (idx >= total) idx = total - 1;
-  slides[current].classList.remove('active');
-  current = idx;
-  slides[current].classList.add('active');
-  const segs = bar.querySelectorAll('.seg');
-  segs.forEach((s, i) => {
-    s.classList.remove('done', 'active');
-    if (i < current) s.classList.add('done');
-    if (i === current) s.classList.add('active');
+function go(idx){
+  if(idx<0)idx=0;if(idx>=TOTAL_SLIDES)idx=TOTAL_SLIDES-1;
+  document.querySelector(`.slide[data-slide="${cur}"]`)?.classList.remove('active');
+  cur=idx;
+  document.querySelector(`.slide[data-slide="${cur}"]`)?.classList.add('active');
+  bar.querySelectorAll('.s').forEach((s,i)=>{s.classList.remove('done','active');if(i<cur)s.classList.add('done');if(i===cur)s.classList.add('active');});
+}
+
+document.getElementById('tapR').addEventListener('click',()=>go(cur+1));
+document.getElementById('tapL').addEventListener('click',()=>go(cur-1));
+let sx=0;
+document.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+document.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>40){d<0?go(cur+1):go(cur-1)}},{passive:true});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
+
+async function loadData(){
+  try{
+    const r=await fetch('trades.json');
+    const d=await r.json();
+    renderTrades(d.featured||[]);
+    renderScore(d.summary||{});
+    renderFeed(d.feed||[]);
+    renderCompound(d.summary||{},d.period||'');
+  }catch(e){console.error('Failed to load trades.json',e)}
+}
+
+function renderTrades(featured){
+  featured.forEach((t,i)=>{
+    const el=document.getElementById('trade'+i);
+    if(!el)return;
+    const w=t.result==='win';
+    const sign=w?'+':'';
+    el.innerHTML=`
+      <div class="tcard anim-scale">
+        <div class="tcard-game">${t.game}</div>
+        <div class="tcard-date">${t.date}</div>
+        <div class="tcard-pnl mono ${w?'green':'red'}">${sign}$${Math.abs(t.pnl)}</div>
+        <div class="tcard-tag ${t.result}">${w?'WIN':'LOSS'}</div>
+      </div>
+      <p class="dim anim-up-d1">Real trade · per $1,000 staked</p>`;
   });
 }
 
-document.getElementById('tapRight').addEventListener('click', () => goTo(current + 1));
-document.getElementById('tapLeft').addEventListener('click', () => goTo(current - 1));
+function renderScore(s){
+  document.getElementById('scoreGrid').innerHTML=`
+    <div class="sitem"><div class="sval green mono">${s.wins}</div><div class="slbl">Wins</div></div>
+    <div class="sitem"><div class="sval red mono">${s.losses}</div><div class="slbl">Losses</div></div>
+    <div class="sitem"><div class="sval mono">${s.winRate}%</div><div class="slbl">Win Rate</div></div>`;
+}
 
-let touchStartX = 0;
-document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-document.addEventListener('touchend', e => {
-  const dx = e.changedTouches[0].clientX - touchStartX;
-  if (Math.abs(dx) > 40) {
-    if (dx < 0) goTo(current + 1);
-    else goTo(current - 1);
-  }
-}, { passive: true });
+function renderFeed(feed){
+  const el=document.getElementById('feedList');
+  el.innerHTML=feed.map(t=>{
+    const w=t.result==='win';
+    return `<div class="frow">
+      <span class="fgame">${t.game}</span>
+      <span class="fpnl mono ${w?'green':'red'}">${w?'+':''}$${Math.abs(t.pnl)}</span>
+      <span class="ftag ${w?'w':'l'}">${w?'W':'L'}</span>
+    </div>`;
+  }).join('');
+}
 
-document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight' || e.key === ' ') goTo(current + 1);
-  if (e.key === 'ArrowLeft') goTo(current - 1);
-});
+function renderCompound(s,period){
+  document.getElementById('compSlide').innerHTML=`
+    <p class="sub anim-up" style="margin-bottom:16px">If you deposited $${s.startBalance} and<br>let the AI compound for ${s.days} days...</p>
+    <div class="ccard anim-scale">
+      <div class="cfrom mono">$${s.startBalance}</div>
+      <div class="carrow">↓</div>
+      <div class="cto mono">$${s.endBalance}</div>
+      <div class="ctime">${period} · AutoPilot</div>
+    </div>
+    <p class="dim anim-up-d2">Based on real trades above</p>`;
+}
 
-goTo(0);
+loadData();
+go(0);
 </script>
-
 </body>
 </html>
