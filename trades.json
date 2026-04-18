@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-18T20:34:39.334Z",
+  "updated": "2026-04-18T20:35:45.883Z",
   "period": "Apr 4 – Apr 18",
   "summary": {
     "wins": 8,
@@ -8,9 +8,9 @@
     "startBalance": 100,
     "endBalance": 127,
     "days": 14,
-    "avgWinPnl": 5.88,
+    "avgWinPnl": 5.89,
     "avgLossPnl": -6.83,
-    "totalWon": 47.07,
+    "totalWon": 47.09,
     "totalLost": 20.48
   },
   "featured": [
@@ -21,27 +21,27 @@
       "result": "win"
     },
     {
-      "game": "Rays vs Pirates",
-      "date": "Apr 17",
-      "pnl": -4.78,
-      "result": "loss"
-    },
-    {
       "game": "Rays vs White Sox",
       "date": "Apr 16",
       "pnl": 10.08,
       "result": "win"
     },
     {
-      "game": "Angels vs Yankees",
-      "date": "Apr 16",
-      "pnl": -9.35,
-      "result": "loss"
-    },
-    {
       "game": "Orioles vs Guardians",
       "date": "Apr 16",
       "pnl": 1.81,
+      "result": "win"
+    },
+    {
+      "game": "Rays vs Pirates",
+      "date": "Apr 17",
+      "pnl": -4.78,
+      "result": "loss"
+    },
+    {
+      "game": "Royals vs Tigers",
+      "date": "Apr 16",
+      "pnl": 3.26,
       "result": "win"
     }
   ],
@@ -78,7 +78,7 @@
     },
     {
       "game": "TOR vs MIL",
-      "pnl": 2.16,
+      "pnl": 2.18,
       "result": "win"
     },
     {

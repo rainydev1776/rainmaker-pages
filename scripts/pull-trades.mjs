@@ -165,7 +165,22 @@ async function main() {
     return short ? `${p.awayAbbr} vs ${p.homeAbbr}` : `${expandTeam(p.awayAbbr)} vs ${expandTeam(p.homeAbbr)}`;
   }
 
-  const featured = meaningful.slice(0, 5).map(r => ({
+  // Order featured cards: W W W L W — hook with wins, show a loss for credibility, close strong
+  const allWins = meaningful.filter(r => r.pnl_usd > 0);
+  const allLosses = meaningful.filter(r => r.pnl_usd < 0);
+  const ordered = [];
+  let wi = 0, li = 0;
+  for (let slot = 0; slot < 5; slot++) {
+    if (slot === 3 && li < allLosses.length) {
+      ordered.push(allLosses[li++]);
+    } else if (wi < allWins.length) {
+      ordered.push(allWins[wi++]);
+    } else if (li < allLosses.length) {
+      ordered.push(allLosses[li++]);
+    }
+  }
+
+  const featured = ordered.map(r => ({
     game: getLabel(r.ticker, false), date: formatDate(r.executed_at),
     pnl: displayPnl(r), result: r.pnl_usd > 0 ? 'win' : 'loss',
   }));
