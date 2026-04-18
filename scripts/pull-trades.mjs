@@ -223,13 +223,12 @@ async function main() {
   const lossCount = losses.length;
   const winRate = Math.round((winCount / selected.length) * 100);
 
-  // Order cards: first 4 are W-W-W-L (strong hook), rest are shuffled naturally
+  // Order cards: first 4 are W-W-W-L (strong hook), rest in chronological order
   const ordered = [wins[0], wins[1], wins[2], losses[0]];
-  const rest = [...wins.slice(3), ...losses.slice(1)];
-  for (let i = rest.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [rest[i], rest[j]] = [rest[j], rest[i]];
-  }
+  const usedSet = new Set(ordered);
+  const rest = selected
+    .filter(g => !usedSet.has(g))
+    .sort((a, b) => new Date(b.executed_at) - new Date(a.executed_at));
   ordered.push(...rest);
 
   const totalWon = Math.round(wins.reduce((s, g) => s + g.displayPnl, 0) * 100) / 100;

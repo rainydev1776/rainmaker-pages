@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-18T22:40:09.904Z",
+  "updated": "2026-04-18T22:41:38.246Z",
   "period": "Apr 10 – Apr 18",
   "summary": {
     "wins": 9,
@@ -39,22 +39,16 @@
       "result": "loss"
     },
     {
-      "game": "Royals vs Tigers",
-      "date": "Apr 16",
-      "pnl": 3.19,
-      "result": "win"
-    },
-    {
-      "game": "AZ vs Phillies",
-      "date": "Apr 12",
-      "pnl": 11.86,
-      "result": "win"
-    },
-    {
       "game": "Rays vs White Sox",
       "date": "Apr 16",
       "pnl": 10.02,
       "result": "win"
+    },
+    {
+      "game": "Angels vs Yankees",
+      "date": "Apr 16",
+      "pnl": -9.52,
+      "result": "loss"
     },
     {
       "game": "Orioles vs Guardians",
@@ -63,15 +57,9 @@
       "result": "win"
     },
     {
-      "game": "Marlins vs Tigers",
-      "date": "Apr 10",
-      "pnl": -6.15,
-      "result": "loss"
-    },
-    {
-      "game": "Yankees vs Rays",
-      "date": "Apr 11",
-      "pnl": 7.05,
+      "game": "Royals vs Tigers",
+      "date": "Apr 16",
+      "pnl": 3.19,
       "result": "win"
     },
     {
@@ -81,9 +69,21 @@
       "result": "win"
     },
     {
-      "game": "Angels vs Yankees",
-      "date": "Apr 16",
-      "pnl": -9.52,
+      "game": "AZ vs Phillies",
+      "date": "Apr 12",
+      "pnl": 11.86,
+      "result": "win"
+    },
+    {
+      "game": "Yankees vs Rays",
+      "date": "Apr 11",
+      "pnl": 7.05,
+      "result": "win"
+    },
+    {
+      "game": "Marlins vs Tigers",
+      "date": "Apr 10",
+      "pnl": -6.15,
       "result": "loss"
     }
   ],
