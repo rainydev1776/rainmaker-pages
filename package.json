@@ -1,0 +1,11 @@
+{
+  "name": "rainmaker-pages",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "update-trades": "node scripts/pull-trades.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2"
+  }
+}
