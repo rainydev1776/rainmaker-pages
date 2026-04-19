@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
-<meta name="version" content="v30">
+<meta name="version" content="v31">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -238,7 +238,7 @@ function go(idx){
       fill.style.width='0';
       fill.offsetWidth;
       s.classList.add('active');
-      const segDur=cur===0?9000:SLIDE_MS;
+      const segDur=cur===0?25000:SLIDE_MS;
       fill.style.transition=`width ${segDur}ms linear`;
       fill.style.width='100%';
     }else{
@@ -249,7 +249,7 @@ function go(idx){
   if(activeSlide&&activeSlide.id==='feedSlide') triggerFeedAnimation();
 
   if(cur<TOTAL_SLIDES-1){
-    const dur=cur===0?9000:SLIDE_MS;
+    const dur=cur===0?25000:SLIDE_MS;
     autoTimer=setTimeout(()=>go(cur+1),dur);
   }
 }
