@@ -75,8 +75,9 @@
 
   /* FEED */
   .feed{width:100%;max-width:320px;display:flex;flex-direction:column;gap:2px;padding-bottom:4px}
-  .frow{display:flex;justify-content:space-between;align-items:center;background:#0a0a0a;border:1px solid #141416;border-radius:8px;padding:7px 10px;opacity:0;max-height:0;overflow:hidden;padding-top:0;padding-bottom:0;margin:0;border-width:0;animation:feedUnfold 0.3s ease forwards}
-  @keyframes feedUnfold{to{opacity:1;max-height:40px;padding:7px 10px;border-width:1px;margin-bottom:2px}}
+  .frow{display:flex;justify-content:space-between;align-items:center;background:#0a0a0a;border:1px solid #141416;border-radius:8px;padding:7px 10px;opacity:0;transform:translateY(8px)}
+  .frow.show{animation:feedIn 0.2s ease forwards}
+  @keyframes feedIn{to{opacity:1;transform:translateY(0)}}
   .fgame{font-size:10px;color:rgba(255,255,255,0.4)}
   .fpnl{font-size:11px;font-weight:700}
   .ftag{font-size:8px;font-weight:700;padding:2px 6px;border-radius:4px;text-transform:uppercase;letter-spacing:0.08em}
@@ -213,8 +214,10 @@ function go(idx){
   if(idx<0)idx=0;if(idx>=TOTAL_SLIDES)idx=TOTAL_SLIDES-1;
   document.querySelector(`.slide[data-slide="${cur}"]`)?.classList.remove('active');
   cur=idx;
-  document.querySelector(`.slide[data-slide="${cur}"]`)?.classList.add('active');
+  const activeSlide=document.querySelector(`.slide[data-slide="${cur}"]`);
+  activeSlide?.classList.add('active');
   bar.querySelectorAll('.s').forEach((s,i)=>{s.classList.remove('done','active');if(i<cur)s.classList.add('done');if(i===cur)s.classList.add('active');});
+  if(activeSlide&&activeSlide.id==='feedSlide') triggerFeedAnimation();
 }
 
 document.getElementById('tapR').addEventListener('click',()=>go(cur+1));
@@ -285,13 +288,21 @@ function renderFeed(feed){
   document.getElementById('feedList').innerHTML=feed.map((t,i)=>{
     const w=t.result==='win';
     const pctSign=w?'+':'−';
-    const delay=i*0.15;
-    return `<div class="frow" style="animation-delay:${delay}s">
+    return `<div class="frow" data-feed-idx="${i}">
       <span class="fgame">${t.game}</span>
       <span class="fpnl mono ${w?'green':'red'}">${w?'+':'−'}$${fmtPnl(t.pnl)} <span style="font-size:8px;opacity:0.5">${pctSign}${Math.abs(t.pct).toFixed(1)}%</span></span>
       <span class="ftag ${w?'w':'l'}">${w?'W':'L'}</span>
     </div>`;
   }).join('');
+}
+
+function triggerFeedAnimation(){
+  const rows=document.querySelectorAll('.frow');
+  rows.forEach(r=>{r.classList.remove('show');r.style.removeProperty('animation-delay')});
+  rows.forEach((r,i)=>{
+    r.style.animationDelay=i*150+'ms';
+    requestAnimationFrame(()=>r.classList.add('show'));
+  });
 }
 
 function renderEdge(s){
