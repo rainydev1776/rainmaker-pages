@@ -277,7 +277,7 @@ function renderTrades(trades){
 
 function renderScore(s){
   document.getElementById('scorePeriod').textContent=`Last ${s.days} days`;
-  document.getElementById('feedTitle').textContent=`Every trade from the last ${s.days} days`;
+  document.getElementById('feedTitle').textContent=`Every trade from the last ${s.days} days:`;
   document.getElementById('scoreGrid').innerHTML=`
     <div class="sitem"><div class="sval green mono">${s.wins}</div><div class="slbl">Wins</div></div>
     <div class="sitem"><div class="sval red mono">${s.losses}</div><div class="slbl">Losses</div></div>
