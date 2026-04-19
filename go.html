@@ -263,7 +263,7 @@ function renderTrades(trades){
         <div class="tcard-pct ${w?'green':'red'}">${sign}${Math.abs(t.pct).toFixed(1)}%</div>
         <div class="tcard-tag ${t.result}">${w?'WIN':'LOSS'}</div>
       </div>
-      <p class="dim anim-up-d1">Real trade · per $10 bet</p>`;
+      <p class="dim anim-up-d1">Real trade · per $100 bet</p>`;
     container.appendChild(div);
   });
 
@@ -293,8 +293,8 @@ function renderFeed(feed){
 }
 
 function renderEdge(s){
-  const totW=Math.abs(s.totalWon||0)*10;
-  const totL=Math.abs(s.totalLost||0)*10;
+  const totW=Math.abs(s.totalWon||0);
+  const totL=Math.abs(s.totalLost||0);
   const net=totW-totL;
   const maxVal=Math.max(totW,totL,1);
   const wPct=Math.round((totW/maxVal)*100);

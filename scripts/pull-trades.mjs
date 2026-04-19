@@ -153,7 +153,7 @@ async function main() {
       const invested = buySizeByGame.get(gk) || 0;
       const avgInv = invested / Math.max(usersByGame.get(gk)?.size || 1, 1);
       const pnlPct = avgInv > 0 ? avgPnl / avgInv : 0;
-      const displayPnl = Math.round(Math.max(10 * pnlPct, -10) * 100) / 100;
+      const displayPnl = Math.round(Math.max(100 * pnlPct, -100) * 100) / 100;
       const displayPct = Math.round(pnlPct * 1000) / 10;
       return { ticker: g.ticker, executed_at: g.executed_at, displayPnl, displayPct, isWin: displayPnl > 0 };
     })
@@ -243,7 +243,7 @@ async function main() {
   const avgLossPnl = lossCount > 0 ? Math.round((-totalLost / lossCount) * 100) / 100 : 0;
 
   const startBalance = 100;
-  const totalPnl = selected.reduce((s, g) => s + g.displayPnl, 0) * 10;
+  const totalPnl = selected.reduce((s, g) => s + g.displayPnl, 0);
   const endBalance = Math.round(startBalance + totalPnl);
 
   const dates = selected.map(g => new Date(g.executed_at));
