@@ -293,8 +293,9 @@ function renderFeed(feed){
 }
 
 function renderEdge(s){
-  const totW=Math.abs(s.totalWon||0);
-  const totL=Math.abs(s.totalLost||0);
+  const totW=Math.abs(s.totalWon||0)*10;
+  const totL=Math.abs(s.totalLost||0)*10;
+  const net=totW-totL;
   const maxVal=Math.max(totW,totL,1);
   const wPct=Math.round((totW/maxVal)*100);
   const lPct=Math.round((totL/maxVal)*100);
@@ -304,15 +305,15 @@ function renderEdge(s){
     <div class="edge-wrap anim-up-d2">
       <div class="edge-row">
         <span class="edge-lbl">Earned</span>
-        <div class="edge-bar win" style="width:${wPct}%">+$${totW.toFixed(2)}</div>
+        <div class="edge-bar win" style="width:${wPct}%">+$${totW.toFixed(0)}</div>
       </div>
       <div class="edge-row">
         <span class="edge-lbl">Lost</span>
-        <div class="edge-bar loss" style="width:${lPct}%">−$${totL.toFixed(2)}</div>
+        <div class="edge-bar loss" style="width:${lPct}%">−$${totL.toFixed(0)}</div>
       </div>
     </div>
-    <p class="sub anim-up-d2" style="margin-top:20px;color:#34d399;font-weight:600">Net: +$${(totW-totL).toFixed(2)}</p>
-    <p class="dim" style="margin-top:8px">The AI wins often enough that<br>the math works in your favor.</p>`;
+    <p class="sub anim-up-d2" style="margin-top:20px;color:#34d399;font-weight:600">Net: +$${net.toFixed(0)}</p>
+    <p class="dim" style="margin-top:8px">$100 + $${net.toFixed(0)} net profit = $${s.endBalance}</p>`;
 }
 
 function renderCompound(s,period){
