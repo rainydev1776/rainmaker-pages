@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
-<meta name="version" content="v77">
+<meta name="version" content="v78">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -109,6 +109,14 @@
   .pulse{width:6px;height:6px;border-radius:50%;background:#11E957;display:inline-block;margin-right:5px;animation:p 1.5s infinite}
   @keyframes p{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
   @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+  .diamond{position:relative;width:180px;height:180px;margin:0 auto}
+  .diamond img{position:absolute;width:52px;height:52px;border-radius:12px;opacity:0;transform:translateY(40px);background:#111;padding:6px}
+  .diamond img.pop{animation:diamondPop 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards}
+  @keyframes diamondPop{to{opacity:1;transform:translateY(0)}}
+  .diamond img:nth-child(1){top:0;left:50%;margin-left:-26px}
+  .diamond img:nth-child(2){top:50%;left:0;margin-top:-26px}
+  .diamond img:nth-child(3){top:50%;right:0;margin-top:-26px}
+  .diamond img:nth-child(4){bottom:0;left:50%;margin-left:-26px}
   @keyframes shimmer{0%,60%{background-position:200% 0}100%{background-position:-200% 0}}
   .shimmer{background:linear-gradient(90deg,rgba(255,255,255,0.3),rgba(255,255,255,0.3) 40%,rgba(255,255,255,0.8) 50%,rgba(255,255,255,0.3) 60%,rgba(255,255,255,0.3));background-size:250% 100%;background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 5s 4s linear infinite}
   @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
@@ -136,19 +144,29 @@
     <p class="sub" style="position:absolute;top:calc(50% + 24px);left:28px;right:28px;color:rgba(255,255,255,0.55);opacity:0;animation:fadeIn 0.5s 2s ease forwards">Rainmaker is an AI that bets on<br>live sports games for you.</p>
   </div>
 
-  <!-- 2: CONTEXT - line 1 -->
-  <div class="slide" data-slide="2" style="justify-content:flex-start;padding-top:38%">
+  <!-- 2: SPORTS DIAMOND -->
+  <div class="slide" data-slide="2" id="sportsSlide">
+    <div class="diamond" id="sportsDiamond">
+      <img src="https://a.espncdn.com/i/teamlogos/leagues/500/nba.png" alt="NBA">
+      <img src="https://a.espncdn.com/i/teamlogos/leagues/500/nfl.png" alt="NFL">
+      <img src="https://a.espncdn.com/i/teamlogos/leagues/500/nhl.png" alt="NHL">
+      <img src="https://a.espncdn.com/i/teamlogos/leagues/500/mlb.png" alt="MLB">
+    </div>
+  </div>
+
+  <!-- 3: CONTEXT - line 1 -->
+  <div class="slide" data-slide="3" style="justify-content:flex-start;padding-top:38%">
     <p class="h2 anim-up" style="color:rgba(255,255,255,0.9)">Rainmaker AI<br>watches every live MLB game.</p>
   </div>
 
-  <!-- 3: CONTEXT - lines 1+2 -->
-  <div class="slide" data-slide="3" style="justify-content:flex-start;padding-top:38%">
+  <!-- 4: CONTEXT - lines 1+2 -->
+  <div class="slide" data-slide="4" style="justify-content:flex-start;padding-top:38%">
     <p class="h2" style="color:rgba(255,255,255,0.9)">Rainmaker AI<br>watches every live MLB game.</p>
     <p class="sub anim-up" style="margin-top:14px;color:rgba(255,255,255,0.55)">It bets for you<br>when it sees an edge.</p>
   </div>
 
-  <!-- 4: CONTEXT - lines 1+2+3 -->
-  <div class="slide" data-slide="4" style="justify-content:flex-start;padding-top:38%">
+  <!-- 5: CONTEXT - lines 1+2+3 -->
+  <div class="slide" data-slide="5" style="justify-content:flex-start;padding-top:38%">
     <p class="h2" style="color:rgba(255,255,255,0.9)">Rainmaker AI<br>watches every live MLB game.</p>
     <p class="sub" style="margin-top:14px;color:rgba(255,255,255,0.55)">It bets for you<br>when it sees an edge.</p>
     <p class="sub anim-up" style="color:rgba(255,255,255,0.38);margin-top:20px">You don't lift a finger.</p>
@@ -186,7 +204,7 @@
 </div>
 
 <script>
-const FIXED_PRE = 5;
+const FIXED_PRE = 6;
 const FIXED_POST = 5;
 const SLIDE_MS = 5000;
 let TOTAL_SLIDES = FIXED_PRE + FIXED_POST;
@@ -240,6 +258,7 @@ function go(idx){
   });
 
   if(activeSlide&&activeSlide.id==='feedSlide') triggerFeedAnimation();
+  if(activeSlide&&activeSlide.id==='sportsSlide') triggerDiamond();
   const tw=activeSlide?.querySelector('.typewriter');
   if(tw){typeOut(tw);}
   const isLast=cur===TOTAL_SLIDES-1;
@@ -310,6 +329,15 @@ function typeOut(el){
     if(i<text.length){el.textContent+=text[i];i++;}
     else{clearInterval(typeTimer);typeTimer=null;el.classList.add('done');}
   },55);
+}
+
+function triggerDiamond(){
+  const imgs=document.querySelectorAll('#sportsDiamond img');
+  imgs.forEach(i=>{i.classList.remove('pop');i.style.removeProperty('animation-delay')});
+  imgs.forEach((img,i)=>{
+    img.style.animationDelay=i*300+'ms';
+    requestAnimationFrame(()=>img.classList.add('pop'));
+  });
 }
 
 function fmtPnl(pnl){
