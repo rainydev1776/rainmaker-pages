@@ -43,8 +43,8 @@
   .sub{font-size:15px;color:rgba(255,255,255,0.45);text-align:center;line-height:1.5;margin-top:10px}
   .mono{font-family:'JetBrains Mono',monospace}
   .dim{font-size:12px;color:rgba(255,255,255,0.2);text-align:center;margin-top:14px}
-  .green{color:#34d399}
-  .red{color:#ef4444}
+  .green{color:#11E957}
+  .red{color:#FF0066}
 
   /* LOGO */
   .logo{width:40vw;height:40vw;max-width:280px;max-height:280px}
@@ -56,8 +56,8 @@
   .tcard-pnl{font-size:56px;font-weight:900;letter-spacing:-2px;line-height:1}
   .tcard-pct{font-size:15px;font-weight:700;margin-top:6px;letter-spacing:-0.5px}
   .tcard-tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;padding:5px 14px;border-radius:8px;margin-top:14px}
-  .tcard-tag.win{background:rgba(52,211,153,0.1);color:#34d399}
-  .tcard-tag.loss{background:rgba(239,68,68,0.1);color:#ef4444}
+  .tcard-tag.win{background:rgba(17,233,87,0.1);color:#11E957}
+  .tcard-tag.loss{background:rgba(255,0,102,0.1);color:#FF0066}
 
   /* SCORE GRID */
   .sgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;width:100%;max-width:300px}
@@ -70,8 +70,8 @@
   .edge-row{display:flex;align-items:center;gap:12px}
   .edge-lbl{font-size:11px;color:rgba(255,255,255,0.3);width:56px;text-align:right;flex-shrink:0;text-transform:uppercase;letter-spacing:0.08em}
   .edge-bar{height:32px;border-radius:8px;display:flex;align-items:center;padding:0 12px;font-size:14px;font-weight:800;font-family:'JetBrains Mono',monospace;min-width:40px;transition:width 0.6s cubic-bezier(0.16,1,0.3,1)}
-  .edge-bar.win{background:rgba(52,211,153,0.15);color:#34d399}
-  .edge-bar.loss{background:rgba(239,68,68,0.12);color:#ef4444}
+  .edge-bar.win{background:rgba(17,233,87,0.15);color:#11E957}
+  .edge-bar.loss{background:rgba(255,0,102,0.12);color:#FF0066}
 
   /* FEED */
   .feed{width:100%;max-width:320px;display:flex;flex-direction:column;gap:2px;padding-bottom:4px}
@@ -79,14 +79,14 @@
   .fgame{font-size:10px;color:rgba(255,255,255,0.4)}
   .fpnl{font-size:11px;font-weight:700}
   .ftag{font-size:8px;font-weight:700;padding:2px 6px;border-radius:4px;text-transform:uppercase;letter-spacing:0.08em}
-  .ftag.w{background:rgba(52,211,153,0.08);color:#34d399}
-  .ftag.l{background:rgba(239,68,68,0.08);color:#ef4444}
+  .ftag.w{background:rgba(17,233,87,0.08);color:#11E957}
+  .ftag.l{background:rgba(255,0,102,0.08);color:#FF0066}
 
   /* COMPOUND */
-  .ccard{width:100%;max-width:300px;background:linear-gradient(160deg,rgba(52,211,153,0.06),rgba(6,182,212,0.06));border:1px solid rgba(52,211,153,0.15);border-radius:20px;padding:32px 24px;text-align:center}
+  .ccard{width:100%;max-width:300px;background:linear-gradient(160deg,rgba(17,233,87,0.06),rgba(6,182,212,0.06));border:1px solid rgba(17,233,87,0.15);border-radius:20px;padding:32px 24px;text-align:center}
   .cfrom{font-size:18px;color:rgba(255,255,255,0.35);font-weight:500}
   .carrow{font-size:20px;color:rgba(255,255,255,0.1);margin:6px 0}
-  .cto{font-size:56px;font-weight:900;color:#34d399;letter-spacing:-2px;line-height:1}
+  .cto{font-size:56px;font-weight:900;color:#11E957;letter-spacing:-2px;line-height:1}
   .ctime{font-size:12px;color:rgba(255,255,255,0.25);margin-top:10px}
 
   /* CTA */
@@ -98,7 +98,7 @@
   .btn-sub{font-size:11px;color:rgba(255,255,255,0.2);text-align:center;margin-top:6px}
 
   /* PULSE */
-  .pulse{width:6px;height:6px;border-radius:50%;background:#34d399;display:inline-block;margin-right:5px;animation:p 1.5s infinite}
+  .pulse{width:6px;height:6px;border-radius:50%;background:#11E957;display:inline-block;margin-right:5px;animation:p 1.5s infinite}
   @keyframes p{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
 </style>
 </head>
@@ -312,7 +312,7 @@ function renderEdge(s){
         <div class="edge-bar loss" style="width:${lPct}%">−$${totL.toFixed(0)}</div>
       </div>
     </div>
-    <p class="sub anim-up-d2" style="margin-top:20px;color:#34d399;font-weight:600">Net: +$${net.toFixed(0)}</p>
+    <p class="sub anim-up-d2" style="margin-top:20px;color:#11E957;font-weight:600">Net: +$${net.toFixed(0)}</p>
     <p class="dim" style="margin-top:8px">$100 + $${net.toFixed(0)} net profit = $${s.endBalance}</p>`;
 }
 
