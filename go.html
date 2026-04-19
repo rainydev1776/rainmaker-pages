@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
-<meta name="version" content="v59">
+<meta name="version" content="v60">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -36,10 +36,10 @@
   .slide.active .anim-up{animation:slideUp 0.4s cubic-bezier(0.16,1,0.3,1) both}
   .slide.active .anim-up-d1{animation:slideUp 0.4s 0.1s cubic-bezier(0.16,1,0.3,1) both}
   .slide.active .anim-up-d2{animation:slideUp 0.4s 0.2s cubic-bezier(0.16,1,0.3,1) both}
-  .slide.active .anim-scale{animation:popIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both}
+  .slide.active .anim-scale{animation:popIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both}
   @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
   @keyframes fadeIn{to{opacity:1}}
-  @keyframes popIn{from{opacity:0;transform:scale(0.85)}to{opacity:1;transform:scale(1)}}
+  @keyframes popIn{0%{opacity:0;transform:scale(0.7) translateY(30px)}60%{opacity:1;transform:scale(1.04) translateY(-4px)}80%{transform:scale(0.98) translateY(2px)}100%{transform:scale(1) translateY(0)}}
 
   /* TYPE */
   .h1{font-size:20px;font-weight:800;color:#fff;text-align:center;line-height:1.2;letter-spacing:-0.5px}
