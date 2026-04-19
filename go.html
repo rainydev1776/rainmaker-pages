@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
-<meta name="version" content="v65">
+<meta name="version" content="v66">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -314,17 +314,17 @@ document.addEventListener('touchend',e=>{
 
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
 
+let typeTimer=null;
 function typeOut(el){
+  clearInterval(typeTimer);
   el.classList.remove('done');
   el.textContent='';
   const text=el.getAttribute('data-text');
   let i=0;
-  const speed=55;
-  function tick(){
-    if(i<text.length){el.textContent+=text[i];i++;setTimeout(tick,speed);}
-    else{el.classList.add('done');}
-  }
-  tick();
+  typeTimer=setInterval(()=>{
+    if(i<text.length){el.textContent+=text[i];i++;}
+    else{clearInterval(typeTimer);typeTimer=null;el.classList.add('done');}
+  },55);
 }
 
 function fmtPnl(pnl){
