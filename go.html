@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
-<meta name="version" content="v18">
+<meta name="version" content="v19">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -17,9 +17,9 @@
   /* PROGRESS BAR */
   .pbar{position:absolute;top:env(safe-area-inset-top,12px);left:12px;right:12px;display:flex;gap:3px;z-index:200;padding-top:12px}
   .pbar .s{flex:1;height:2px;background:rgba(255,255,255,0.12);border-radius:2px;overflow:hidden}
-  .pbar .s .f{height:100%;width:0;background:#fff;border-radius:2px;transition:width 0.3s ease}
-  .pbar .s.done .f{width:100%}
-  .pbar .s.active .f{width:100%}
+  .pbar .s .f{height:100%;width:0;background:#fff;border-radius:2px}
+  .pbar .s.done .f{width:100%;transition:none}
+  .pbar .s.active .f{width:100%;transition:width var(--dur,6s) linear}
 
   /* TAP ZONES */
   .tap-l,.tap-r{position:absolute;top:0;bottom:0;z-index:100}
@@ -190,10 +190,12 @@
 </div>
 
 <script>
-const FIXED_PRE = 8;  // slides 0-7 (logo+welcome, hook×3, explainer, context×3)
-const FIXED_POST = 5; // scoreboard, edge, feed, compound, cta
+const FIXED_PRE = 8;
+const FIXED_POST = 5;
+const SLIDE_MS = 6000;
 let TOTAL_SLIDES = FIXED_PRE + FIXED_POST;
 let cur = 0;
+let autoTimer = null;
 const bar = document.getElementById('pbar');
 const phone = document.querySelector('.phone');
 
@@ -215,12 +217,36 @@ function assignPostSlides(tradeCount){
 
 function go(idx){
   if(idx<0)idx=0;if(idx>=TOTAL_SLIDES)idx=TOTAL_SLIDES-1;
+  clearTimeout(autoTimer);
   document.querySelector(`.slide[data-slide="${cur}"]`)?.classList.remove('active');
   cur=idx;
   const activeSlide=document.querySelector(`.slide[data-slide="${cur}"]`);
   activeSlide?.classList.add('active');
-  bar.querySelectorAll('.s').forEach((s,i)=>{s.classList.remove('done','active');if(i<cur)s.classList.add('done');if(i===cur)s.classList.add('active');});
+
+  const segs=bar.querySelectorAll('.s');
+  segs.forEach((s,i)=>{
+    const fill=s.querySelector('.f');
+    s.classList.remove('done','active');
+    if(i<cur){
+      s.classList.add('done');
+    }else if(i===cur){
+      fill.style.transition='none';
+      fill.style.width='0';
+      fill.offsetWidth;
+      s.classList.add('active');
+      fill.style.transition=`width ${SLIDE_MS}ms linear`;
+      fill.style.width='100%';
+    }else{
+      fill.style.transition='none';
+      fill.style.width='0';
+    }
+  });
+
   if(activeSlide&&activeSlide.id==='feedSlide') triggerFeedAnimation();
+
+  if(cur<TOTAL_SLIDES-1){
+    autoTimer=setTimeout(()=>go(cur+1),SLIDE_MS);
+  }
 }
 
 document.getElementById('tapR').addEventListener('click',()=>go(cur+1));
