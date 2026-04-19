@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
-<meta name="version" content="v21">
+<meta name="version" content="v22">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -194,7 +194,7 @@
 <script>
 const FIXED_PRE = 8;
 const FIXED_POST = 5;
-const SLIDE_MS = 6000;
+const SLIDE_MS = 5000;
 let TOTAL_SLIDES = FIXED_PRE + FIXED_POST;
 let cur = 0;
 let autoTimer = null;
@@ -229,17 +229,17 @@ function go(idx){
   segs.forEach((s,i)=>{
     const fill=s.querySelector('.f');
     s.classList.remove('done','active');
+    fill.style.transition='none';
     if(i<cur){
+      fill.style.width='100%';
       s.classList.add('done');
     }else if(i===cur){
-      fill.style.transition='none';
       fill.style.width='0';
       fill.offsetWidth;
       s.classList.add('active');
       fill.style.transition=`width ${SLIDE_MS}ms linear`;
       fill.style.width='100%';
     }else{
-      fill.style.transition='none';
       fill.style.width='0';
     }
   });
