@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
-<meta name="version" content="v43">
+<meta name="version" content="v44">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -99,6 +99,8 @@
   .cta-wrap{display:flex;flex-direction:column;gap:10px;width:100%;max-width:300px;margin-top:20px}
   .btn{display:block;width:100%;padding:16px;border-radius:14px;font-size:16px;font-weight:700;text-align:center;text-decoration:none;border:none;cursor:pointer;transition:transform 0.15s ease}
   .btn:active{transform:scale(0.97)}
+  .btn-green{background:#11E957;color:#000;animation:btnBreathe 3s ease-in-out infinite}
+  @keyframes btnBreathe{0%,100%{box-shadow:0 0 0 0 rgba(17,233,87,0)}50%{box-shadow:0 0 20px 4px rgba(17,233,87,0.25)}}
   .btn-w{background:#fff;color:#000}
   .btn-o{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.15)}
   .btn-sub{font-size:11px;color:rgba(255,255,255,0.2);text-align:center;margin-top:6px}
@@ -183,13 +185,13 @@
 
   <div class="slide" id="ctaSlide">
     <img src="logo.png" alt="Rainmaker" style="width:20vw;height:20vw;max-width:140px;max-height:140px;margin-bottom:10px" class="anim-scale">
-    <p class="h2 anim-up">See it for yourself.</p>
+    <p class="h2 anim-up">Your turn.</p>
     <p class="sub anim-up-d1">Watch Rainmaker trade today's games<br>with play money — or start for real.</p>
     <div class="cta-wrap anim-up-d2">
-      <a href="https://rainmaker.fun" class="btn btn-w">Try it with $10 →</a>
-      <a href="https://rainmaker.fun" class="btn btn-o">Try free with play money</a>
+      <a href="https://rainmaker.fun" class="btn btn-green">Fund $10 →</a>
+      <a href="https://rainmaker.fun" class="btn btn-o">Watch with play money</a>
     </div>
-    <p class="btn-sub">No hidden fees · Withdraw anytime</p>
+    <p class="btn-sub">We only get paid when you win · Withdraw anytime</p>
   </div>
 </div>
 
