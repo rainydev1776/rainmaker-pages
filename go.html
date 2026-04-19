@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
-<meta name="version" content="v54">
+<meta name="version" content="v55">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -109,6 +109,9 @@
   .pulse{width:6px;height:6px;border-radius:50%;background:#11E957;display:inline-block;margin-right:5px;animation:p 1.5s infinite}
   @keyframes p{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
   @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+  .typewriter::after{content:'|';animation:blink 0.7s step-end infinite;margin-left:1px}
+  .typewriter.done::after{display:none}
 </style>
 </head>
 <body>
@@ -127,17 +130,17 @@
 
   <!-- 1: HOOK -->
   <div class="slide" data-slide="1">
-    <p class="h1 anim-up">You don't pick games.</p>
+    <p class="h1 typewriter" data-text="You don't pick games."></p>
   </div>
 
   <!-- 2: HOOK -->
   <div class="slide" data-slide="2">
-    <p class="h1 anim-up">You don't place bets.</p>
+    <p class="h1 typewriter" data-text="You don't place bets."></p>
   </div>
 
   <!-- 3: HOOK -->
   <div class="slide" data-slide="3">
-    <p class="h1 anim-up">You just get paid.</p>
+    <p class="h1 typewriter" data-text="You just get paid."></p>
   </div>
 
   <!-- 4: HOOK + EXPLAINER -->
@@ -250,6 +253,8 @@ function go(idx){
   });
 
   if(activeSlide&&activeSlide.id==='feedSlide') triggerFeedAnimation();
+  const tw=activeSlide?.querySelector('.typewriter');
+  if(tw){typeOut(tw);}
   const isLast=cur===TOTAL_SLIDES-1;
   document.getElementById('miniLogo').style.display=(cur>0&&!isLast)?'block':'none';
 
@@ -306,6 +311,19 @@ document.addEventListener('touchend',e=>{
 },{passive:true});
 
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
+
+function typeOut(el){
+  el.classList.remove('done');
+  el.textContent='';
+  const text=el.getAttribute('data-text');
+  let i=0;
+  const speed=55;
+  function tick(){
+    if(i<text.length){el.textContent+=text[i];i++;setTimeout(tick,speed);}
+    else{el.classList.add('done');}
+  }
+  tick();
+}
 
 function fmtPnl(pnl){
   const a=Math.abs(Math.round(pnl*100)/100);
