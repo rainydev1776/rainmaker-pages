@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
-<meta name="version" content="v23">
+<meta name="version" content="v24">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -119,7 +119,7 @@
   <div class="slide active" data-slide="0">
     <img src="logo.png" alt="Rainmaker" class="logo anim-scale">
     <p style="margin-top:16px;font-size:22px;font-weight:300;color:#fff;text-transform:uppercase;letter-spacing:0.35em;opacity:0;animation:fadeIn 0.5s 3s ease forwards">Rainmaker</p>
-    <p style="position:absolute;bottom:48px;left:0;right:0;text-align:center;font-size:12px;color:rgba(255,255,255,0.25);opacity:0;animation:fadeIn 0.5s 3.5s ease forwards">Tap to begin</p>
+    <p style="position:absolute;bottom:48px;left:0;right:0;text-align:center;font-size:12px;color:rgba(255,255,255,0.25);opacity:0;animation:fadeIn 0.5s 6s ease forwards">Tap to begin</p>
   </div>
 
   <!-- 1: HOOK -->
@@ -238,7 +238,8 @@ function go(idx){
       fill.style.width='0';
       fill.offsetWidth;
       s.classList.add('active');
-      fill.style.transition=`width ${SLIDE_MS}ms linear`;
+      const segDur=cur===0?9000:SLIDE_MS;
+      fill.style.transition=`width ${segDur}ms linear`;
       fill.style.width='100%';
     }else{
       fill.style.width='0';
@@ -248,7 +249,8 @@ function go(idx){
   if(activeSlide&&activeSlide.id==='feedSlide') triggerFeedAnimation();
 
   if(cur<TOTAL_SLIDES-1){
-    autoTimer=setTimeout(()=>go(cur+1),SLIDE_MS);
+    const dur=cur===0?9000:SLIDE_MS;
+    autoTimer=setTimeout(()=>go(cur+1),dur);
   }
 }
 
