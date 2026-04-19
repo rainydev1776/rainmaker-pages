@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
 <link rel="icon" type="image/png" href="favicon.png">
-<meta name="version" content="v80">
+<meta name="version" content="v81">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -113,7 +113,12 @@
   .diamond{position:relative;width:180px;height:180px;margin:0 auto}
   .diamond img{position:absolute;width:52px;height:52px;border-radius:12px;opacity:0;transform:translateY(40px);background:#111;padding:6px}
   .diamond img.pop{animation:diamondPop 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards}
+  .diamond.spinning{animation:spinDiamond 8s 1.5s linear infinite}
+  .diamond.spinning img{transform-origin:center}
   @keyframes diamondPop{to{opacity:1;transform:translateY(0)}}
+  @keyframes spinDiamond{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+  .diamond.spinning img{animation:counterSpin 8s 1.5s linear infinite}
+  @keyframes counterSpin{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
   .diamond img:nth-child(1){top:0;left:50%;margin-left:-26px}
   .diamond img:nth-child(2){top:50%;left:0;margin-top:-26px}
   .diamond img:nth-child(3){top:50%;right:0;margin-top:-26px}
@@ -333,12 +338,15 @@ function typeOut(el){
 }
 
 function triggerDiamond(){
-  const imgs=document.querySelectorAll('#sportsDiamond img');
+  const diamond=document.getElementById('sportsDiamond');
+  diamond.classList.remove('spinning');
+  const imgs=diamond.querySelectorAll('img');
   imgs.forEach(i=>{i.classList.remove('pop');i.style.removeProperty('animation-delay')});
   imgs.forEach((img,i)=>{
     img.style.animationDelay=i*300+'ms';
     requestAnimationFrame(()=>img.classList.add('pop'));
   });
+  setTimeout(()=>diamond.classList.add('spinning'),1500);
 }
 
 function fmtPnl(pnl){
