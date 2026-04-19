@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
-<meta name="version" content="v73">
+<meta name="version" content="v74">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -130,40 +130,24 @@
     <p style="margin-top:16px;font-size:15px;color:rgba(255,255,255,0.3);text-align:center;opacity:0;animation:fadeIn 0.5s 3s ease forwards"><span class="shimmer">Tap to begin</span></p>
   </div>
 
-  <!-- 1: HOOK -->
+  <!-- 1: EXPLAINER -->
   <div class="slide" data-slide="1">
-    <p class="h1 typewriter" data-text="Rainmaker watches."></p>
+    <p class="h1 anim-up">Rainmaker is an AI that bets on<br>live sports games for you.</p>
   </div>
 
-  <!-- 2: HOOK -->
-  <div class="slide" data-slide="2">
-    <p class="h1 typewriter" data-text="Rainmaker executes."></p>
-  </div>
-
-  <!-- 3: HOOK -->
-  <div class="slide" data-slide="3">
-    <p class="h1 typewriter" data-text="You get paid."></p>
-  </div>
-
-  <!-- 4: HOOK + EXPLAINER -->
-  <div class="slide" data-slide="4">
-    <p class="h1">You get paid.</p>
-    <p class="sub anim-up" style="position:absolute;top:calc(50% + 24px);left:28px;right:28px;color:rgba(255,255,255,0.55)">Rainmaker is an AI that bets on<br>live sports games for you.</p>
-  </div>
-
-  <!-- 5: CONTEXT - line 1 -->
-  <div class="slide" data-slide="5" style="justify-content:flex-start;padding-top:38%">
+  <!-- 2: CONTEXT - line 1 -->
+  <div class="slide" data-slide="2" style="justify-content:flex-start;padding-top:38%">
     <p class="h2 anim-up" style="color:rgba(255,255,255,0.9)">Rainmaker AI watches<br>every live MLB game.</p>
   </div>
 
-  <!-- 6: CONTEXT - lines 1+2 -->
-  <div class="slide" data-slide="6" style="justify-content:flex-start;padding-top:38%">
+  <!-- 3: CONTEXT - lines 1+2 -->
+  <div class="slide" data-slide="3" style="justify-content:flex-start;padding-top:38%">
     <p class="h2" style="color:rgba(255,255,255,0.9)">Rainmaker AI watches<br>every live MLB game.</p>
     <p class="sub anim-up" style="margin-top:14px;color:rgba(255,255,255,0.55)">It bets for you<br>when it sees an edge.</p>
   </div>
 
-  <!-- 7: CONTEXT - lines 1+2+3 -->
-  <div class="slide" data-slide="7" style="justify-content:flex-start;padding-top:38%">
+  <!-- 4: CONTEXT - lines 1+2+3 -->
+  <div class="slide" data-slide="4" style="justify-content:flex-start;padding-top:38%">
     <p class="h2" style="color:rgba(255,255,255,0.9)">Rainmaker AI watches<br>every live MLB game.</p>
     <p class="sub" style="margin-top:14px;color:rgba(255,255,255,0.55)">It bets for you<br>when it sees an edge.</p>
     <p class="sub anim-up" style="color:rgba(255,255,255,0.38);margin-top:20px">You don't lift a finger.</p>
@@ -201,7 +185,7 @@
 </div>
 
 <script>
-const FIXED_PRE = 8;
+const FIXED_PRE = 5;
 const FIXED_POST = 5;
 const SLIDE_MS = 5000;
 let TOTAL_SLIDES = FIXED_PRE + FIXED_POST;
