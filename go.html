@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
-<meta name="version" content="v42">
+<meta name="version" content="v43">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -15,7 +15,7 @@
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
   html,body{height:100%;overflow:hidden;background:#222;font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
 
-  .phone{max-width:430px;height:100vh;height:100dvh;margin:0 auto;position:relative;overflow:hidden;background:#000;border-left:2px solid #444;border-right:2px solid #444}
+  .phone{max-width:430px;height:100vh;height:100dvh;margin:0 auto;position:relative;overflow:hidden;background:#000}
 
   /* PROGRESS BAR */
   .pbar{position:absolute;top:env(safe-area-inset-top,12px);left:12px;right:12px;display:flex;gap:3px;z-index:200;padding-top:12px}
@@ -106,6 +106,7 @@
   /* PULSE */
   .pulse{width:6px;height:6px;border-radius:50%;background:#11E957;display:inline-block;margin-right:5px;animation:p 1.5s infinite}
   @keyframes p{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
+  @keyframes breathe{0%,100%{opacity:0.35}50%{opacity:0.12}}
 </style>
 </head>
 <body>
@@ -119,7 +120,7 @@
   <!-- 0: LOGO -->
   <div class="slide active" data-slide="0">
     <img src="logo.png" alt="Rainmaker" class="logo anim-scale">
-    <p style="position:absolute;bottom:36px;left:0;right:0;text-align:center;font-size:12px;color:rgba(255,255,255,0.25);opacity:0;animation:fadeIn 0.5s 3s ease forwards">Tap to begin</p>
+    <p style="position:absolute;bottom:28px;left:0;right:0;text-align:center;font-size:15px;color:rgba(255,255,255,0.3);opacity:0;animation:fadeIn 0.5s 3s ease forwards,breathe 3s 3.5s ease-in-out infinite">Tap to begin</p>
   </div>
 
   <!-- 1: HOOK -->
@@ -145,20 +146,20 @@
 
   <!-- 5: CONTEXT - line 1 -->
   <div class="slide" data-slide="5" style="justify-content:flex-start;padding-top:38%">
-    <p class="h2 anim-up" style="color:rgba(255,255,255,0.9)">Every night, our AI watches<br>live MLB games.</p>
+    <p class="h2 anim-up" style="color:rgba(255,255,255,0.9)">Rainmaker AI watches every<br>live MLB game.</p>
   </div>
 
   <!-- 6: CONTEXT - lines 1+2 -->
   <div class="slide" data-slide="6" style="justify-content:flex-start;padding-top:38%">
-    <p class="h2" style="color:rgba(255,255,255,0.9)">Every night, our AI watches<br>live MLB games.</p>
-    <p class="sub anim-up" style="margin-top:14px;color:rgba(255,255,255,0.55)">It tracks every game live and<br>strikes when it sees an edge.</p>
+    <p class="h2" style="color:rgba(255,255,255,0.9)">Rainmaker AI watches every<br>live MLB game.</p>
+    <p class="sub anim-up" style="margin-top:14px;color:rgba(255,255,255,0.55)">It buys and sells autonomously<br>for you when it sees an edge.</p>
   </div>
 
   <!-- 7: CONTEXT - lines 1+2+3 -->
   <div class="slide" data-slide="7" style="justify-content:flex-start;padding-top:38%">
-    <p class="h2" style="color:rgba(255,255,255,0.9)">Every night, our AI watches<br>live MLB games.</p>
-    <p class="sub" style="margin-top:14px;color:rgba(255,255,255,0.55)">It tracks every game live and<br>strikes when it sees an edge.</p>
-    <p class="sub anim-up" style="color:rgba(255,255,255,0.38);margin-top:20px">Here's what happened<br>in the last 2 weeks. ↓</p>
+    <p class="h2" style="color:rgba(255,255,255,0.9)">Rainmaker AI watches every<br>live MLB game.</p>
+    <p class="sub" style="margin-top:14px;color:rgba(255,255,255,0.55)">It buys and sells autonomously<br>for you when it sees an edge.</p>
+    <p class="sub anim-up" style="color:rgba(255,255,255,0.38);margin-top:20px">You don't have to lift a finger.</p>
   </div>
 
   <!-- TRADE CARDS: injected dynamically by JS -->
@@ -183,7 +184,7 @@
   <div class="slide" id="ctaSlide">
     <img src="logo.png" alt="Rainmaker" style="width:20vw;height:20vw;max-width:140px;max-height:140px;margin-bottom:10px" class="anim-scale">
     <p class="h2 anim-up">See it for yourself.</p>
-    <p class="sub anim-up-d1">Watch the AI trade tonight's games<br>with play money — or start for real.</p>
+    <p class="sub anim-up-d1">Watch Rainmaker trade today's games<br>with play money — or start for real.</p>
     <div class="cta-wrap anim-up-d2">
       <a href="https://rainmaker.fun" class="btn btn-w">Try it with $10 →</a>
       <a href="https://rainmaker.fun" class="btn btn-o">Try free with play money</a>
@@ -258,9 +259,50 @@ function go(idx){
 
 document.getElementById('tapR').addEventListener('click',()=>go(cur+1));
 document.getElementById('tapL').addEventListener('click',()=>go(cur-1));
+
 let sx=0;
-document.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
-document.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>40){d<0?go(cur+1):go(cur-1)}},{passive:true});
+let holdTimer=null;
+let isHolding=false;
+let pausedAt=0;
+let remainMs=0;
+
+document.addEventListener('touchstart',e=>{
+  sx=e.touches[0].clientX;
+  holdTimer=setTimeout(()=>{
+    isHolding=true;
+    clearTimeout(autoTimer);
+    const fill=bar.querySelectorAll('.s')[cur]?.querySelector('.f');
+    if(fill){
+      const w=fill.getBoundingClientRect().width;
+      const pw=fill.parentElement.getBoundingClientRect().width;
+      const pct=pw?w/pw:0;
+      const totalDur=cur===0?25000:SLIDE_MS;
+      remainMs=Math.max(0,totalDur-totalDur*pct);
+      fill.style.transition='none';
+      fill.style.width=pct*100+'%';
+    }
+    pausedAt=Date.now();
+  },200);
+},{passive:true});
+
+document.addEventListener('touchend',e=>{
+  clearTimeout(holdTimer);
+  const d=e.changedTouches[0].clientX-sx;
+  if(isHolding){
+    isHolding=false;
+    const fill=bar.querySelectorAll('.s')[cur]?.querySelector('.f');
+    if(fill){
+      fill.style.transition=`width ${remainMs}ms linear`;
+      fill.style.width='100%';
+    }
+    if(cur<TOTAL_SLIDES-1){
+      autoTimer=setTimeout(()=>go(cur+1),remainMs);
+    }
+  }else if(Math.abs(d)>40){
+    d<0?go(cur+1):go(cur-1);
+  }
+},{passive:true});
+
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
 
 function fmtPnl(pnl){
@@ -313,7 +355,7 @@ function renderTrades(trades){
 
 function renderScore(s){
   document.getElementById('scorePeriod').textContent=`Last ${s.days} days`;
-  document.getElementById('feedTitle').textContent=`Every trade from the last ${s.days} days:`;
+  document.getElementById('feedTitle').textContent=`Every trade from the last ${s.days} days:`; 
   document.getElementById('scoreGrid').innerHTML=`
     <div class="sitem"><div class="sval green mono">${s.wins}</div><div class="slbl">Wins</div></div>
     <div class="sitem"><div class="sval red mono">${s.losses}</div><div class="slbl">Losses</div></div>
@@ -350,7 +392,7 @@ function renderEdge(s){
   const lPct=Math.round((totL/maxVal)*100);
   document.getElementById('edgeSlide').innerHTML=`
     <p class="h2 anim-up" style="margin-bottom:6px">Asymmetric by design.</p>
-    <p class="sub anim-up-d1" style="margin-bottom:24px">Engineered so the gains always outpace the losses.<br>That's how $100 becomes $${s.endBalance || 370}.</p>
+    <p class="sub anim-up-d1" style="margin-bottom:24px">Engineered so the gains<br>always outpace the losses.<br>That's how $100 becomes $${s.endBalance || 370}.</p>
     <div class="edge-wrap anim-up-d2">
       <div class="edge-row">
         <span class="edge-lbl">Earned</span>
@@ -369,7 +411,7 @@ function renderCompound(s,period){
   document.getElementById('compSlide').innerHTML=`
     <p class="h2 anim-up" style="margin-bottom:6px">Let it compound.</p>
     <p class="sub anim-up-d1" style="margin-bottom:4px">Start with $${s.startBalance}.</p>
-    <p class="sub anim-up-d1" style="margin-bottom:16px;margin-top:4px">Let the AI reinvest your wins.<br>${s.days} days later...</p>
+    <p class="sub anim-up-d1" style="margin-bottom:16px;margin-top:4px">Let Rainmaker reinvest your wins.<br>${s.days} days later...</p>
     <div class="ccard anim-scale">
       <div class="cfrom mono">$${s.startBalance}</div>
       <div class="carrow">↓</div>
