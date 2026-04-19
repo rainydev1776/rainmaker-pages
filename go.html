@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
-<meta name="version" content="v69">
+<meta name="version" content="v70">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -109,8 +109,8 @@
   .pulse{width:6px;height:6px;border-radius:50%;background:#11E957;display:inline-block;margin-right:5px;animation:p 1.5s infinite}
   @keyframes p{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
   @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
-  @keyframes shimmer{0%{background-position:100% center}40%{background-position:-100% center}100%{background-position:-100% center}}
-  .shimmer{background:linear-gradient(90deg,rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.3) 45%,rgba(255,255,255,0.7) 50%,rgba(255,255,255,0.3) 55%,rgba(255,255,255,0.3) 100%);background-size:100% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 5s 3.5s linear infinite}
+  @keyframes shimmer{0%{background-position:150% center}40%{background-position:-50% center}100%{background-position:-50% center}}
+  .shimmer{background:linear-gradient(90deg,rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.3) 40%,rgba(255,255,255,0.75) 50%,rgba(255,255,255,0.3) 60%,rgba(255,255,255,0.3) 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 5s 3.5s linear infinite}
   @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
   .typewriter::after{content:'|';animation:blink 0.7s step-end infinite;margin-left:1px}
   .typewriter.done::after{display:none}
