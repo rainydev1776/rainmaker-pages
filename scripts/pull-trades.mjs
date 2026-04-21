@@ -84,6 +84,14 @@ function getLabel(ticker, short) {
     : `${expandTeam(p.awayAbbr)} vs ${expandTeam(p.homeAbbr)}`;
 }
 
+function getTeamAbbrs(ticker) {
+  const p = parseKalshiTicker(ticker);
+  if (!p) return { away: '', home: '' };
+  const espnMap = { CWS: 'chw', ARZ: 'ari' };
+  const toEspn = a => (espnMap[a] || a).toLowerCase();
+  return { away: toEspn(p.awayAbbr), home: toEspn(p.homeAbbr) };
+}
+
 async function main() {
   const sinceIso = new Date(Date.now() - LOOKBACK_DAYS * 24 * 60 * 60 * 1000).toISOString();
   console.log(`Pulling MLB burst trades since ${sinceIso} (${LOOKBACK_DAYS} days)...`);
@@ -251,20 +259,30 @@ async function main() {
   const latest = new Date(Math.max(...dates));
   const days = Math.ceil((latest - earliest) / (24 * 60 * 60 * 1000)) + 1;
 
-  const featured = ordered.map(g => ({
-    game: getLabel(g.ticker, false),
-    date: formatDate(g.executed_at),
-    pnl: g.displayPnl,
-    pct: g.displayPct,
-    result: g.isWin ? 'win' : 'loss',
-  }));
+  const featured = ordered.map(g => {
+    const t = getTeamAbbrs(g.ticker);
+    return {
+      game: getLabel(g.ticker, false),
+      date: formatDate(g.executed_at),
+      pnl: g.displayPnl,
+      pct: g.displayPct,
+      result: g.isWin ? 'win' : 'loss',
+      away: t.away,
+      home: t.home,
+    };
+  });
 
-  const feed = selected.map(g => ({
-    game: getLabel(g.ticker, true),
-    pnl: g.displayPnl,
-    pct: g.displayPct,
-    result: g.isWin ? 'win' : 'loss',
-  }));
+  const feed = selected.map(g => {
+    const t = getTeamAbbrs(g.ticker);
+    return {
+      game: getLabel(g.ticker, true),
+      pnl: g.displayPnl,
+      pct: g.displayPct,
+      result: g.isWin ? 'win' : 'loss',
+      away: t.away,
+      home: t.home,
+    };
+  });
 
   const output = {
     updated: new Date().toISOString(),
