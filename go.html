@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
 <link rel="icon" type="image/png" href="favicon.png">
-<meta name="version" content="v85">
+<meta name="version" content="v86">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -98,15 +98,13 @@
 
   /* MOSAIC */
   .mosaic-slide{overflow:hidden}
-  .mosaic-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(14,1fr);gap:2px;padding:30px 4px 60px}
-  .mcard{position:absolute;left:50%;top:50%;width:220px;padding:16px;background:#0a0a0a;border:1px solid #1a1a1c;border-radius:14px;text-align:center;transform:translate(-50%,-50%) scale(1);opacity:1;z-index:10;transition:all 0.6s cubic-bezier(0.16,1,0.3,1)}
-  .mcard.shrunk{width:100%;height:100%;padding:2px;border-radius:4px;position:relative;left:auto;top:auto;transform:none;z-index:1}
-  .mcard-pnl{font-size:28px;font-weight:900;font-family:'JetBrains Mono',monospace;letter-spacing:-1px}
-  .mcard.shrunk .mcard-pnl{font-size:8px;letter-spacing:0}
-  .mcard-game{font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:4px}
-  .mcard.shrunk .mcard-game{display:none}
-  .mcard-tag{font-size:9px;font-weight:700;text-transform:uppercase;margin-top:6px}
-  .mcard.shrunk .mcard-tag{display:none}
+  .mosaic-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(7,1fr);gap:3px;padding:40px 4px 60px}
+  .mosaic-grid .cell{overflow:hidden;border-radius:4px;opacity:0}
+  .mosaic-grid .cell.placed{opacity:1}
+  .mosaic-grid .cell img{width:100%;height:100%;object-fit:cover}
+  .mcard-hero{position:absolute;left:50%;top:50%;width:260px;transform:translate(-50%,-50%) scale(1);opacity:1;z-index:20;border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.6);transition:all 0.5s cubic-bezier(0.16,1,0.3,1)}
+  .mcard-hero img{width:100%;display:block}
+  .mcard-hero.shrinking{width:40px;opacity:0;transform:translate(-50%,-50%) scale(0.15)}
 
   /* CTA */
   .cta-wrap{display:flex;flex-direction:column;gap:10px;width:100%;max-width:300px;margin-top:20px}
@@ -370,25 +368,48 @@ function triggerDiamond(){
   setTimeout(()=>{cs.style.transition='opacity 0.5s ease';cs.style.opacity='1';},1800);
 }
 
-let mosaicTimer=null;
+let mosaicRunning=false;
 function triggerMosaic(){
-  clearInterval(mosaicTimer);
+  if(mosaicRunning) return;
+  mosaicRunning=true;
   const grid=document.getElementById('mosaicGrid');
+  const slide=document.getElementById('mosaicSlide');
   grid.innerHTML='';
+  slide.querySelectorAll('.mcard-hero').forEach(h=>h.remove());
 
-  const demo={game:'Mets vs Cubs',pnl:181.95,pct:182,result:'win'};
-  const w=demo.result==='win';
-  const sign=w?'+':'−';
+  const COLS=5, ROWS=7, TOTAL=COLS*ROWS;
+  const cardSrc='cards/card1.png';
 
-  const card=document.createElement('div');
-  card.className='mcard';
-  card.innerHTML=`
-    <div class="mcard-game">${demo.game}</div>
-    <div class="mcard-pnl ${w?'green':'red'}">${sign}$${Math.abs(demo.pnl).toFixed(0)}</div>
-    <div class="mcard-tag ${w?'green':'red'}">${w?'WIN':'LOSS'}</div>`;
-  grid.appendChild(card);
+  for(let i=0;i<TOTAL;i++){
+    const cell=document.createElement('div');
+    cell.className='cell';
+    cell.dataset.idx=i;
+    const img=document.createElement('img');
+    img.src=cardSrc;
+    cell.appendChild(img);
+    grid.appendChild(cell);
+  }
+  const cells=[...grid.querySelectorAll('.cell')];
 
-  setTimeout(()=>{card.classList.add('shrunk');},1200);
+  let placed=0;
+  function placeNext(){
+    if(placed>=TOTAL){mosaicRunning=false;return;}
+    const hero=document.createElement('div');
+    hero.className='mcard-hero';
+    const img=document.createElement('img');
+    img.src=cardSrc;
+    hero.appendChild(img);
+    slide.appendChild(hero);
+
+    const delay=Math.max(80, 600 - placed*30);
+    setTimeout(()=>{
+      hero.classList.add('shrinking');
+      cells[placed].classList.add('placed');
+      placed++;
+      setTimeout(()=>{hero.remove();placeNext();}, delay>200?400:200);
+    }, placed<3?800:delay);
+  }
+  placeNext();
 }
 
 function fmtPnl(pnl){
