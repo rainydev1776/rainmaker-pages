@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-21T13:01:04.991Z",
-  "period": "Apr 17 – Apr 21",
+  "updated": "2026-04-21T14:30:07.600Z",
+  "period": "Apr 16 – Apr 20",
   "summary": {
     "wins": 10,
     "losses": 2,
@@ -10,90 +10,90 @@
     "days": 5,
     "avgWinPnl": 49.23,
     "avgLossPnl": -61.61,
-    "totalWon": 492.32,
+    "totalWon": 492.31,
     "totalLost": 123.23
   },
   "featured": [
     {
       "game": "Tigers vs Red Sox",
-      "date": "Apr 20",
+      "date": "Apr 19",
       "pnl": 8.92,
       "pct": 8.9,
       "result": "win"
     },
     {
       "game": "Padres vs Angels",
-      "date": "Apr 20",
+      "date": "Apr 19",
       "pnl": 16.83,
       "pct": 16.8,
       "result": "win"
     },
     {
       "game": "Mets vs Cubs",
-      "date": "Apr 20",
+      "date": "Apr 19",
       "pnl": 181.95,
       "pct": 182,
       "result": "win"
     },
     {
       "game": "Astros vs Guardians",
-      "date": "Apr 21",
+      "date": "Apr 20",
       "pnl": -74.11,
       "pct": -74.1,
       "result": "loss"
     },
     {
       "game": "Orioles vs Guardians",
-      "date": "Apr 20",
+      "date": "Apr 19",
       "pnl": 6.89,
       "pct": 6.9,
       "result": "win"
     },
     {
       "game": "Reds vs Twins",
-      "date": "Apr 20",
+      "date": "Apr 19",
       "pnl": 5.59,
       "pct": 5.6,
       "result": "win"
     },
     {
       "game": "Orioles vs Guardians",
-      "date": "Apr 19",
-      "pnl": 12.45,
-      "pct": 12.5,
+      "date": "Apr 18",
+      "pnl": 12.44,
+      "pct": 12.4,
       "result": "win"
     },
     {
       "game": "Brewers vs Marlins",
-      "date": "Apr 19",
+      "date": "Apr 18",
       "pnl": 20.43,
       "pct": 20.4,
       "result": "win"
     },
     {
       "game": "Reds vs Twins",
-      "date": "Apr 19",
+      "date": "Apr 18",
       "pnl": 130.01,
       "pct": 130,
       "result": "win"
     },
     {
       "game": "Mets vs Cubs",
-      "date": "Apr 19",
+      "date": "Apr 18",
       "pnl": 9.03,
       "pct": 9,
       "result": "win"
     },
     {
       "game": "Rays vs Pirates",
-      "date": "Apr 18",
+      "date": "Apr 17",
       "pnl": -49.12,
       "pct": -49.1,
       "result": "loss"
     },
     {
       "game": "Rays vs White Sox",
-      "date": "Apr 17",
+      "date": "Apr 16",
       "pnl": 100.22,
       "pct": 100.2,
       "result": "win"
@@ -138,8 +138,8 @@
     },
     {
       "game": "BAL vs CLE",
-      "pnl": 12.45,
-      "pct": 12.5,
+      "pnl": 12.44,
+      "pct": 12.4,
       "result": "win"
     },
     {

@@ -128,14 +128,14 @@
   .diamond.spinning{animation:spinDiamond 8s linear infinite}
   @keyframes diamondPop{to{opacity:1;transform:translateY(0)}}
   @keyframes spinDiamond{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-  .diamond.spinning img.pop{animation:counterSpin 8s linear infinite;opacity:1;transform:none}
+  .diamond.spinning img.pop{animation:counterSpin 8s linear infinite;opacity:1 !important;transform:none}
   @keyframes counterSpin{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
   .diamond img:nth-child(1){top:0;left:50%;margin-left:-26px}
   .diamond img:nth-child(2){top:50%;left:0;margin-top:-26px}
   .diamond img:nth-child(3){top:50%;right:0;margin-top:-26px}
   .diamond img:nth-child(4){bottom:0;left:50%;margin-left:-26px}
-  @keyframes shimmer{from{background-position:200% 0}to{background-position:-200% 0}}
-  .shimmer{background:linear-gradient(90deg,rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.3) 45%,rgba(255,255,255,0.8) 50%,rgba(255,255,255,0.3) 55%,rgba(255,255,255,0.3) 100%);background-size:300% 100%;background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s 4s linear infinite}
+  @keyframes shimmer{0%{background-position:150% 0}40%{background-position:-50% 0}100%{background-position:-50% 0}}
+  .shimmer{background:linear-gradient(90deg,rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.3) 40%,rgba(255,255,255,0.9) 50%,rgba(255,255,255,0.3) 60%,rgba(255,255,255,0.3) 100%);background-size:200% 100%;background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 4s 3.5s ease-in-out infinite}
   @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
   .typewriter::after{content:'|';animation:blink 0.7s step-end infinite;margin-left:1px}
   .typewriter.done::after{display:none}
