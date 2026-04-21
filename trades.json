@@ -1,17 +1,17 @@
 {
-  "updated": "2026-04-20T20:36:28.938Z",
-  "period": "Apr 17 – Apr 20",
+  "updated": "2026-04-21T05:57:40.295Z",
+  "period": "Apr 17 – Apr 21",
   "summary": {
     "wins": 10,
     "losses": 2,
     "winRate": 83,
     "startBalance": 100,
-    "endBalance": 449,
+    "endBalance": 469,
     "days": 5,
-    "avgWinPnl": 49.37,
-    "avgLossPnl": -72.18,
-    "totalWon": 493.67,
-    "totalLost": 144.36
+    "avgWinPnl": 49.22,
+    "avgLossPnl": -61.61,
+    "totalWon": 492.19,
+    "totalLost": 123.23
   },
   "featured": [
     {
@@ -36,10 +36,10 @@
       "result": "win"
     },
     {
-      "game": "Rays vs Pirates",
-      "date": "Apr 18",
-      "pnl": -49.12,
-      "pct": -49.1,
+      "game": "Astros vs Guardians",
+      "date": "Apr 21",
+      "pnl": -74.11,
+      "pct": -74.1,
       "result": "loss"
     },
     {
@@ -59,8 +59,8 @@
     {
       "game": "Orioles vs Guardians",
       "date": "Apr 19",
-      "pnl": 12.4,
-      "pct": 12.4,
+      "pnl": 12.32,
+      "pct": 12.3,
       "result": "win"
     },
     {
@@ -73,8 +73,8 @@
     {
       "game": "Reds vs Twins",
       "date": "Apr 19",
-      "pnl": 131.41,
-      "pct": 131.4,
+      "pnl": 130.01,
+      "pct": 130,
       "result": "win"
     },
     {
@@ -85,10 +85,10 @@
       "result": "win"
     },
     {
-      "game": "Angels vs Yankees",
-      "date": "Apr 17",
-      "pnl": -95.24,
-      "pct": -95.2,
+      "game": "Rays vs Pirates",
+      "date": "Apr 18",
+      "pnl": -49.12,
+      "pct": -49.1,
       "result": "loss"
     },
     {
@@ -100,6 +100,12 @@
     }
   ],
   "feed": [
+    {
+      "game": "HOU vs CLE",
+      "pnl": -74.11,
+      "pct": -74.1,
+      "result": "loss"
+    },
     {
       "game": "DET vs BOS",
       "pnl": 8.92,
@@ -132,8 +138,8 @@
     },
     {
       "game": "BAL vs CLE",
-      "pnl": 12.4,
-      "pct": 12.4,
+      "pnl": 12.32,
+      "pct": 12.3,
       "result": "win"
     },
     {
@@ -144,8 +150,8 @@
     },
     {
       "game": "CIN vs MIN",
-      "pnl": 131.41,
-      "pct": 131.4,
+      "pnl": 130.01,
+      "pct": 130,
       "result": "win"
     },
     {
@@ -165,12 +171,6 @@
       "pnl": 100.22,
       "pct": 100.2,
       "result": "win"
-    },
-    {
-      "game": "LAA vs NYY",
-      "pnl": -95.24,
-      "pct": -95.2,
-      "result": "loss"
     }
   ]
 }
