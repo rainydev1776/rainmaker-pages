@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rainmaker Entertainment — Release Plan</title>
-<meta name="description" content="Distro-first release: Rainmaker lays the rail; music and Spawn ride it. Phases, gates, owners.">
+<meta name="description" content="Distro-first release: Rainmaker lays the rail; music and Spawn ride it. Phases, gates, accountable leads.">
 <link rel="icon" type="image/png" href="favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -61,7 +61,8 @@
   @media (min-width: 560px) { .grid-owners { grid-template-columns: 1fr 1fr; } }
   .owner { background: #111113; border: 1px solid #1e1e20; border-radius: 14px; padding: 16px 18px; }
   .owner h3 { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 6px; }
-  .owner .who { font-size: 11px; font-weight: 500; color: rgba(245,158,11,0.85); margin-bottom: 6px; }
+  .owner .lead-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.28); margin-bottom: 2px; }
+  .owner .lead { font-size: 11px; font-weight: 500; color: rgba(245,158,11,0.85); margin-bottom: 6px; }
   .owner .note { font-size: 11px; color: rgba(255,255,255,0.42); line-height: 1.45; }
   .risk li { display: flex; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.52); margin-bottom: 12px; list-style: none; }
   .risk span { color: rgba(251,113,133,0.85); flex-shrink: 0; }
@@ -88,7 +89,7 @@
       <a href="#thesis">Thesis</a>
       <a href="#phases">Phases</a>
       <a href="#gates">Gates</a>
-      <a href="#owners">Owners</a>
+      <a href="#leads">Leads</a>
       <a href="#risks">Risks</a>
       <a href="#stream">On-stream</a>
     </nav>
@@ -187,16 +188,17 @@
   </div>
 </section>
 
-<section id="owners" class="alt">
+<section id="leads" class="alt">
   <div class="container">
-    <h2>Owners</h2>
+    <h2 class="sub">Accountable leads</h2>
+    <p class="hint">One person per lane who answers for progress and calls—usually not doing every task themselves.</p>
     <div class="grid-owners">
-      <div class="owner"><h3>Rainmaker rail + metrics</h3><p class="who">You / product</p><p class="note">Single source of truth for &ldquo;did the rail work?&rdquo;</p></div>
-      <div class="owner"><h3>Auger + stream integration</h3><p class="who">You + Auger&rsquo;s team</p><p class="note">Schedule, trial terms, paid/sponsor disclosure if applicable.</p></div>
-      <div class="owner"><h3>Clippers</h3><p class="who">One owner</p><p class="note">Brief + SLA; creators execute.</p></div>
-      <div class="owner"><h3>Wildposting</h3><p class="who">One owner</p><p class="note">Cities, vendors, tracking.</p></div>
-      <div class="owner"><h3>CMG path</h3><p class="who">Torsten (intros) + you (asks)</p><p class="note">Clear timelines and deliverables.</p></div>
-      <div class="owner"><h3>Entertainment umbrella</h3><p class="who">You</p><p class="note">Brand + release calendar; partners handle masters/distro mechanics.</p></div>
+      <div class="owner"><h3>Rainmaker rail + metrics</h3><p class="lead-label">Lead</p><p class="lead">You / product</p><p class="note">Single source of truth for &ldquo;did the rail work?&rdquo;</p></div>
+      <div class="owner"><h3>Auger + stream integration</h3><p class="lead-label">Lead</p><p class="lead">You + Auger&rsquo;s team</p><p class="note">Schedule, trial terms, paid/sponsor disclosure if applicable.</p></div>
+      <div class="owner"><h3>Clippers</h3><p class="lead-label">Lead</p><p class="lead">One point person (assign a name)</p><p class="note">Brief + SLA; creators execute.</p></div>
+      <div class="owner"><h3>Wildposting</h3><p class="lead-label">Lead</p><p class="lead">One point person (assign a name)</p><p class="note">Cities, vendors, tracking.</p></div>
+      <div class="owner"><h3>CMG path</h3><p class="lead-label">Lead</p><p class="lead">Torsten (intros) + you (asks)</p><p class="note">Clear timelines and deliverables.</p></div>
+      <div class="owner"><h3>Entertainment umbrella</h3><p class="lead-label">Lead</p><p class="lead">You</p><p class="note">Brand + release calendar; partners handle masters/distro mechanics.</p></div>
     </div>
   </div>
 </section>
