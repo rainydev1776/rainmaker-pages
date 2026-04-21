@@ -16,7 +16,7 @@
   .nav a{font-size:12px;color:rgba(255,255,255,.5);margin-left:8px}
   .nav a:hover{color:#fff}
   .nav a.cy{color:rgba(14,165,233,.95)}
-  main{max-width:640px;margin:0 auto;padding:88px 20px 100px}
+  main{max-width:720px;margin:0 auto;padding:88px 20px 100px}
   h1{font-size:clamp(1.65rem,4vw,2rem);font-weight:600;letter-spacing:-.03em;line-height:1.15;margin-bottom:10px;background:linear-gradient(180deg,#fff 35%,#f59e0b 95%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
   .sub{color:#afafb6;font-size:15px;margin-bottom:10px}
   .mono{font-size:11px;color:rgba(255,255,255,.22);font-family:ui-monospace,monospace;margin-bottom:28px}
@@ -54,6 +54,25 @@
   .related h2{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.32);margin-bottom:12px}
   .btn{display:inline-block;border:1px solid rgba(255,255,255,.12);padding:10px 18px;border-radius:9999px;font-size:13px;color:rgba(255,255,255,.72);margin:0 8px 8px 0}
   .btn:hover{border-color:rgba(245,158,11,.35);color:#fff}
+  #retail-timeline{scroll-margin-top:96px}
+  .timeline-wrap{border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px 18px;margin-bottom:28px;background:#0c0c0f}
+  .tl-h{font-size:14px;font-weight:600;margin-bottom:4px}
+  .tl-sub{font-size:11px;color:rgba(255,255,255,.38);margin-bottom:14px;line-height:1.5}
+  .tl-sub a{color:rgba(14,165,233,.95);text-decoration:underline;text-underline-offset:2px}
+  .tl-mini,.mat-wrap{overflow-x:auto;border-radius:12px;border:1px solid rgba(255,255,255,.06);margin-bottom:14px}
+  .tl-table,.mat{width:100%;border-collapse:collapse;font-size:11px;min-width:480px}
+  .mat{min-width:640px}
+  .tl-table th,.tl-table td,.mat th,.mat td{border-bottom:1px solid rgba(255,255,255,.05);padding:7px 6px;text-align:left}
+  .tl-table th,.mat th{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.32);font-weight:600}
+  .tl-table td{font-size:11px;color:rgba(255,255,255,.45)}
+  .tl-mo{font-family:ui-monospace,monospace;color:rgba(251,191,36,.95)}
+  .tl-daily{color:rgba(52,211,153,.9);font-weight:600}
+  .mat th{text-align:center}
+  .mat td{text-align:center;color:rgba(255,255,255,.4);font-size:10px;line-height:1.35;vertical-align:top}
+  .mat td.chan{text-align:left;font-weight:500;color:rgba(255,255,255,.72)}
+  .mat td.chan a{color:rgba(251,191,36,.9);text-decoration:underline;text-underline-offset:2px}
+  .mat .sticky{position:sticky;left:0;background:#0c0c0f;z-index:1;border-right:1px solid rgba(255,255,255,.06)}
+  .mat-lbl{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.26);margin-bottom:6px}
 </style>
 </head>
 <body>
@@ -63,6 +82,7 @@
     <div>
       <a href="index.html">Home</a>
       <a href="rampup.html" class="cy">Ramp Up</a>
+      <a href="#retail-timeline">Timeline</a>
       <a href="#phase-0-retail">P0 · Retail</a>
       <a href="#phase-1-music">P1 · Music</a>
       <a href="#phase-2">P2</a>
@@ -75,9 +95,10 @@
   <p class="kicker">Internal · edit this file in repo</p>
   <h1>Rainmaker — Distribution sheet</h1>
   <p class="sub">How we move product and music through the same retail machine, phase by phase.</p>
-  <p class="mono">Last updated · 2026-04-22</p>
+  <p class="mono">Last updated · 2026-04-20</p>
 
   <div class="stepper">
+    <a href="#retail-timeline">Timeline</a>
     <a href="#phase-0-retail">P0 · Retail</a>
     <a href="#phase-1-music">P1 · Music</a>
     <a href="#phase-2">P2</a>
@@ -90,6 +111,50 @@
       <p class="blurb">In this plan, Retail does not mean shopping malls. It means Rainmaker’s mass-facing storefront: every channel where someone who is not already in your DMs can discover the product, see real proof, and take a clear next step. That includes live streams, creator and influencer posts, street and OOH (including wildposting), short-form clips, owned email, sonic identity (theme song), and the debit-card story as spend gets real.</p>
       <p class="blurb">Retail is the wide net—not a label pitch in a vacuum. When music releases, we point the same net at the record so listens and saves inherit familiarity instead of cold-starting a new audience.</p>
     </div>
+
+    <div id="retail-timeline" class="timeline-wrap">
+      <p class="tl-h">Retail × profit ladder</p>
+      <p class="tl-sub">Dates and <strong style="color:rgba(255,255,255,.55)">daily profit</strong> targets match the <a href="rampup.html">Ramp Up profit ladder</a> (Apr 14 → Sep 28, 2026). Matrix cells = when that lane is the <em>focus</em> for the month—not the only thing running.</p>
+      <div class="tl-mini">
+        <table class="tl-table">
+          <thead><tr><th>Mo</th><th>Dates</th><th>Daily profit</th><th>Users</th></tr></thead>
+          <tbody>
+            <tr><td class="tl-mo">1</td><td>Apr 14 – May 14</td><td class="tl-daily">$15,000</td><td>150</td></tr>
+            <tr><td class="tl-mo">2</td><td>May 15 – Jun 14</td><td class="tl-daily">$60,000</td><td>300</td></tr>
+            <tr><td class="tl-mo">3</td><td>Jun 15 – Jul 14</td><td class="tl-daily">$150,000</td><td>600</td></tr>
+            <tr><td class="tl-mo">4</td><td>Jul 15 – Aug 14</td><td class="tl-daily">$300,000</td><td>1,000</td></tr>
+            <tr><td class="tl-mo">5</td><td>Aug 15 – Sep 14</td><td class="tl-daily">$600,000</td><td>1,800</td></tr>
+            <tr><td class="tl-mo">5.5</td><td>Sep 15 – Sep 28</td><td class="tl-daily">$1,000,000</td><td>2,500</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mat-lbl">Retail lanes by month</p>
+      <div class="mat-wrap">
+        <table class="mat">
+          <thead>
+            <tr>
+              <th class="sticky">Channel</th>
+              <th title="Apr 14 – May 14 · $15K/day">M1</th>
+              <th title="May 15 – Jun 14 · $60K/day">M2</th>
+              <th title="Jun 15 – Jul 14 · $150K/day">M3</th>
+              <th title="Jul 15 – Aug 14 · $300K/day">M4</th>
+              <th title="Aug 15 – Sep 14 · $600K/day">M5</th>
+              <th title="Sep 15 – Sep 28 · $1M/day">M5.5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="chan sticky"><a href="#p0-auger-streams">Auger streams</a></td><td>Public launch</td><td>Shows + gift cards</td><td>All-Star cadence</td><td>Trade-deadline window</td><td>Stretch intensity</td><td>Playoff peak</td></tr>
+            <tr><td class="chan sticky"><a href="#p0-influencers-x">X influencers</a></td><td>Pilot (Kate + peers)</td><td>Scale daily posts</td><td>Athlete / creator deals</td><td>Press pickup beats</td><td>Mainstream push</td><td>Playoff noise</td></tr>
+            <tr><td class="chan sticky"><a href="#p0-wildposting">Wildposting</a></td><td>Prep + test</td><td>NYC · LA · MIA · ATL</td><td>Wave 2 · CHI · HOU</td><td>Refresh creative</td><td>National OOH tie-in</td><td>Final city blitz</td></tr>
+            <tr><td class="chan sticky"><a href="#p0-dan-clips">Dan · clips</a></td><td>Clip Auger daily</td><td>+ challenge UGC</td><td>All-Star moments</td><td>Deadline clips</td><td>Viral sprint</td><td>Playoff highlights</td></tr>
+            <tr><td class="chan sticky"><a href="#p0-theme-song">Theme song</a></td><td>Release + challenge</td><td>Soundtrack for clips</td><td>Stems to editors</td><td>Sync with big wins</td><td>Radio / pod seeds</td><td>Playoff anthem use</td></tr>
+            <tr><td class="chan sticky"><a href="#p0-email-list">Email list</a></td><td>Proof + onboarding</td><td>QR follow-up</td><td>City leaderboards</td><td>Whale invites</td><td>Major win recaps</td><td>Playoff countdown</td></tr>
+            <tr><td class="chan sticky"><a href="#p0-debit-card">Debit card</a></td><td>Waitlist story</td><td>Beta interest</td><td>Trusted-user invite</td><td>Narrative + compliance</td><td>Public waitlist</td><td>Launch window</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
     <p class="lbl">Pick a channel</p>
     <div class="pills">
       <a class="pill" href="#p0-auger-streams">Auger's streams</a>
