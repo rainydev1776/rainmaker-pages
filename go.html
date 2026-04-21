@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
 <link rel="icon" type="image/png" href="favicon.png">
-<meta name="version" content="v84">
+<meta name="version" content="v85">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -95,6 +95,18 @@
   .carrow{font-size:20px;color:rgba(255,255,255,0.1);margin:6px 0}
   .cto{font-size:56px;font-weight:900;color:#11E957;letter-spacing:-2px;line-height:1}
   .ctime{font-size:12px;color:rgba(255,255,255,0.25);margin-top:10px}
+
+  /* MOSAIC */
+  .mosaic-slide{overflow:hidden}
+  .mosaic-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(14,1fr);gap:2px;padding:30px 4px 60px}
+  .mcard{position:absolute;left:50%;top:50%;width:220px;padding:16px;background:#0a0a0a;border:1px solid #1a1a1c;border-radius:14px;text-align:center;transform:translate(-50%,-50%) scale(1);opacity:1;z-index:10;transition:all 0.6s cubic-bezier(0.16,1,0.3,1)}
+  .mcard.shrunk{width:100%;height:100%;padding:2px;border-radius:4px;position:relative;left:auto;top:auto;transform:none;z-index:1}
+  .mcard-pnl{font-size:28px;font-weight:900;font-family:'JetBrains Mono',monospace;letter-spacing:-1px}
+  .mcard.shrunk .mcard-pnl{font-size:8px;letter-spacing:0}
+  .mcard-game{font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:4px}
+  .mcard.shrunk .mcard-game{display:none}
+  .mcard-tag{font-size:9px;font-weight:700;text-transform:uppercase;margin-top:6px}
+  .mcard.shrunk .mcard-tag{display:none}
 
   /* CTA */
   .cta-wrap{display:flex;flex-direction:column;gap:10px;width:100%;max-width:300px;margin-top:20px}
@@ -197,6 +209,10 @@
 
   <div class="slide" id="compSlide"></div>
 
+  <div class="slide mosaic-slide" id="mosaicSlide">
+    <div class="mosaic-grid" id="mosaicGrid"></div>
+  </div>
+
   <div class="slide" id="ctaSlide">
     <img src="logo.png" alt="Rainmaker" style="width:20vw;height:20vw;max-width:140px;max-height:140px;margin-bottom:10px" class="anim-scale">
     <p class="h2 anim-up">Your turn.</p>
@@ -211,7 +227,7 @@
 
 <script>
 const FIXED_PRE = 6;
-const FIXED_POST = 5;
+const FIXED_POST = 6;
 const SLIDE_MS = 5000;
 let TOTAL_SLIDES = FIXED_PRE + FIXED_POST;
 let cur = 0;
@@ -232,7 +248,8 @@ function assignPostSlides(tradeCount){
   document.getElementById('edgeSlide').setAttribute('data-slide', offset+1);
   document.getElementById('feedSlide').setAttribute('data-slide', offset+2);
   document.getElementById('compSlide').setAttribute('data-slide', offset+3);
-  document.getElementById('ctaSlide').setAttribute('data-slide', offset+4);
+  document.getElementById('mosaicSlide').setAttribute('data-slide', offset+4);
+  document.getElementById('ctaSlide').setAttribute('data-slide', offset+5);
 }
 
 function go(idx){
@@ -265,6 +282,7 @@ function go(idx){
 
   if(activeSlide&&activeSlide.id==='feedSlide') triggerFeedAnimation();
   if(activeSlide&&activeSlide.id==='sportsSlide') triggerDiamond();
+  if(activeSlide&&activeSlide.id==='mosaicSlide') triggerMosaic();
   const tw=activeSlide?.querySelector('.typewriter');
   if(tw){typeOut(tw);}
   const isLast=cur===TOTAL_SLIDES-1;
@@ -350,6 +368,27 @@ function triggerDiamond(){
   const cs=document.getElementById('comingSoon');
   cs.style.opacity='0';
   setTimeout(()=>{cs.style.transition='opacity 0.5s ease';cs.style.opacity='1';},1800);
+}
+
+let mosaicTimer=null;
+function triggerMosaic(){
+  clearInterval(mosaicTimer);
+  const grid=document.getElementById('mosaicGrid');
+  grid.innerHTML='';
+
+  const demo={game:'Mets vs Cubs',pnl:181.95,pct:182,result:'win'};
+  const w=demo.result==='win';
+  const sign=w?'+':'−';
+
+  const card=document.createElement('div');
+  card.className='mcard';
+  card.innerHTML=`
+    <div class="mcard-game">${demo.game}</div>
+    <div class="mcard-pnl ${w?'green':'red'}">${sign}$${Math.abs(demo.pnl).toFixed(0)}</div>
+    <div class="mcard-tag ${w?'green':'red'}">${w?'WIN':'LOSS'}</div>`;
+  grid.appendChild(card);
+
+  setTimeout(()=>{card.classList.add('shrunk');},1200);
 }
 
 function fmtPnl(pnl){
