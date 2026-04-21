@@ -66,6 +66,9 @@
   .owner .note { font-size: 11px; color: rgba(255,255,255,0.42); line-height: 1.45; }
   .risk li { display: flex; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.52); margin-bottom: 12px; list-style: none; }
   .risk span { color: rgba(251,113,133,0.85); flex-shrink: 0; }
+  .good li { display: flex; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.52); margin-bottom: 12px; list-style: none; }
+  .good span { color: rgba(52,211,153,0.9); flex-shrink: 0; }
+  #good h2 { color: rgba(52,211,153,0.9); }
   .callout { font-size: 13px; color: rgba(255,255,255,0.55); border: 1px solid rgba(245,158,11,0.22); background: rgba(245,158,11,0.06); border-radius: 14px; padding: 16px 18px; line-height: 1.55; }
   .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
   .btn { display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03); color: rgba(255,255,255,0.82); font-size: 13px; padding: 10px 18px; border-radius: 9999px; }
@@ -91,6 +94,7 @@
       <a href="#gates">Gates</a>
       <a href="#leads">Leads</a>
       <a href="#risks">Risks</a>
+      <a href="#good">Good</a>
       <a href="#stream">On-stream</a>
     </nav>
   </div>
@@ -204,7 +208,8 @@
 </section>
 
 <section id="risks" class="container">
-  <h2>Failure modes</h2>
+  <h2 class="sub">Failure modes</h2>
+  <p class="hint">What to avoid — each line pairs with &ldquo;Good signals&rdquo; below in the same order.</p>
   <ul class="risk">
     <li><span>✕</span> Parallel launches: Spawn + isolated music + big Rainmaker push in the same cycle splits attention and attribution.</li>
     <li><span>✕</span> Music before proof: tracks read as generic content instead of score for a world people already believe in.</li>
@@ -212,7 +217,19 @@
   </ul>
 </section>
 
-<section id="stream" class="alt">
+<section id="good" class="alt">
+  <div class="container">
+    <h2 class="sub">Good signals</h2>
+    <p class="hint">Opposite of the failure modes — when these read true, you are sequencing the release correctly.</p>
+    <ul class="good">
+      <li><span>✓</span> One headline at a time: prove and scale the Rainmaker rail first, then ship Spawn and music so they inherit the story and you can read attribution.</li>
+      <li><span>✓</span> Music as score, not trailer: once the room has seen outcomes and returning users, tracks reinforce a world they already trust instead of opening a new one.</li>
+      <li><span>✓</span> Mystique + paperwork: keep ambient or unnamed plays for vibe where it fits; run contracts and disclosures so partners and platforms stay safe.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="stream" class="container">
   <div class="container">
     <h2>On-stream music</h2>
     <p class="callout">If placement is paid, sponsored, or materially connected to a commercial release, follow platform and jurisdictional disclosure rules so the rollout stays durable.</p>
