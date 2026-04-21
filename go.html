@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
 <link rel="icon" type="image/png" href="favicon.png">
-<meta name="version" content="v83">
+<meta name="version" content="v84">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -113,11 +113,10 @@
   .diamond{position:relative;width:180px;height:180px;margin:0 auto}
   .diamond img{position:absolute;width:52px;height:52px;border-radius:12px;opacity:0;transform:translateY(40px);background:#111;padding:6px}
   .diamond img.pop{animation:diamondPop 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards}
-  .diamond.spinning{animation:spinDiamond 8s 1.5s linear infinite}
-  .diamond.spinning img{transform-origin:center}
+  .diamond.spinning{animation:spinDiamond 8s linear infinite}
   @keyframes diamondPop{to{opacity:1;transform:translateY(0)}}
   @keyframes spinDiamond{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-  .diamond.spinning img{animation:counterSpin 8s 1.5s linear infinite}
+  .diamond.spinning img.pop{animation:counterSpin 8s linear infinite;opacity:1;transform:none}
   @keyframes counterSpin{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
   .diamond img:nth-child(1){top:0;left:50%;margin-left:-26px}
   .diamond img:nth-child(2){top:50%;left:0;margin-top:-26px}
