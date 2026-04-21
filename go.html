@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
 <link rel="icon" type="image/png" href="favicon.png">
-<meta name="version" content="v88">
+<meta name="version" content="v89">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -99,10 +99,9 @@
   /* MOSAIC */
   .mosaic-slide{overflow:hidden}
   .mosaic-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(7,1fr);gap:3px;padding:40px 4px 60px}
-  .mosaic-grid .cell{overflow:hidden;border-radius:4px;opacity:0}
-  .mosaic-grid .cell.placed{opacity:1}
+  .mosaic-grid .cell{overflow:hidden;border-radius:4px;visibility:hidden}
   .mosaic-grid .cell img{width:100%;height:100%;object-fit:cover}
-  .mcard-hero{position:absolute;width:260px;border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.6);z-index:20;transition:all 0.55s cubic-bezier(0.16,1,0.3,1)}
+  .mcard-hero{position:absolute;overflow:hidden;z-index:20}
   .mcard-hero img{width:100%;display:block}
 
   /* CTA */
@@ -397,13 +396,11 @@ function triggerMosaic(){
   slide.querySelectorAll('.mcard-hero').forEach(h=>h.remove());
 
   const COLS=5, ROWS=7, TOTAL=COLS*ROWS;
-  const DURATION_MS=9500;
   const cardSrc='cards/card1.png';
 
   for(let i=0;i<TOTAL;i++){
     const cell=document.createElement('div');
     cell.className='cell';
-    cell.dataset.idx=i;
     const img=document.createElement('img');
     img.src=cardSrc;
     cell.appendChild(img);
@@ -411,41 +408,44 @@ function triggerMosaic(){
   }
   const cells=[...grid.querySelectorAll('.cell')];
   const slideRect=slide.getBoundingClientRect();
+  const heroW=260;
+  const startLeft=(slideRect.width-heroW)/2;
+  const startTop=(slideRect.height-heroW*0.56)/2;
 
   let placed=0;
-  function getDelay(n){
+  let zIdx=20;
+
+  function getShowMs(n){
     const t=n/TOTAL;
-    return Math.round(800*(1-t*t*0.92));
+    return Math.round(700*(1-t*t*0.92));
   }
 
   function placeNext(){
     if(placed>=TOTAL){mosaicRunning=false;return;}
     const idx=placed;
+    const cellRect=cells[idx].getBoundingClientRect();
+    const cL=cellRect.left-slideRect.left;
+    const cT=cellRect.top-slideRect.top;
+    const cW=cellRect.width;
+
     const hero=document.createElement('div');
     hero.className='mcard-hero';
+    hero.style.left=startLeft+'px';
+    hero.style.top=startTop+'px';
+    hero.style.width=heroW+'px';
+    hero.style.borderRadius='12px';
+    hero.style.boxShadow='0 8px 40px rgba(0,0,0,0.6)';
+    hero.style.zIndex=zIdx++;
     const img=document.createElement('img');
     img.src=cardSrc;
     hero.appendChild(img);
     slide.appendChild(hero);
 
-    const startLeft=(slideRect.width-260)/2;
-    const startTop=(slideRect.height-160)/2;
-    hero.style.left=startLeft+'px';
-    hero.style.top=startTop+'px';
-    hero.style.width='260px';
-    hero.style.borderRadius='12px';
-    hero.style.opacity='1';
-
-    const showMs=getDelay(idx);
+    const showMs=getShowMs(idx);
+    const shrinkMs=Math.max(220,showMs*0.55);
 
     setTimeout(()=>{
-      const cellRect=cells[idx].getBoundingClientRect();
-      const cL=cellRect.left-slideRect.left;
-      const cT=cellRect.top-slideRect.top;
-      const cW=cellRect.width;
-
-      const shrinkMs=Math.max(250, showMs*0.6);
-      hero.style.transition=`all ${shrinkMs}ms cubic-bezier(0.16,1,0.3,1)`;
+      hero.style.transition=`left ${shrinkMs}ms cubic-bezier(0.22,1,0.36,1),top ${shrinkMs}ms cubic-bezier(0.22,1,0.36,1),width ${shrinkMs}ms cubic-bezier(0.22,1,0.36,1),border-radius ${shrinkMs}ms ease,box-shadow ${shrinkMs}ms ease`;
       hero.style.left=cL+'px';
       hero.style.top=cT+'px';
       hero.style.width=cW+'px';
@@ -453,12 +453,10 @@ function triggerMosaic(){
       hero.style.boxShadow='none';
 
       setTimeout(()=>{
-        cells[idx].classList.add('placed');
-        hero.remove();
         placed++;
         placeNext();
-      }, shrinkMs);
-    }, showMs);
+      },shrinkMs*0.7);
+    },showMs);
   }
   placeNext();
 }
