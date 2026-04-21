@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
 <link rel="icon" type="image/png" href="favicon.png">
-<meta name="version" content="v87">
+<meta name="version" content="v88">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -125,7 +125,7 @@
   .diamond.spinning{animation:spinDiamond 8s linear infinite}
   @keyframes diamondPop{to{opacity:1;transform:translateY(0)}}
   @keyframes spinDiamond{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-  .diamond.spinning img.pop{animation:counterSpin 8s linear infinite;opacity:1 !important;transform:none}
+  .diamond.spinning img{opacity:1 !important}
   @keyframes counterSpin{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
   .diamond img:nth-child(1){top:0;left:50%;margin-left:-26px}
   .diamond img:nth-child(2){top:50%;left:0;margin-top:-26px}
@@ -359,12 +359,29 @@ function triggerDiamond(){
   const diamond=document.getElementById('sportsDiamond');
   diamond.classList.remove('spinning');
   const imgs=diamond.querySelectorAll('img');
-  imgs.forEach(i=>{i.classList.remove('pop');i.style.removeProperty('animation-delay')});
+  imgs.forEach(i=>{
+    i.classList.remove('pop');
+    i.style.removeProperty('animation-delay');
+    i.style.removeProperty('animation');
+    i.style.removeProperty('opacity');
+    i.style.removeProperty('transform');
+  });
   imgs.forEach((img,i)=>{
     img.style.animationDelay=i*300+'ms';
     requestAnimationFrame(()=>img.classList.add('pop'));
   });
-  setTimeout(()=>diamond.classList.add('spinning'),1500);
+  setTimeout(()=>{
+    imgs.forEach(img=>{
+      img.style.animation='none';
+      img.style.opacity='1';
+      img.style.transform='translateY(0)';
+    });
+    diamond.offsetWidth;
+    diamond.classList.add('spinning');
+    imgs.forEach(img=>{
+      img.style.animation='counterSpin 8s linear infinite';
+    });
+  },1500);
   const cs=document.getElementById('comingSoon');
   cs.style.opacity='0';
   setTimeout(()=>{cs.style.transition='opacity 0.5s ease';cs.style.opacity='1';},1800);
