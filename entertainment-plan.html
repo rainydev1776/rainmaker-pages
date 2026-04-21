@@ -3,257 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rainmaker Entertainment — Release Plan</title>
-<meta name="description" content="Distro-first release: Rainmaker lays the rail; music and Spawn ride it. Phases, gates, accountable leads.">
+<title>Rainmaker — Distribution sheet</title>
+<meta name="description" content="Rainmaker distribution by phase: Retail, music release, and room to grow.">
 <link rel="icon" type="image/png" href="favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; background: #0a0a0c; }
-  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #0a0a0c; color: #fff; -webkit-font-smoothing: antialiased; line-height: 1.55; }
-  .mono { font-family: 'JetBrains Mono', monospace; }
-  a { color: inherit; text-decoration: none; }
-  .container { max-width: 880px; margin: 0 auto; padding: 0 20px; }
-  /* nav */
-  header { position: sticky; top: 0; z-index: 50; background: rgba(10,10,12,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
-  .nav-inner { max-width: 960px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; min-height: 64px; flex-wrap: wrap; gap: 8px; }
-  .nav-links { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; justify-content: flex-end; }
-  .nav-links a { font-size: 12px; color: rgba(255,255,255,0.55); }
-  .nav-links a:hover { color: #fff; }
-  .nav-links a.amber { color: rgba(245,158,11,0.95); }
-  .nav-links a.cyan { color: rgba(14,165,233,0.9); }
-  /* hero */
-  .hero { padding: 100px 0 32px; }
-  .kicker { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.28); margin-bottom: 12px; }
-  h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 12px;
-    background: linear-gradient(180deg, #fff 40%, #f59e0b 95%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .subtitle { color: #afafb6; font-size: 15px; max-width: 640px; }
-  .updated { font-size: 11px; color: rgba(255,255,255,0.22); font-family: 'JetBrains Mono', monospace; margin-top: 8px; }
-  section { padding: 36px 0; }
-  section.alt { background: #080809; border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); }
-  h2 { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: rgba(245,158,11,0.85); margin-bottom: 16px; }
-  h2.sub { margin-bottom: 8px; }
-  .hint { font-size: 13px; color: rgba(255,255,255,0.38); margin-bottom: 20px; }
-  .thesis-p { color: #c4c4ca; font-size: 14px; margin-bottom: 14px; padding-left: 16px; border-left: 2px solid rgba(245,158,11,0.35); }
-  /* phase cards */
-  .phase { background: #111113; border: 1px solid #1e1e20; border-radius: 16px; padding: 20px 22px; margin-bottom: 12px; }
-  .phase-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; margin-bottom: 8px; }
-  .phase-id { font-size: 10px; font-family: 'JetBrains Mono', monospace; color: rgba(245,158,11,0.9); }
-  .phase-name { font-size: 17px; font-weight: 600; color: #fff; }
-  .phase-goal { font-size: 13px; color: rgba(255,255,255,0.42); margin-bottom: 10px; }
-  .phase ul { list-style: none; }
-  .phase li { font-size: 13px; color: rgba(255,255,255,0.58); padding-left: 14px; position: relative; margin-bottom: 8px; }
-  .phase li::before { content: '·'; position: absolute; left: 0; color: rgba(245,158,11,0.45); }
-  /* table */
-  .table-card { background: #111113; border: 1px solid #1e1e20; border-radius: 16px; overflow: hidden; }
-  .overflow-x { overflow-x: auto; }
-  table { width: 100%; border-collapse: collapse; min-width: 520px; }
-  th { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.32); font-weight: 500; text-align: left; padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(0,0,0,0.2); }
-  td { padding: 12px 14px; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; }
-  td.gate { font-family: 'JetBrains Mono', monospace; color: rgba(245,158,11,0.9); font-size: 12px; white-space: nowrap; }
-  td.before { color: rgba(255,255,255,0.78); }
-  td.sig { color: rgba(255,255,255,0.48); }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: rgba(255,255,255,0.02); }
-  /* owner grid */
-  .grid-owners { display: grid; grid-template-columns: 1fr; gap: 10px; }
-  @media (min-width: 560px) { .grid-owners { grid-template-columns: 1fr 1fr; } }
-  .owner { background: #111113; border: 1px solid #1e1e20; border-radius: 14px; padding: 16px 18px; }
-  .owner h3 { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 6px; }
-  .owner .lead-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.28); margin-bottom: 2px; }
-  .owner .lead { font-size: 11px; font-weight: 500; color: rgba(245,158,11,0.85); margin-bottom: 6px; }
-  .owner .note { font-size: 11px; color: rgba(255,255,255,0.42); line-height: 1.45; }
-  .risk li { display: flex; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.52); margin-bottom: 12px; list-style: none; }
-  .risk span { color: rgba(251,113,133,0.85); flex-shrink: 0; }
-  .good li { display: flex; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.52); margin-bottom: 12px; list-style: none; }
-  .good span { color: rgba(52,211,153,0.9); flex-shrink: 0; }
-  #good h2 { color: rgba(52,211,153,0.9); }
-  .callout { font-size: 13px; color: rgba(255,255,255,0.55); border: 1px solid rgba(245,158,11,0.22); background: rgba(245,158,11,0.06); border-radius: 14px; padding: 16px 18px; line-height: 1.55; }
-  .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
-  .btn { display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03); color: rgba(255,255,255,0.82); font-size: 13px; padding: 10px 18px; border-radius: 9999px; }
-  .btn:hover { border-color: rgba(245,158,11,0.35); color: #fff; }
-  footer { border-top: 1px solid rgba(255,255,255,0.04); padding: 28px 20px 40px; text-align: center; }
-  footer span { color: rgba(255,255,255,0.15); font-size: 12px; display: block; margin-bottom: 10px; }
-  footer .fl { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 20px; }
-  footer a { color: rgba(255,255,255,0.32); font-size: 12px; }
-  footer a:hover { color: rgba(255,255,255,0.65); }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;background:#0a0a0c}
+  body{font-family:Inter,system-ui,sans-serif;background:#0a0a0c;color:#fff;-webkit-font-smoothing:antialiased;line-height:1.55;font-size:15px}
+  a{color:inherit}
+  header{position:sticky;top:0;z-index:50;background:rgba(10,10,12,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06)}
+  .nav{max-width:900px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;min-height:64px;flex-wrap:wrap;gap:8px}
+  .nav a{font-size:12px;color:rgba(255,255,255,.55);text-decoration:none;margin-left:10px}
+  .nav a:hover{color:#fff}
+  .nav a.cyan{color:rgba(14,165,233,.95)}
+  main{max-width:720px;margin:0 auto;padding:24px 20px 80px}
+  h1{font-size:clamp(1.6rem,4vw,2.25rem);font-weight:600;letter-spacing:-.03em;line-height:1.15;margin-bottom:10px;background:linear-gradient(180deg,#fff 35%,#f59e0b 95%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .sub{color:#afafb6;font-size:15px;margin-bottom:8px;line-height:1.5}
+  .mono{font-size:11px;color:rgba(255,255,255,.22);font-family:ui-monospace,monospace;margin-bottom:48px}
+  .kicker{font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.28);margin-bottom:10px}
+  section{margin-bottom:64px;scroll-margin-top:100px}
+  h2{font-size:1.35rem;font-weight:600;margin-bottom:8px}
+  .blurb{font-size:14px;color:rgba(255,255,255,.48);margin-bottom:20px;line-height:1.55}
+  .comma{font-size:16px;line-height:1.85;color:rgba(255,255,255,.78)}
+  .comma a{color:#fbbf24;text-decoration:underline;text-decoration-color:rgba(251,191,36,.35);text-underline-offset:4px}
+  .comma a:hover{color:#fcd34d}
+  .comma .sep{color:rgba(255,255,255,.32)}
+  .hint{font-size:12px;color:rgba(255,255,255,.32);margin-bottom:20px}
+  article{border-top:1px solid rgba(255,255,255,.08);padding-top:36px;margin-top:36px;scroll-margin-top:100px}
+  article:first-of-type{border-top:none;padding-top:0;margin-top:28px}
+  article h3{font-size:1.05rem;font-weight:600;margin-bottom:12px}
+  article p{font-size:14px;color:rgba(255,255,255,.52);margin-bottom:10px;line-height:1.6}
+  .back{margin-top:22px}
+  .back a{font-size:13px;color:rgba(14,165,233,.95);text-decoration:none}
+  .back a:hover{color:#7dd3fc}
+  .amber{color:#fbbf24}
+  .border-t{border-top:1px solid rgba(255,255,255,.06);padding-top:48px;margin-top:48px}
+  .related{border-top:1px solid rgba(255,255,255,.06);padding-top:32px;margin-top:32px}
+  .related h2{font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.32);margin-bottom:14px}
+  .btn{display:inline-block;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);padding:10px 18px;border-radius:9999px;font-size:13px;color:rgba(255,255,255,.75);text-decoration:none;margin:0 8px 8px 0}
+  .btn:hover{border-color:rgba(245,158,11,.35);color:#fff}
+  .ph2 h2,.ph3 h2{color:rgba(255,255,255,.88)}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="nav-inner">
-    <a href="index.html" style="font-weight:600;font-size:14px;color:#fff">Rainmaker</a>
-    <nav class="nav-links">
+  <div class="nav">
+    <a href="index.html" style="font-weight:600;color:#fff">Rainmaker</a>
+    <div>
       <a href="rampup.html" class="cyan">Ramp Up</a>
-      <a href="auger.html">Auger</a>
-      <a href="autopilot.html">AutoPilot</a>
-      <a href="#thesis">Thesis</a>
-      <a href="#phases">Phases</a>
-      <a href="#gates">Gates</a>
-      <a href="#leads">Leads</a>
-      <a href="#risks">Risks</a>
-      <a href="#good">Good</a>
-      <a href="#stream">On-stream</a>
-    </nav>
+      <a href="#phase-0-retail">P0 · Retail</a>
+      <a href="#phase-1-music">P1 · Music</a>
+      <a href="#phase-2">P2</a>
+      <a href="#phase-3">P3</a>
+    </div>
   </div>
 </header>
 
-<div class="container hero">
+<main>
   <p class="kicker">Internal · edit this file in repo</p>
-  <h1>Rainmaker Entertainment — Release Plan</h1>
-  <p class="subtitle">Distro-first: Rainmaker lays the rail; music and Spawn ride it.</p>
-  <p class="updated">Last updated · 2026-04-21</p>
-</div>
+  <h1>Rainmaker — Distribution sheet</h1>
+  <p class="sub">How we move product and music through the same retail machine, phase by phase.</p>
+  <p class="mono">Last updated · 2026-04-21</p>
 
-<section id="thesis" class="container">
-  <h2>Core thesis</h2>
-  <p class="thesis-p">Rainmaker is the distribution rail, not just a product. Releasing Spawn or catalog music in isolation asks cold algorithms to do what this stack was built to do: proof, habit, community, and repeat touchpoints.</p>
-  <p class="thesis-p">Sequence: prove the rail in public → compound creator relationships → run parallel music awareness (wildposting, CMG/Torsten, clippers) → seed tracks in-stream only after the room trusts outcomes → then name Rainmaker Entertainment as the umbrella.</p>
-</section>
+  <section id="phase-0-retail">
+    <h2>Phase 0: Retail</h2>
+    <p class="blurb">These are the live channels that put Rainmaker in front of people—streams, creators, streets, clips, audio, and spend rails. Same stack later powers the music push.</p>
+    <p class="comma">
+      <a href="#p0-auger-streams">Auger's streams</a><span class="sep">, </span>
+      <a href="#p0-influencers-x">X influencers (Kate and peers)</a><span class="sep">, </span>
+      <a href="#p0-wildposting">Wildposting</a><span class="sep">, </span>
+      <a href="#p0-dan-clips">Dan clipping Auger (IG, TikTok, Reels, X)</a><span class="sep">, </span>
+      <a href="#p0-theme-song">Rainmaker theme song</a><span class="sep">, </span>
+      <a href="#p0-debit-card">Debit card plan</a>
+    </p>
 
-<section id="phases" class="alt">
-  <div class="container">
-    <h2>Phases</h2>
-    <div class="phase">
-      <div class="phase-top"><span class="phase-id">P0</span><span class="phase-name">Rail definition</span></div>
-      <p class="phase-goal">Define what &ldquo;distribution&rdquo; means in your world.</p>
-      <ul>
-        <li>Signup path + first-win moment + retention loop are explicit.</li>
-        <li>One hero metric you are willing to show publicly (internal KPIs can stay richer).</li>
-      </ul>
-    </div>
-    <div class="phase">
-      <div class="phase-top"><span class="phase-id">P1</span><span class="phase-name">Rainmaker in the wild</span></div>
-      <p class="phase-goal">Proof before poetry.</p>
-      <ul>
-        <li>Auger + clippers: attach to outcomes viewers can feel (wins, streaks, payouts, clips)—not the label yet.</li>
-        <li>Viewers graduate from &ldquo;what app?&rdquo; to &ldquo;how do I get his link?&rdquo;</li>
-      </ul>
-    </div>
-    <div class="phase">
-      <div class="phase-top"><span class="phase-id">P2</span><span class="phase-name">Parallel music channels</span></div>
-      <p class="phase-goal">Top of funnel without stealing the spine.</p>
-      <ul>
-        <li>Wildposting for music culture and recall.</li>
-        <li>Torsten → CMG: clear asks (playlist, sync, distro path)—start small if needed.</li>
-        <li>Clipper network: repeatable brief + turnaround SLA.</li>
-      </ul>
-    </div>
-    <div class="phase">
-      <div class="phase-top"><span class="phase-id">P3</span><span class="phase-name">Relationship compounding on stream</span></div>
-      <p class="phase-goal">Earn the right to seed music.</p>
-      <ul>
-        <li>After repeated exposure + social proof + some fans actually making money.</li>
-        <li>Background music becomes environmental branding—the room already believes in Rainmaker.</li>
-      </ul>
-    </div>
-    <div class="phase">
-      <div class="phase-top"><span class="phase-id">P4</span><span class="phase-name">Rainmaker Entertainment (named)</span></div>
-      <p class="phase-goal">One clean public moment.</p>
-      <ul>
-        <li>Name, visual system, roster or first releases, and why the umbrella exists.</li>
-        <li>Spawn and catalog ship as cargo on the channel you opened, not a second channel from zero.</li>
-      </ul>
-    </div>
-    <div class="phase">
-      <div class="phase-top"><span class="phase-id">P5</span><span class="phase-name">Sustain</span></div>
-      <p class="phase-goal">Same rail, more cargo.</p>
-      <ul>
-        <li>Auger keeps the catalog in rotation organically.</li>
-        <li>Wildposting + CMG scale off-platform; clippers turn live moments into discovery.</li>
-      </ul>
-    </div>
+    <article id="p0-auger-streams">
+      <h3>Auger's streams</h3>
+      <p>Auger is the proof floor: recurring live blocks where Rainmaker shows up as the pick, the payout story, and the CTA. The job here is not a one-off mention—it is a cadence (schedule, overlays, link-in-bio, and a clear first-win path for viewers). Clips and highlights from these streams feed every short-form surface, so the stream is both the sermon and the raw tape for everything downstream.</p>
+      <p class="back"><a href="#phase-0-retail">↑ Back to Phase 0: Retail</a></p>
+    </article>
+    <article id="p0-influencers-x">
+      <h3>X influencers (Kate and peers)</h3>
+      <p>Pinned example: <a href="https://x.com/_kate_lv" target="_blank" rel="noopener noreferrer" class="amber">x.com/_kate_lv</a></p>
+      <p>Micro- and mid-tier X creators turn Rainmaker into a daily conversation in timelines that sports and betting culture already lives in. The lane needs credible voices, consistent posting, and audience overlap with the product. Packages should be simple—talking points, proof assets, and a single URL—so each post compounds instead of feeling like a one-off ad drop.</p>
+      <p class="back"><a href="#phase-0-retail">↑ Back to Phase 0: Retail</a></p>
+    </article>
+    <article id="p0-wildposting">
+      <h3>Wildposting</h3>
+      <p>Site: <a href="https://wildposting.com" target="_blank" rel="noopener noreferrer" class="amber">wildposting.com</a></p>
+      <p>Wildposting is the street layer: wheatpaste and OOH in the right neighborhoods and nights-out corridors so the brand exists in the physical city, not only in feeds. Creative stays bold and legible; QR and URL bridge to the same funnel as digital. Cadence and city rotation matter more than a single poster moment—people should bump into Rainmaker more than once on their way to the game or the bar.</p>
+      <p class="back"><a href="#phase-0-retail">↑ Back to Phase 0: Retail</a></p>
+    </article>
+    <article id="p0-dan-clips">
+      <h3>Dan clipping Auger (IG, TikTok, Reels, X)</h3>
+      <p>Dan (and the clip network) reframes long live moments into short hits: the streak, the cashout, the call, the reaction. Each clip should carry a consistent visual hook and a path to sign up or follow. IG, TikTok, YouTube Shorts, and X each need native framing—same core clip, different caption and length—so distribution does not cannibalize itself.</p>
+      <p class="back"><a href="#phase-0-retail">↑ Back to Phase 0: Retail</a></p>
+    </article>
+    <article id="p0-theme-song">
+      <h3>Rainmaker theme song</h3>
+      <p>The theme song is audio recall: something people can Shazam, hum, and hear inside streams and short-form without needing a full campaign speech. Release it with stems and clean hooks for creators and editors. Pair the drop with the social challenge and clip cadence so the track rides the same proof moments as the product, not a disconnected pop launch.</p>
+      <p class="back"><a href="#phase-0-retail">↑ Back to Phase 0: Retail</a></p>
+    </article>
+    <article id="p0-debit-card">
+      <h3>Debit card plan</h3>
+      <p>The card is spend and status in the real world: Rainmaker in wallet, tap-to-pay story, and a tangible reason to stay funded in the ecosystem. Position it as the next chapter after someone already believes the model—onboarding, compliance, and waitlist narrative should match the rest of the sheet. Retail, music, and Auger streams all point toward “this is serious enough for plastic in your hand.”</p>
+      <p class="back"><a href="#phase-0-retail">↑ Back to Phase 0: Retail</a></p>
+    </article>
+  </section>
+
+  <section id="phase-1-music" class="border-t">
+    <h2>Phase 1: Music release</h2>
+    <p class="blurb">When the music ships, we do not spin up a parallel mystery machine. We run the same retail lanes—Auger, creators like Kate, wildposting, Dan’s clips across IG / TikTok / Reels / X, the theme song, and the debit story—then add label-grade distribution through Torsten and CMG.</p>
+    <p class="hint">Retail write-ups live under Phase 0. Click a channel to jump; only Torsten × CMG is new copy below.</p>
+    <p class="comma">
+      <a href="#p0-auger-streams">Auger's streams</a><span class="sep">, </span>
+      <a href="#p0-influencers-x">X influencers (Kate and peers)</a><span class="sep">, </span>
+      <a href="#p0-wildposting">Wildposting</a><span class="sep">, </span>
+      <a href="#p0-dan-clips">Dan clipping Auger</a><span class="sep">, </span>
+      <a href="#p0-theme-song">Rainmaker theme song</a><span class="sep">, </span>
+      <a href="#p0-debit-card">Debit card plan</a><span class="sep">, </span>
+      <a href="#p1-torsten-cmg">Torsten × CMG</a>
+    </p>
+
+    <article id="p1-torsten-cmg">
+      <h3>Torsten × CMG</h3>
+      <p>This is the label and publishing lane: playlists, priority conversations, and the professional path for the record once the street and creator proof is loud enough that CMG is not carrying the whole story alone. Torsten opens and navigates the room; you arrive with a tight ask list (timelines, territories, marketing commits) so CMG feels like an accelerator on top of your retail engine, not a replacement for it.</p>
+      <p class="back"><a href="#phase-1-music">↑ Back to Phase 1: Music release</a></p>
+    </article>
+  </section>
+
+  <section id="phase-2" class="ph2 border-t">
+    <h2>Phase 2: (Add title)</h2>
+    <p class="blurb">Rename this phase and add comma-linked tactics in this HTML when you are ready—the same pattern as Phase 0.</p>
+  </section>
+
+  <section id="phase-3" class="ph3 border-t">
+    <h2>Phase 3: (Add title)</h2>
+    <p class="blurb">Optional fourth beat (e.g. umbrella brand moment, tour, or institutional). Add tactics when defined.</p>
+  </section>
+
+  <div class="related">
+    <h2>Related</h2>
+    <a class="btn" href="rampup.html">Ramp Up</a>
+    <a class="btn" href="auger.html">Auger brief</a>
+    <a class="btn" href="autopilot.html">AutoPilot</a>
   </div>
-</section>
-
-<section id="gates" class="container">
-  <h2 class="sub">Phase gates</h2>
-  <p class="hint">Do not advance until the prior gate reads true.</p>
-  <div class="table-card overflow-x">
-    <table>
-      <thead>
-        <tr>
-          <th>Gate</th>
-          <th>Before you lean into…</th>
-          <th>Signal</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="gate">G1</td><td class="before">Auger-heavy Rainmaker push</td><td class="sig">Onboarding + first &ldquo;win&rdquo; story is smooth; CTA / link-in-bio is boringly reliable.</td></tr>
-        <tr><td class="gate">G2</td><td class="before">Clipper scale</td><td class="sig">2–3 repeatable clip formats (moment + CTA + proof) that do not depend on one editor.</td></tr>
-        <tr><td class="gate">G3</td><td class="before">Wildposting / cities</td><td class="sig">Creative + runbooks set: where, QR/URL, message—no improvised wall spend.</td></tr>
-        <tr><td class="gate">G4</td><td class="before">CMG / Torsten lane</td><td class="sig">At least one concrete deliverable type agreed (e.g. playlist pitch, sync conversation, distro path).</td></tr>
-        <tr><td class="gate">G5</td><td class="before">Seeding music on stream</td><td class="sig">Chat self-identifies as Rainmaker users or repeats outcomes—proof is in the room, not only on your dashboard.</td></tr>
-        <tr><td class="gate">G6</td><td class="before">&ldquo;Rainmaker Entertainment&rdquo; public drop</td><td class="sig">Logo lockup, one landing truth, dated release(s); no orphaned SKUs.</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section id="leads" class="alt">
-  <div class="container">
-    <h2 class="sub">Accountable leads</h2>
-    <p class="hint">One person per lane who answers for progress and calls—usually not doing every task themselves.</p>
-    <div class="grid-owners">
-      <div class="owner"><h3>Rainmaker rail + metrics</h3><p class="lead-label">Lead</p><p class="lead">You / product</p><p class="note">Single source of truth for &ldquo;did the rail work?&rdquo;</p></div>
-      <div class="owner"><h3>Auger + stream integration</h3><p class="lead-label">Lead</p><p class="lead">You + Auger&rsquo;s team</p><p class="note">Schedule, trial terms, paid/sponsor disclosure if applicable.</p></div>
-      <div class="owner"><h3>Clippers</h3><p class="lead-label">Lead</p><p class="lead">One point person (assign a name)</p><p class="note">Brief + SLA; creators execute.</p></div>
-      <div class="owner"><h3>Wildposting</h3><p class="lead-label">Lead</p><p class="lead">One point person (assign a name)</p><p class="note">Cities, vendors, tracking.</p></div>
-      <div class="owner"><h3>CMG path</h3><p class="lead-label">Lead</p><p class="lead">Torsten (intros) + you (asks)</p><p class="note">Clear timelines and deliverables.</p></div>
-      <div class="owner"><h3>Entertainment umbrella</h3><p class="lead-label">Lead</p><p class="lead">You</p><p class="note">Brand + release calendar; partners handle masters/distro mechanics.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="risks" class="container">
-  <h2 class="sub">Failure modes</h2>
-  <p class="hint">What to avoid — each line pairs with &ldquo;Good signals&rdquo; below in the same order.</p>
-  <ul class="risk">
-    <li><span>✕</span> Parallel launches: Spawn + isolated music + big Rainmaker push in the same cycle splits attention and attribution.</li>
-    <li><span>✕</span> Music before proof: tracks read as generic content instead of score for a world people already believe in.</li>
-    <li><span>✕</span> Over-mystifying without compliance hygiene: creative &ldquo;no name&rdquo; moments still need correct disclosures where rules apply.</li>
-  </ul>
-</section>
-
-<section id="good" class="alt">
-  <div class="container">
-    <h2 class="sub">Good signals</h2>
-    <p class="hint">Opposite of the failure modes — when these read true, you are sequencing the release correctly.</p>
-    <ul class="good">
-      <li><span>✓</span> One headline at a time: prove and scale the Rainmaker rail first, then ship Spawn and music so they inherit the story and you can read attribution.</li>
-      <li><span>✓</span> Music as score, not trailer: once the room has seen outcomes and returning users, tracks reinforce a world they already trust instead of opening a new one.</li>
-      <li><span>✓</span> Mystique + paperwork: keep ambient or unnamed plays for vibe where it fits; run contracts and disclosures so partners and platforms stay safe.</li>
-    </ul>
-  </div>
-</section>
-
-<section id="stream" class="container">
-  <div class="container">
-    <h2>On-stream music</h2>
-    <p class="callout">If placement is paid, sponsored, or materially connected to a commercial release, follow platform and jurisdictional disclosure rules so the rollout stays durable.</p>
-  </div>
-</section>
-
-<section class="container">
-  <h2>Related</h2>
-  <div class="btn-row">
-    <a class="btn" href="rampup.html">Ramp Up roadmap</a>
-    <a class="btn" href="auger.html">Auger partner brief</a>
-    <a class="btn" href="autopilot.html">AutoPilot proposal</a>
-  </div>
-</section>
-
-<footer>
-  <span>Rainmaker Entertainment Plan — Internal</span>
-  <div class="fl">
-    <a href="index.html">Home</a>
-    <a href="rampup.html">Ramp Up</a>
-    <a href="entertainment-plan.html" style="color:rgba(245,158,11,0.75)">Entertainment</a>
-    <a href="auger.html">Auger</a>
-  </div>
-</footer>
+</main>
 
 </body>
 </html>
