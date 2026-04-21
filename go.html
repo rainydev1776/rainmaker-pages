@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
 <link rel="icon" type="image/png" href="favicon.png">
-<meta name="version" content="v91">
+<meta name="version" content="v92">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -56,10 +56,12 @@
 
   /* TRADE CARD */
   .tcard{width:100%;max-width:300px;background:#0a0a0a;border:1px solid #1a1a1c;border-radius:20px;padding:28px 24px;text-align:center}
-  .tcard-logos{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px}
-  .tcard-logos img{width:36px;height:36px;object-fit:contain}
-  .tcard-logos .tcard-vs{font-size:10px;color:rgba(255,255,255,0.2);font-weight:700;text-transform:uppercase}
-  .tcard-game{font-size:13px;color:rgba(255,255,255,0.35);letter-spacing:0.05em;margin-bottom:8px}
+  .tcard-matchup{display:flex;align-items:center;justify-content:center;gap:0;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:12px 16px;margin-bottom:14px}
+  .tcard-team{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1}
+  .tcard-team img{width:44px;height:44px;object-fit:contain}
+  .tcard-team span{font-size:10px;color:rgba(255,255,255,0.3);font-weight:600;letter-spacing:0.08em;text-transform:uppercase}
+  .tcard-divider{font-size:11px;color:rgba(255,255,255,0.12);font-weight:800;padding:0 12px}
+  .tcard-game{font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:0.05em;margin-bottom:4px;display:none}
   .tcard-date{font-size:11px;color:rgba(255,255,255,0.15);margin-bottom:16px}
   .tcard-pnl{font-size:56px;font-weight:900;letter-spacing:-2px;line-height:1}
   .tcard-pct{font-size:15px;font-weight:700;margin-top:6px;letter-spacing:-0.5px}
@@ -403,18 +405,24 @@ function renderTrades(trades){
     const slideIdx = FIXED_PRE + i;
     const w=t.result==='win';
     const sign=w?'+':'−';
-    const logos=(t.away&&t.home)?`
-        <div class="tcard-logos">
-          <img src="${espnLogo(t.away)}" alt="${t.away}">
-          <span class="tcard-vs">vs</span>
-          <img src="${espnLogo(t.home)}" alt="${t.home}">
+    const matchup=(t.away&&t.home)?`
+        <div class="tcard-matchup">
+          <div class="tcard-team">
+            <img src="${espnLogo(t.away)}" alt="${t.away}">
+            <span>${t.away.toUpperCase()}</span>
+          </div>
+          <span class="tcard-divider">VS</span>
+          <div class="tcard-team">
+            <img src="${espnLogo(t.home)}" alt="${t.home}">
+            <span>${t.home.toUpperCase()}</span>
+          </div>
         </div>`:'';
     const div=document.createElement('div');
     div.className='slide';
     div.setAttribute('data-slide', slideIdx);
     div.innerHTML=`
       <div class="tcard anim-scale">
-        ${logos}
+        ${matchup}
         <div class="tcard-game">${t.game}</div>
         <div class="tcard-date">${t.date}</div>
         <div class="tcard-pnl mono ${w?'green':'red'}">${sign}$${fmtPnl(t.pnl)}</div>
