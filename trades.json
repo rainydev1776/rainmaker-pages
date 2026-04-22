@@ -1,16 +1,16 @@
 {
-  "updated": "2026-04-22T01:27:37.005Z",
+  "updated": "2026-04-22T05:55:28.474Z",
   "period": "Apr 18 – Apr 22",
   "summary": {
     "wins": 10,
     "losses": 2,
     "winRate": 83,
     "startBalance": 100,
-    "endBalance": 386,
+    "endBalance": 387,
     "days": 5,
-    "avgWinPnl": 40.97,
+    "avgWinPnl": 40.99,
     "avgLossPnl": -61.61,
-    "totalWon": 409.65,
+    "totalWon": 409.85,
     "totalLost": 123.23
   },
   "featured": [
@@ -62,8 +62,8 @@
     {
       "game": "Orioles vs Guardians",
       "date": "Apr 20",
-      "pnl": 6.69,
-      "pct": 6.7,
+      "pnl": 6.89,
+      "pct": 6.9,
       "result": "win",
       "away": "bal",
       "home": "cle"
@@ -166,8 +166,8 @@
     },
     {
       "game": "BAL vs CLE",
-      "pnl": 6.69,
-      "pct": 6.7,
+      "pnl": 6.89,
+      "pct": 6.9,
       "result": "win",
       "away": "bal",
       "home": "cle"
