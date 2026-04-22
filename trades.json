@@ -1,19 +1,28 @@
 {
-  "updated": "2026-04-21T16:48:06.172Z",
-  "period": "Apr 17 – Apr 21",
+  "updated": "2026-04-22T01:27:37.005Z",
+  "period": "Apr 18 – Apr 22",
   "summary": {
     "wins": 10,
     "losses": 2,
     "winRate": 83,
     "startBalance": 100,
-    "endBalance": 468,
+    "endBalance": 386,
     "days": 5,
-    "avgWinPnl": 49.15,
+    "avgWinPnl": 40.97,
     "avgLossPnl": -61.61,
-    "totalWon": 491.45,
+    "totalWon": 409.65,
     "totalLost": 123.23
   },
   "featured": [
+    {
+      "game": "Astros vs Guardians",
+      "date": "Apr 22",
+      "pnl": 17.8,
+      "pct": 17.8,
+      "result": "win",
+      "away": "hou",
+      "home": "cle"
+    },
     {
       "game": "Tigers vs Red Sox",
       "date": "Apr 20",
@@ -33,15 +42,6 @@
       "home": "laa"
     },
     {
-      "game": "Mets vs Cubs",
-      "date": "Apr 20",
-      "pnl": 181.95,
-      "pct": 182,
-      "result": "win",
-      "away": "nym",
-      "home": "chc"
-    },
-    {
       "game": "Astros vs Guardians",
       "date": "Apr 21",
       "pnl": -74.11,
@@ -51,10 +51,19 @@
       "home": "cle"
     },
     {
+      "game": "Mets vs Cubs",
+      "date": "Apr 20",
+      "pnl": 181.95,
+      "pct": 182,
+      "result": "win",
+      "away": "nym",
+      "home": "chc"
+    },
+    {
       "game": "Orioles vs Guardians",
       "date": "Apr 20",
-      "pnl": 6.89,
-      "pct": 6.9,
+      "pnl": 6.69,
+      "pct": 6.7,
       "result": "win",
       "away": "bal",
       "home": "cle"
@@ -71,8 +80,8 @@
     {
       "game": "Orioles vs Guardians",
       "date": "Apr 19",
-      "pnl": 11.58,
-      "pct": 11.6,
+      "pnl": 12.4,
+      "pct": 12.4,
       "result": "win",
       "away": "bal",
       "home": "cle"
@@ -96,15 +105,6 @@
       "home": "min"
     },
     {
-      "game": "Mets vs Cubs",
-      "date": "Apr 19",
-      "pnl": 9.03,
-      "pct": 9,
-      "result": "win",
-      "away": "nym",
-      "home": "chc"
-    },
-    {
       "game": "Rays vs Pirates",
       "date": "Apr 18",
       "pnl": -49.12,
@@ -114,16 +114,24 @@
       "home": "pit"
     },
     {
-      "game": "Rays vs White Sox",
-      "date": "Apr 17",
-      "pnl": 100.22,
-      "pct": 100.2,
+      "game": "Mets vs Cubs",
+      "date": "Apr 19",
+      "pnl": 9.03,
+      "pct": 9,
       "result": "win",
-      "away": "tb",
-      "home": "chw"
+      "away": "nym",
+      "home": "chc"
     }
   ],
   "feed": [
+    {
+      "game": "HOU vs CLE",
+      "pnl": 17.8,
+      "pct": 17.8,
+      "result": "win",
+      "away": "hou",
+      "home": "cle"
+    },
     {
       "game": "HOU vs CLE",
       "pnl": -74.11,
@@ -158,8 +166,8 @@
     },
     {
       "game": "BAL vs CLE",
-      "pnl": 6.89,
-      "pct": 6.9,
+      "pnl": 6.69,
+      "pct": 6.7,
       "result": "win",
       "away": "bal",
       "home": "cle"
@@ -174,8 +182,8 @@
     },
     {
       "game": "BAL vs CLE",
-      "pnl": 11.58,
-      "pct": 11.6,
+      "pnl": 12.4,
+      "pct": 12.4,
       "result": "win",
       "away": "bal",
       "home": "cle"
@@ -211,14 +219,6 @@
       "result": "loss",
       "away": "tb",
       "home": "pit"
-    },
-    {
-      "game": "TB vs CWS",
-      "pnl": 100.22,
-      "pct": 100.2,
-      "result": "win",
-      "away": "tb",
-      "home": "chw"
     }
   ]
 }
