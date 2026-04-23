@@ -1,16 +1,16 @@
 {
-  "updated": "2026-04-23T17:10:03.172Z",
+  "updated": "2026-04-23T20:43:12.555Z",
   "period": "Apr 19 – Apr 23",
   "summary": {
     "wins": 10,
     "losses": 2,
     "winRate": 83,
     "startBalance": 100,
-    "endBalance": 365,
+    "endBalance": 372,
     "days": 6,
-    "avgWinPnl": 40.99,
+    "avgWinPnl": 41.74,
     "avgLossPnl": -72.53,
-    "totalWon": 409.87,
+    "totalWon": 417.43,
     "totalLost": 145.07
   },
   "featured": [
@@ -26,8 +26,8 @@
     {
       "game": "Tigers vs Red Sox",
       "date": "Apr 20",
-      "pnl": 8.92,
-      "pct": 8.9,
+      "pnl": 8.82,
+      "pct": 8.8,
       "result": "win",
       "away": "det",
       "home": "bos"
@@ -80,7 +80,7 @@
     {
       "game": "Reds vs Twins",
       "date": "Apr 20",
-      "pnl": 5.61,
+      "pnl": 5.59,
       "pct": 5.6,
       "result": "win",
       "away": "cin",
@@ -107,8 +107,8 @@
     {
       "game": "Reds vs Twins",
       "date": "Apr 19",
-      "pnl": 130.01,
-      "pct": 130,
+      "pnl": 137,
+      "pct": 137,
       "result": "win",
       "away": "cin",
       "home": "min"
@@ -116,8 +116,8 @@
     {
       "game": "Mets vs Cubs",
       "date": "Apr 19",
-      "pnl": 9.03,
-      "pct": 9,
+      "pnl": 9.72,
+      "pct": 9.7,
       "result": "win",
       "away": "nym",
       "home": "chc"
@@ -150,8 +150,8 @@
     },
     {
       "game": "DET vs BOS",
-      "pnl": 8.92,
-      "pct": 8.9,
+      "pnl": 8.82,
+      "pct": 8.8,
       "result": "win",
       "away": "det",
       "home": "bos"
@@ -182,7 +182,7 @@
     },
     {
       "game": "CIN vs MIN",
-      "pnl": 5.61,
+      "pnl": 5.59,
       "pct": 5.6,
       "result": "win",
       "away": "cin",
@@ -206,16 +206,16 @@
     },
     {
       "game": "CIN vs MIN",
-      "pnl": 130.01,
-      "pct": 130,
+      "pnl": 137,
+      "pct": 137,
       "result": "win",
       "away": "cin",
       "home": "min"
     },
     {
       "game": "NYM vs CHC",
-      "pnl": 9.03,
-      "pct": 9,
+      "pnl": 9.72,
+      "pct": 9.7,
       "result": "win",
       "away": "nym",
       "home": "chc"
