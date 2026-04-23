@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-23T05:59:55.831Z",
+  "updated": "2026-04-23T17:10:03.172Z",
   "period": "Apr 19 – Apr 23",
   "summary": {
     "wins": 10,
@@ -10,7 +10,7 @@
     "days": 6,
     "avgWinPnl": 40.99,
     "avgLossPnl": -72.53,
-    "totalWon": 409.89,
+    "totalWon": 409.87,
     "totalLost": 145.07
   },
   "featured": [
@@ -80,7 +80,7 @@
     {
       "game": "Reds vs Twins",
       "date": "Apr 20",
-      "pnl": 5.63,
+      "pnl": 5.61,
       "pct": 5.6,
       "result": "win",
       "away": "cin",
@@ -182,7 +182,7 @@
     },
     {
       "game": "CIN vs MIN",
-      "pnl": 5.63,
+      "pnl": 5.61,
       "pct": 5.6,
       "result": "win",
       "away": "cin",
