@@ -1,24 +1,24 @@
 {
-  "updated": "2026-04-24T01:45:10.440Z",
+  "updated": "2026-04-24T06:02:25.118Z",
   "period": "Apr 19 – Apr 24",
   "summary": {
     "wins": 10,
     "losses": 2,
     "winRate": 83,
     "startBalance": 100,
-    "endBalance": 405,
-    "days": 6,
-    "avgWinPnl": 45.03,
+    "endBalance": 363,
+    "days": 7,
+    "avgWinPnl": 40.8,
     "avgLossPnl": -72.53,
-    "totalWon": 450.34,
+    "totalWon": 407.97,
     "totalLost": 145.07
   },
   "featured": [
     {
       "game": "Yankees vs Red Sox",
       "date": "Apr 24",
-      "pnl": 177.56,
-      "pct": 177.6,
+      "pnl": 135.19,
+      "pct": 135.2,
       "result": "win",
       "away": "nyy",
       "home": "bos"
@@ -126,8 +126,8 @@
   "feed": [
     {
       "game": "NYY vs BOS",
-      "pnl": 177.56,
-      "pct": 177.6,
+      "pnl": 135.19,
+      "pct": 135.2,
       "result": "win",
       "away": "nyy",
       "home": "bos"
