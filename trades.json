@@ -1,19 +1,37 @@
 {
-  "updated": "2026-04-23T20:43:12.555Z",
-  "period": "Apr 19 – Apr 23",
+  "updated": "2026-04-24T01:45:10.440Z",
+  "period": "Apr 19 – Apr 24",
   "summary": {
     "wins": 10,
     "losses": 2,
     "winRate": 83,
     "startBalance": 100,
-    "endBalance": 372,
+    "endBalance": 405,
     "days": 6,
-    "avgWinPnl": 41.74,
+    "avgWinPnl": 45.03,
     "avgLossPnl": -72.53,
-    "totalWon": 417.43,
+    "totalWon": 450.34,
     "totalLost": 145.07
   },
   "featured": [
+    {
+      "game": "Yankees vs Red Sox",
+      "date": "Apr 24",
+      "pnl": 177.56,
+      "pct": 177.6,
+      "result": "win",
+      "away": "nyy",
+      "home": "bos"
+    },
+    {
+      "game": "Phillies vs Cubs",
+      "date": "Apr 23",
+      "pnl": 1.97,
+      "pct": 2,
+      "result": "win",
+      "away": "phi",
+      "home": "chc"
+    },
     {
       "game": "Astros vs Guardians",
       "date": "Apr 22",
@@ -22,24 +40,6 @@
       "result": "win",
       "away": "hou",
       "home": "cle"
-    },
-    {
-      "game": "Tigers vs Red Sox",
-      "date": "Apr 20",
-      "pnl": 8.82,
-      "pct": 8.8,
-      "result": "win",
-      "away": "det",
-      "home": "bos"
-    },
-    {
-      "game": "Padres vs Angels",
-      "date": "Apr 20",
-      "pnl": 16.83,
-      "pct": 16.8,
-      "result": "win",
-      "away": "sd",
-      "home": "laa"
     },
     {
       "game": "Brewers vs Tigers",
@@ -58,6 +58,24 @@
       "result": "loss",
       "away": "hou",
       "home": "cle"
+    },
+    {
+      "game": "Tigers vs Red Sox",
+      "date": "Apr 20",
+      "pnl": 8.92,
+      "pct": 8.9,
+      "result": "win",
+      "away": "det",
+      "home": "bos"
+    },
+    {
+      "game": "Padres vs Angels",
+      "date": "Apr 20",
+      "pnl": 16.83,
+      "pct": 16.8,
+      "result": "win",
+      "away": "sd",
+      "home": "laa"
     },
     {
       "game": "Mets vs Cubs",
@@ -103,27 +121,25 @@
       "result": "win",
       "away": "mil",
       "home": "mia"
-    },
-    {
-      "game": "Reds vs Twins",
-      "date": "Apr 19",
-      "pnl": 137,
-      "pct": 137,
-      "result": "win",
-      "away": "cin",
-      "home": "min"
-    },
-    {
-      "game": "Mets vs Cubs",
-      "date": "Apr 19",
-      "pnl": 9.72,
-      "pct": 9.7,
-      "result": "win",
-      "away": "nym",
-      "home": "chc"
     }
   ],
   "feed": [
+    {
+      "game": "NYY vs BOS",
+      "pnl": 177.56,
+      "pct": 177.6,
+      "result": "win",
+      "away": "nyy",
+      "home": "bos"
+    },
+    {
+      "game": "PHI vs CHC",
+      "pnl": 1.97,
+      "pct": 2,
+      "result": "win",
+      "away": "phi",
+      "home": "chc"
+    },
     {
       "game": "MIL vs DET",
       "pnl": -70.96,
@@ -150,8 +166,8 @@
     },
     {
       "game": "DET vs BOS",
-      "pnl": 8.82,
-      "pct": 8.8,
+      "pnl": 8.92,
+      "pct": 8.9,
       "result": "win",
       "away": "det",
       "home": "bos"
@@ -203,22 +219,6 @@
       "result": "win",
       "away": "mil",
       "home": "mia"
-    },
-    {
-      "game": "CIN vs MIN",
-      "pnl": 137,
-      "pct": 137,
-      "result": "win",
-      "away": "cin",
-      "home": "min"
-    },
-    {
-      "game": "NYM vs CHC",
-      "pnl": 9.72,
-      "pct": 9.7,
-      "result": "win",
-      "away": "nym",
-      "home": "chc"
     }
   ]
 }
