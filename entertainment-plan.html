@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="max-age=0, must-revalidate">
 <title>Rainmaker Distribution</title>
 <link rel="icon" type="image/png" href="favicon.png" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,22 +19,31 @@
   .nav a.cy{color:rgba(14,165,233,.95)}
   main{max-width:720px;margin:0 auto;padding:88px 20px 100px}
   h1{font-size:clamp(1.65rem,4vw,2rem);font-weight:600;letter-spacing:-.03em;line-height:1.15;margin-bottom:10px;background:linear-gradient(180deg,#fff 35%,#f59e0b 95%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-  .sub{color:#afafb6;font-size:15px;margin-bottom:10px}
+  .doc-lead{font-size:15px;line-height:1.55;margin-bottom:10px;color:rgba(255,255,255,.45)}
+  .distro-p{color:rgba(125,211,252,.95)}
+  .distro-m{color:rgba(240,171,252,.92)}
+  .doc-muted{color:#afafb6}
   .mono{font-size:11px;color:rgba(255,255,255,.22);font-family:ui-monospace,monospace;margin-bottom:28px}
   .kicker{font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.28);margin-bottom:10px}
   .stepper{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
   .stepper a{font-size:12px;font-weight:500;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);border-radius:12px;padding:8px 12px;color:rgba(255,255,255,.65)}
   .stepper a:hover{border-color:rgba(255,255,255,.2);color:#fff}
-  .box{border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px 22px;margin-bottom:36px}
-  .box-muted{background:#111113}
-  .box h2{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.32);margin-bottom:12px}
-  .pills{display:flex;flex-wrap:wrap;gap:8px}
-  .pill{display:inline-block;border:1px solid rgba(245,158,11,.28);background:rgba(245,158,11,.08);border-radius:9999px;padding:8px 14px;font-size:13px;color:rgba(254,243,199,.95)}
-  .pill:hover{border-color:rgba(245,158,11,.45);background:rgba(245,158,11,.12)}
+  .season-block{border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px 18px;margin-bottom:28px;background:#0c0c0f;scroll-margin-top:96px}
+  .season-h{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.32);margin-bottom:6px}
+  .season-intro{font-size:11px;color:rgba(255,255,255,.38);margin-bottom:14px;line-height:1.5}
+  .season-intro a{color:rgba(14,165,233,.95);text-decoration:underline;text-underline-offset:2px}
+  .tl-mini{overflow-x:auto;border-radius:12px;border:1px solid rgba(255,255,255,.06)}
+  .tl-table{width:100%;border-collapse:collapse;font-size:11px;min-width:520px}
+  .tl-table th,.tl-table td{border-bottom:1px solid rgba(255,255,255,.05);padding:7px 8px;text-align:left}
+  .tl-table th{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.32);font-weight:600}
+  .tl-mo{font-family:ui-monospace,monospace;color:rgba(251,191,36,.95)}
+  .tl-daily{color:rgba(52,211,153,.9);font-weight:600}
   section{margin-bottom:56px;scroll-margin-top:96px}
   .ph h2{font-size:1.45rem;font-weight:600;margin-bottom:8px;text-transform:none;letter-spacing:normal;color:#fff}
+  .p0-lines{font-size:15px;color:rgba(255,255,255,.45);line-height:1.55;margin-bottom:28px}
+  .p0-lines p{margin:0 0 10px}
+  .p0-lines .sep{color:rgba(255,255,255,.35)}
   .blurb{font-size:15px;color:rgba(255,255,255,.42);line-height:1.55;margin-bottom:20px}
-  .blurb-wrap p + p{margin-top:1rem}
   .lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.32);margin-bottom:10px}
   .rule{display:flex;align-items:center;gap:12px;margin:28px 0 8px}
   .rule span{flex:1;height:1px;background:rgba(255,255,255,.06)}
@@ -47,27 +57,22 @@
   .amber{color:#fbbf24;text-decoration:underline;text-underline-offset:3px}
   .back{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.06)}
   .back a{font-size:13px;font-weight:500;color:rgba(14,165,233,.95)}
-  .callout{font-size:13px;color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.02);border-radius:10px;padding:12px 14px;margin-bottom:20px;line-height:1.5}
-  .callout strong{color:rgba(255,255,255,.55)}
+  .p1-note{font-size:12px;color:rgba(255,255,255,.35);margin-bottom:22px;line-height:1.5}
+  .fuchsia-soft{color:rgba(232,121,252,.85)}
   .border-t{border-top:1px solid rgba(255,255,255,.06);padding-top:48px;margin-top:8px}
   .related{border-top:1px solid rgba(255,255,255,.06);padding-top:28px;margin-top:20px}
   .related h2{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.32);margin-bottom:12px}
   .btn{display:inline-block;border:1px solid rgba(255,255,255,.12);padding:10px 18px;border-radius:9999px;font-size:13px;color:rgba(255,255,255,.72);margin:0 8px 8px 0}
   .btn:hover{border-color:rgba(245,158,11,.35);color:#fff}
   #retail-timeline{scroll-margin-top:96px}
-  .timeline-wrap{border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px 18px;margin-bottom:28px;background:#0c0c0f}
+  .timeline-wrap{border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px 18px;margin-bottom:28px;background:#0c0c0f;scroll-margin-top:96px}
   .tl-h{font-size:14px;font-weight:600;margin-bottom:4px}
   .tl-sub{font-size:11px;color:rgba(255,255,255,.38);margin-bottom:14px;line-height:1.5}
-  .tl-sub a{color:rgba(14,165,233,.95);text-decoration:underline;text-underline-offset:2px}
-  .tl-mini,.mat-wrap{overflow-x:auto;border-radius:12px;border:1px solid rgba(255,255,255,.06);margin-bottom:14px}
-  .tl-table,.mat{width:100%;border-collapse:collapse;font-size:11px;min-width:480px}
-  .mat{min-width:640px}
-  .tl-table th,.tl-table td,.mat th,.mat td{border-bottom:1px solid rgba(255,255,255,.05);padding:7px 6px;text-align:left}
-  .tl-table th,.mat th{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.32);font-weight:600}
-  .tl-table td{font-size:11px;color:rgba(255,255,255,.45)}
-  .tl-mo{font-family:ui-monospace,monospace;color:rgba(251,191,36,.95)}
-  .tl-daily{color:rgba(52,211,153,.9);font-weight:600}
-  .mat th{text-align:center}
+  .tl-sub strong{color:rgba(255,255,255,.55);font-weight:600}
+  .mat-wrap{overflow-x:auto;border-radius:12px;border:1px solid rgba(255,255,255,.06)}
+  .mat{width:100%;border-collapse:collapse;font-size:10px;min-width:640px}
+  .mat th,.mat td{border-bottom:1px solid rgba(255,255,255,.05);padding:7px 6px;text-align:left}
+  .mat th{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.32);font-weight:600;text-align:center}
   .mat td{text-align:center;color:rgba(255,255,255,.4);font-size:10px;line-height:1.35;vertical-align:top}
   .mat td.chan{text-align:left;font-weight:500;color:rgba(255,255,255,.72)}
   .mat td.chan a{color:rgba(251,191,36,.9);text-decoration:underline;text-underline-offset:2px}
@@ -76,23 +81,18 @@
   #retail-dates-goals{scroll-margin-top:96px;margin-bottom:28px}
   .dg-h{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.32);margin-bottom:8px}
   .dg-intro{font-size:14px;color:rgba(255,255,255,.45);line-height:1.55;margin-bottom:16px}
-  .dg-intro a{color:rgba(14,165,233,.95);text-decoration:underline;text-underline-offset:2px}
-  .dg-intro strong{color:rgba(255,255,255,.65);font-weight:600}
+  .dg-intro strong{color:rgba(255,255,255,.6);font-weight:600}
   .dg-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
   .dg-card{border:1px solid rgba(255,255,255,.08);border-radius:12px;background:#111113;padding:14px 16px}
   .dg-row{font-size:14px;line-height:1.35}
   .dg-mo{font-weight:600;color:#fff}
   .dg-date{color:rgba(255,255,255,.55)}
   .dg-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.28);margin-top:10px;margin-bottom:2px}
-  .dg-row + .dg-lbl{margin-top:8px}
-  .dg-tgt{font-size:11px;color:rgba(52,211,153,.9);font-weight:600;margin-top:0}
-  .dg-ret{font-size:14px;color:rgba(255,255,255,.42);line-height:1.55;margin-top:4px}
-  .dg-ret strong{color:rgba(255,255,255,.5);font-weight:600}
-  .p0-sub{font-size:14px;color:rgba(255,255,255,.45);line-height:1.55;margin-bottom:24px}
-  .p0-sub p{margin:0 0 4px}
-  .p0-sub .when{color:rgba(255,255,255,.55);font-variant-numeric:tabular-nums}
-  .p0-sub .night{color:rgba(52,211,153,.9);font-weight:600;font-variant-numeric:tabular-nums}
-  .p0-sub .users{color:rgba(255,255,255,.55);font-variant-numeric:tabular-nums}
+  .dg-tgt{font-size:12px;color:rgba(52,211,153,.9);font-weight:600;margin-top:0}
+  .dg-how{font-size:14px;color:rgba(255,255,255,.42);line-height:1.55;margin-top:4px}
+  .pills{display:flex;flex-wrap:wrap;gap:8px}
+  .pill{display:inline-block;border:1px solid rgba(245,158,11,.28);background:rgba(245,158,11,.08);border-radius:9999px;padding:8px 14px;font-size:13px;color:rgba(254,243,199,.95)}
+  .pill:hover{border-color:rgba(245,158,11,.45);background:rgba(245,158,11,.12)}
 </style>
 </head>
 <body>
@@ -102,8 +102,9 @@
     <div>
       <a href="index.html">Home</a>
       <a href="rampup.html" class="cy">Ramp Up</a>
-      <a href="#retail-dates-goals">Dates &amp; goals</a>
-      <a href="#retail-timeline">Timeline</a>
+      <a href="#season-targets">Targets</a>
+      <a href="#retail-dates-goals">By month</a>
+      <a href="#retail-timeline">Channels</a>
       <a href="#phase-0-retail">P0 · Retail</a>
       <a href="#phase-1-music">P1 · Music</a>
       <a href="#phase-2">P2</a>
@@ -115,115 +116,117 @@
 <main id="top">
   <p class="kicker">Internal document</p>
   <h1>Rainmaker Distribution</h1>
-  <p class="sub">Rainmaker and Rainmaker Entertainment share one distribution spine for music and entertainment releases. Retail runs first, so those releases inherit familiarity instead of cold-starting.</p>
-  <p class="mono">Last updated · 2026-04-26</p>
+  <p class="doc-lead"><span class="distro-p">Rainmaker (product)</span><span class="doc-muted"> · </span><span class="distro-m">Rainmaker Entertainment (music)</span><span class="doc-muted"> — one spine. You two only; keep it tight.</span></p>
+  <p class="mono">Last updated · 2026-04-28</p>
 
   <div class="stepper">
-    <a href="#retail-dates-goals">Dates &amp; goals</a>
-    <a href="#retail-timeline">Timeline</a>
+    <a href="#season-targets">Targets</a>
+    <a href="#retail-dates-goals">By month</a>
+    <a href="#retail-timeline">Channels</a>
     <a href="#phase-0-retail">P0 · Retail</a>
     <a href="#phase-1-music">P1 · Music</a>
     <a href="#phase-2">P2</a>
     <a href="#phase-3">P3</a>
   </div>
 
+  <div id="season-targets" class="season-block">
+    <p class="season-h">Season targets</p>
+    <p class="season-intro"><span style="color:rgba(255,255,255,.55)">Apr 14 – Sep 28, 2026</span> · same table as <a href="rampup.html">Ramp Up</a>.</p>
+    <div class="tl-mini">
+      <table class="tl-table">
+        <thead><tr><th>Mo</th><th>Dates</th><th>Profit / night</th><th>Users</th></tr></thead>
+        <tbody>
+          <tr><td class="tl-mo">1</td><td>Apr 14 – May 15</td><td class="tl-daily">$15,000</td><td>250</td></tr>
+          <tr><td class="tl-mo">2</td><td>May 16 – Jun 14</td><td class="tl-daily">$60,000</td><td>300</td></tr>
+          <tr><td class="tl-mo">3</td><td>Jun 15 – Jul 14</td><td class="tl-daily">$150,000</td><td>600</td></tr>
+          <tr><td class="tl-mo">4</td><td>Jul 15 – Aug 14</td><td class="tl-daily">$300,000</td><td>1,000</td></tr>
+          <tr><td class="tl-mo">5</td><td>Aug 15 – Sep 14</td><td class="tl-daily">$600,000</td><td>1,800</td></tr>
+          <tr><td class="tl-mo">5.5</td><td>Sep 15 – Sep 28</td><td class="tl-daily">$1,000,000</td><td>2,500</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <section id="phase-0-retail" class="ph">
     <h2>Phase 0: Retail</h2>
-    <div class="p0-sub">
-      <p class="when">Apr 14 – May 15</p>
-      <p class="night">$15,000 / night</p>
-      <p class="users">250 active users</p>
-    </div>
-    <div class="blurb-wrap">
-      <p class="blurb">Retail is the distribution work that bridges Rainmaker from crypto-native users to mainstream adoption: proof-led acquisition through Auger’s streams, X influencers (Kate and peers), wildposting, Dan’s clips across short-form, the theme song, the email list, the debit-card story, and other mass-facing surfaces we bolt on later.</p>
+    <div class="p0-lines">
+      <p><span class="distro-p">Product / retail</span> <span class="sep">—</span> Move demand from crypto-only toward mainstream: Auger streams, X (Kate + peers), wildposting, Dan clips, email, debit—then whatever mass surfaces we add.</p>
+      <p><span class="distro-m">Music</span> <span class="sep">—</span> Theme + future drops ride the same proof. Music-specific how lives in Phase 1 when we write it.</p>
     </div>
 
     <div id="retail-dates-goals">
-      <p class="dg-h">Phase 0 · Dates &amp; goals</p>
-      <p class="dg-intro"><strong>Window:</strong> Apr 14 → Sep 28, 2026. The <strong>financial ladder goal</strong> on each card is the same daily profit + active-user row as <a href="rampup.html">Ramp Up</a>—not a parallel budget. The <strong>retail goal</strong> is how we earn that rung: mainstream proof and acquisition so stake and user count can track the ladder.</p>
+      <p class="dg-h">By month</p>
+      <p class="dg-intro">Each card: <strong>dates</strong>, then <strong>targets</strong> (money + users), then <strong>how</strong> we push retail that month. Channel deep dives below.</p>
       <ul class="dg-list">
         <li class="dg-card">
           <div class="dg-row"><span class="dg-mo">M1</span> <span class="dg-date">Apr 14 – May 15</span></div>
-          <p class="dg-lbl">Financial ladder goal</p>
+          <p class="dg-lbl">Targets</p>
           <p class="dg-tgt">$15,000/night · 250 active users</p>
-          <p class="dg-lbl">Retail (aligned to this rung)</p>
-          <p class="dg-ret">Public proof: Auger cadence + email proof loops; wildposting prep; first non-crypto-native wins.</p>
+          <p class="dg-lbl">How</p>
+          <p class="dg-how">Auger on a schedule + email proof; wildposting prep; first wins outside crypto-Twitter. Drop in hard dates here (e.g. Ye May 28) when they’re set.</p>
         </li>
         <li class="dg-card">
           <div class="dg-row"><span class="dg-mo">M2</span> <span class="dg-date">May 16 – Jun 14</span></div>
-          <p class="dg-lbl">Financial ladder goal</p>
-          <p class="dg-tgt">$60,000/day · 300 active users</p>
-          <p class="dg-lbl">Retail (aligned to this rung)</p>
-          <p class="dg-ret">Scale nights (shows + cards); daily X cadence; major metros OOH live; trusted-seller tests.</p>
+          <p class="dg-lbl">Targets</p>
+          <p class="dg-tgt">$60,000/night · 300 active users</p>
+          <p class="dg-lbl">How</p>
+          <p class="dg-how">Scale nights (shows + cards); daily X; major metros OOH live; trusted-seller tests.</p>
         </li>
         <li class="dg-card">
           <div class="dg-row"><span class="dg-mo">M3</span> <span class="dg-date">Jun 15 – Jul 14</span></div>
-          <p class="dg-lbl">Financial ladder goal</p>
-          <p class="dg-tgt">$150,000/day · 600 active users</p>
-          <p class="dg-lbl">Retail (aligned to this rung)</p>
-          <p class="dg-ret">All-Star window density; OOH wave 2; clips + theme synced to big nights.</p>
+          <p class="dg-lbl">Targets</p>
+          <p class="dg-tgt">$150,000/night · 600 active users</p>
+          <p class="dg-lbl">How</p>
+          <p class="dg-how">All-Star window density; OOH wave 2; clips + theme on the biggest nights.</p>
         </li>
         <li class="dg-card">
           <div class="dg-row"><span class="dg-mo">M4</span> <span class="dg-date">Jul 15 – Aug 14</span></div>
-          <p class="dg-lbl">Financial ladder goal</p>
-          <p class="dg-tgt">$300,000/day · 1,000 active users</p>
-          <p class="dg-lbl">Retail (aligned to this rung)</p>
-          <p class="dg-ret">Trade-deadline + press beats; refresh street creative; tighten onboarding from attention spikes.</p>
+          <p class="dg-lbl">Targets</p>
+          <p class="dg-tgt">$300,000/night · 1,000 active users</p>
+          <p class="dg-lbl">How</p>
+          <p class="dg-how">Trade-deadline + press beats; refresh street creative; tighten onboarding from spikes.</p>
         </li>
         <li class="dg-card">
           <div class="dg-row"><span class="dg-mo">M5</span> <span class="dg-date">Aug 15 – Sep 14</span></div>
-          <p class="dg-lbl">Financial ladder goal</p>
-          <p class="dg-tgt">$600,000/day · 1,800 active users</p>
-          <p class="dg-lbl">Retail (aligned to this rung)</p>
-          <p class="dg-ret">Stretch-run mainstream push; national OOH tie-in; viral clip sprint; partner-led scale.</p>
+          <p class="dg-lbl">Targets</p>
+          <p class="dg-tgt">$600,000/night · 1,800 active users</p>
+          <p class="dg-lbl">How</p>
+          <p class="dg-how">Stretch mainstream push; national OOH tie-in; viral clip sprint; partner-led scale.</p>
         </li>
         <li class="dg-card">
           <div class="dg-row"><span class="dg-mo">M5.5</span> <span class="dg-date">Sep 15 – Sep 28</span></div>
-          <p class="dg-lbl">Financial ladder goal</p>
-          <p class="dg-tgt">$1,000,000/day · 2,500 active users</p>
-          <p class="dg-lbl">Retail (aligned to this rung)</p>
-          <p class="dg-ret">Playoff peak: max proof on stream + street + email; finale city blitz before ladder end.</p>
+          <p class="dg-lbl">Targets</p>
+          <p class="dg-tgt">$1,000,000/night · 2,500 active users</p>
+          <p class="dg-lbl">How</p>
+          <p class="dg-how">Playoff peak: stream + street + email max proof; finale city blitz before season end.</p>
         </li>
       </ul>
     </div>
 
     <div id="retail-timeline" class="timeline-wrap">
-      <p class="tl-h">Retail × profit ladder</p>
-      <p class="tl-sub">Columns <strong style="color:rgba(255,255,255,.55)">M1–M5.5</strong> are the same ladder months as above and on <a href="rampup.html">Ramp Up</a>. The first table restates the <strong style="color:rgba(255,255,255,.55)">financial</strong> targets; the matrix shows which <strong style="color:rgba(255,255,255,.55)">retail lane</strong> leads for that rung—both map to one ladder, not two plans.</p>
-      <div class="tl-mini">
-        <table class="tl-table">
-          <thead><tr><th>Mo</th><th>Dates</th><th>Daily profit</th><th>Users</th></tr></thead>
-          <tbody>
-            <tr><td class="tl-mo">1</td><td>Apr 14 – May 15</td><td class="tl-daily">$15,000</td><td>250</td></tr>
-            <tr><td class="tl-mo">2</td><td>May 16 – Jun 14</td><td class="tl-daily">$60,000</td><td>300</td></tr>
-            <tr><td class="tl-mo">3</td><td>Jun 15 – Jul 14</td><td class="tl-daily">$150,000</td><td>600</td></tr>
-            <tr><td class="tl-mo">4</td><td>Jul 15 – Aug 14</td><td class="tl-daily">$300,000</td><td>1,000</td></tr>
-            <tr><td class="tl-mo">5</td><td>Aug 15 – Sep 14</td><td class="tl-daily">$600,000</td><td>1,800</td></tr>
-            <tr><td class="tl-mo">5.5</td><td>Sep 15 – Sep 28</td><td class="tl-daily">$1,000,000</td><td>2,500</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="mat-lbl">Retail lanes by month</p>
+      <p class="tl-h">Channels × month</p>
+      <p class="tl-sub">Same <strong>M1–M5.5</strong> columns as the targets table. Rows = where to lean that month (jump to <strong>how</strong> write-ups under Phase 0).</p>
+      <p class="mat-lbl">Channels</p>
       <div class="mat-wrap">
         <table class="mat">
           <thead>
             <tr>
               <th class="sticky">Channel</th>
-              <th title="Apr 14 – May 15 · $15K/night">M1</th>
-              <th title="May 16 – Jun 14 · $60K/day">M2</th>
-              <th title="Jun 15 – Jul 14 · $150K/day">M3</th>
-              <th title="Jul 15 – Aug 14 · $300K/day">M4</th>
-              <th title="Aug 15 – Sep 14 · $600K/day">M5</th>
-              <th title="Sep 15 – Sep 28 · $1M/day">M5.5</th>
+              <th title="Apr 14 – May 15 · $15,000/night">M1</th>
+              <th title="May 16 – Jun 14 · $60,000/night">M2</th>
+              <th title="Jun 15 – Jul 14 · $150,000/night">M3</th>
+              <th title="Jul 15 – Aug 14 · $300,000/night">M4</th>
+              <th title="Aug 15 – Sep 14 · $600,000/night">M5</th>
+              <th title="Sep 15 – Sep 28 · $1,000,000/night">M5.5</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td class="chan sticky"><a href="#p0-auger-streams">Auger streams</a></td><td>Public launch</td><td>Shows + gift cards</td><td>All-Star cadence</td><td>Trade-deadline window</td><td>Stretch intensity</td><td>Playoff peak</td></tr>
+            <tr><td class="chan sticky"><a href="#p0-auger-streams">Auger's streams</a></td><td>Public launch</td><td>Shows + gift cards</td><td>All-Star cadence</td><td>Trade-deadline window</td><td>Stretch-run intensity</td><td>Playoff peak</td></tr>
             <tr><td class="chan sticky"><a href="#p0-influencers-x">X influencers</a></td><td>Pilot (Kate + peers)</td><td>Scale daily posts</td><td>Athlete / creator deals</td><td>Press pickup beats</td><td>Mainstream push</td><td>Playoff noise</td></tr>
-            <tr><td class="chan sticky"><a href="#p0-wildposting">Wildposting</a></td><td>Prep + test</td><td>NYC · LA · MIA · ATL</td><td>Wave 2 · CHI · HOU</td><td>Refresh creative</td><td>National OOH tie-in</td><td>Final city blitz</td></tr>
-            <tr><td class="chan sticky"><a href="#p0-dan-clips">Dan · clips</a></td><td>Clip Auger daily</td><td>+ challenge UGC</td><td>All-Star moments</td><td>Deadline clips</td><td>Viral sprint</td><td>Playoff highlights</td></tr>
+            <tr><td class="chan sticky"><a href="#p0-wildposting">Wildposting</a></td><td>Prep + test markets</td><td>NYC · LA · MIA · ATL</td><td>Wave 2 · CHI · HOU</td><td>Refresh creative</td><td>National OOH tie-in</td><td>Final city blitz</td></tr>
+            <tr><td class="chan sticky"><a href="#p0-dan-clips">Dan · clips</a></td><td>Clip Auger daily</td><td>Same + challenge UGC</td><td>All-Star moments</td><td>Deadline clips</td><td>Viral sprint</td><td>Playoff highlights</td></tr>
             <tr><td class="chan sticky"><a href="#p0-theme-song">Theme song</a></td><td>Release + challenge</td><td>Soundtrack for clips</td><td>Stems to editors</td><td>Sync with big wins</td><td>Radio / pod seeds</td><td>Playoff anthem use</td></tr>
-            <tr><td class="chan sticky"><a href="#p0-email-list">Email list</a></td><td>Proof + onboarding</td><td>QR follow-up</td><td>City leaderboards</td><td>Whale invites</td><td>Major win recaps</td><td>Playoff countdown</td></tr>
+            <tr><td class="chan sticky"><a href="#p0-email-list">Email list</a></td><td>Proof + onboarding</td><td>Wildposting QR follow-up</td><td>City leaderboards</td><td>Whale invites</td><td>Major win recaps</td><td>Playoff countdown</td></tr>
             <tr><td class="chan sticky"><a href="#p0-debit-card">Debit card</a></td><td>Waitlist story</td><td>Beta interest</td><td>Trusted-user invite</td><td>Narrative + compliance</td><td>Public waitlist</td><td>Launch window</td></tr>
           </tbody>
         </table>
@@ -241,7 +244,7 @@
       <a class="pill" href="#p0-debit-card">Debit card plan</a>
     </div>
     <div class="rule"><span></span><em>Details</em><span></span></div>
-    <p class="rule-sub">Deep dive by channel—use the pills above to jump.</p>
+    <p class="rule-sub">How each lane works (debit, email, etc.)—jump from pills.</p>
 
     <article id="p0-auger-streams">
       <h3>Auger's streams</h3>
@@ -289,8 +292,8 @@
 
   <section id="phase-1-music" class="ph border-t">
     <h2>Phase 1: Music release</h2>
-    <p class="blurb">When music ships we do not build a second machine. We run the Phase 0 stack—Auger, Kate and peers on X, wildposting, Dan’s cuts across IG / TikTok / Reels / X, the theme, the email list, the debit story—then layer Torsten and CMG on top for label-grade distribution.</p>
-    <p class="callout">Most pills open <strong>Phase 0</strong> cards above. <strong>Torsten × CMG</strong> is the only new write-up in this phase.</p>
+    <p class="blurb"><span class="distro-m">How (music)</span> <span style="color:rgba(255,255,255,.35)">—</span> Phase 1 is the how for shipping music: same public surfaces as Phase 0, plus label layer (Torsten × CMG). Fill in timelines, concrete asks, and any hard dates when you have them.</p>
+    <p class="p1-note">Pills mostly point at Phase 0 write-ups. <span class="fuchsia-soft">Torsten × CMG</span> is the extra music-only card below.</p>
     <p class="lbl">Pick a lane</p>
     <div class="pills">
       <a class="pill" href="#p0-auger-streams">Auger's streams</a>
@@ -307,7 +310,7 @@
     <article id="p1-torsten-cmg">
       <h3>Torsten × CMG</h3>
       <p class="key">Label and playlists on top of street heat—Torsten opens the room, you bring a tight ask list.</p>
-      <div class="body"><p>This is the label and publishing lane: playlists, priority conversations, and the professional path for the record once the street and creator proof is loud enough that CMG is not carrying the whole story alone. Torsten opens and navigates the room; you arrive with a tight ask list (timelines, territories, marketing commits) so CMG feels like an accelerator on top of your retail engine, not a replacement for it.</p></div>
+      <div class="body"><p>This is the label and publishing lane: playlists, priority conversations, and the professional path for the record once the street and creator proof is loud enough that CMG is not carrying the whole story alone. Torsten opens and navigates the room; you arrive with a tight ask list (timelines, territories, marketing commits) so CMG feels like an accelerator on top of Phase 0, not a replacement for it.</p></div>
       <p class="back"><a href="#phase-1-music">↑ Back to Phase 1: Music release</a></p>
     </article>
   </section>
@@ -326,6 +329,7 @@
     <a class="btn" href="rampup.html">Ramp Up</a>
     <a class="btn" href="auger.html">Auger brief</a>
     <a class="btn" href="autopilot.html">AutoPilot</a>
+    <a class="btn" href="entertainment-plan.html?v=20260428#top">This page (refresh)</a>
   </div>
 </main>
 </body>
