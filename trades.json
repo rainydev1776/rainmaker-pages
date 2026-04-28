@@ -1,24 +1,24 @@
 {
-  "updated": "2026-04-28T06:24:26.651Z",
+  "updated": "2026-04-28T10:06:05.678Z",
   "period": "Apr 20 – Apr 28",
   "summary": {
     "wins": 10,
     "losses": 2,
     "winRate": 83,
     "startBalance": 100,
-    "endBalance": 474,
+    "endBalance": 481,
     "days": 10,
-    "avgWinPnl": 51.93,
+    "avgWinPnl": 52.56,
     "avgLossPnl": -72.53,
-    "totalWon": 519.25,
+    "totalWon": 525.61,
     "totalLost": 145.07
   },
   "featured": [
     {
       "game": "Marlins vs Dodgers",
       "date": "Apr 28",
-      "pnl": 140.43,
-      "pct": 140.4,
+      "pnl": 147.31,
+      "pct": 147.3,
       "result": "win",
       "away": "mia",
       "home": "lad"
@@ -35,8 +35,8 @@
     {
       "game": "Yankees vs Red Sox",
       "date": "Apr 24",
-      "pnl": 135.86,
-      "pct": 135.9,
+      "pnl": 134.78,
+      "pct": 134.8,
       "result": "win",
       "away": "nyy",
       "home": "bos"
@@ -62,8 +62,8 @@
     {
       "game": "Astros vs Guardians",
       "date": "Apr 22",
-      "pnl": 17.92,
-      "pct": 17.9,
+      "pnl": 18.77,
+      "pct": 18.8,
       "result": "win",
       "away": "hou",
       "home": "cle"
@@ -107,8 +107,8 @@
     {
       "game": "Orioles vs Guardians",
       "date": "Apr 20",
-      "pnl": 7.18,
-      "pct": 7.2,
+      "pnl": 6.89,
+      "pct": 6.9,
       "result": "win",
       "away": "bal",
       "home": "cle"
@@ -126,8 +126,8 @@
   "feed": [
     {
       "game": "MIA vs LAD",
-      "pnl": 140.43,
-      "pct": 140.4,
+      "pnl": 147.31,
+      "pct": 147.3,
       "result": "win",
       "away": "mia",
       "home": "lad"
@@ -142,8 +142,8 @@
     },
     {
       "game": "NYY vs BOS",
-      "pnl": 135.86,
-      "pct": 135.9,
+      "pnl": 134.78,
+      "pct": 134.8,
       "result": "win",
       "away": "nyy",
       "home": "bos"
@@ -166,8 +166,8 @@
     },
     {
       "game": "HOU vs CLE",
-      "pnl": 17.92,
-      "pct": 17.9,
+      "pnl": 18.77,
+      "pct": 18.8,
       "result": "win",
       "away": "hou",
       "home": "cle"
@@ -206,8 +206,8 @@
     },
     {
       "game": "BAL vs CLE",
-      "pnl": 7.18,
-      "pct": 7.2,
+      "pnl": 6.89,
+      "pct": 6.9,
       "result": "win",
       "away": "bal",
       "home": "cle"
