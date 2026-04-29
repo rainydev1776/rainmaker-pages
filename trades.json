@@ -1,17 +1,17 @@
 {
-  "updated": "2026-04-29T02:00:57.001Z",
-  "period": "Apr 20 – Apr 28",
+  "updated": "2026-04-29T06:16:42.161Z",
+  "period": "Apr 20 – Apr 29",
   "summary": {
-    "wins": 10,
-    "losses": 2,
-    "winRate": 83,
+    "wins": 9,
+    "losses": 3,
+    "winRate": 75,
     "startBalance": 100,
-    "endBalance": 480,
-    "days": 10,
-    "avgWinPnl": 52.5,
-    "avgLossPnl": -72.53,
-    "totalWon": 524.99,
-    "totalLost": 145.07
+    "endBalance": 405,
+    "days": 11,
+    "avgWinPnl": 57.72,
+    "avgLossPnl": -71.38,
+    "totalWon": 519.46,
+    "totalLost": 214.14
   },
   "featured": [
     {
@@ -42,13 +42,13 @@
       "home": "bos"
     },
     {
-      "game": "Brewers vs Tigers",
-      "date": "Apr 23",
-      "pnl": -70.96,
-      "pct": -71,
+      "game": "Giants vs Phillies",
+      "date": "Apr 29",
+      "pnl": -69.07,
+      "pct": -69.1,
       "result": "loss",
-      "away": "mil",
-      "home": "det"
+      "away": "sf",
+      "home": "phi"
     },
     {
       "game": "Phillies vs Cubs",
@@ -58,6 +58,15 @@
       "result": "win",
       "away": "phi",
       "home": "chc"
+    },
+    {
+      "game": "Brewers vs Tigers",
+      "date": "Apr 23",
+      "pnl": -70.96,
+      "pct": -71,
+      "result": "loss",
+      "away": "mil",
+      "home": "det"
     },
     {
       "game": "Astros vs Guardians",
@@ -107,23 +116,22 @@
     {
       "game": "Orioles vs Guardians",
       "date": "Apr 20",
-      "pnl": 6.83,
-      "pct": 6.8,
+      "pnl": 6.89,
+      "pct": 6.9,
       "result": "win",
       "away": "bal",
       "home": "cle"
-    },
-    {
-      "game": "Reds vs Twins",
-      "date": "Apr 20",
-      "pnl": 5.59,
-      "pct": 5.6,
-      "result": "win",
-      "away": "cin",
-      "home": "min"
     }
   ],
   "feed": [
+    {
+      "game": "SF vs PHI",
+      "pnl": -69.07,
+      "pct": -69.1,
+      "result": "loss",
+      "away": "sf",
+      "home": "phi"
+    },
     {
       "game": "MIA vs LAD",
       "pnl": 147.31,
@@ -206,19 +214,11 @@
     },
     {
       "game": "BAL vs CLE",
-      "pnl": 6.83,
-      "pct": 6.8,
+      "pnl": 6.89,
+      "pct": 6.9,
       "result": "win",
       "away": "bal",
       "home": "cle"
-    },
-    {
-      "game": "CIN vs MIN",
-      "pnl": 5.59,
-      "pct": 5.6,
-      "result": "win",
-      "away": "cin",
-      "home": "min"
     }
   ]
 }
