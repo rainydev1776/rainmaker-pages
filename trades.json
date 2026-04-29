@@ -1,16 +1,16 @@
 {
-  "updated": "2026-04-28T20:59:19.699Z",
+  "updated": "2026-04-29T02:00:57.001Z",
   "period": "Apr 20 – Apr 28",
   "summary": {
     "wins": 10,
     "losses": 2,
     "winRate": 83,
     "startBalance": 100,
-    "endBalance": 481,
+    "endBalance": 480,
     "days": 10,
-    "avgWinPnl": 52.56,
+    "avgWinPnl": 52.5,
     "avgLossPnl": -72.53,
-    "totalWon": 525.61,
+    "totalWon": 524.99,
     "totalLost": 145.07
   },
   "featured": [
@@ -35,8 +35,8 @@
     {
       "game": "Yankees vs Red Sox",
       "date": "Apr 24",
-      "pnl": 134.78,
-      "pct": 134.8,
+      "pnl": 135.19,
+      "pct": 135.2,
       "result": "win",
       "away": "nyy",
       "home": "bos"
@@ -62,8 +62,8 @@
     {
       "game": "Astros vs Guardians",
       "date": "Apr 22",
-      "pnl": 18.77,
-      "pct": 18.8,
+      "pnl": 17.8,
+      "pct": 17.8,
       "result": "win",
       "away": "hou",
       "home": "cle"
@@ -107,8 +107,8 @@
     {
       "game": "Orioles vs Guardians",
       "date": "Apr 20",
-      "pnl": 6.89,
-      "pct": 6.9,
+      "pnl": 6.83,
+      "pct": 6.8,
       "result": "win",
       "away": "bal",
       "home": "cle"
@@ -142,8 +142,8 @@
     },
     {
       "game": "NYY vs BOS",
-      "pnl": 134.78,
-      "pct": 134.8,
+      "pnl": 135.19,
+      "pct": 135.2,
       "result": "win",
       "away": "nyy",
       "home": "bos"
@@ -166,8 +166,8 @@
     },
     {
       "game": "HOU vs CLE",
-      "pnl": 18.77,
-      "pct": 18.8,
+      "pnl": 17.8,
+      "pct": 17.8,
       "result": "win",
       "away": "hou",
       "home": "cle"
@@ -206,8 +206,8 @@
     },
     {
       "game": "BAL vs CLE",
-      "pnl": 6.89,
-      "pct": 6.9,
+      "pnl": 6.83,
+      "pct": 6.8,
       "result": "win",
       "away": "bal",
       "home": "cle"
