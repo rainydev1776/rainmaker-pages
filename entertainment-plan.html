@@ -96,6 +96,30 @@
   .pills{display:flex;flex-wrap:wrap;gap:8px}
   .pill{display:inline-block;border:1px solid rgba(245,158,11,.28);background:rgba(245,158,11,.08);border-radius:9999px;padding:8px 14px;font-size:13px;color:rgba(254,243,199,.95)}
   .pill:hover{border-color:rgba(245,158,11,.45);background:rgba(245,158,11,.12)}
+  .m1-how-note{font-size:11px;color:rgba(255,255,255,.34);margin:6px 0 8px;line-height:1.45}
+  .m1-wrap{overflow-x:auto;border-radius:10px;border:1px solid rgba(255,255,255,.07);margin-bottom:10px}
+  .m1-table{width:100%;border-collapse:collapse;font-size:12px;min-width:280px}
+  .m1-table th,.m1-table td{border-bottom:1px solid rgba(255,255,255,.06);padding:8px 8px;vertical-align:top}
+  .m1-table th{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.35);text-align:left;background:rgba(0,0,0,.35)}
+  .m1-date{font-family:ui-monospace,monospace;color:rgba(251,191,36,.95);font-size:11px;white-space:nowrap}
+  .m1-date-sub{display:none;font-size:10px;font-family:system-ui,sans-serif;color:rgba(255,255,255,.38);font-weight:400;margin-top:4px;line-height:1.3}
+  .m1-beat{color:rgba(255,255,255,.42);font-size:12px}
+  .m1-beat-col{display:none}
+  .m1-task{color:rgba(255,255,255,.48);font-size:12px;line-height:1.4}
+  .m1-task ul{margin:0;padding:0}
+  .m1-task li{list-style:none;margin:4px 0;display:flex;gap:6px}
+  .m1-subgrid{display:grid;grid-template-columns:1fr;gap:10px}
+  .m1-sub{border-radius:10px;border:1px solid rgba(255,255,255,.07);background:rgba(0,0,0,.25);padding:10px 12px}
+  .m1-sub h4{margin:0 0 6px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.32)}
+  .m1-pill{display:inline-block;border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:2px 6px;font-size:10px;color:rgba(255,255,255,.52);font-family:ui-monospace,monospace;margin:2px}
+  @media(min-width:640px){
+    .m1-subgrid{grid-template-columns:1fr 1fr}
+    .m1-beat-col{display:table-cell}
+    .m1-date-sub{display:none!important}
+  }
+  @media(max-width:639px){
+    .m1-date-sub{display:block}
+  }
 </style>
 </head>
 <body>
@@ -119,7 +143,7 @@
   <p class="kicker">Internal document</p>
   <h1>Rainmaker Distribution</h1>
   <p class="doc-lead"><span class="distro-p">Rainmaker (product)</span><span class="doc-muted"> · </span><span class="distro-m">Rainmaker Entertainment (music)</span></p>
-  <p class="mono">Last updated · 2026-05-09</p>
+  <p class="mono">Last updated · 2026-05-10</p>
 
   <div class="stepper">
     <a href="#season-targets">Targets</a>
@@ -152,7 +176,7 @@
     <h2>Phase 0: Retail</h2>
     <div class="p0-lines">
       <p><span class="distro-p">Product / retail</span> <span class="sep">—</span> Move demand from crypto-only toward mainstream.</p>
-      <p><span class="distro-m">Music</span> <span class="sep">—</span> Phase 1 is building music tech and Spawn. Phase 2 is the release: Rainmaker Entertainment ships on the same Phase 0 distribution channels above—streams, X, Spike, clips, email, street, press, paid social.</p>
+      <p><span class="distro-m">Music</span> <span class="sep">—</span> Phase 1 is building music tech and Spawn. Phase 2 is the release—same Phase 0 distribution spine as retail (channel cards above).</p>
     </div>
 
     <div id="retail-dates-goals">
@@ -164,18 +188,80 @@
           <p class="dg-lbl">Targets</p>
           <p class="dg-tgt">$15,000/night · 250 active users</p>
           <p class="dg-lbl">How</p>
-          <p class="dg-how-note">Dated beats for the May ramp inside this ladder month (2025).</p>
-          <ul class="dg-how-list">
-            <li>Mon May 11 — Ramp day 1: Auger daily · Spike video 1 · “Welcome to Rainmaker” email (waitlist opens Mon May 18) · wildposting pay + posters EOD.</li>
-            <li>Wed May 13 — Full rebrand live (product, site, stream/Spike/social/email templates).</li>
-            <li>Thu May 14 — Spike video 2.</li>
-            <li>Mon May 18 — Dan clipping campaign live · Spike video 3 · waitlist opens.</li>
-            <li>Thu May 21 — Spike video 4.</li>
-            <li>Mon May 25 — Wildposting install wave 1 · NYT-tier / cultural prediction-markets article (Shedeur Sanders angle) · IG/TikTok campaign peak · Spike video 5.</li>
-            <li>Thu May 28 — Spike video 6.</li>
-            <li>Kate — every Tue + Fri: Tue May 12 · Fri May 15 · Tue May 19 · Fri May 22 · Tue May 26 · Fri May 29 · Tue Jun 2 · Fri Jun 5.</li>
-            <li>Spike — remaining Mon/Thu in M2: Mon Jun 1 · Thu Jun 4 (videos 7–8).</li>
-          </ul>
+          <p class="m1-how-note">May 2025 hard dates in this ladder month (2025). Story context: <a href="#retail-ramp-may" style="color:rgba(251,191,36,.85);text-decoration:underline;text-underline-offset:2px">May ramp</a> (same beats as Ramp Up).</p>
+          <div class="m1-wrap">
+            <table class="m1-table" id="retail-ramp-may">
+              <thead><tr><th>Date</th><th class="m1-beat-col">Beat</th><th>Do</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="m1-date">Mon May 11<div class="m1-date-sub">Ramp day 1</div></td>
+                  <td class="m1-beat m1-beat-col">Ramp day 1</td>
+                  <td class="m1-task"><ul>
+                    <li><span style="opacity:.5">□</span> Auger → daily Rainmaker streams</li>
+                    <li><span style="opacity:.5">□</span> Spike → partner video 1</li>
+                    <li><span style="opacity:.5">□</span> Email → “Welcome…” (waitlist opens Mon May 18)</li>
+                    <li><span style="opacity:.5">□</span> Wildposting → pay + ship posters</li>
+                  </ul></td>
+                </tr>
+                <tr>
+                  <td class="m1-date">Wed May 13<div class="m1-date-sub">Rebrand</div></td>
+                  <td class="m1-beat m1-beat-col">Rebrand</td>
+                  <td class="m1-task"><ul>
+                    <li><span style="opacity:.5">□</span> Full system go-live — product, site, overlays, Spike kits, social skins, email HTML</li>
+                  </ul></td>
+                </tr>
+                <tr>
+                  <td class="m1-date">Thu May 14<div class="m1-date-sub">Spike</div></td>
+                  <td class="m1-beat m1-beat-col">Spike</td>
+                  <td class="m1-task"><ul><li><span style="opacity:.5">□</span> Partner video 2</li></ul></td>
+                </tr>
+                <tr>
+                  <td class="m1-date">Mon May 18<div class="m1-date-sub">Clips + waitlist</div></td>
+                  <td class="m1-beat m1-beat-col">Clips + waitlist</td>
+                  <td class="m1-task"><ul>
+                    <li><span style="opacity:.5">□</span> Dan → clipping campaign live (IG / TikTok / Reels / X)</li>
+                    <li><span style="opacity:.5">□</span> Spike → partner video 3</li>
+                    <li><span style="opacity:.5">□</span> Waitlist → opens (per May 11 email)</li>
+                  </ul></td>
+                </tr>
+                <tr>
+                  <td class="m1-date">Thu May 21<div class="m1-date-sub">Spike</div></td>
+                  <td class="m1-beat m1-beat-col">Spike</td>
+                  <td class="m1-task"><ul><li><span style="opacity:.5">□</span> Partner video 4</li></ul></td>
+                </tr>
+                <tr>
+                  <td class="m1-date">Mon May 25<div class="m1-date-sub">Street + press + paid</div></td>
+                  <td class="m1-beat m1-beat-col">Street + press + paid</td>
+                  <td class="m1-task"><ul>
+                    <li><span style="opacity:.5">□</span> Wildposting → install wave 1</li>
+                    <li><span style="opacity:.5">□</span> Press → NYT-tier / cultural prediction-markets piece (Shedeur angle)</li>
+                    <li><span style="opacity:.5">□</span> IG/TikTok → campaign peak</li>
+                    <li><span style="opacity:.5">□</span> Spike → partner video 5</li>
+                  </ul></td>
+                </tr>
+                <tr>
+                  <td class="m1-date">Thu May 28<div class="m1-date-sub">Spike</div></td>
+                  <td class="m1-beat m1-beat-col">Spike</td>
+                  <td class="m1-task"><ul><li><span style="opacity:.5">□</span> Partner video 6</li></ul></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="m1-subgrid">
+            <div class="m1-sub">
+              <h4>Kate · every Tue + Fri</h4>
+              <div>
+                <span class="m1-pill">Tue May 12</span><span class="m1-pill">Fri May 15</span><span class="m1-pill">Tue May 19</span><span class="m1-pill">Fri May 22</span><span class="m1-pill">Tue May 26</span><span class="m1-pill">Fri May 29</span><span class="m1-pill">Tue Jun 2</span><span class="m1-pill">Fri Jun 5</span>
+              </div>
+            </div>
+            <div class="m1-sub">
+              <h4>Spike tail · M2 (Mon + Thu)</h4>
+              <ul style="margin:0;padding:0;list-style:none;font-size:12px;color:rgba(255,255,255,.48)">
+                <li style="margin:4px 0;display:flex;gap:6px"><span style="opacity:.5">□</span> Mon Jun 1 — Spike video 7</li>
+                <li style="margin:4px 0;display:flex;gap:6px"><span style="opacity:.5">□</span> Thu Jun 4 — Spike video 8</li>
+              </ul>
+            </div>
+          </div>
         </li>
         <li class="dg-card">
           <div class="dg-row"><span class="dg-mo">M2</span> <span class="dg-date">May 16 – Jun 14</span></div>
@@ -329,7 +415,7 @@
 
   <section id="phase-2-music-releases" class="ph border-t">
     <h2>Phase 2: Music releases</h2>
-    <p class="blurb" style="margin-top:8px"><span class="distro-m">Music releases</span> <span style="color:rgba(255,255,255,.35)">—</span> Phase 2 is when Rainmaker Entertainment drops and rollouts go public. Distribution stays one spine: the same Phase 0 channels (Auger, X, Spike, Dan clips, wildposting, press, IG/TikTok, email, theme hooks, debit story) with release-specific creative and timing.</p>
+    <p class="blurb" style="margin-top:8px"><span class="distro-m">Music releases</span> <span style="color:rgba(255,255,255,.35)">—</span> Phase 2 is when Rainmaker Entertainment drops and rollouts go public—same Phase 0 spine as retail, with release-specific creative and timing.</p>
   </section>
 
   <div class="related">
@@ -337,7 +423,7 @@
     <a class="btn" href="rampup.html">Ramp Up</a>
     <a class="btn" href="auger.html">Auger brief</a>
     <a class="btn" href="autopilot.html">AutoPilot</a>
-    <a class="btn" href="entertainment-plan.html?v=20260509#top">This page (refresh)</a>
+    <a class="btn" href="entertainment-plan.html?v=2026043011#top">This page (refresh)</a>
   </div>
 </main>
 </body>
