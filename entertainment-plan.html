@@ -106,7 +106,7 @@
   .m1-beat-col{display:none}
   .m1-task{color:rgba(255,255,255,.48);font-size:12px;line-height:1.4}
   .m1-task ul{margin:0;padding:0}
-  .m1-task li{list-style:none;margin:4px 0;display:flex;gap:6px}
+  .m1-task li{list-style:none;margin:6px 0;display:flex;gap:6px;align-items:flex-start;line-height:1.35}
   .m1-subgrid{display:grid;grid-template-columns:1fr;gap:10px}
   .m1-sub{border-radius:10px;border:1px solid rgba(255,255,255,.07);background:rgba(0,0,0,.25);padding:10px 12px}
   .m1-sub h4{margin:0 0 6px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.32)}
@@ -142,7 +142,7 @@
   <p class="kicker">Internal document</p>
   <h1>Rainmaker Distribution</h1>
   <p class="doc-lead"><span class="distro-p">Rainmaker (product)</span><span class="doc-muted"> · </span><span class="distro-m">Rainmaker Entertainment (music)</span></p>
-  <p class="mono">Last updated · 2026-05-10</p>
+  <p class="mono">Last updated · 2026-04-30</p>
 
   <div class="stepper">
     <a href="#season-targets">Targets</a>
@@ -187,60 +187,87 @@
           <p class="dg-lbl">Targets</p>
           <p class="dg-tgt">$15,000/night · 250 active users</p>
           <p class="dg-lbl">How</p>
+          <p class="m1-legend"><span class="m1-by">By …</span> = ship-ready deadline · <span class="m1-live">Live …</span> = public / in-market</p>
           <div class="m1-wrap">
             <table class="m1-table" id="retail-ramp-may">
               <thead><tr><th>Date</th><th class="m1-beat-col">Beat</th><th>Do</th></tr></thead>
               <tbody>
                 <tr>
-                  <td class="m1-date">Mon May 11<div class="m1-date-sub">Ramp day 1</div></td>
-                  <td class="m1-beat m1-beat-col">Ramp day 1</td>
+                  <td class="m1-date">Thu May 7<div class="m1-date-sub">Auger account</div></td>
+                  <td class="m1-beat m1-beat-col">Auger account</td>
                   <td class="m1-task"><ul>
-                    <li><span style="opacity:.5">□</span> Auger → daily Rainmaker streams</li>
-                    <li><span style="opacity:.5">□</span> Spike → partner video 1</li>
-                    <li><span style="opacity:.5">□</span> Email → “Welcome…” (waitlist opens Mon May 18)</li>
-                    <li><span style="opacity:.5">□</span> Wildposting → pay + ship posters</li>
+                    <li><span class="m1-dot-p">□</span><span><span class="m1-by">By May 7</span><span class="m1-rest"> — Auger → Rainmaker account created, access handed off, test login OK.</span></span></li>
                   </ul></td>
                 </tr>
                 <tr>
-                  <td class="m1-date">Wed May 13<div class="m1-date-sub">Rebrand</div></td>
-                  <td class="m1-beat m1-beat-col">Rebrand</td>
+                  <td class="m1-date">Mon May 11<div class="m1-date-sub">Ramp day 1</div></td>
+                  <td class="m1-beat m1-beat-col">Ramp day 1</td>
                   <td class="m1-task"><ul>
-                    <li><span style="opacity:.5">□</span> Full system go-live — product, site, overlays, Spike kits, social skins, email HTML</li>
+                    <li><span class="m1-dot-g">□</span><span><span class="m1-live">Live May 11</span><span class="m1-rest"> — Auger → daily Rainmaker streams on (schedule + overlays + first-win path).</span></span></li>
+                    <li><span class="m1-dot-p">□</span><span><span class="m1-by">By May 11 EOD</span><span class="m1-rest"> — Wildposting → pay crews + ship posters (unblock May 25 install).</span></span></li>
+                  </ul></td>
+                </tr>
+                <tr>
+                  <td class="m1-date">Tue May 12<div class="m1-date-sub">Before rebrand</div></td>
+                  <td class="m1-beat m1-beat-col">Before rebrand</td>
+                  <td class="m1-task"><ul>
+                    <li><span class="m1-dot-p">□</span><span><span class="m1-by">By May 12 EOD</span><span class="m1-rest"> — Rebrand → internal onboarding + support runbook signed off (team ready before public cutover).</span></span></li>
+                  </ul></td>
+                </tr>
+                <tr>
+                  <td class="m1-date">Wed May 13<div class="m1-date-sub">Rebrand live</div></td>
+                  <td class="m1-beat m1-beat-col">Rebrand live</td>
+                  <td class="m1-task"><ul>
+                    <li><span class="m1-dot-p">□</span><span><span class="m1-by">By May 13 EOD</span><span class="m1-rest"> — Email → templates, segments, first-send QA done (inbox-ready for May 15 send).</span></span></li>
+                    <li><span class="m1-dot-g">□</span><span><span class="m1-live">Live May 13</span><span class="m1-rest"> — Full rebrand live — product, site, overlays, Spike kits, social skins, email HTML.</span></span></li>
                   </ul></td>
                 </tr>
                 <tr>
                   <td class="m1-date">Thu May 14<div class="m1-date-sub">Spike</div></td>
                   <td class="m1-beat m1-beat-col">Spike</td>
-                  <td class="m1-task"><ul><li><span style="opacity:.5">□</span> Partner video 2</li></ul></td>
+                  <td class="m1-task"><ul>
+                    <li><span class="m1-dot-n">□</span><span class="m1-rest">Partner video 2 — keep Mon/Thu cadence; align cuts once May 25 first drop is locked.</span></li>
+                  </ul></td>
+                </tr>
+                <tr>
+                  <td class="m1-date">Fri May 15<div class="m1-date-sub">Email live</div></td>
+                  <td class="m1-beat m1-beat-col">Email live</td>
+                  <td class="m1-task"><ul>
+                    <li><span class="m1-dot-g">□</span><span><span class="m1-live">Live May 15</span><span class="m1-rest"> — First email to list — story you approved with the May 13 email-lane prep.</span></span></li>
+                  </ul></td>
                 </tr>
                 <tr>
                   <td class="m1-date">Mon May 18<div class="m1-date-sub">Clips + waitlist</div></td>
                   <td class="m1-beat m1-beat-col">Clips + waitlist</td>
                   <td class="m1-task"><ul>
-                    <li><span style="opacity:.5">□</span> Dan → clipping campaign live (IG / TikTok / Reels / X)</li>
-                    <li><span style="opacity:.5">□</span> Spike → partner video 3</li>
-                    <li><span style="opacity:.5">□</span> Waitlist → opens (per May 11 email)</li>
+                    <li><span class="m1-dot-p">□</span><span><span class="m1-by">By May 18</span><span class="m1-rest"> — Spike → partner video 1 first draft in hand (~1 week to May 25 release).</span></span></li>
+                    <li><span class="m1-dot-g">□</span><span><span class="m1-live">Live May 18</span><span class="m1-rest"> — Dan → clipping campaign live (IG / TikTok / Reels / X).</span></span></li>
+                    <li><span class="m1-dot-g">□</span><span><span class="m1-live">Live May 18</span><span class="m1-rest"> — Waitlist → opens (match the promise in May 15+ email + site).</span></span></li>
                   </ul></td>
                 </tr>
                 <tr>
                   <td class="m1-date">Thu May 21<div class="m1-date-sub">Spike</div></td>
                   <td class="m1-beat m1-beat-col">Spike</td>
-                  <td class="m1-task"><ul><li><span style="opacity:.5">□</span> Partner video 4</li></ul></td>
+                  <td class="m1-task"><ul>
+                    <li><span class="m1-dot-n">□</span><span class="m1-rest">Partner video 3 — publish on schedule if queue holds after May 25 first drop.</span></li>
+                  </ul></td>
                 </tr>
                 <tr>
                   <td class="m1-date">Mon May 25<div class="m1-date-sub">Street + press + paid</div></td>
                   <td class="m1-beat m1-beat-col">Street + press + paid</td>
                   <td class="m1-task"><ul>
-                    <li><span style="opacity:.5">□</span> Wildposting → install wave 1</li>
-                    <li><span style="opacity:.5">□</span> Press → NYT-tier / cultural prediction-markets piece (Shedeur angle)</li>
-                    <li><span style="opacity:.5">□</span> IG/TikTok → campaign peak</li>
-                    <li><span style="opacity:.5">□</span> Spike → partner video 5</li>
+                    <li><span class="m1-dot-g">□</span><span><span class="m1-live">Live May 25</span><span class="m1-rest"> — Spike → partner video 1 published (first public drop).</span></span></li>
+                    <li><span class="m1-dot-g">□</span><span><span class="m1-live">Live May 25</span><span class="m1-rest"> — Wildposting → install wave 1.</span></span></li>
+                    <li><span class="m1-dot-g">□</span><span><span class="m1-live">Live May 25</span><span class="m1-rest"> — Press → NYT-tier / cultural prediction-markets piece (Shedeur angle).</span></span></li>
+                    <li><span class="m1-dot-g">□</span><span><span class="m1-live">Live May 25</span><span class="m1-rest"> — IG/TikTok → campaign peak.</span></span></li>
                   </ul></td>
                 </tr>
                 <tr>
                   <td class="m1-date">Thu May 28<div class="m1-date-sub">Spike</div></td>
                   <td class="m1-beat m1-beat-col">Spike</td>
-                  <td class="m1-task"><ul><li><span style="opacity:.5">□</span> Partner video 6</li></ul></td>
+                  <td class="m1-task"><ul>
+                    <li><span class="m1-dot-n">□</span><span class="m1-rest">Partner video 4 — next Mon/Thu slot after first drop.</span></li>
+                  </ul></td>
                 </tr>
               </tbody>
             </table>
@@ -253,10 +280,10 @@
               </div>
             </div>
             <div class="m1-sub">
-              <h4>Spike tail · M2 (Mon + Thu)</h4>
+              <h4>Spike tail · videos 7–8</h4>
               <ul style="margin:0;padding:0;list-style:none;font-size:12px;color:rgba(255,255,255,.48)">
-                <li style="margin:4px 0;display:flex;gap:6px"><span style="opacity:.5">□</span> Mon Jun 1 — Spike video 7</li>
-                <li style="margin:4px 0;display:flex;gap:6px"><span style="opacity:.5">□</span> Thu Jun 4 — Spike video 8</li>
+                <li style="margin:4px 0;display:flex;gap:6px"><span class="m1-dot-g">□</span> Mon Jun 16 — Spike video 7</li>
+                <li style="margin:4px 0;display:flex;gap:6px"><span class="m1-dot-g">□</span> Thu Jun 19 — Spike video 8</li>
               </ul>
             </div>
           </div>
@@ -322,7 +349,7 @@
             <tr><td class="chan sticky"><a href="#p0-wildposting">Wildposting</a></td><td>Prep + test markets</td><td>NYC · LA · MIA · ATL</td><td>Wave 2 · CHI · HOU</td><td>Refresh creative</td><td>National OOH tie-in</td><td>Final city blitz</td></tr>
             <tr><td class="chan sticky"><a href="#p0-dan-clips">Dan · clips</a></td><td>Clip Auger daily</td><td>Same + challenge UGC</td><td>All-Star moments</td><td>Deadline clips</td><td>Viral sprint</td><td>Playoff highlights</td></tr>
             <tr><td class="chan sticky"><a href="#p0-theme-song">Theme song</a></td><td>Release + challenge</td><td>Soundtrack for clips</td><td>Stems to editors</td><td>Sync with big wins</td><td>Radio / pod seeds</td><td>Playoff anthem use</td></tr>
-            <tr><td class="chan sticky"><a href="#p0-email-list">Email list</a></td><td>Proof + onboarding</td><td>Wildposting QR follow-up</td><td>City leaderboards</td><td>Whale invites</td><td>Major win recaps</td><td>Playoff countdown</td></tr>
+            <tr><td class="chan sticky"><a href="#p0-email-list">Email list</a></td><td>Templates by May 13 · first send May 15 · waitlist May 18</td><td>Wildposting QR follow-up</td><td>City leaderboards</td><td>Whale invites</td><td>Major win recaps</td><td>Playoff countdown</td></tr>
             <tr><td class="chan sticky"><a href="#p0-debit-card">Debit card</a></td><td>Waitlist story</td><td>Beta interest</td><td>Trusted-user invite</td><td>Narrative + compliance</td><td>Public waitlist</td><td>Launch window</td></tr>
           </tbody>
         </table>
@@ -421,7 +448,7 @@
     <a class="btn" href="rampup.html">Ramp Up</a>
     <a class="btn" href="auger.html">Auger brief</a>
     <a class="btn" href="autopilot.html">AutoPilot</a>
-    <a class="btn" href="entertainment-plan.html?v=2026043012#top">This page (refresh)</a>
+    <a class="btn" href="entertainment-plan.html?v=2026043014#top">This page (refresh)</a>
   </div>
 </main>
 </body>
