@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-03T01:53:32.839Z",
+  "updated": "2026-05-03T06:21:44.892Z",
   "period": "Apr 20 – Apr 29",
   "summary": {
     "wins": 9,
@@ -10,15 +10,15 @@
     "days": 11,
     "avgWinPnl": 57.72,
     "avgLossPnl": -71.38,
-    "totalWon": 519.46,
+    "totalWon": 519.52,
     "totalLost": 214.14
   },
   "featured": [
     {
       "game": "Marlins vs Dodgers",
       "date": "Apr 28",
-      "pnl": 147.31,
-      "pct": 147.3,
+      "pnl": 147.37,
+      "pct": 147.4,
       "result": "win",
       "away": "mia",
       "home": "lad"
@@ -134,8 +134,8 @@
     },
     {
       "game": "MIA vs LAD",
-      "pnl": 147.31,
-      "pct": 147.3,
+      "pnl": 147.37,
+      "pct": 147.4,
       "result": "win",
       "away": "mia",
       "home": "lad"
