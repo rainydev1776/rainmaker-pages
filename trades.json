@@ -1,17 +1,17 @@
 {
-  "updated": "2026-05-03T12:45:16.794Z",
+  "updated": "2026-05-03T16:37:11.504Z",
   "period": "Apr 20 – Apr 29",
   "summary": {
     "wins": 9,
     "losses": 3,
     "winRate": 75,
     "startBalance": 100,
-    "endBalance": 405,
+    "endBalance": 410,
     "days": 11,
     "avgWinPnl": 57.72,
-    "avgLossPnl": -71.38,
+    "avgLossPnl": -69.86,
     "totalWon": 519.52,
-    "totalLost": 214.14
+    "totalLost": 209.57
   },
   "featured": [
     {
@@ -44,8 +44,8 @@
     {
       "game": "Giants vs Phillies",
       "date": "Apr 29",
-      "pnl": -69.07,
-      "pct": -69.1,
+      "pnl": -67.66,
+      "pct": -67.7,
       "result": "loss",
       "away": "sf",
       "home": "phi"
@@ -62,8 +62,8 @@
     {
       "game": "Brewers vs Tigers",
       "date": "Apr 23",
-      "pnl": -70.96,
-      "pct": -71,
+      "pnl": -69.49,
+      "pct": -69.5,
       "result": "loss",
       "away": "mil",
       "home": "det"
@@ -80,8 +80,8 @@
     {
       "game": "Astros vs Guardians",
       "date": "Apr 21",
-      "pnl": -74.11,
-      "pct": -74.1,
+      "pnl": -72.42,
+      "pct": -72.4,
       "result": "loss",
       "away": "hou",
       "home": "cle"
@@ -126,8 +126,8 @@
   "feed": [
     {
       "game": "SF vs PHI",
-      "pnl": -69.07,
-      "pct": -69.1,
+      "pnl": -67.66,
+      "pct": -67.7,
       "result": "loss",
       "away": "sf",
       "home": "phi"
@@ -166,8 +166,8 @@
     },
     {
       "game": "MIL vs DET",
-      "pnl": -70.96,
-      "pct": -71,
+      "pnl": -69.49,
+      "pct": -69.5,
       "result": "loss",
       "away": "mil",
       "home": "det"
@@ -182,8 +182,8 @@
     },
     {
       "game": "HOU vs CLE",
-      "pnl": -74.11,
-      "pct": -74.1,
+      "pnl": -72.42,
+      "pct": -72.4,
       "result": "loss",
       "away": "hou",
       "home": "cle"
