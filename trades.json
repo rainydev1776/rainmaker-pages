@@ -1,17 +1,17 @@
 {
-  "updated": "2026-05-06T17:22:15.482Z",
+  "updated": "2026-05-06T21:02:32.457Z",
   "period": "Apr 30 – May 6",
   "summary": {
     "wins": 9,
     "losses": 3,
     "winRate": 75,
     "startBalance": 100,
-    "endBalance": 351,
+    "endBalance": 352,
     "days": 8,
     "avgWinPnl": 59.47,
-    "avgLossPnl": -94.67,
+    "avgLossPnl": -94.48,
     "totalWon": 535.23,
-    "totalLost": 284
+    "totalLost": 283.43
   },
   "featured": [
     {
@@ -44,8 +44,8 @@
     {
       "game": "Red Sox vs Tigers",
       "date": "May 5",
-      "pnl": -96.73,
-      "pct": -96.7,
+      "pnl": -96.16,
+      "pct": -96.2,
       "result": "loss",
       "away": "bos",
       "home": "det"
@@ -158,8 +158,8 @@
     },
     {
       "game": "BOS vs DET",
-      "pnl": -96.73,
-      "pct": -96.7,
+      "pnl": -96.16,
+      "pct": -96.2,
       "result": "loss",
       "away": "bos",
       "home": "det"
