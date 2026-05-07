@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-07T02:01:12.414Z",
+  "updated": "2026-05-07T06:29:16.474Z",
   "period": "Apr 30 – May 6",
   "summary": {
     "wins": 9,
@@ -8,10 +8,10 @@
     "startBalance": 100,
     "endBalance": 351,
     "days": 8,
-    "avgWinPnl": 59.74,
-    "avgLossPnl": -95.49,
-    "totalWon": 537.66,
-    "totalLost": 286.46
+    "avgWinPnl": 59.47,
+    "avgLossPnl": -94.67,
+    "totalWon": 535.23,
+    "totalLost": 284
   },
   "featured": [
     {
@@ -53,8 +53,8 @@
     {
       "game": "Blue Jays vs Rays",
       "date": "May 6",
-      "pnl": 154.73,
-      "pct": 154.7,
+      "pnl": 152.3,
+      "pct": 152.3,
       "result": "win",
       "away": "tor",
       "home": "tb"
@@ -107,8 +107,8 @@
     {
       "game": "Tigers vs Braves",
       "date": "Apr 30",
-      "pnl": -94.11,
-      "pct": -94.1,
+      "pnl": -91.65,
+      "pct": -91.7,
       "result": "loss",
       "away": "det",
       "home": "atl"
@@ -150,8 +150,8 @@
     },
     {
       "game": "TOR vs TB",
-      "pnl": 154.73,
-      "pct": 154.7,
+      "pnl": 152.3,
+      "pct": 152.3,
       "result": "win",
       "away": "tor",
       "home": "tb"
@@ -206,8 +206,8 @@
     },
     {
       "game": "DET vs ATL",
-      "pnl": -94.11,
-      "pct": -94.1,
+      "pnl": -91.65,
+      "pct": -91.7,
       "result": "loss",
       "away": "det",
       "home": "atl"
