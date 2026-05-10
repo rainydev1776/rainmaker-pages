@@ -1,19 +1,64 @@
 {
-  "updated": "2026-05-10T16:42:08.223Z",
-  "period": "May 2 – May 8",
+  "updated": "2026-05-10T20:37:39.081Z",
+  "period": "May 6 – May 10",
   "summary": {
     "wins": 9,
     "losses": 3,
     "winRate": 75,
     "startBalance": 100,
-    "endBalance": 235,
-    "days": 7,
-    "avgWinPnl": 45.17,
-    "avgLossPnl": -90.38,
-    "totalWon": 406.5,
-    "totalLost": 271.15
+    "endBalance": 386,
+    "days": 6,
+    "avgWinPnl": 42.42,
+    "avgLossPnl": -31.86,
+    "totalWon": 381.82,
+    "totalLost": 95.59
   },
   "featured": [
+    {
+      "game": "Yankees vs Brewers",
+      "date": "May 10",
+      "pnl": 7.55,
+      "pct": 7.6,
+      "result": "win",
+      "away": "nyy",
+      "home": "mil"
+    },
+    {
+      "game": "Rays vs Red Sox",
+      "date": "May 10",
+      "pnl": 0.96,
+      "pct": 1,
+      "result": "win",
+      "away": "tb",
+      "home": "bos"
+    },
+    {
+      "game": "ATH vs Orioles",
+      "date": "May 10",
+      "pnl": 1.42,
+      "pct": 1.4,
+      "result": "win",
+      "away": "ath",
+      "home": "bal"
+    },
+    {
+      "game": "Pirates vs Giants",
+      "date": "May 9",
+      "pnl": -12.46,
+      "pct": -12.5,
+      "result": "loss",
+      "away": "pit",
+      "home": "sf"
+    },
+    {
+      "game": "Astros vs Reds",
+      "date": "May 9",
+      "pnl": -4.33,
+      "pct": -4.3,
+      "result": "loss",
+      "away": "hou",
+      "home": "cin"
+    },
     {
       "game": "Rays vs Red Sox",
       "date": "May 8",
@@ -33,15 +78,6 @@
       "home": "col"
     },
     {
-      "game": "Reds vs Cubs",
-      "date": "May 6",
-      "pnl": 143.27,
-      "pct": 143.3,
-      "result": "win",
-      "away": "cin",
-      "home": "chc"
-    },
-    {
       "game": "Red Sox vs Tigers",
       "date": "May 7",
       "pnl": -78.8,
@@ -51,10 +87,19 @@
       "home": "det"
     },
     {
+      "game": "Reds vs Cubs",
+      "date": "May 6",
+      "pnl": 141.82,
+      "pct": 141.8,
+      "result": "win",
+      "away": "cin",
+      "home": "chc"
+    },
+    {
       "game": "Braves vs Mariners",
       "date": "May 6",
-      "pnl": 13.46,
-      "pct": 13.5,
+      "pnl": 15.02,
+      "pct": 15,
       "result": "win",
       "away": "atl",
       "home": "sea"
@@ -76,54 +121,49 @@
       "result": "win",
       "away": "tor",
       "home": "tb"
-    },
-    {
-      "game": "Red Sox vs Tigers",
-      "date": "May 5",
-      "pnl": -96.73,
-      "pct": -96.7,
-      "result": "loss",
-      "away": "bos",
-      "home": "det"
-    },
-    {
-      "game": "Braves vs Rockies",
-      "date": "May 3",
-      "pnl": 6.19,
-      "pct": 6.2,
-      "result": "win",
-      "away": "atl",
-      "home": "col"
-    },
-    {
-      "game": "Orioles vs Yankees",
-      "date": "May 3",
-      "pnl": 20.6,
-      "pct": 20.6,
-      "result": "win",
-      "away": "bal",
-      "home": "nyy"
-    },
-    {
-      "game": "White Sox vs Padres",
-      "date": "May 3",
-      "pnl": -95.62,
-      "pct": -95.6,
-      "result": "loss",
-      "away": "chw",
-      "home": "sd"
-    },
-    {
-      "game": "Orioles vs Yankees",
-      "date": "May 2",
-      "pnl": 7.93,
-      "pct": 7.9,
-      "result": "win",
-      "away": "bal",
-      "home": "nyy"
     }
   ],
   "feed": [
+    {
+      "game": "NYY vs MIL",
+      "pnl": 7.55,
+      "pct": 7.6,
+      "result": "win",
+      "away": "nyy",
+      "home": "mil"
+    },
+    {
+      "game": "TB vs BOS",
+      "pnl": 0.96,
+      "pct": 1,
+      "result": "win",
+      "away": "tb",
+      "home": "bos"
+    },
+    {
+      "game": "ATH vs BAL",
+      "pnl": 1.42,
+      "pct": 1.4,
+      "result": "win",
+      "away": "ath",
+      "home": "bal"
+    },
+    {
+      "game": "PIT vs SF",
+      "pnl": -12.46,
+      "pct": -12.5,
+      "result": "loss",
+      "away": "pit",
+      "home": "sf"
+    },
+    {
+      "game": "HOU vs CIN",
+      "pnl": -4.33,
+      "pct": -4.3,
+      "result": "loss",
+      "away": "hou",
+      "home": "cin"
+    },
     {
       "game": "TB vs BOS",
       "pnl": 18.07,
@@ -150,16 +190,16 @@
     },
     {
       "game": "CIN vs CHC",
-      "pnl": 143.27,
-      "pct": 143.3,
+      "pnl": 141.82,
+      "pct": 141.8,
       "result": "win",
       "away": "cin",
       "home": "chc"
     },
     {
       "game": "ATL vs SEA",
-      "pnl": 13.46,
-      "pct": 13.5,
+      "pnl": 15.02,
+      "pct": 15,
       "result": "win",
       "away": "atl",
       "home": "sea"
@@ -179,46 +219,6 @@
       "result": "win",
       "away": "tor",
       "home": "tb"
-    },
-    {
-      "game": "BOS vs DET",
-      "pnl": -96.73,
-      "pct": -96.7,
-      "result": "loss",
-      "away": "bos",
-      "home": "det"
-    },
-    {
-      "game": "ATL vs COL",
-      "pnl": 6.19,
-      "pct": 6.2,
-      "result": "win",
-      "away": "atl",
-      "home": "col"
-    },
-    {
-      "game": "BAL vs NYY",
-      "pnl": 20.6,
-      "pct": 20.6,
-      "result": "win",
-      "away": "bal",
-      "home": "nyy"
-    },
-    {
-      "game": "CWS vs SD",
-      "pnl": -95.62,
-      "pct": -95.6,
-      "result": "loss",
-      "away": "chw",
-      "home": "sd"
-    },
-    {
-      "game": "BAL vs NYY",
-      "pnl": 7.93,
-      "pct": 7.9,
-      "result": "win",
-      "away": "bal",
-      "home": "nyy"
     }
   ]
 }
