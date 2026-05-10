@@ -1,16 +1,16 @@
 {
-  "updated": "2026-05-09T20:34:46.727Z",
+  "updated": "2026-05-10T06:28:23.123Z",
   "period": "May 2 – May 8",
   "summary": {
     "wins": 9,
     "losses": 3,
     "winRate": 75,
     "startBalance": 100,
-    "endBalance": 236,
+    "endBalance": 235,
     "days": 7,
-    "avgWinPnl": 45.22,
+    "avgWinPnl": 45.17,
     "avgLossPnl": -90.38,
-    "totalWon": 407,
+    "totalWon": 406.5,
     "totalLost": 271.15
   },
   "featured": [
@@ -35,8 +35,8 @@
     {
       "game": "Reds vs Cubs",
       "date": "May 6",
-      "pnl": 141.82,
-      "pct": 141.8,
+      "pnl": 143.27,
+      "pct": 143.3,
       "result": "win",
       "away": "cin",
       "home": "chc"
@@ -53,8 +53,8 @@
     {
       "game": "Braves vs Mariners",
       "date": "May 6",
-      "pnl": 15.02,
-      "pct": 15,
+      "pnl": 13.46,
+      "pct": 13.5,
       "result": "win",
       "away": "atl",
       "home": "sea"
@@ -62,8 +62,8 @@
     {
       "game": "Rangers vs Yankees",
       "date": "May 6",
-      "pnl": 19.6,
-      "pct": 19.6,
+      "pnl": 19.21,
+      "pct": 19.2,
       "result": "win",
       "away": "tex",
       "home": "nyy"
@@ -150,24 +150,24 @@
     },
     {
       "game": "CIN vs CHC",
-      "pnl": 141.82,
-      "pct": 141.8,
+      "pnl": 143.27,
+      "pct": 143.3,
       "result": "win",
       "away": "cin",
       "home": "chc"
     },
     {
       "game": "ATL vs SEA",
-      "pnl": 15.02,
-      "pct": 15,
+      "pnl": 13.46,
+      "pct": 13.5,
       "result": "win",
       "away": "atl",
       "home": "sea"
     },
     {
       "game": "TEX vs NYY",
-      "pnl": 19.6,
-      "pct": 19.6,
+      "pnl": 19.21,
+      "pct": 19.2,
       "result": "win",
       "away": "tex",
       "home": "nyy"
