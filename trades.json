@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-12T21:09:55.095Z",
+  "updated": "2026-05-13T02:08:45.783Z",
   "period": "May 2 – May 8",
   "summary": {
     "wins": 9,
@@ -8,9 +8,9 @@
     "startBalance": 100,
     "endBalance": 235,
     "days": 7,
-    "avgWinPnl": 45.18,
+    "avgWinPnl": 45.15,
     "avgLossPnl": -90.38,
-    "totalWon": 406.61,
+    "totalWon": 406.36,
     "totalLost": 271.15
   },
   "featured": [
@@ -35,8 +35,8 @@
     {
       "game": "Reds vs Cubs",
       "date": "May 6",
-      "pnl": 141.82,
-      "pct": 141.8,
+      "pnl": 141.57,
+      "pct": 141.6,
       "result": "win",
       "away": "cin",
       "home": "chc"
@@ -150,8 +150,8 @@
     },
     {
       "game": "CIN vs CHC",
-      "pnl": 141.82,
-      "pct": 141.8,
+      "pnl": 141.57,
+      "pct": 141.6,
       "result": "win",
       "away": "cin",
       "home": "chc"
