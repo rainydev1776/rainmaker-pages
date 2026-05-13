@@ -1,16 +1,16 @@
 {
-  "updated": "2026-05-13T02:08:45.783Z",
+  "updated": "2026-05-13T06:42:10.132Z",
   "period": "May 2 – May 8",
   "summary": {
     "wins": 9,
     "losses": 3,
     "winRate": 75,
     "startBalance": 100,
-    "endBalance": 235,
+    "endBalance": 238,
     "days": 7,
-    "avgWinPnl": 45.15,
+    "avgWinPnl": 45.44,
     "avgLossPnl": -90.38,
-    "totalWon": 406.36,
+    "totalWon": 408.93,
     "totalLost": 271.15
   },
   "featured": [
@@ -71,8 +71,8 @@
     {
       "game": "Blue Jays vs Rays",
       "date": "May 6",
-      "pnl": 152.3,
-      "pct": 152.3,
+      "pnl": 154.87,
+      "pct": 154.9,
       "result": "win",
       "away": "tor",
       "home": "tb"
@@ -174,8 +174,8 @@
     },
     {
       "game": "TOR vs TB",
-      "pnl": 152.3,
-      "pct": 152.3,
+      "pnl": 154.87,
+      "pct": 154.9,
       "result": "win",
       "away": "tor",
       "home": "tb"
