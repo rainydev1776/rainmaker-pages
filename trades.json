@@ -1,16 +1,16 @@
 {
-  "updated": "2026-05-13T21:17:09.218Z",
+  "updated": "2026-05-14T10:06:18.534Z",
   "period": "May 2 – May 8",
   "summary": {
     "wins": 9,
     "losses": 3,
     "winRate": 75,
     "startBalance": 100,
-    "endBalance": 238,
+    "endBalance": 237,
     "days": 7,
-    "avgWinPnl": 45.44,
+    "avgWinPnl": 45.32,
     "avgLossPnl": -90.38,
-    "totalWon": 408.93,
+    "totalWon": 407.89,
     "totalLost": 271.15
   },
   "featured": [
@@ -35,8 +35,8 @@
     {
       "game": "Reds vs Cubs",
       "date": "May 6",
-      "pnl": 141.57,
-      "pct": 141.6,
+      "pnl": 141.82,
+      "pct": 141.8,
       "result": "win",
       "away": "cin",
       "home": "chc"
@@ -71,8 +71,8 @@
     {
       "game": "Blue Jays vs Rays",
       "date": "May 6",
-      "pnl": 154.87,
-      "pct": 154.9,
+      "pnl": 153.58,
+      "pct": 153.6,
       "result": "win",
       "away": "tor",
       "home": "tb"
@@ -150,8 +150,8 @@
     },
     {
       "game": "CIN vs CHC",
-      "pnl": 141.57,
-      "pct": 141.6,
+      "pnl": 141.82,
+      "pct": 141.8,
       "result": "win",
       "away": "cin",
       "home": "chc"
@@ -174,8 +174,8 @@
     },
     {
       "game": "TOR vs TB",
-      "pnl": 154.87,
-      "pct": 154.9,
+      "pnl": 153.58,
+      "pct": 153.6,
       "result": "win",
       "away": "tor",
       "home": "tb"
