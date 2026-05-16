@@ -1,17 +1,17 @@
 {
-  "updated": "2026-05-16T02:01:17.696Z",
+  "updated": "2026-05-16T06:14:52.413Z",
   "period": "May 2 – May 8",
   "summary": {
     "wins": 9,
     "losses": 3,
     "winRate": 75,
     "startBalance": 100,
-    "endBalance": 236,
+    "endBalance": 241,
     "days": 7,
-    "avgWinPnl": 45.23,
-    "avgLossPnl": -90.22,
-    "totalWon": 407.1,
-    "totalLost": 270.67
+    "avgWinPnl": 45.78,
+    "avgLossPnl": -90.38,
+    "totalWon": 412,
+    "totalLost": 271.15
   },
   "featured": [
     {
@@ -35,8 +35,8 @@
     {
       "game": "Reds vs Cubs",
       "date": "May 6",
-      "pnl": 141.82,
-      "pct": 141.8,
+      "pnl": 147.21,
+      "pct": 147.2,
       "result": "win",
       "away": "cin",
       "home": "chc"
@@ -53,8 +53,8 @@
     {
       "game": "Braves vs Mariners",
       "date": "May 6",
-      "pnl": 14.56,
-      "pct": 14.6,
+      "pnl": 15.02,
+      "pct": 15,
       "result": "win",
       "away": "atl",
       "home": "sea"
@@ -71,8 +71,8 @@
     {
       "game": "Blue Jays vs Rays",
       "date": "May 6",
-      "pnl": 153.25,
-      "pct": 153.2,
+      "pnl": 152.3,
+      "pct": 152.3,
       "result": "win",
       "away": "tor",
       "home": "tb"
@@ -80,8 +80,8 @@
     {
       "game": "Red Sox vs Tigers",
       "date": "May 5",
-      "pnl": -96.25,
-      "pct": -96.3,
+      "pnl": -96.73,
+      "pct": -96.7,
       "result": "loss",
       "away": "bos",
       "home": "det"
@@ -150,16 +150,16 @@
     },
     {
       "game": "CIN vs CHC",
-      "pnl": 141.82,
-      "pct": 141.8,
+      "pnl": 147.21,
+      "pct": 147.2,
       "result": "win",
       "away": "cin",
       "home": "chc"
     },
     {
       "game": "ATL vs SEA",
-      "pnl": 14.56,
-      "pct": 14.6,
+      "pnl": 15.02,
+      "pct": 15,
       "result": "win",
       "away": "atl",
       "home": "sea"
@@ -174,16 +174,16 @@
     },
     {
       "game": "TOR vs TB",
-      "pnl": 153.25,
-      "pct": 153.2,
+      "pnl": 152.3,
+      "pct": 152.3,
       "result": "win",
       "away": "tor",
       "home": "tb"
     },
     {
       "game": "BOS vs DET",
-      "pnl": -96.25,
-      "pct": -96.3,
+      "pnl": -96.73,
+      "pct": -96.7,
       "result": "loss",
       "away": "bos",
       "home": "det"
