@@ -1,17 +1,17 @@
 {
-  "updated": "2026-05-19T02:14:41.994Z",
+  "updated": "2026-05-19T07:36:25.309Z",
   "period": "May 2 – May 8",
   "summary": {
     "wins": 9,
     "losses": 3,
     "winRate": 75,
     "startBalance": 100,
-    "endBalance": 238,
+    "endBalance": 239,
     "days": 7,
-    "avgWinPnl": 45.18,
-    "avgLossPnl": -89.52,
-    "totalWon": 406.61,
-    "totalLost": 268.56
+    "avgWinPnl": 45.62,
+    "avgLossPnl": -90.38,
+    "totalWon": 410.59,
+    "totalLost": 271.15
   },
   "featured": [
     {
@@ -35,8 +35,8 @@
     {
       "game": "Reds vs Cubs",
       "date": "May 6",
-      "pnl": 141.82,
-      "pct": 141.8,
+      "pnl": 145.55,
+      "pct": 145.5,
       "result": "win",
       "away": "cin",
       "home": "chc"
@@ -44,8 +44,8 @@
     {
       "game": "Red Sox vs Tigers",
       "date": "May 7",
-      "pnl": -76.21,
-      "pct": -76.2,
+      "pnl": -78.8,
+      "pct": -78.8,
       "result": "loss",
       "away": "bos",
       "home": "det"
@@ -71,8 +71,8 @@
     {
       "game": "Blue Jays vs Rays",
       "date": "May 6",
-      "pnl": 152.3,
-      "pct": 152.3,
+      "pnl": 152.55,
+      "pct": 152.5,
       "result": "win",
       "away": "tor",
       "home": "tb"
@@ -142,16 +142,16 @@
     },
     {
       "game": "BOS vs DET",
-      "pnl": -76.21,
-      "pct": -76.2,
+      "pnl": -78.8,
+      "pct": -78.8,
       "result": "loss",
       "away": "bos",
       "home": "det"
     },
     {
       "game": "CIN vs CHC",
-      "pnl": 141.82,
-      "pct": 141.8,
+      "pnl": 145.55,
+      "pct": 145.5,
       "result": "win",
       "away": "cin",
       "home": "chc"
@@ -174,8 +174,8 @@
     },
     {
       "game": "TOR vs TB",
-      "pnl": 152.3,
-      "pct": 152.3,
+      "pnl": 152.55,
+      "pct": 152.5,
       "result": "win",
       "away": "tor",
       "home": "tb"
