@@ -1,17 +1,17 @@
 {
-  "updated": "2026-05-18T21:02:19.859Z",
+  "updated": "2026-05-19T02:14:41.994Z",
   "period": "May 2 – May 8",
   "summary": {
     "wins": 9,
     "losses": 3,
     "winRate": 75,
     "startBalance": 100,
-    "endBalance": 241,
+    "endBalance": 238,
     "days": 7,
-    "avgWinPnl": 45.82,
-    "avgLossPnl": -90.38,
-    "totalWon": 412.42,
-    "totalLost": 271.15
+    "avgWinPnl": 45.18,
+    "avgLossPnl": -89.52,
+    "totalWon": 406.61,
+    "totalLost": 268.56
   },
   "featured": [
     {
@@ -35,8 +35,8 @@
     {
       "game": "Reds vs Cubs",
       "date": "May 6",
-      "pnl": 147.63,
-      "pct": 147.6,
+      "pnl": 141.82,
+      "pct": 141.8,
       "result": "win",
       "away": "cin",
       "home": "chc"
@@ -44,8 +44,8 @@
     {
       "game": "Red Sox vs Tigers",
       "date": "May 7",
-      "pnl": -78.8,
-      "pct": -78.8,
+      "pnl": -76.21,
+      "pct": -76.2,
       "result": "loss",
       "away": "bos",
       "home": "det"
@@ -142,16 +142,16 @@
     },
     {
       "game": "BOS vs DET",
-      "pnl": -78.8,
-      "pct": -78.8,
+      "pnl": -76.21,
+      "pct": -76.2,
       "result": "loss",
       "away": "bos",
       "home": "det"
     },
     {
       "game": "CIN vs CHC",
-      "pnl": 147.63,
-      "pct": 147.6,
+      "pnl": 141.82,
+      "pct": 141.8,
       "result": "win",
       "away": "cin",
       "home": "chc"
