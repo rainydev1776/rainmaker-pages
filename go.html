@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
 <link rel="icon" type="image/png" href="favicon.png">
-<meta name="version" content="v94">
+<meta name="version" content="v95">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -68,6 +68,10 @@
   .tcard-tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;padding:5px 14px;border-radius:8px;margin-top:14px}
   .tcard-tag.win{background:rgba(17,233,87,0.1);color:#11E957}
   .tcard-tag.loss{background:rgba(255,0,102,0.1);color:#FF0066}
+  .tcard-model{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:4px 10px;border-radius:6px;margin-bottom:12px;background:rgba(6,182,212,0.12);color:#67e8f9;border:1px solid rgba(6,182,212,0.25)}
+  .tcard-model.l1{background:rgba(17,233,87,0.1);color:#11E957;border-color:rgba(17,233,87,0.25)}
+  .tcard-model.l2{background:rgba(6,182,212,0.12);color:#67e8f9;border-color:rgba(6,182,212,0.25)}
+  .tcard-model.l3{background:rgba(168,85,247,0.12);color:#c4b5fd;border-color:rgba(168,85,247,0.3)}
 
   /* SCORE GRID */
   .sgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;width:100%;max-width:300px}
@@ -400,6 +404,12 @@ function renderTrades(trades){
   assignPostSlides(trades.length);
 
   const espnLogo=(abbr)=>`https://a.espncdn.com/i/teamlogos/mlb/500/${abbr}.png`;
+  const laserClass=(t)=>{
+    if(t.model==='mlb_laser_1')return'l1';
+    if(t.model==='mlb_laser_2')return'l2';
+    if(t.model==='mlb_laser_3')return'l3';
+    return'';
+  };
 
   trades.forEach((t,i)=>{
     const slideIdx = FIXED_PRE + i;
@@ -422,6 +432,7 @@ function renderTrades(trades){
     div.setAttribute('data-slide', slideIdx);
     div.innerHTML=`
       <div class="tcard anim-scale">
+        ${t.laser?`<div class="tcard-model ${laserClass(t)}">${t.laser}</div>`:''}
         ${matchup}
         <div class="tcard-game">${t.game}</div>
         <div class="tcard-date">${t.date}</div>
@@ -429,7 +440,7 @@ function renderTrades(trades){
         <div class="tcard-pct ${w?'green':'red'}">${sign}${Math.abs(t.pct).toFixed(1)}%</div>
         <div class="tcard-tag ${t.result}">${w?'WIN':'LOSS'}</div>
       </div>
-      <p class="dim anim-up-d1">Real trade · per $100 bet</p>`;
+      <p class="dim anim-up-d1">Real trade · ${t.laser||'Laser'} · per $100 bet</p>`;
     container.appendChild(div);
   });
 
@@ -453,8 +464,9 @@ function renderFeed(feed){
     const w=t.result==='win';
     const pctSign=w?'+':'−';
     const logos=(t.away&&t.home)?`<img src="${espnLogo(t.away)}" style="width:16px;height:16px;border-radius:3px;margin-right:2px"><img src="${espnLogo(t.home)}" style="width:16px;height:16px;border-radius:3px;margin-right:6px">`:'';
+    const laserLbl=t.laser?`<span style="font-size:8px;color:rgba(103,232,249,0.85);margin-right:6px;font-weight:700">${t.laser}</span>`:'';
     return `<div class="frow" data-feed-idx="${i}">
-      ${logos}<span class="fgame">${t.game}</span>
+      ${logos}${laserLbl}<span class="fgame">${t.game}</span>
       <span class="fpnl mono ${w?'green':'red'}">${w?'+':'−'}$${fmtPnl(t.pnl)} <span style="font-size:8px;opacity:0.5">${pctSign}${Math.abs(t.pct).toFixed(1)}%</span></span>
       <span class="ftag ${w?'w':'l'}">${w?'W':'L'}</span>
     </div>`;

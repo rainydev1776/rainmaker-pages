@@ -70,13 +70,23 @@ async function fetchPaged(buildQuery) {
   return all;
 }
 
-function isLaserStrategy(reason) {
+const LASER_LABELS = {
+  mlb_laser_1: 'Laser 1',
+  mlb_laser_2: 'Laser 2',
+  mlb_laser_3: 'Laser 3',
+};
+
+/** Strict: only mlb_laser_1 | _2 | _3 — never burst or other MLB strategies. */
+function laserModelKey(reason) {
   const r = String(reason || '').toLowerCase();
-  return (
-    r.startsWith('mlb_laser_1') ||
-    r.startsWith('mlb_laser_2') ||
-    r.startsWith('mlb_laser_3')
-  );
+  if (/^mlb_laser_1(?:_|$)/.test(r)) return 'mlb_laser_1';
+  if (/^mlb_laser_2(?:_|$)/.test(r)) return 'mlb_laser_2';
+  if (/^mlb_laser_3(?:_|$)/.test(r)) return 'mlb_laser_3';
+  return null;
+}
+
+function isLaserStrategy(reason) {
+  return laserModelKey(reason) !== null;
 }
 
 function getLabel(ticker, short) {
@@ -125,6 +135,18 @@ function buildLaserGames(sellRows, buyRows) {
   const laserBuys = buyRows.filter(r => laserTickers.has(r.ticker) && isLaserStrategy(r.reason));
   const laserSells = sellRows.filter(r => laserTickers.has(r.ticker));
 
+  // Which Laser model opened this game (first laser buy on this game key).
+  const entryModelByGame = new Map();
+  const buysByTime = [...laserBuys].sort(
+    (a, b) => new Date(a.executed_at) - new Date(b.executed_at)
+  );
+  for (const r of buysByTime) {
+    const gk = gameKeyFor(r.ticker);
+    if (entryModelByGame.has(gk)) continue;
+    const key = laserModelKey(r.reason);
+    if (key) entryModelByGame.set(gk, key);
+  }
+
   const buySizeByGame = new Map();
   const usersByGame = new Map();
   for (const r of laserBuys) {
@@ -161,9 +183,18 @@ function buildLaserGames(sellRows, buyRows) {
       const pnlPct = avgInv > 0 ? avgPnl / avgInv : 0;
       const displayPnl = Math.round(Math.max(100 * pnlPct, -100) * 100) / 100;
       const displayPct = Math.round(pnlPct * 1000) / 10;
-      return { ticker: g.ticker, executed_at: g.executed_at, displayPnl, displayPct, isWin: displayPnl > 0 };
+      const modelKey = entryModelByGame.get(gk) || null;
+      return {
+        ticker: g.ticker,
+        executed_at: g.executed_at,
+        displayPnl,
+        displayPct,
+        isWin: displayPnl > 0,
+        model: modelKey,
+        laser: modelKey ? LASER_LABELS[modelKey] : null,
+      };
     })
-    .filter(r => Math.abs(Math.round(r.displayPnl)) > 0)
+    .filter(r => Math.abs(Math.round(r.displayPnl)) > 0 && r.model)
     .sort((a, b) => new Date(b.executed_at) - new Date(a.executed_at));
 }
 
@@ -243,6 +274,8 @@ async function main() {
       result: g.isWin ? 'win' : 'loss',
       away: t.away,
       home: t.home,
+      model: g.model,
+      laser: g.laser,
     };
   });
 
@@ -255,6 +288,8 @@ async function main() {
       result: g.isWin ? 'win' : 'loss',
       away: t.away,
       home: t.home,
+      model: g.model,
+      laser: g.laser,
     };
   });
 
