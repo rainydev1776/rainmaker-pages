@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { writeFileSync, existsSync } from 'fs';
 import { createClient } from '@supabase/supabase-js';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
@@ -15,8 +15,9 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
 
 const supa = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-const LOOKBACK_DAYS = 18;
-const TARGET_GAMES = 12;
+const TARGET_GAMES = 15;
+/** Start at 5 days; extend only if we do not have enough settled laser games. */
+const LOOKBACK_DAYS_STEPS = [5, 7, 10, 14, 21, 30];
 
 const TEAM_NAMES = {
   ARI:'Diamondbacks',ARZ:'Diamondbacks',ATL:'Braves',BAL:'Orioles',BOS:'Red Sox',
@@ -69,9 +70,13 @@ async function fetchPaged(buildQuery) {
   return all;
 }
 
-function isBurstStrategy(reason) {
+function isLaserStrategy(reason) {
   const r = String(reason || '').toLowerCase();
-  return r.startsWith('mlb_burst') || r.startsWith('mlb_favdip_burst');
+  return (
+    r.startsWith('mlb_laser_1') ||
+    r.startsWith('mlb_laser_2') ||
+    r.startsWith('mlb_laser_3')
+  );
 }
 
 function getLabel(ticker, short) {
@@ -90,11 +95,8 @@ function getTeamAbbrs(ticker) {
   return { away: toEspn(p.awayAbbr), home: toEspn(p.homeAbbr) };
 }
 
-async function main() {
-  const sinceIso = new Date(Date.now() - LOOKBACK_DAYS * 24 * 60 * 60 * 1000).toISOString();
-  console.log(`Pulling MLB burst trades since ${sinceIso} (${LOOKBACK_DAYS} days)...`);
-
-  const [sellRows, buyRows] = await Promise.all([
+async function fetchMlbTrades(sinceIso) {
+  return Promise.all([
     fetchPaged(() => supa.from('c9_trades')
       .select('trade_id,user_id,ticker,side,price,size_usd,pnl_usd,status,executed_at,reason')
       .eq('side', 'sell').eq('status', 'filled').not('pnl_usd', 'is', null)
@@ -108,33 +110,32 @@ async function main() {
       .ilike('ticker', 'KXMLB%')
       .order('executed_at', { ascending: false })),
   ]);
-  console.log(`${sellRows.length} MLB sells, ${buyRows.length} MLB buys total.`);
+}
 
-  // Identify tickers entered by burst strategies (buy-side tags)
-  const burstTickers = new Set();
+/**
+ * One row per unique MLB game (matchup + date). Only games where a Laser 1/2/3 buy fired.
+ * Sorted newest settle first — no reordering for marketing.
+ */
+function buildLaserGames(sellRows, buyRows) {
+  const laserTickers = new Set();
   for (const r of buyRows) {
-    if (isBurstStrategy(r.reason)) burstTickers.add(r.ticker);
+    if (isLaserStrategy(r.reason)) laserTickers.add(r.ticker);
   }
-  console.log(`${burstTickers.size} unique tickers from burst strategies.`);
 
-  // Keep only trades whose ticker was entered by a burst strategy
-  const burstSells = sellRows.filter(r => burstTickers.has(r.ticker));
-  const burstBuys = buyRows.filter(r => burstTickers.has(r.ticker));
-  console.log(`${burstSells.length} burst sells, ${burstBuys.length} burst buys after filtering.`);
+  const laserBuys = buyRows.filter(r => laserTickers.has(r.ticker) && isLaserStrategy(r.reason));
+  const laserSells = sellRows.filter(r => laserTickers.has(r.ticker));
 
-  // Buy-size per game (for calculating per-$10-bet PnL)
   const buySizeByGame = new Map();
   const usersByGame = new Map();
-  for (const r of burstBuys) {
+  for (const r of laserBuys) {
     const gk = gameKeyFor(r.ticker);
     buySizeByGame.set(gk, (buySizeByGame.get(gk) || 0) + Math.abs(Number(r.size_usd || 0)));
     if (!usersByGame.has(gk)) usersByGame.set(gk, new Set());
     usersByGame.get(gk).add(r.user_id);
   }
 
-  // Aggregate sell PnL per game
   const gameMap = new Map();
-  for (const r of burstSells) {
+  for (const r of laserSells) {
     const gk = gameKeyFor(r.ticker);
     const ex = gameMap.get(gk);
     if (ex) {
@@ -151,8 +152,7 @@ async function main() {
     }
   }
 
-  // Compute per-$10-bet PnL for each game
-  const games = [...gameMap.entries()]
+  return [...gameMap.entries()]
     .map(([gk, g]) => {
       const uc = Math.max(g.users.size, 1);
       const avgPnl = g.pnl / uc;
@@ -165,22 +165,40 @@ async function main() {
     })
     .filter(r => Math.abs(Math.round(r.displayPnl)) > 0)
     .sort((a, b) => new Date(b.executed_at) - new Date(a.executed_at));
+}
 
-  console.log(`${games.length} burst games with non-zero PnL.`);
-  console.log(`  Wins: ${games.filter(g => g.isWin).length}, Losses: ${games.filter(g => !g.isWin).length}`);
+async function main() {
+  let selected = [];
+  let usedLookbackDays = LOOKBACK_DAYS_STEPS[0];
+  let poolCount = 0;
 
-  // Use the actual most recent eligible games. Do not scan backward for a better win/loss mix.
-  const selected = games.slice(0, TARGET_GAMES);
-  if (selected.length > 0) {
-    const w = selected.filter(g => g.isWin).length;
-    const l = selected.filter(g => !g.isWin).length;
-    console.log(`\nUsing most recent ${selected.length} games: ${w}W / ${l}L`);
+  for (const days of LOOKBACK_DAYS_STEPS) {
+    usedLookbackDays = days;
+    const sinceIso = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString();
+    console.log(`\nPulling MLB Laser 1/2/3 trades since ${sinceIso} (${days} days)...`);
+
+    const [sellRows, buyRows] = await fetchMlbTrades(sinceIso);
+    console.log(`${sellRows.length} MLB sells, ${buyRows.length} MLB buys total.`);
+
+    const laserBuyCount = buyRows.filter(r => isLaserStrategy(r.reason)).length;
+    console.log(`${laserBuyCount} laser-tagged buys.`);
+
+    const games = buildLaserGames(sellRows, buyRows);
+    poolCount = games.length;
+    console.log(`${games.length} unique laser-settled games (non-zero PnL).`);
+    console.log(`  Wins: ${games.filter(g => g.isWin).length}, Losses: ${games.filter(g => !g.isWin).length}`);
+
+    selected = games.slice(0, TARGET_GAMES);
+    if (selected.length >= TARGET_GAMES) {
+      console.log(`→ ${TARGET_GAMES} games within ${days}-day window.`);
+      break;
+    }
+    console.log(`→ Only ${selected.length}/${TARGET_GAMES} games; extending lookback...`);
   }
 
-  // Fallback: hold last snapshot only when no eligible games exist.
   if (selected.length === 0) {
     const outPath = join(OUT_DIR, 'trades.json');
-    console.log('\n✗ No eligible games found. Holding last snapshot.');
+    console.log('\n✗ No eligible laser games found. Holding last snapshot.');
     if (existsSync(outPath)) {
       console.log('  Existing trades.json preserved.');
     } else {
@@ -189,7 +207,9 @@ async function main() {
     return;
   }
 
-  // ─── BUILD OUTPUT ───
+  if (selected.length < TARGET_GAMES) {
+    console.log(`\n⚠ Using ${selected.length} games (pool had ${poolCount} in ${usedLookbackDays} days).`);
+  }
 
   const wins = selected.filter(g => g.isWin);
   const losses = selected.filter(g => !g.isWin);
@@ -241,10 +261,20 @@ async function main() {
   const output = {
     updated: new Date().toISOString(),
     period: `${formatDate(earliest)} – ${formatDate(latest)}`,
+    lookbackDays: usedLookbackDays,
+    strategies: ['mlb_laser_1', 'mlb_laser_2', 'mlb_laser_3'],
     summary: {
-      wins: winCount, losses: lossCount, winRate,
-      startBalance, endBalance, days,
-      avgWinPnl, avgLossPnl, totalWon, totalLost,
+      wins: winCount,
+      losses: lossCount,
+      winRate,
+      startBalance,
+      endBalance,
+      days,
+      gameCount: selected.length,
+      avgWinPnl,
+      avgLossPnl,
+      totalWon,
+      totalLost,
     },
     featured,
     feed,
@@ -254,7 +284,7 @@ async function main() {
   writeFileSync(outPath, JSON.stringify(output, null, 2) + '\n');
   console.log(`\n✓ Wrote ${outPath}`);
   console.log(`  ${winCount}W / ${lossCount}L (${winRate}%) · $${startBalance} → $${endBalance}`);
-  console.log(`  Period: ${output.period} (${days} days)`);
+  console.log(`  Period: ${output.period} (${days} days, ${selected.length} games, lookback ${usedLookbackDays}d)`);
 }
 
 main().catch(e => { console.error(e); process.exit(1); });

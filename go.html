@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Rainmaker</title>
 <link rel="icon" type="image/png" href="favicon.png">
-<meta name="version" content="v93">
+<meta name="version" content="v94">
 <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -188,15 +188,15 @@
 
   <!-- Post-trade slides (data-slide set dynamically) -->
   <div class="slide" id="scoreSlide">
-    <p class="h2 anim-up" style="margin-bottom:20px" id="scorePeriod">Last 14 days</p>
+    <p class="h2 anim-up" style="margin-bottom:20px" id="scorePeriod">Last 15 games</p>
     <div class="sgrid anim-up-d1" id="scoreGrid"></div>
-    <p class="dim anim-up-d2"><span class="pulse"></span>Real trades · MLB 2026</p>
+    <p class="dim anim-up-d2"><span class="pulse"></span>Real trades · MLB Laser · 2026</p>
   </div>
 
   <div class="slide" id="edgeSlide"></div>
 
   <div class="slide" id="feedSlide">
-    <p class="h1 anim-up" style="margin-bottom:24px" id="feedTitle">Every trade from the last 14 days</p>
+    <p class="h1 anim-up" style="margin-bottom:24px" id="feedTitle">Last 15 laser games</p>
     <div class="feed anim-up-d1" id="feedList"></div>
   </div>
 
@@ -438,8 +438,9 @@ function renderTrades(trades){
 }
 
 function renderScore(s){
-  document.getElementById('scorePeriod').textContent=`Last ${s.days} days`;
-  document.getElementById('feedTitle').textContent=`Every trade from the last ${s.days} days:`; 
+  const n=s.gameCount||s.wins+s.losses||15;
+  document.getElementById('scorePeriod').textContent=`Last ${n} games`;
+  document.getElementById('feedTitle').textContent=`Last ${n} laser games`;
   document.getElementById('scoreGrid').innerHTML=`
     <div class="sitem"><div class="sval green mono">${s.wins}</div><div class="slbl">Wins</div></div>
     <div class="sitem"><div class="sval red mono">${s.losses}</div><div class="slbl">Losses</div></div>
