@@ -1,6 +1,6 @@
 {
-  "updated": "2026-05-26T18:28:12.791Z",
-  "period": "May 23 – May 25",
+  "updated": "2026-05-26T21:28:35.407Z",
+  "period": "May 24 – May 26",
   "lookbackDays": 5,
   "strategies": [
     "mlb_laser_1",
@@ -12,18 +12,18 @@
     "losses": 4,
     "winRate": 73,
     "startBalance": 100,
-    "endBalance": 476,
+    "endBalance": 475,
     "days": 4,
     "gameCount": 15,
     "avgWinPnl": 69.19,
-    "avgLossPnl": -96.36,
+    "avgLossPnl": -96.53,
     "totalWon": 761.05,
-    "totalLost": 385.44
+    "totalLost": 386.12
   },
   "featured": [
     {
       "game": "Mariners vs ATH",
-      "date": "May 25",
+      "date": "May 26",
       "pnl": -100,
       "pct": -100.9,
       "result": "loss",
@@ -34,7 +34,7 @@
     },
     {
       "game": "Marlins vs Blue Jays",
-      "date": "May 25",
+      "date": "May 26",
       "pnl": 94.13,
       "pct": 94.1,
       "result": "win",
@@ -45,7 +45,7 @@
     },
     {
       "game": "Phillies vs Padres",
-      "date": "May 25",
+      "date": "May 26",
       "pnl": 65.81,
       "pct": 65.8,
       "result": "win",
@@ -56,7 +56,7 @@
     },
     {
       "game": "ATH vs Padres",
-      "date": "May 24",
+      "date": "May 25",
       "pnl": 87.62,
       "pct": 87.6,
       "result": "win",
@@ -67,7 +67,7 @@
     },
     {
       "game": "Dodgers vs Brewers",
-      "date": "May 24",
+      "date": "May 25",
       "pnl": 45.87,
       "pct": 45.9,
       "result": "win",
@@ -78,9 +78,9 @@
     },
     {
       "game": "Mariners vs Royals",
-      "date": "May 24",
-      "pnl": -85.44,
-      "pct": -85.4,
+      "date": "May 25",
+      "pnl": -86.12,
+      "pct": -86.1,
       "result": "loss",
       "away": "sea",
       "home": "kc",
@@ -111,7 +111,7 @@
     },
     {
       "game": "ATH vs Padres",
-      "date": "May 23",
+      "date": "May 24",
       "pnl": -100,
       "pct": -100.3,
       "result": "loss",
@@ -122,7 +122,7 @@
     },
     {
       "game": "Dodgers vs Brewers",
-      "date": "May 23",
+      "date": "May 24",
       "pnl": 84.79,
       "pct": 84.8,
       "result": "win",
@@ -133,7 +133,7 @@
     },
     {
       "game": "Guardians vs Phillies",
-      "date": "May 23",
+      "date": "May 24",
       "pnl": 52.36,
       "pct": 52.4,
       "result": "win",
@@ -144,7 +144,7 @@
     },
     {
       "game": "Twins vs Red Sox",
-      "date": "May 23",
+      "date": "May 24",
       "pnl": 66.19,
       "pct": 66.2,
       "result": "win",
@@ -155,7 +155,7 @@
     },
     {
       "game": "Pirates vs Blue Jays",
-      "date": "May 23",
+      "date": "May 24",
       "pnl": 60.88,
       "pct": 60.9,
       "result": "win",
@@ -166,7 +166,7 @@
     },
     {
       "game": "Astros vs Cubs",
-      "date": "May 23",
+      "date": "May 24",
       "pnl": 59.18,
       "pct": 59.2,
       "result": "win",
@@ -177,7 +177,7 @@
     },
     {
       "game": "Nationals vs Braves",
-      "date": "May 23",
+      "date": "May 24",
       "pnl": -100,
       "pct": -102.8,
       "result": "loss",
@@ -240,8 +240,8 @@
     },
     {
       "game": "SEA vs KC",
-      "pnl": -85.44,
-      "pct": -85.4,
+      "pnl": -86.12,
+      "pct": -86.1,
       "result": "loss",
       "away": "sea",
       "home": "kc",
