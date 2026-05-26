@@ -17,8 +17,6 @@ const supa = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const LOOKBACK_DAYS = 18;
 const TARGET_GAMES = 12;
-const MAX_LOSSES = 3;
-const MIN_WINS = 9;
 
 const TEAM_NAMES = {
   ARI:'Diamondbacks',ARZ:'Diamondbacks',ATL:'Braves',BAL:'Orioles',BOS:'Red Sox',
@@ -171,51 +169,18 @@ async function main() {
   console.log(`${games.length} burst games with non-zero PnL.`);
   console.log(`  Wins: ${games.filter(g => g.isWin).length}, Losses: ${games.filter(g => !g.isWin).length}`);
 
-  // ─── CURATION: pick the best 12-game window ───
-
-  let selected = null;
-
-  // Try 1: most recent 12 games
-  if (games.length >= TARGET_GAMES) {
-    const slice = games.slice(0, TARGET_GAMES);
-    const w = slice.filter(g => g.isWin).length;
-    const l = slice.filter(g => !g.isWin).length;
-    console.log(`\nRecent ${TARGET_GAMES}: ${w}W / ${l}L`);
-    if (l <= MAX_LOSSES && w >= MIN_WINS) {
-      selected = slice;
-      console.log('→ Using most recent 12 games.');
-    }
+  // Use the actual most recent eligible games. Do not scan backward for a better win/loss mix.
+  const selected = games.slice(0, TARGET_GAMES);
+  if (selected.length > 0) {
+    const w = selected.filter(g => g.isWin).length;
+    const l = selected.filter(g => !g.isWin).length;
+    console.log(`\nUsing most recent ${selected.length} games: ${w}W / ${l}L`);
   }
 
-  // Try 2: slide window back to find closest 12 with <= 3 losses
-  if (!selected && games.length >= TARGET_GAMES) {
-    console.log('Too many losses in recent games. Scanning for best window...');
-    for (let start = 1; start <= games.length - TARGET_GAMES; start++) {
-      const slice = games.slice(start, start + TARGET_GAMES);
-      const w = slice.filter(g => g.isWin).length;
-      const l = slice.filter(g => !g.isWin).length;
-      if (l <= MAX_LOSSES && w >= MIN_WINS) {
-        selected = slice;
-        console.log(`→ Found window at offset ${start}: ${w}W / ${l}L`);
-        break;
-      }
-    }
-  }
-
-  // Try 3: fewer than 12 games exist — use all if they meet criteria
-  if (!selected && games.length > 0 && games.length < TARGET_GAMES) {
-    const w = games.filter(g => g.isWin).length;
-    const l = games.filter(g => !g.isWin).length;
-    if (l <= MAX_LOSSES && w >= MIN_WINS) {
-      selected = games;
-      console.log(`→ Using all ${games.length} games: ${w}W / ${l}L`);
-    }
-  }
-
-  // Fallback: hold last good snapshot
-  if (!selected) {
+  // Fallback: hold last snapshot only when no eligible games exist.
+  if (selected.length === 0) {
     const outPath = join(OUT_DIR, 'trades.json');
-    console.log('\n✗ No window meets criteria (≥9W, ≤3L). Holding last good snapshot.');
+    console.log('\n✗ No eligible games found. Holding last snapshot.');
     if (existsSync(outPath)) {
       console.log('  Existing trades.json preserved.');
     } else {
@@ -232,18 +197,7 @@ async function main() {
   const lossCount = losses.length;
   const winRate = Math.round((winCount / selected.length) * 100);
 
-  // Order cards: W-W-W-L hook, chronological middle, always end on a win
-  const ordered = [wins[0], wins[1], wins[2], losses[0]];
-  const usedSet = new Set(ordered);
-  const rest = selected
-    .filter(g => !usedSet.has(g))
-    .sort((a, b) => new Date(b.executed_at) - new Date(a.executed_at));
-  const lastWinIdx = rest.findLastIndex(g => g.isWin);
-  if (lastWinIdx !== -1 && lastWinIdx !== rest.length - 1) {
-    const [lastWin] = rest.splice(lastWinIdx, 1);
-    rest.push(lastWin);
-  }
-  ordered.push(...rest);
+  const ordered = selected;
 
   const totalWon = Math.round(wins.reduce((s, g) => s + g.displayPnl, 0) * 100) / 100;
   const totalLost = Math.round(Math.abs(losses.reduce((s, g) => s + g.displayPnl, 0)) * 100) / 100;

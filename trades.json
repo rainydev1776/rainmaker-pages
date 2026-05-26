@@ -1,22 +1,67 @@
 {
-  "updated": "2026-05-26T14:42:16.470Z",
-  "period": "May 17 – May 23",
+  "updated": "2026-05-26T17:58:33.415Z",
+  "period": "May 19 – May 25",
   "summary": {
-    "wins": 9,
-    "losses": 3,
-    "winRate": 75,
+    "wins": 7,
+    "losses": 5,
+    "winRate": 58,
     "startBalance": 100,
-    "endBalance": 273,
-    "days": 7,
-    "avgWinPnl": 48.55,
-    "avgLossPnl": -88.06,
-    "totalWon": 436.99,
-    "totalLost": 264.18
+    "endBalance": 182,
+    "days": 8,
+    "avgWinPnl": 78.13,
+    "avgLossPnl": -93.08,
+    "totalWon": 546.93,
+    "totalLost": 465.39
   },
   "featured": [
     {
+      "game": "Rockies vs Dodgers",
+      "date": "May 25",
+      "pnl": 7.52,
+      "pct": 7.5,
+      "result": "win",
+      "away": "col",
+      "home": "lad"
+    },
+    {
+      "game": "Astros vs Cubs",
+      "date": "May 24",
+      "pnl": 232.83,
+      "pct": 232.8,
+      "result": "win",
+      "away": "hou",
+      "home": "chc"
+    },
+    {
+      "game": "Guardians vs Phillies",
+      "date": "May 24",
+      "pnl": -100,
+      "pct": -100.7,
+      "result": "loss",
+      "away": "cle",
+      "home": "phi"
+    },
+    {
+      "game": "White Sox vs Giants",
+      "date": "May 23",
+      "pnl": -100,
+      "pct": -100.9,
+      "result": "loss",
+      "away": "chw",
+      "home": "sf"
+    },
+    {
       "game": "Nationals vs Braves",
       "date": "May 23",
+      "pnl": -100,
+      "pct": -102.3,
+      "result": "loss",
+      "away": "wsh",
+      "home": "atl"
+    },
+    {
+      "game": "Nationals vs Braves",
+      "date": "May 22",
       "pnl": 12.1,
       "pct": 12.1,
       "result": "win",
@@ -25,7 +70,7 @@
     },
     {
       "game": "Braves vs Marlins",
-      "date": "May 23",
+      "date": "May 22",
       "pnl": 60.48,
       "pct": 60.5,
       "result": "win",
@@ -34,7 +79,7 @@
     },
     {
       "game": "ATH vs Angels",
-      "date": "May 22",
+      "date": "May 21",
       "pnl": 59.19,
       "pct": 59.2,
       "result": "win",
@@ -43,7 +88,7 @@
     },
     {
       "game": "Twins vs Guardians",
-      "date": "May 20",
+      "date": "May 19",
       "pnl": -100,
       "pct": -102.2,
       "result": "loss",
@@ -52,7 +97,7 @@
     },
     {
       "game": "Guardians vs Tigers",
-      "date": "May 20",
+      "date": "May 19",
       "pnl": -65.39,
       "pct": -65.4,
       "result": "loss",
@@ -61,7 +106,7 @@
     },
     {
       "game": "Orioles vs Rays",
-      "date": "May 20",
+      "date": "May 19",
       "pnl": 59.63,
       "pct": 59.6,
       "result": "win",
@@ -70,60 +115,55 @@
     },
     {
       "game": "Braves vs Marlins",
-      "date": "May 20",
+      "date": "May 19",
       "pnl": 115.18,
       "pct": 115.2,
       "result": "win",
       "away": "atl",
       "home": "mia"
-    },
-    {
-      "game": "Blue Jays vs Yankees",
-      "date": "May 20",
-      "pnl": 14.02,
-      "pct": 14,
-      "result": "win",
-      "away": "tor",
-      "home": "nyy"
-    },
-    {
-      "game": "Blue Jays vs Yankees",
-      "date": "May 19",
-      "pnl": 92.14,
-      "pct": 92.1,
-      "result": "win",
-      "away": "tor",
-      "home": "nyy"
-    },
-    {
-      "game": "Brewers vs Twins",
-      "date": "May 17",
-      "pnl": -98.79,
-      "pct": -98.8,
-      "result": "loss",
-      "away": "mil",
-      "home": "min"
-    },
-    {
-      "game": "Yankees vs Mets",
-      "date": "May 17",
-      "pnl": 11.68,
-      "pct": 11.7,
-      "result": "win",
-      "away": "nyy",
-      "home": "nym"
-    },
-    {
-      "game": "Marlins vs Rays",
-      "date": "May 17",
-      "pnl": 12.57,
-      "pct": 12.6,
-      "result": "win",
-      "away": "mia",
-      "home": "tb"
     }
   ],
   "feed": [
+    {
+      "game": "COL vs LAD",
+      "pnl": 7.52,
+      "pct": 7.5,
+      "result": "win",
+      "away": "col",
+      "home": "lad"
+    },
+    {
+      "game": "HOU vs CHC",
+      "pnl": 232.83,
+      "pct": 232.8,
+      "result": "win",
+      "away": "hou",
+      "home": "chc"
+    },
+    {
+      "game": "CLE vs PHI",
+      "pnl": -100,
+      "pct": -100.7,
+      "result": "loss",
+      "away": "cle",
+      "home": "phi"
+    },
+    {
+      "game": "CWS vs SF",
+      "pnl": -100,
+      "pct": -100.9,
+      "result": "loss",
+      "away": "chw",
+      "home": "sf"
+    },
+    {
+      "game": "WSH vs ATL",
+      "pnl": -100,
+      "pct": -102.3,
+      "result": "loss",
+      "away": "wsh",
+      "home": "atl"
+    },
     {
       "game": "WSH vs ATL",
       "pnl": 12.1,
@@ -179,46 +219,6 @@
       "result": "win",
       "away": "atl",
       "home": "mia"
-    },
-    {
-      "game": "TOR vs NYY",
-      "pnl": 14.02,
-      "pct": 14,
-      "result": "win",
-      "away": "tor",
-      "home": "nyy"
-    },
-    {
-      "game": "TOR vs NYY",
-      "pnl": 92.14,
-      "pct": 92.1,
-      "result": "win",
-      "away": "tor",
-      "home": "nyy"
-    },
-    {
-      "game": "MIL vs MIN",
-      "pnl": -98.79,
-      "pct": -98.8,
-      "result": "loss",
-      "away": "mil",
-      "home": "min"
-    },
-    {
-      "game": "NYY vs NYM",
-      "pnl": 11.68,
-      "pct": 11.7,
-      "result": "win",
-      "away": "nyy",
-      "home": "nym"
-    },
-    {
-      "game": "MIA vs TB",
-      "pnl": 12.57,
-      "pct": 12.6,
-      "result": "win",
-      "away": "mia",
-      "home": "tb"
     }
   ]
 }
