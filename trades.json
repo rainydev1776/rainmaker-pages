@@ -1,6 +1,6 @@
 {
-  "updated": "2026-05-26T17:58:33.415Z",
-  "period": "May 19 – May 25",
+  "updated": "2026-05-26T18:16:59.530Z",
+  "period": "May 20 – May 26",
   "summary": {
     "wins": 7,
     "losses": 5,
@@ -16,7 +16,7 @@
   "featured": [
     {
       "game": "Rockies vs Dodgers",
-      "date": "May 25",
+      "date": "May 26",
       "pnl": 7.52,
       "pct": 7.5,
       "result": "win",
@@ -43,7 +43,7 @@
     },
     {
       "game": "White Sox vs Giants",
-      "date": "May 23",
+      "date": "May 24",
       "pnl": -100,
       "pct": -100.9,
       "result": "loss",
@@ -52,7 +52,7 @@
     },
     {
       "game": "Nationals vs Braves",
-      "date": "May 23",
+      "date": "May 24",
       "pnl": -100,
       "pct": -102.3,
       "result": "loss",
@@ -61,7 +61,7 @@
     },
     {
       "game": "Nationals vs Braves",
-      "date": "May 22",
+      "date": "May 23",
       "pnl": 12.1,
       "pct": 12.1,
       "result": "win",
@@ -70,7 +70,7 @@
     },
     {
       "game": "Braves vs Marlins",
-      "date": "May 22",
+      "date": "May 23",
       "pnl": 60.48,
       "pct": 60.5,
       "result": "win",
@@ -79,7 +79,7 @@
     },
     {
       "game": "ATH vs Angels",
-      "date": "May 21",
+      "date": "May 22",
       "pnl": 59.19,
       "pct": 59.2,
       "result": "win",
@@ -88,7 +88,7 @@
     },
     {
       "game": "Twins vs Guardians",
-      "date": "May 19",
+      "date": "May 20",
       "pnl": -100,
       "pct": -102.2,
       "result": "loss",
@@ -97,7 +97,7 @@
     },
     {
       "game": "Guardians vs Tigers",
-      "date": "May 19",
+      "date": "May 20",
       "pnl": -65.39,
       "pct": -65.4,
       "result": "loss",
@@ -106,7 +106,7 @@
     },
     {
       "game": "Orioles vs Rays",
-      "date": "May 19",
+      "date": "May 20",
       "pnl": 59.63,
       "pct": 59.6,
       "result": "win",
@@ -115,7 +115,7 @@
     },
     {
       "game": "Braves vs Marlins",
-      "date": "May 19",
+      "date": "May 20",
       "pnl": 115.18,
       "pct": 115.2,
       "result": "win",
