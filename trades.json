@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-27T14:54:23.096Z",
+  "updated": "2026-05-27T18:19:37.074Z",
   "period": "May 25 – May 27",
   "lookbackDays": 5,
   "strategies": [
@@ -183,8 +183,8 @@
       "result": "win",
       "away": "lad",
       "home": "mil",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     }
   ],
   "feed": [
@@ -335,8 +335,8 @@
       "result": "win",
       "away": "lad",
       "home": "mil",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     }
   ]
 }
