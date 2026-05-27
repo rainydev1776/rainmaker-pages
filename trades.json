@@ -1,6 +1,6 @@
 {
-  "updated": "2026-05-27T02:30:33.854Z",
-  "period": "May 24 – May 27",
+  "updated": "2026-05-27T07:55:33.589Z",
+  "period": "May 25 – May 27",
   "lookbackDays": 5,
   "strategies": [
     "mlb_laser_1",
@@ -8,24 +8,57 @@
     "mlb_laser_3"
   ],
   "summary": {
-    "wins": 12,
-    "losses": 3,
-    "winRate": 80,
+    "wins": 13,
+    "losses": 2,
+    "winRate": 87,
     "startBalance": 100,
-    "endBalance": 773,
+    "endBalance": 783,
     "days": 4,
     "gameCount": 15,
-    "avgWinPnl": 80.03,
-    "avgLossPnl": -95.63,
-    "totalWon": 960.31,
-    "totalLost": 286.88
+    "avgWinPnl": 67.67,
+    "avgLossPnl": -98.31,
+    "totalWon": 879.71,
+    "totalLost": 196.63
   },
   "featured": [
     {
+      "game": "AZ vs Giants",
+      "date": "May 27",
+      "pnl": 62.77,
+      "pct": 62.8,
+      "result": "win",
+      "away": "az",
+      "home": "sf",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
+    {
+      "game": "Mariners vs ATH",
+      "date": "May 27",
+      "pnl": 39.95,
+      "pct": 40,
+      "result": "win",
+      "away": "sea",
+      "home": "ath",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
+    {
+      "game": "Nationals vs Guardians",
+      "date": "May 27",
+      "pnl": 72.99,
+      "pct": 73,
+      "result": "win",
+      "away": "wsh",
+      "home": "cle",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
+    {
       "game": "Reds vs Mets",
       "date": "May 27",
-      "pnl": 86.58,
-      "pct": 86.6,
+      "pnl": 82.57,
+      "pct": 82.6,
       "result": "win",
       "away": "cin",
       "home": "nym",
@@ -33,21 +66,32 @@
       "laser": "Laser 3"
     },
     {
-      "game": "Marlins vs Blue Jays",
+      "game": "Twins vs White Sox",
       "date": "May 27",
-      "pnl": 69.75,
-      "pct": 69.7,
+      "pnl": 72.99,
+      "pct": 73,
       "result": "win",
-      "away": "mia",
-      "home": "tor",
+      "away": "min",
+      "home": "chw",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
+    {
+      "game": "Astros vs Rangers",
+      "date": "May 27",
+      "pnl": 68.48,
+      "pct": 68.5,
+      "result": "win",
+      "away": "hou",
+      "home": "tex",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
     },
     {
       "game": "Cardinals vs Brewers",
       "date": "May 27",
-      "pnl": 30.53,
-      "pct": 30.5,
+      "pnl": 48.81,
+      "pct": 48.8,
       "result": "win",
       "away": "stl",
       "home": "mil",
@@ -55,13 +99,24 @@
       "laser": "Laser 2"
     },
     {
-      "game": "Astros vs Rangers",
+      "game": "Rays vs Orioles",
       "date": "May 27",
-      "pnl": 61.38,
-      "pct": 61.4,
+      "pnl": -96.63,
+      "pct": -96.6,
+      "result": "loss",
+      "away": "tb",
+      "home": "bal",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
+    {
+      "game": "Marlins vs Blue Jays",
+      "date": "May 27",
+      "pnl": 71.14,
+      "pct": 71.1,
       "result": "win",
-      "away": "hou",
-      "home": "tex",
+      "away": "mia",
+      "home": "tor",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
     },
@@ -73,17 +128,6 @@
       "result": "win",
       "away": "chc",
       "home": "pit",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
-    },
-    {
-      "game": "Nationals vs Guardians",
-      "date": "May 26",
-      "pnl": 207.84,
-      "pct": 207.8,
-      "result": "win",
-      "away": "wsh",
-      "home": "cle",
       "model": "mlb_laser_2",
       "laser": "Laser 2"
     },
@@ -139,59 +183,45 @@
       "result": "win",
       "away": "lad",
       "home": "mil",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
-    },
-    {
-      "game": "Mariners vs Royals",
-      "date": "May 25",
-      "pnl": -86.88,
-      "pct": -86.9,
-      "result": "loss",
-      "away": "sea",
-      "home": "kc",
       "model": "mlb_laser_2",
       "laser": "Laser 2"
-    },
-    {
-      "game": "Mets vs Marlins",
-      "date": "May 24",
-      "pnl": 65.04,
-      "pct": 65,
-      "result": "win",
-      "away": "nym",
-      "home": "mia",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
-    },
-    {
-      "game": "Guardians vs Phillies",
-      "date": "May 24",
-      "pnl": 79.18,
-      "pct": 79.2,
-      "result": "win",
-      "away": "cle",
-      "home": "phi",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
-    },
-    {
-      "game": "ATH vs Padres",
-      "date": "May 24",
-      "pnl": -100,
-      "pct": -100.3,
-      "result": "loss",
-      "away": "ath",
-      "home": "sd",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
     }
   ],
   "feed": [
     {
+      "game": "AZ vs SF",
+      "pnl": 62.77,
+      "pct": 62.8,
+      "result": "win",
+      "away": "az",
+      "home": "sf",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
+    {
+      "game": "SEA vs ATH",
+      "pnl": 39.95,
+      "pct": 40,
+      "result": "win",
+      "away": "sea",
+      "home": "ath",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
+    {
+      "game": "WSH vs CLE",
+      "pnl": 72.99,
+      "pct": 73,
+      "result": "win",
+      "away": "wsh",
+      "home": "cle",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
+    {
       "game": "CIN vs NYM",
-      "pnl": 86.58,
-      "pct": 86.6,
+      "pnl": 82.57,
+      "pct": 82.6,
       "result": "win",
       "away": "cin",
       "home": "nym",
@@ -199,19 +229,29 @@
       "laser": "Laser 3"
     },
     {
-      "game": "MIA vs TOR",
-      "pnl": 69.75,
-      "pct": 69.7,
+      "game": "MIN vs CWS",
+      "pnl": 72.99,
+      "pct": 73,
       "result": "win",
-      "away": "mia",
-      "home": "tor",
+      "away": "min",
+      "home": "chw",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
+    {
+      "game": "HOU vs TEX",
+      "pnl": 68.48,
+      "pct": 68.5,
+      "result": "win",
+      "away": "hou",
+      "home": "tex",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
     },
     {
       "game": "STL vs MIL",
-      "pnl": 30.53,
-      "pct": 30.5,
+      "pnl": 48.81,
+      "pct": 48.8,
       "result": "win",
       "away": "stl",
       "home": "mil",
@@ -219,12 +259,22 @@
       "laser": "Laser 2"
     },
     {
-      "game": "HOU vs TEX",
-      "pnl": 61.38,
-      "pct": 61.4,
+      "game": "TB vs BAL",
+      "pnl": -96.63,
+      "pct": -96.6,
+      "result": "loss",
+      "away": "tb",
+      "home": "bal",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
+    {
+      "game": "MIA vs TOR",
+      "pnl": 71.14,
+      "pct": 71.1,
       "result": "win",
-      "away": "hou",
-      "home": "tex",
+      "away": "mia",
+      "home": "tor",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
     },
@@ -235,16 +285,6 @@
       "result": "win",
       "away": "chc",
       "home": "pit",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
-    },
-    {
-      "game": "WSH vs CLE",
-      "pnl": 207.84,
-      "pct": 207.8,
-      "result": "win",
-      "away": "wsh",
-      "home": "cle",
       "model": "mlb_laser_2",
       "laser": "Laser 2"
     },
@@ -295,48 +335,8 @@
       "result": "win",
       "away": "lad",
       "home": "mil",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
-    },
-    {
-      "game": "SEA vs KC",
-      "pnl": -86.88,
-      "pct": -86.9,
-      "result": "loss",
-      "away": "sea",
-      "home": "kc",
       "model": "mlb_laser_2",
       "laser": "Laser 2"
-    },
-    {
-      "game": "NYM vs MIA",
-      "pnl": 65.04,
-      "pct": 65,
-      "result": "win",
-      "away": "nym",
-      "home": "mia",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
-    },
-    {
-      "game": "CLE vs PHI",
-      "pnl": 79.18,
-      "pct": 79.2,
-      "result": "win",
-      "away": "cle",
-      "home": "phi",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
-    },
-    {
-      "game": "ATH vs SD",
-      "pnl": -100,
-      "pct": -100.3,
-      "result": "loss",
-      "away": "ath",
-      "home": "sd",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
     }
   ]
 }
