@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-28T07:47:24.292Z",
+  "updated": "2026-05-28T11:29:25.101Z",
   "period": "May 27 – May 28",
   "lookbackDays": 5,
   "strategies": [
@@ -80,7 +80,7 @@
       "game": "Braves vs Red Sox",
       "date": "May 28",
       "pnl": -100,
-      "pct": -109.3,
+      "pct": -108.1,
       "result": "loss",
       "away": "atl",
       "home": "bos",
@@ -241,7 +241,7 @@
     {
       "game": "ATL vs BOS",
       "pnl": -100,
-      "pct": -109.3,
+      "pct": -108.1,
       "result": "loss",
       "away": "atl",
       "home": "bos",
