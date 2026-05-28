@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-28T18:29:46.684Z",
+  "updated": "2026-05-28T21:49:36.863Z",
   "period": "May 27 – May 28",
   "lookbackDays": 5,
   "strategies": [
@@ -8,24 +8,35 @@
     "mlb_laser_3"
   ],
   "summary": {
-    "wins": 10,
-    "losses": 5,
-    "winRate": 67,
+    "wins": 9,
+    "losses": 6,
+    "winRate": 60,
     "startBalance": 100,
-    "endBalance": 256,
-    "days": 2,
+    "endBalance": 95,
+    "days": 3,
     "gameCount": 15,
-    "avgWinPnl": 65.59,
-    "avgLossPnl": -100,
-    "totalWon": 655.91,
-    "totalLost": 500
+    "avgWinPnl": 65.38,
+    "avgLossPnl": -98.82,
+    "totalWon": 588.4,
+    "totalLost": 592.9
   },
   "featured": [
     {
+      "game": "Angels vs Tigers",
+      "date": "May 28",
+      "pnl": -92.9,
+      "pct": -92.9,
+      "result": "loss",
+      "away": "laa",
+      "home": "det",
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
+    },
+    {
       "game": "Yankees vs Royals",
       "date": "May 28",
-      "pnl": 67.8,
-      "pct": 67.8,
+      "pnl": 67.03,
+      "pct": 67,
       "result": "win",
       "away": "nyy",
       "home": "kc",
@@ -46,8 +57,8 @@
     {
       "game": "Reds vs Mets",
       "date": "May 28",
-      "pnl": 69.82,
-      "pct": 69.8,
+      "pnl": 71.56,
+      "pct": 71.6,
       "result": "win",
       "away": "cin",
       "home": "nym",
@@ -174,24 +185,23 @@
       "home": "chw",
       "model": "mlb_laser_2",
       "laser": "Laser 2"
-    },
-    {
-      "game": "Astros vs Rangers",
-      "date": "May 27",
-      "pnl": 68.48,
-      "pct": 68.5,
-      "result": "win",
-      "away": "hou",
-      "home": "tex",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
     }
   ],
   "feed": [
     {
+      "game": "LAA vs DET",
+      "pnl": -92.9,
+      "pct": -92.9,
+      "result": "loss",
+      "away": "laa",
+      "home": "det",
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
+    },
+    {
       "game": "NYY vs KC",
-      "pnl": 67.8,
-      "pct": 67.8,
+      "pnl": 67.03,
+      "pct": 67,
       "result": "win",
       "away": "nyy",
       "home": "kc",
@@ -210,8 +220,8 @@
     },
     {
       "game": "CIN vs NYM",
-      "pnl": 69.82,
-      "pct": 69.8,
+      "pnl": 71.56,
+      "pct": 71.6,
       "result": "win",
       "away": "cin",
       "home": "nym",
@@ -327,16 +337,6 @@
       "home": "chw",
       "model": "mlb_laser_2",
       "laser": "Laser 2"
-    },
-    {
-      "game": "HOU vs TEX",
-      "pnl": 68.48,
-      "pct": 68.5,
-      "result": "win",
-      "away": "hou",
-      "home": "tex",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
     }
   ]
 }
