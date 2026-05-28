@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-28T15:27:37.144Z",
+  "updated": "2026-05-28T18:29:46.684Z",
   "period": "May 27 – May 28",
   "lookbackDays": 5,
   "strategies": [
@@ -12,12 +12,12 @@
     "losses": 5,
     "winRate": 67,
     "startBalance": 100,
-    "endBalance": 258,
+    "endBalance": 256,
     "days": 2,
     "gameCount": 15,
-    "avgWinPnl": 65.77,
+    "avgWinPnl": 65.59,
     "avgLossPnl": -100,
-    "totalWon": 657.65,
+    "totalWon": 655.91,
     "totalLost": 500
   },
   "featured": [
@@ -46,8 +46,8 @@
     {
       "game": "Reds vs Mets",
       "date": "May 28",
-      "pnl": 71.56,
-      "pct": 71.6,
+      "pnl": 69.82,
+      "pct": 69.8,
       "result": "win",
       "away": "cin",
       "home": "nym",
@@ -80,7 +80,7 @@
       "game": "Braves vs Red Sox",
       "date": "May 28",
       "pnl": -100,
-      "pct": -109.2,
+      "pct": -110.5,
       "result": "loss",
       "away": "atl",
       "home": "bos",
@@ -210,8 +210,8 @@
     },
     {
       "game": "CIN vs NYM",
-      "pnl": 71.56,
-      "pct": 71.6,
+      "pnl": 69.82,
+      "pct": 69.8,
       "result": "win",
       "away": "cin",
       "home": "nym",
@@ -241,7 +241,7 @@
     {
       "game": "ATL vs BOS",
       "pnl": -100,
-      "pct": -109.2,
+      "pct": -110.5,
       "result": "loss",
       "away": "atl",
       "home": "bos",
