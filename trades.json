@@ -1,6 +1,6 @@
 {
-  "updated": "2026-05-28T21:49:36.863Z",
-  "period": "May 27 – May 28",
+  "updated": "2026-05-29T02:09:37.240Z",
+  "period": "May 27 – May 29",
   "lookbackDays": 5,
   "strategies": [
     "mlb_laser_1",
@@ -12,15 +12,26 @@
     "losses": 6,
     "winRate": 60,
     "startBalance": 100,
-    "endBalance": 95,
+    "endBalance": 99,
     "days": 3,
     "gameCount": 15,
-    "avgWinPnl": 65.38,
+    "avgWinPnl": 65.76,
     "avgLossPnl": -98.82,
-    "totalWon": 588.4,
+    "totalWon": 591.81,
     "totalLost": 592.9
   },
   "featured": [
+    {
+      "game": "Braves vs Red Sox",
+      "date": "May 29",
+      "pnl": 75.63,
+      "pct": 75.6,
+      "result": "win",
+      "away": "atl",
+      "home": "bos",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
     {
       "game": "Angels vs Tigers",
       "date": "May 28",
@@ -35,8 +46,8 @@
     {
       "game": "Yankees vs Royals",
       "date": "May 28",
-      "pnl": 67.03,
-      "pct": 67,
+      "pnl": 67.8,
+      "pct": 67.8,
       "result": "win",
       "away": "nyy",
       "home": "kc",
@@ -174,20 +185,19 @@
       "home": "nym",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
-    },
-    {
-      "game": "Twins vs White Sox",
-      "date": "May 27",
-      "pnl": 72.99,
-      "pct": 73,
-      "result": "win",
-      "away": "min",
-      "home": "chw",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
     }
   ],
   "feed": [
+    {
+      "game": "ATL vs BOS",
+      "pnl": 75.63,
+      "pct": 75.6,
+      "result": "win",
+      "away": "atl",
+      "home": "bos",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
     {
       "game": "LAA vs DET",
       "pnl": -92.9,
@@ -200,8 +210,8 @@
     },
     {
       "game": "NYY vs KC",
-      "pnl": 67.03,
-      "pct": 67,
+      "pnl": 67.8,
+      "pct": 67.8,
       "result": "win",
       "away": "nyy",
       "home": "kc",
@@ -327,16 +337,6 @@
       "home": "nym",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
-    },
-    {
-      "game": "MIN vs CWS",
-      "pnl": 72.99,
-      "pct": 73,
-      "result": "win",
-      "away": "min",
-      "home": "chw",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
     }
   ]
 }
