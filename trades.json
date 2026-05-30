@@ -1,6 +1,6 @@
 {
-  "updated": "2026-05-29T21:44:06.896Z",
-  "period": "May 27 – May 29",
+  "updated": "2026-05-30T02:04:45.461Z",
+  "period": "May 27 – May 30",
   "lookbackDays": 5,
   "strategies": [
     "mlb_laser_1",
@@ -12,15 +12,26 @@
     "losses": 6,
     "winRate": 60,
     "startBalance": 100,
-    "endBalance": 99,
-    "days": 3,
+    "endBalance": 78,
+    "days": 4,
     "gameCount": 15,
-    "avgWinPnl": 65.76,
-    "avgLossPnl": -98.82,
-    "totalWon": 591.81,
-    "totalLost": 592.9
+    "avgWinPnl": 63.47,
+    "avgLossPnl": -98.79,
+    "totalWon": 571.24,
+    "totalLost": 592.75
   },
   "featured": [
+    {
+      "game": "Twins vs Pirates",
+      "date": "May 30",
+      "pnl": 62,
+      "pct": 62,
+      "result": "win",
+      "away": "min",
+      "home": "pit",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
     {
       "game": "Braves vs Red Sox",
       "date": "May 29",
@@ -35,8 +46,8 @@
     {
       "game": "Angels vs Tigers",
       "date": "May 28",
-      "pnl": -92.9,
-      "pct": -92.9,
+      "pnl": -92.75,
+      "pct": -92.7,
       "result": "loss",
       "away": "laa",
       "home": "det",
@@ -174,20 +185,19 @@
       "home": "cle",
       "model": "mlb_laser_2",
       "laser": "Laser 2"
-    },
-    {
-      "game": "Reds vs Mets",
-      "date": "May 27",
-      "pnl": 82.57,
-      "pct": 82.6,
-      "result": "win",
-      "away": "cin",
-      "home": "nym",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
     }
   ],
   "feed": [
+    {
+      "game": "MIN vs PIT",
+      "pnl": 62,
+      "pct": 62,
+      "result": "win",
+      "away": "min",
+      "home": "pit",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
     {
       "game": "ATL vs BOS",
       "pnl": 75.63,
@@ -200,8 +210,8 @@
     },
     {
       "game": "LAA vs DET",
-      "pnl": -92.9,
-      "pct": -92.9,
+      "pnl": -92.75,
+      "pct": -92.7,
       "result": "loss",
       "away": "laa",
       "home": "det",
@@ -327,16 +337,6 @@
       "home": "cle",
       "model": "mlb_laser_2",
       "laser": "Laser 2"
-    },
-    {
-      "game": "CIN vs NYM",
-      "pnl": 82.57,
-      "pct": 82.6,
-      "result": "win",
-      "away": "cin",
-      "home": "nym",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
     }
   ]
 }
