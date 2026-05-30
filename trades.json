@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-30T16:51:54.461Z",
+  "updated": "2026-05-30T20:43:55.483Z",
   "period": "May 27 – May 30",
   "lookbackDays": 5,
   "strategies": [
@@ -12,12 +12,12 @@
     "losses": 6,
     "winRate": 60,
     "startBalance": 100,
-    "endBalance": 97,
+    "endBalance": 96,
     "days": 5,
     "gameCount": 15,
-    "avgWinPnl": 65.52,
+    "avgWinPnl": 65.47,
     "avgLossPnl": -98.82,
-    "totalWon": 589.64,
+    "totalWon": 589.22,
     "totalLost": 592.9
   },
   "featured": [
@@ -35,8 +35,8 @@
     {
       "game": "Twins vs Pirates",
       "date": "May 30",
-      "pnl": 71.26,
-      "pct": 71.3,
+      "pnl": 70.84,
+      "pct": 70.8,
       "result": "win",
       "away": "min",
       "home": "pit",
@@ -200,8 +200,8 @@
     },
     {
       "game": "MIN vs PIT",
-      "pnl": 71.26,
-      "pct": 71.3,
+      "pnl": 70.84,
+      "pct": 70.8,
       "result": "win",
       "away": "min",
       "home": "pit",
