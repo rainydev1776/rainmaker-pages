@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-30T02:04:45.461Z",
+  "updated": "2026-05-30T06:39:57.591Z",
   "period": "May 27 – May 30",
   "lookbackDays": 5,
   "strategies": [
@@ -12,20 +12,31 @@
     "losses": 6,
     "winRate": 60,
     "startBalance": 100,
-    "endBalance": 78,
-    "days": 4,
+    "endBalance": 97,
+    "days": 5,
     "gameCount": 15,
-    "avgWinPnl": 63.47,
-    "avgLossPnl": -98.79,
-    "totalWon": 571.24,
-    "totalLost": 592.75
+    "avgWinPnl": 65.52,
+    "avgLossPnl": -98.82,
+    "totalWon": 589.64,
+    "totalLost": 592.9
   },
   "featured": [
     {
+      "game": "Phillies vs Dodgers",
+      "date": "May 30",
+      "pnl": 82.13,
+      "pct": 82.1,
+      "result": "win",
+      "away": "phi",
+      "home": "lad",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
+    {
       "game": "Twins vs Pirates",
       "date": "May 30",
-      "pnl": 62,
-      "pct": 62,
+      "pnl": 71.26,
+      "pct": 71.3,
       "result": "win",
       "away": "min",
       "home": "pit",
@@ -46,8 +57,8 @@
     {
       "game": "Angels vs Tigers",
       "date": "May 28",
-      "pnl": -92.75,
-      "pct": -92.7,
+      "pnl": -92.9,
+      "pct": -92.9,
       "result": "loss",
       "away": "laa",
       "home": "det",
@@ -174,24 +185,23 @@
       "home": "ath",
       "model": "mlb_laser_2",
       "laser": "Laser 2"
-    },
-    {
-      "game": "Nationals vs Guardians",
-      "date": "May 27",
-      "pnl": 72.99,
-      "pct": 73,
-      "result": "win",
-      "away": "wsh",
-      "home": "cle",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
     }
   ],
   "feed": [
     {
+      "game": "PHI vs LAD",
+      "pnl": 82.13,
+      "pct": 82.1,
+      "result": "win",
+      "away": "phi",
+      "home": "lad",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
+    {
       "game": "MIN vs PIT",
-      "pnl": 62,
-      "pct": 62,
+      "pnl": 71.26,
+      "pct": 71.3,
       "result": "win",
       "away": "min",
       "home": "pit",
@@ -210,8 +220,8 @@
     },
     {
       "game": "LAA vs DET",
-      "pnl": -92.75,
-      "pct": -92.7,
+      "pnl": -92.9,
+      "pct": -92.9,
       "result": "loss",
       "away": "laa",
       "home": "det",
@@ -325,16 +335,6 @@
       "result": "win",
       "away": "sea",
       "home": "ath",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
-    },
-    {
-      "game": "WSH vs CLE",
-      "pnl": 72.99,
-      "pct": 73,
-      "result": "win",
-      "away": "wsh",
-      "home": "cle",
       "model": "mlb_laser_2",
       "laser": "Laser 2"
     }
