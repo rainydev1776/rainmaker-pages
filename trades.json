@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-31T16:56:05.043Z",
+  "updated": "2026-05-31T20:48:40.559Z",
   "period": "May 27 – May 31",
   "lookbackDays": 5,
   "strategies": [
@@ -8,19 +8,30 @@
     "mlb_laser_3"
   ],
   "summary": {
-    "wins": 7,
-    "losses": 8,
-    "winRate": 47,
+    "wins": 8,
+    "losses": 7,
+    "winRate": 53,
     "startBalance": 100,
-    "endBalance": -193,
+    "endBalance": -39,
     "days": 5,
     "gameCount": 15,
-    "avgWinPnl": 69.1,
-    "avgLossPnl": -97.12,
-    "totalWon": 483.69,
-    "totalLost": 777
+    "avgWinPnl": 67.29,
+    "avgLossPnl": -96.71,
+    "totalWon": 538.29,
+    "totalLost": 677
   },
   "featured": [
+    {
+      "game": "Padres vs Nationals",
+      "date": "May 31",
+      "pnl": 51.37,
+      "pct": 51.4,
+      "result": "win",
+      "away": "sd",
+      "home": "wsh",
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
+    },
     {
       "game": "Phillies vs Dodgers",
       "date": "May 31",
@@ -90,8 +101,8 @@
     {
       "game": "Yankees vs Royals",
       "date": "May 28",
-      "pnl": 64.57,
-      "pct": 64.6,
+      "pnl": 67.8,
+      "pct": 67.8,
       "result": "win",
       "away": "nyy",
       "home": "kc",
@@ -174,20 +185,19 @@
       "home": "mil",
       "model": "mlb_laser_2",
       "laser": "Laser 2"
-    },
-    {
-      "game": "Nationals vs Guardians",
-      "date": "May 27",
-      "pnl": -100,
-      "pct": -100.4,
-      "result": "loss",
-      "away": "wsh",
-      "home": "cle",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
     }
   ],
   "feed": [
+    {
+      "game": "SD vs WSH",
+      "pnl": 51.37,
+      "pct": 51.4,
+      "result": "win",
+      "away": "sd",
+      "home": "wsh",
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
+    },
     {
       "game": "PHI vs LAD",
       "pnl": -93.25,
@@ -250,8 +260,8 @@
     },
     {
       "game": "NYY vs KC",
-      "pnl": 64.57,
-      "pct": 64.6,
+      "pnl": 67.8,
+      "pct": 67.8,
       "result": "win",
       "away": "nyy",
       "home": "kc",
@@ -325,16 +335,6 @@
       "result": "win",
       "away": "stl",
       "home": "mil",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
-    },
-    {
-      "game": "WSH vs CLE",
-      "pnl": -100,
-      "pct": -100.4,
-      "result": "loss",
-      "away": "wsh",
-      "home": "cle",
       "model": "mlb_laser_2",
       "laser": "Laser 2"
     }
