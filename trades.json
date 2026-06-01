@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-01T17:16:53.482Z",
+  "updated": "2026-06-01T22:29:51.299Z",
   "period": "May 28 – Jun 1",
   "lookbackDays": 5,
   "strategies": [
@@ -12,13 +12,13 @@
     "losses": 7,
     "winRate": 53,
     "startBalance": 100,
-    "endBalance": -8,
+    "endBalance": -7,
     "days": 5,
     "gameCount": 15,
     "avgWinPnl": 71.06,
-    "avgLossPnl": -96.65,
+    "avgLossPnl": -96.51,
     "totalWon": 568.45,
-    "totalLost": 676.57
+    "totalLost": 675.58
   },
   "featured": [
     {
@@ -46,8 +46,8 @@
     {
       "game": "Phillies vs Dodgers",
       "date": "May 31",
-      "pnl": -92.82,
-      "pct": -92.8,
+      "pnl": -91.83,
+      "pct": -91.8,
       "result": "loss",
       "away": "phi",
       "home": "lad",
@@ -210,8 +210,8 @@
     },
     {
       "game": "PHI vs LAD",
-      "pnl": -92.82,
-      "pct": -92.8,
+      "pnl": -91.83,
+      "pct": -91.8,
       "result": "loss",
       "away": "phi",
       "home": "lad",
