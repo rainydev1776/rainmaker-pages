@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-01T02:40:56.553Z",
+  "updated": "2026-06-01T09:11:24.177Z",
   "period": "May 28 – Jun 1",
   "lookbackDays": 5,
   "strategies": [
@@ -12,13 +12,13 @@
     "losses": 7,
     "winRate": 53,
     "startBalance": 100,
-    "endBalance": -11,
+    "endBalance": -8,
     "days": 5,
     "gameCount": 15,
-    "avgWinPnl": 70.33,
-    "avgLossPnl": -96.29,
-    "totalWon": 562.61,
-    "totalLost": 674.04
+    "avgWinPnl": 71.06,
+    "avgLossPnl": -96.65,
+    "totalWon": 568.45,
+    "totalLost": 676.57
   },
   "featured": [
     {
@@ -46,8 +46,8 @@
     {
       "game": "Phillies vs Dodgers",
       "date": "May 31",
-      "pnl": -90.29,
-      "pct": -90.3,
+      "pnl": -92.82,
+      "pct": -92.8,
       "result": "loss",
       "away": "phi",
       "home": "lad",
@@ -68,8 +68,8 @@
     {
       "game": "Phillies vs Dodgers",
       "date": "May 30",
-      "pnl": 76.7,
-      "pct": 76.7,
+      "pnl": 82.13,
+      "pct": 82.1,
       "result": "win",
       "away": "phi",
       "home": "lad",
@@ -90,8 +90,8 @@
     {
       "game": "Braves vs Red Sox",
       "date": "May 29",
-      "pnl": 75.22,
-      "pct": 75.2,
+      "pnl": 75.63,
+      "pct": 75.6,
       "result": "win",
       "away": "atl",
       "home": "bos",
@@ -124,7 +124,7 @@
       "game": "Astros vs Rangers",
       "date": "May 28",
       "pnl": -100,
-      "pct": -103.5,
+      "pct": -101.1,
       "result": "loss",
       "away": "hou",
       "home": "tex",
@@ -210,8 +210,8 @@
     },
     {
       "game": "PHI vs LAD",
-      "pnl": -90.29,
-      "pct": -90.3,
+      "pnl": -92.82,
+      "pct": -92.8,
       "result": "loss",
       "away": "phi",
       "home": "lad",
@@ -230,8 +230,8 @@
     },
     {
       "game": "PHI vs LAD",
-      "pnl": 76.7,
-      "pct": 76.7,
+      "pnl": 82.13,
+      "pct": 82.1,
       "result": "win",
       "away": "phi",
       "home": "lad",
@@ -250,8 +250,8 @@
     },
     {
       "game": "ATL vs BOS",
-      "pnl": 75.22,
-      "pct": 75.2,
+      "pnl": 75.63,
+      "pct": 75.6,
       "result": "win",
       "away": "atl",
       "home": "bos",
@@ -281,7 +281,7 @@
     {
       "game": "HOU vs TEX",
       "pnl": -100,
-      "pct": -103.5,
+      "pct": -101.1,
       "result": "loss",
       "away": "hou",
       "home": "tex",
