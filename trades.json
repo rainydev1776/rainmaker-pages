@@ -1,7 +1,7 @@
 {
-  "updated": "2026-06-01T22:29:51.299Z",
+  "updated": "2026-06-02T02:38:58.024Z",
   "period": "May 28 – Jun 1",
-  "lookbackDays": 5,
+  "lookbackDays": 7,
   "strategies": [
     "mlb_laser_1",
     "mlb_laser_2",
@@ -12,13 +12,13 @@
     "losses": 7,
     "winRate": 53,
     "startBalance": 100,
-    "endBalance": -7,
+    "endBalance": -11,
     "days": 5,
     "gameCount": 15,
-    "avgWinPnl": 71.06,
-    "avgLossPnl": -96.51,
-    "totalWon": 568.45,
-    "totalLost": 675.58
+    "avgWinPnl": 70.83,
+    "avgLossPnl": -96.8,
+    "totalWon": 566.64,
+    "totalLost": 677.58
   },
   "featured": [
     {
@@ -46,8 +46,8 @@
     {
       "game": "Phillies vs Dodgers",
       "date": "May 31",
-      "pnl": -91.83,
-      "pct": -91.8,
+      "pnl": -93.25,
+      "pct": -93.3,
       "result": "loss",
       "away": "phi",
       "home": "lad",
@@ -90,8 +90,8 @@
     {
       "game": "Braves vs Red Sox",
       "date": "May 29",
-      "pnl": 75.63,
-      "pct": 75.6,
+      "pnl": 73.82,
+      "pct": 73.8,
       "result": "win",
       "away": "atl",
       "home": "bos",
@@ -101,8 +101,8 @@
     {
       "game": "Angels vs Tigers",
       "date": "May 28",
-      "pnl": -92.9,
-      "pct": -92.9,
+      "pnl": -93.48,
+      "pct": -93.5,
       "result": "loss",
       "away": "laa",
       "home": "det",
@@ -210,8 +210,8 @@
     },
     {
       "game": "PHI vs LAD",
-      "pnl": -91.83,
-      "pct": -91.8,
+      "pnl": -93.25,
+      "pct": -93.3,
       "result": "loss",
       "away": "phi",
       "home": "lad",
@@ -250,8 +250,8 @@
     },
     {
       "game": "ATL vs BOS",
-      "pnl": 75.63,
-      "pct": 75.6,
+      "pnl": 73.82,
+      "pct": 73.8,
       "result": "win",
       "away": "atl",
       "home": "bos",
@@ -260,8 +260,8 @@
     },
     {
       "game": "LAA vs DET",
-      "pnl": -92.9,
-      "pct": -92.9,
+      "pnl": -93.48,
+      "pct": -93.5,
       "result": "loss",
       "away": "laa",
       "home": "det",
