@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-03T16:16:20.496Z",
+  "updated": "2026-06-03T22:23:27.497Z",
   "period": "May 28 – Jun 3",
   "lookbackDays": 7,
   "strategies": [
@@ -12,20 +12,20 @@
     "losses": 6,
     "winRate": 60,
     "startBalance": 100,
-    "endBalance": 165,
+    "endBalance": 166,
     "days": 8,
     "gameCount": 15,
-    "avgWinPnl": 71.39,
+    "avgWinPnl": 71.45,
     "avgLossPnl": -96.17,
-    "totalWon": 642.5,
+    "totalWon": 643.05,
     "totalLost": 577
   },
   "featured": [
     {
       "game": "Rangers vs Cardinals",
       "date": "Jun 3",
-      "pnl": 74.05,
-      "pct": 74.1,
+      "pnl": 74.6,
+      "pct": 74.6,
       "result": "win",
       "away": "tex",
       "home": "stl",
@@ -190,8 +190,8 @@
   "feed": [
     {
       "game": "TEX vs STL",
-      "pnl": 74.05,
-      "pct": 74.1,
+      "pnl": 74.6,
+      "pct": 74.6,
       "result": "win",
       "away": "tex",
       "home": "stl",
