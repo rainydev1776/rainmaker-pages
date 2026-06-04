@@ -1,7 +1,7 @@
 {
-  "updated": "2026-06-03T22:23:27.497Z",
-  "period": "May 28 – Jun 3",
-  "lookbackDays": 7,
+  "updated": "2026-06-04T02:42:06.511Z",
+  "period": "May 28 – Jun 4",
+  "lookbackDays": 10,
   "strategies": [
     "mlb_laser_1",
     "mlb_laser_2",
@@ -12,20 +12,53 @@
     "losses": 6,
     "winRate": 60,
     "startBalance": 100,
-    "endBalance": 166,
+    "endBalance": 255,
     "days": 8,
     "gameCount": 15,
-    "avgWinPnl": 71.45,
+    "avgWinPnl": 81.39,
     "avgLossPnl": -96.17,
-    "totalWon": 643.05,
+    "totalWon": 732.47,
     "totalLost": 577
   },
   "featured": [
     {
+      "game": "Rockies vs Angels",
+      "date": "Jun 4",
+      "pnl": 158.15,
+      "pct": 158.1,
+      "result": "win",
+      "away": "col",
+      "home": "laa",
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
+    },
+    {
+      "game": "Blue Jays vs Braves",
+      "date": "Jun 4",
+      "pnl": -100,
+      "pct": -101.4,
+      "result": "loss",
+      "away": "tor",
+      "home": "atl",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
+    {
+      "game": "Guardians vs Yankees",
+      "date": "Jun 4",
+      "pnl": -100,
+      "pct": -101.2,
+      "result": "loss",
+      "away": "cle",
+      "home": "nyy",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
+    {
       "game": "Rangers vs Cardinals",
       "date": "Jun 3",
-      "pnl": 74.6,
-      "pct": 74.6,
+      "pnl": 74.99,
+      "pct": 75,
       "result": "win",
       "away": "tex",
       "home": "stl",
@@ -152,46 +185,43 @@
       "home": "nym",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
-    },
-    {
-      "game": "Cubs vs Pirates",
-      "date": "May 28",
-      "pnl": 69.12,
-      "pct": 69.1,
-      "result": "win",
-      "away": "chc",
-      "home": "pit",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
-    },
-    {
-      "game": "Twins vs White Sox",
-      "date": "May 28",
-      "pnl": -100,
-      "pct": -101.2,
-      "result": "loss",
-      "away": "min",
-      "home": "chw",
-      "model": "mlb_laser_1",
-      "laser": "Laser 1"
-    },
-    {
-      "game": "Braves vs Red Sox",
-      "date": "May 28",
-      "pnl": -100,
-      "pct": -110.5,
-      "result": "loss",
-      "away": "atl",
-      "home": "bos",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
     }
   ],
   "feed": [
     {
+      "game": "COL vs LAA",
+      "pnl": 158.15,
+      "pct": 158.1,
+      "result": "win",
+      "away": "col",
+      "home": "laa",
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
+    },
+    {
+      "game": "TOR vs ATL",
+      "pnl": -100,
+      "pct": -101.4,
+      "result": "loss",
+      "away": "tor",
+      "home": "atl",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
+    {
+      "game": "CLE vs NYY",
+      "pnl": -100,
+      "pct": -101.2,
+      "result": "loss",
+      "away": "cle",
+      "home": "nyy",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
+    {
       "game": "TEX vs STL",
-      "pnl": 74.6,
-      "pct": 74.6,
+      "pnl": 74.99,
+      "pct": 75,
       "result": "win",
       "away": "tex",
       "home": "stl",
@@ -307,36 +337,6 @@
       "home": "nym",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
-    },
-    {
-      "game": "CHC vs PIT",
-      "pnl": 69.12,
-      "pct": 69.1,
-      "result": "win",
-      "away": "chc",
-      "home": "pit",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
-    },
-    {
-      "game": "MIN vs CWS",
-      "pnl": -100,
-      "pct": -101.2,
-      "result": "loss",
-      "away": "min",
-      "home": "chw",
-      "model": "mlb_laser_1",
-      "laser": "Laser 1"
-    },
-    {
-      "game": "ATL vs BOS",
-      "pnl": -100,
-      "pct": -110.5,
-      "result": "loss",
-      "away": "atl",
-      "home": "bos",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
     }
   ]
 }
