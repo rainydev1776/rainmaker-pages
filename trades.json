@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-04T14:34:35.234Z",
+  "updated": "2026-06-04T18:08:11.482Z",
   "period": "May 28 – Jun 4",
   "lookbackDays": 10,
   "strategies": [
@@ -12,13 +12,13 @@
     "losses": 6,
     "winRate": 60,
     "startBalance": 100,
-    "endBalance": 149,
+    "endBalance": 147,
     "days": 9,
     "gameCount": 15,
     "avgWinPnl": 69.35,
-    "avgLossPnl": -95.83,
+    "avgLossPnl": -96.17,
     "totalWon": 624.14,
-    "totalLost": 575
+    "totalLost": 577
   },
   "featured": [
     {
@@ -46,8 +46,8 @@
     {
       "game": "Blue Jays vs Braves",
       "date": "Jun 4",
-      "pnl": -98,
-      "pct": -98,
+      "pnl": -100,
+      "pct": -101.4,
       "result": "loss",
       "away": "tor",
       "home": "atl",
@@ -210,8 +210,8 @@
     },
     {
       "game": "TOR vs ATL",
-      "pnl": -98,
-      "pct": -98,
+      "pnl": -100,
+      "pct": -101.4,
       "result": "loss",
       "away": "tor",
       "home": "atl",
