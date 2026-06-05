@@ -1,6 +1,6 @@
 {
-  "updated": "2026-06-04T21:23:21.186Z",
-  "period": "May 28 – Jun 4",
+  "updated": "2026-06-05T02:29:04.556Z",
+  "period": "May 28 – Jun 5",
   "lookbackDays": 10,
   "strategies": [
     "mlb_laser_1",
@@ -12,15 +12,26 @@
     "losses": 5,
     "winRate": 67,
     "startBalance": 100,
-    "endBalance": 298,
+    "endBalance": 662,
     "days": 9,
     "gameCount": 15,
-    "avgWinPnl": 67.52,
+    "avgWinPnl": 103.88,
     "avgLossPnl": -95.4,
-    "totalWon": 675.22,
+    "totalWon": 1038.84,
     "totalLost": 477
   },
   "featured": [
+    {
+      "game": "Blue Jays vs Braves",
+      "date": "Jun 5",
+      "pnl": 431.42,
+      "pct": 431.4,
+      "result": "win",
+      "away": "tor",
+      "home": "atl",
+      "model": "mlb_laser_1",
+      "laser": "Laser 1"
+    },
     {
       "game": "Guardians vs Yankees",
       "date": "Jun 4",
@@ -73,8 +84,8 @@
       "result": "loss",
       "away": "cle",
       "home": "nyy",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
     },
     {
       "game": "Rangers vs Cardinals",
@@ -174,20 +185,19 @@
       "home": "det",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
-    },
-    {
-      "game": "Yankees vs Royals",
-      "date": "May 28",
-      "pnl": 67.8,
-      "pct": 67.8,
-      "result": "win",
-      "away": "nyy",
-      "home": "kc",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
     }
   ],
   "feed": [
+    {
+      "game": "TOR vs ATL",
+      "pnl": 431.42,
+      "pct": 431.4,
+      "result": "win",
+      "away": "tor",
+      "home": "atl",
+      "model": "mlb_laser_1",
+      "laser": "Laser 1"
+    },
     {
       "game": "CLE vs NYY",
       "pnl": 51.08,
@@ -235,8 +245,8 @@
       "result": "loss",
       "away": "cle",
       "home": "nyy",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
     },
     {
       "game": "TEX vs STL",
@@ -325,16 +335,6 @@
       "result": "loss",
       "away": "laa",
       "home": "det",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
-    },
-    {
-      "game": "NYY vs KC",
-      "pnl": 67.8,
-      "pct": 67.8,
-      "result": "win",
-      "away": "nyy",
-      "home": "kc",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
     }
