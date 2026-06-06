@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-06T02:08:24.715Z",
+  "updated": "2026-06-06T06:46:45.703Z",
   "period": "May 28 – Jun 5",
   "lookbackDays": 10,
   "strategies": [
@@ -15,9 +15,9 @@
     "endBalance": 290,
     "days": 9,
     "gameCount": 15,
-    "avgWinPnl": 66.72,
+    "avgWinPnl": 66.65,
     "avgLossPnl": -95.4,
-    "totalWon": 667.25,
+    "totalWon": 666.5,
     "totalLost": 477
   },
   "featured": [
@@ -35,8 +35,8 @@
     {
       "game": "Guardians vs Yankees",
       "date": "Jun 4",
-      "pnl": 51.08,
-      "pct": 51.1,
+      "pnl": 50.59,
+      "pct": 50.6,
       "result": "win",
       "away": "cle",
       "home": "nyy",
@@ -57,8 +57,8 @@
     {
       "game": "Pirates vs Astros",
       "date": "Jun 4",
-      "pnl": 53.64,
-      "pct": 53.6,
+      "pnl": 53.38,
+      "pct": 53.4,
       "result": "win",
       "away": "pit",
       "home": "hou",
@@ -200,8 +200,8 @@
     },
     {
       "game": "CLE vs NYY",
-      "pnl": 51.08,
-      "pct": 51.1,
+      "pnl": 50.59,
+      "pct": 50.6,
       "result": "win",
       "away": "cle",
       "home": "nyy",
@@ -220,8 +220,8 @@
     },
     {
       "game": "PIT vs HOU",
-      "pnl": 53.64,
-      "pct": 53.6,
+      "pnl": 53.38,
+      "pct": 53.4,
       "result": "win",
       "away": "pit",
       "home": "hou",
