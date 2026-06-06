@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-05T21:17:05.386Z",
+  "updated": "2026-06-06T02:08:24.715Z",
   "period": "May 28 – Jun 5",
   "lookbackDays": 10,
   "strategies": [
@@ -15,9 +15,9 @@
     "endBalance": 290,
     "days": 9,
     "gameCount": 15,
-    "avgWinPnl": 66.68,
+    "avgWinPnl": 66.72,
     "avgLossPnl": -95.4,
-    "totalWon": 666.77,
+    "totalWon": 667.25,
     "totalLost": 477
   },
   "featured": [
@@ -57,8 +57,8 @@
     {
       "game": "Pirates vs Astros",
       "date": "Jun 4",
-      "pnl": 53.38,
-      "pct": 53.4,
+      "pnl": 53.64,
+      "pct": 53.6,
       "result": "win",
       "away": "pit",
       "home": "hou",
@@ -69,7 +69,7 @@
       "game": "Blue Jays vs Braves",
       "date": "Jun 4",
       "pnl": -100,
-      "pct": -102.2,
+      "pct": -101.4,
       "result": "loss",
       "away": "tor",
       "home": "atl",
@@ -80,7 +80,7 @@
       "game": "Guardians vs Yankees",
       "date": "Jun 4",
       "pnl": -100,
-      "pct": -100.9,
+      "pct": -101.2,
       "result": "loss",
       "away": "cle",
       "home": "nyy",
@@ -90,8 +90,8 @@
     {
       "game": "Rangers vs Cardinals",
       "date": "Jun 3",
-      "pnl": 74.77,
-      "pct": 74.8,
+      "pnl": 74.99,
+      "pct": 75,
       "result": "win",
       "away": "tex",
       "home": "stl",
@@ -220,8 +220,8 @@
     },
     {
       "game": "PIT vs HOU",
-      "pnl": 53.38,
-      "pct": 53.4,
+      "pnl": 53.64,
+      "pct": 53.6,
       "result": "win",
       "away": "pit",
       "home": "hou",
@@ -231,7 +231,7 @@
     {
       "game": "TOR vs ATL",
       "pnl": -100,
-      "pct": -102.2,
+      "pct": -101.4,
       "result": "loss",
       "away": "tor",
       "home": "atl",
@@ -241,7 +241,7 @@
     {
       "game": "CLE vs NYY",
       "pnl": -100,
-      "pct": -100.9,
+      "pct": -101.2,
       "result": "loss",
       "away": "cle",
       "home": "nyy",
@@ -250,8 +250,8 @@
     },
     {
       "game": "TEX vs STL",
-      "pnl": 74.77,
-      "pct": 74.8,
+      "pnl": 74.99,
+      "pct": 75,
       "result": "win",
       "away": "tex",
       "home": "stl",
