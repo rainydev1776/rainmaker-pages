@@ -1,6 +1,6 @@
 {
-  "updated": "2026-06-07T17:04:39.690Z",
-  "period": "May 31 – Jun 7",
+  "updated": "2026-06-07T21:00:12.897Z",
+  "period": "Jun 1 – Jun 7",
   "lookbackDays": 10,
   "strategies": [
     "mlb_laser_1",
@@ -8,19 +8,41 @@
     "mlb_laser_3"
   ],
   "summary": {
-    "wins": 9,
-    "losses": 6,
-    "winRate": 60,
+    "wins": 11,
+    "losses": 4,
+    "winRate": 73,
     "startBalance": 100,
-    "endBalance": 90,
-    "days": 9,
+    "endBalance": 315,
+    "days": 8,
     "gameCount": 15,
-    "avgWinPnl": 62.31,
-    "avgLossPnl": -95.18,
-    "totalWon": 560.76,
-    "totalLost": 571.08
+    "avgWinPnl": 54.69,
+    "avgLossPnl": -96.74,
+    "totalWon": 601.64,
+    "totalLost": 386.98
   },
   "featured": [
+    {
+      "game": "Pirates vs Braves",
+      "date": "Jun 7",
+      "pnl": 1.34,
+      "pct": 1.3,
+      "result": "win",
+      "away": "pit",
+      "home": "atl",
+      "model": "mlb_laser_1",
+      "laser": "Laser 1"
+    },
+    {
+      "game": "Mariners vs Tigers",
+      "date": "Jun 7",
+      "pnl": 39.36,
+      "pct": 39.4,
+      "result": "win",
+      "away": "sea",
+      "home": "det",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
     {
       "game": "Mets vs Padres",
       "date": "Jun 7",
@@ -51,14 +73,14 @@
       "result": "win",
       "away": "wsh",
       "home": "az",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_1",
+      "laser": "Laser 1"
     },
     {
       "game": "Reds vs Cardinals",
       "date": "Jun 6",
-      "pnl": 63.9,
-      "pct": 63.9,
+      "pnl": 64.14,
+      "pct": 64.1,
       "result": "win",
       "away": "cin",
       "home": "stl",
@@ -145,8 +167,8 @@
     {
       "game": "Padres vs Nationals",
       "date": "Jun 1",
-      "pnl": 73.47,
-      "pct": 73.5,
+      "pnl": 73.41,
+      "pct": 73.4,
       "result": "win",
       "away": "sd",
       "home": "wsh",
@@ -163,31 +185,29 @@
       "home": "sea",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
-    },
-    {
-      "game": "Phillies vs Dodgers",
-      "date": "May 31",
-      "pnl": -93.25,
-      "pct": -93.3,
-      "result": "loss",
-      "away": "phi",
-      "home": "lad",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
-    },
-    {
-      "game": "Angels vs Rays",
-      "date": "May 31",
-      "pnl": -90.85,
-      "pct": -90.9,
-      "result": "loss",
-      "away": "laa",
-      "home": "tb",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
     }
   ],
   "feed": [
+    {
+      "game": "PIT vs ATL",
+      "pnl": 1.34,
+      "pct": 1.3,
+      "result": "win",
+      "away": "pit",
+      "home": "atl",
+      "model": "mlb_laser_1",
+      "laser": "Laser 1"
+    },
+    {
+      "game": "SEA vs DET",
+      "pnl": 39.36,
+      "pct": 39.4,
+      "result": "win",
+      "away": "sea",
+      "home": "det",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
     {
       "game": "NYM vs SD",
       "pnl": -93.81,
@@ -215,13 +235,13 @@
       "result": "win",
       "away": "wsh",
       "home": "az",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_1",
+      "laser": "Laser 1"
     },
     {
       "game": "CIN vs STL",
-      "pnl": 63.9,
-      "pct": 63.9,
+      "pnl": 64.14,
+      "pct": 64.1,
       "result": "win",
       "away": "cin",
       "home": "stl",
@@ -300,8 +320,8 @@
     },
     {
       "game": "SD vs WSH",
-      "pnl": 73.47,
-      "pct": 73.5,
+      "pnl": 73.41,
+      "pct": 73.4,
       "result": "win",
       "away": "sd",
       "home": "wsh",
@@ -317,26 +337,6 @@
       "home": "sea",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
-    },
-    {
-      "game": "PHI vs LAD",
-      "pnl": -93.25,
-      "pct": -93.3,
-      "result": "loss",
-      "away": "phi",
-      "home": "lad",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
-    },
-    {
-      "game": "LAA vs TB",
-      "pnl": -90.85,
-      "pct": -90.9,
-      "result": "loss",
-      "away": "laa",
-      "home": "tb",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
     }
   ]
 }
