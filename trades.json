@@ -1,7 +1,7 @@
 {
-  "updated": "2026-06-08T21:44:09.822Z",
+  "updated": "2026-06-09T02:05:15.850Z",
   "period": "Jun 4 – Jun 8",
-  "lookbackDays": 5,
+  "lookbackDays": 7,
   "strategies": [
     "mlb_laser_1",
     "mlb_laser_2",
@@ -51,8 +51,8 @@
       "result": "loss",
       "away": "pit",
       "home": "atl",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_1",
+      "laser": "Laser 1"
     },
     {
       "game": "Red Sox vs Yankees",
@@ -106,8 +106,8 @@
       "result": "win",
       "away": "wsh",
       "home": "az",
-      "model": "mlb_laser_1",
-      "laser": "Laser 1"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     },
     {
       "game": "Reds vs Cardinals",
@@ -183,8 +183,8 @@
       "result": "loss",
       "away": "cle",
       "home": "nyy",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     }
   ],
   "feed": [
@@ -215,8 +215,8 @@
       "result": "loss",
       "away": "pit",
       "home": "atl",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_1",
+      "laser": "Laser 1"
     },
     {
       "game": "BOS vs NYY",
@@ -265,8 +265,8 @@
       "result": "win",
       "away": "wsh",
       "home": "az",
-      "model": "mlb_laser_1",
-      "laser": "Laser 1"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     },
     {
       "game": "CIN vs STL",
@@ -335,8 +335,8 @@
       "result": "loss",
       "away": "cle",
       "home": "nyy",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     }
   ]
 }
