@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-09T17:52:16.100Z",
+  "updated": "2026-06-09T21:30:06.424Z",
   "period": "Jun 4 – Jun 9",
   "lookbackDays": 7,
   "strategies": [
@@ -12,12 +12,12 @@
     "losses": 5,
     "winRate": 67,
     "startBalance": 100,
-    "endBalance": 219,
+    "endBalance": 215,
     "days": 7,
     "gameCount": 15,
-    "avgWinPnl": 58.87,
+    "avgWinPnl": 58.43,
     "avgLossPnl": -93.86,
-    "totalWon": 588.67,
+    "totalWon": 584.28,
     "totalLost": 469.31
   },
   "featured": [
@@ -35,8 +35,8 @@
     {
       "game": "Brewers vs ATH",
       "date": "Jun 9",
-      "pnl": 62.66,
-      "pct": 62.7,
+      "pnl": 58.27,
+      "pct": 58.3,
       "result": "win",
       "away": "mil",
       "home": "ath",
@@ -200,8 +200,8 @@
     },
     {
       "game": "MIL vs ATH",
-      "pnl": 62.66,
-      "pct": 62.7,
+      "pnl": 58.27,
+      "pct": 58.3,
       "result": "win",
       "away": "mil",
       "home": "ath",
