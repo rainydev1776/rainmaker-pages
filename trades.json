@@ -1,6 +1,6 @@
 {
-  "updated": "2026-06-09T21:30:06.424Z",
-  "period": "Jun 4 – Jun 9",
+  "updated": "2026-06-10T02:29:37.951Z",
+  "period": "Jun 4 – Jun 10",
   "lookbackDays": 7,
   "strategies": [
     "mlb_laser_1",
@@ -12,15 +12,26 @@
     "losses": 5,
     "winRate": 67,
     "startBalance": 100,
-    "endBalance": 215,
+    "endBalance": 236,
     "days": 7,
     "gameCount": 15,
-    "avgWinPnl": 58.43,
+    "avgWinPnl": 60.54,
     "avgLossPnl": -93.86,
-    "totalWon": 584.28,
+    "totalWon": 605.44,
     "totalLost": 469.31
   },
   "featured": [
+    {
+      "game": "AZ vs Marlins",
+      "date": "Jun 10",
+      "pnl": 74.54,
+      "pct": 74.5,
+      "result": "win",
+      "away": "az",
+      "home": "mia",
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
+    },
     {
       "game": "Phillies vs Blue Jays",
       "date": "Jun 9",
@@ -51,8 +62,8 @@
       "result": "win",
       "away": "nym",
       "home": "sd",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_1",
+      "laser": "Laser 1"
     },
     {
       "game": "Nationals vs AZ",
@@ -84,8 +95,8 @@
       "result": "win",
       "away": "bos",
       "home": "nyy",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
     },
     {
       "game": "Mariners vs Tigers",
@@ -174,20 +185,19 @@
       "home": "laa",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
-    },
-    {
-      "game": "Pirates vs Astros",
-      "date": "Jun 4",
-      "pnl": 53.38,
-      "pct": 53.4,
-      "result": "win",
-      "away": "pit",
-      "home": "hou",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
     }
   ],
   "feed": [
+    {
+      "game": "AZ vs MIA",
+      "pnl": 74.54,
+      "pct": 74.5,
+      "result": "win",
+      "away": "az",
+      "home": "mia",
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
+    },
     {
       "game": "PHI vs TOR",
       "pnl": 58.98,
@@ -215,8 +225,8 @@
       "result": "win",
       "away": "nym",
       "home": "sd",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_1",
+      "laser": "Laser 1"
     },
     {
       "game": "WSH vs AZ",
@@ -245,8 +255,8 @@
       "result": "win",
       "away": "bos",
       "home": "nyy",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
     },
     {
       "game": "SEA vs DET",
@@ -325,16 +335,6 @@
       "result": "win",
       "away": "col",
       "home": "laa",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
-    },
-    {
-      "game": "PIT vs HOU",
-      "pnl": 53.38,
-      "pct": 53.4,
-      "result": "win",
-      "away": "pit",
-      "home": "hou",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
     }
