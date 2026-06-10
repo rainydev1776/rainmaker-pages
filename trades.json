@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-10T18:24:14.099Z",
+  "updated": "2026-06-10T21:50:24.854Z",
   "period": "Jun 5 – Jun 10",
   "lookbackDays": 7,
   "strategies": [
@@ -16,9 +16,9 @@
     "days": 7,
     "gameCount": 15,
     "avgWinPnl": 64.36,
-    "avgLossPnl": -93.94,
+    "avgLossPnl": -93.86,
     "totalWon": 643.64,
-    "totalLost": 469.69
+    "totalLost": 469.31
   },
   "featured": [
     {
@@ -117,14 +117,14 @@
       "result": "win",
       "away": "bos",
       "home": "nyy",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     },
     {
       "game": "Mariners vs Tigers",
       "date": "Jun 7",
-      "pnl": -97.58,
-      "pct": -97.6,
+      "pnl": -97.2,
+      "pct": -97.2,
       "result": "loss",
       "away": "sea",
       "home": "det",
@@ -275,13 +275,13 @@
       "result": "win",
       "away": "bos",
       "home": "nyy",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     },
     {
       "game": "SEA vs DET",
-      "pnl": -97.58,
-      "pct": -97.6,
+      "pnl": -97.2,
+      "pct": -97.2,
       "result": "loss",
       "away": "sea",
       "home": "det",
