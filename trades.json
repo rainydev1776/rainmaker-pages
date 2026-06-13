@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-13T17:10:49.162Z",
+  "updated": "2026-06-13T21:02:13.586Z",
   "period": "Jun 7 – Jun 12",
   "lookbackDays": 7,
   "strategies": [
@@ -117,8 +117,8 @@
       "result": "win",
       "away": "nym",
       "home": "sd",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_1",
+      "laser": "Laser 1"
     },
     {
       "game": "Nationals vs AZ",
@@ -275,8 +275,8 @@
       "result": "win",
       "away": "nym",
       "home": "sd",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_1",
+      "laser": "Laser 1"
     },
     {
       "game": "WSH vs AZ",
