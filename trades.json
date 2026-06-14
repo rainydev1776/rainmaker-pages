@@ -1,6 +1,6 @@
 {
-  "updated": "2026-06-14T02:39:20.044Z",
-  "period": "Jun 7 – Jun 12",
+  "updated": "2026-06-14T08:08:14.233Z",
+  "period": "Jun 7 – Jun 14",
   "lookbackDays": 10,
   "strategies": [
     "mlb_laser_1",
@@ -12,15 +12,26 @@
     "losses": 6,
     "winRate": 60,
     "startBalance": 100,
-    "endBalance": 126,
-    "days": 6,
+    "endBalance": 122,
+    "days": 8,
     "gameCount": 15,
     "avgWinPnl": 64.91,
-    "avgLossPnl": -92.97,
+    "avgLossPnl": -93.72,
     "totalWon": 584.19,
-    "totalLost": 557.81
+    "totalLost": 562.3
   },
   "featured": [
+    {
+      "game": "Phillies vs Brewers",
+      "date": "Jun 14",
+      "pnl": -97.66,
+      "pct": -97.7,
+      "result": "loss",
+      "away": "phi",
+      "home": "mil",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
     {
       "game": "Dodgers vs Pirates",
       "date": "Jun 12",
@@ -117,8 +128,8 @@
       "result": "win",
       "away": "nym",
       "home": "sd",
-      "model": "mlb_laser_1",
-      "laser": "Laser 1"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     },
     {
       "game": "Nationals vs AZ",
@@ -150,8 +161,8 @@
       "result": "win",
       "away": "bos",
       "home": "nyy",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
     },
     {
       "game": "Mariners vs Tigers",
@@ -174,20 +185,19 @@
       "home": "sd",
       "model": "mlb_laser_2",
       "laser": "Laser 2"
-    },
-    {
-      "game": "Guardians vs Rangers",
-      "date": "Jun 7",
-      "pnl": -93.17,
-      "pct": -93.2,
-      "result": "loss",
-      "away": "cle",
-      "home": "tex",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
     }
   ],
   "feed": [
+    {
+      "game": "PHI vs MIL",
+      "pnl": -97.66,
+      "pct": -97.7,
+      "result": "loss",
+      "away": "phi",
+      "home": "mil",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
     {
       "game": "LAD vs PIT",
       "pnl": 53.27,
@@ -275,8 +285,8 @@
       "result": "win",
       "away": "nym",
       "home": "sd",
-      "model": "mlb_laser_1",
-      "laser": "Laser 1"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     },
     {
       "game": "WSH vs AZ",
@@ -305,8 +315,8 @@
       "result": "win",
       "away": "bos",
       "home": "nyy",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
     },
     {
       "game": "SEA vs DET",
@@ -325,16 +335,6 @@
       "result": "loss",
       "away": "nym",
       "home": "sd",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
-    },
-    {
-      "game": "CLE vs TEX",
-      "pnl": -93.17,
-      "pct": -93.2,
-      "result": "loss",
-      "away": "cle",
-      "home": "tex",
       "model": "mlb_laser_2",
       "laser": "Laser 2"
     }
