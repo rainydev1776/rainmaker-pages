@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-14T13:27:59.479Z",
+  "updated": "2026-06-14T17:08:26.855Z",
   "period": "Jun 7 – Jun 14",
   "lookbackDays": 10,
   "strategies": [
@@ -128,8 +128,8 @@
       "result": "win",
       "away": "nym",
       "home": "sd",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_1",
+      "laser": "Laser 1"
     },
     {
       "game": "Nationals vs AZ",
@@ -161,8 +161,8 @@
       "result": "win",
       "away": "bos",
       "home": "nyy",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     },
     {
       "game": "Mariners vs Tigers",
@@ -285,8 +285,8 @@
       "result": "win",
       "away": "nym",
       "home": "sd",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_1",
+      "laser": "Laser 1"
     },
     {
       "game": "WSH vs AZ",
@@ -315,8 +315,8 @@
       "result": "win",
       "away": "bos",
       "home": "nyy",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     },
     {
       "game": "SEA vs DET",
