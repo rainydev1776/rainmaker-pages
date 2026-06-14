@@ -1,7 +1,7 @@
 {
-  "updated": "2026-06-13T21:02:13.586Z",
+  "updated": "2026-06-14T02:39:20.044Z",
   "period": "Jun 7 – Jun 12",
-  "lookbackDays": 7,
+  "lookbackDays": 10,
   "strategies": [
     "mlb_laser_1",
     "mlb_laser_2",
