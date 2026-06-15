@@ -1,6 +1,6 @@
 {
-  "updated": "2026-06-14T20:59:28.774Z",
-  "period": "Jun 7 – Jun 14",
+  "updated": "2026-06-15T02:44:30.548Z",
+  "period": "Jun 7 – Jun 15",
   "lookbackDays": 10,
   "strategies": [
     "mlb_laser_1",
@@ -12,31 +12,20 @@
     "losses": 4,
     "winRate": 73,
     "startBalance": 100,
-    "endBalance": 377,
-    "days": 8,
+    "endBalance": 454,
+    "days": 9,
     "gameCount": 15,
-    "avgWinPnl": 58.65,
-    "avgLossPnl": -92.01,
-    "totalWon": 645.18,
-    "totalLost": 368.05
+    "avgWinPnl": 65.97,
+    "avgLossPnl": -92.82,
+    "totalWon": 725.72,
+    "totalLost": 371.29
   },
   "featured": [
     {
-      "game": "Yankees vs Blue Jays",
-      "date": "Jun 14",
-      "pnl": 58.16,
-      "pct": 58.2,
-      "result": "win",
-      "away": "nyy",
-      "home": "tor",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
-    },
-    {
       "game": "Rays vs Angels",
-      "date": "Jun 14",
-      "pnl": 2.83,
-      "pct": 2.8,
+      "date": "Jun 15",
+      "pnl": 81.87,
+      "pct": 81.9,
       "result": "win",
       "away": "tb",
       "home": "laa",
@@ -44,10 +33,21 @@
       "laser": "Laser 2"
     },
     {
+      "game": "Yankees vs Blue Jays",
+      "date": "Jun 14",
+      "pnl": 59.66,
+      "pct": 59.7,
+      "result": "win",
+      "away": "nyy",
+      "home": "tor",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
+    {
       "game": "Phillies vs Brewers",
       "date": "Jun 14",
-      "pnl": -94.42,
-      "pct": -94.4,
+      "pnl": -97.66,
+      "pct": -97.7,
       "result": "loss",
       "away": "phi",
       "home": "mil",
@@ -189,19 +189,9 @@
   ],
   "feed": [
     {
-      "game": "NYY vs TOR",
-      "pnl": 58.16,
-      "pct": 58.2,
-      "result": "win",
-      "away": "nyy",
-      "home": "tor",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
-    },
-    {
       "game": "TB vs LAA",
-      "pnl": 2.83,
-      "pct": 2.8,
+      "pnl": 81.87,
+      "pct": 81.9,
       "result": "win",
       "away": "tb",
       "home": "laa",
@@ -209,9 +199,19 @@
       "laser": "Laser 2"
     },
     {
+      "game": "NYY vs TOR",
+      "pnl": 59.66,
+      "pct": 59.7,
+      "result": "win",
+      "away": "nyy",
+      "home": "tor",
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
+    },
+    {
       "game": "PHI vs MIL",
-      "pnl": -94.42,
-      "pct": -94.4,
+      "pnl": -97.66,
+      "pct": -97.7,
       "result": "loss",
       "away": "phi",
       "home": "mil",
