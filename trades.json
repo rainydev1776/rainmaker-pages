@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-15T22:10:15.060Z",
+  "updated": "2026-06-16T02:46:40.458Z",
   "period": "Jun 7 – Jun 15",
   "lookbackDays": 10,
   "strategies": [
@@ -17,7 +17,7 @@
     "gameCount": 15,
     "avgWinPnl": 65.97,
     "avgLossPnl": -92.82,
-    "totalWon": 725.72,
+    "totalWon": 725.63,
     "totalLost": 371.29
   },
   "featured": [
@@ -35,13 +35,13 @@
     {
       "game": "Yankees vs Blue Jays",
       "date": "Jun 14",
-      "pnl": 59.66,
-      "pct": 59.7,
+      "pnl": 59.57,
+      "pct": 59.6,
       "result": "win",
       "away": "nyy",
       "home": "tor",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
     },
     {
       "game": "Phillies vs Brewers",
@@ -150,8 +150,8 @@
       "result": "win",
       "away": "nym",
       "home": "sd",
-      "model": "mlb_laser_1",
-      "laser": "Laser 1"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     },
     {
       "game": "Nationals vs AZ",
@@ -200,13 +200,13 @@
     },
     {
       "game": "NYY vs TOR",
-      "pnl": 59.66,
-      "pct": 59.7,
+      "pnl": 59.57,
+      "pct": 59.6,
       "result": "win",
       "away": "nyy",
       "home": "tor",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
     },
     {
       "game": "PHI vs MIL",
@@ -305,8 +305,8 @@
       "result": "win",
       "away": "nym",
       "home": "sd",
-      "model": "mlb_laser_1",
-      "laser": "Laser 1"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     },
     {
       "game": "WSH vs AZ",
