@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-16T22:05:02.976Z",
+  "updated": "2026-06-17T02:43:19.046Z",
   "period": "Jun 7 – Jun 15",
   "lookbackDays": 10,
   "strategies": [
@@ -40,8 +40,8 @@
       "result": "win",
       "away": "nyy",
       "home": "tor",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
     },
     {
       "game": "Phillies vs Brewers",
@@ -150,8 +150,8 @@
       "result": "win",
       "away": "nym",
       "home": "sd",
-      "model": "mlb_laser_1",
-      "laser": "Laser 1"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     },
     {
       "game": "Nationals vs AZ",
@@ -183,8 +183,8 @@
       "result": "win",
       "away": "bos",
       "home": "nyy",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     }
   ],
   "feed": [
@@ -205,8 +205,8 @@
       "result": "win",
       "away": "nyy",
       "home": "tor",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
     },
     {
       "game": "PHI vs MIL",
@@ -305,8 +305,8 @@
       "result": "win",
       "away": "nym",
       "home": "sd",
-      "model": "mlb_laser_1",
-      "laser": "Laser 1"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     },
     {
       "game": "WSH vs AZ",
@@ -335,8 +335,8 @@
       "result": "win",
       "away": "bos",
       "home": "nyy",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     }
   ]
 }
