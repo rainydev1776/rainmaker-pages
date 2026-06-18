@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-18T02:39:57.098Z",
+  "updated": "2026-06-18T08:29:56.748Z",
   "period": "Jun 7 – Jun 17",
   "lookbackDays": 14,
   "strategies": [
@@ -12,12 +12,12 @@
     "losses": 4,
     "winRate": 73,
     "startBalance": 100,
-    "endBalance": 441,
+    "endBalance": 442,
     "days": 11,
     "gameCount": 15,
-    "avgWinPnl": 65.38,
+    "avgWinPnl": 65.43,
     "avgLossPnl": -94.45,
-    "totalWon": 719.18,
+    "totalWon": 719.69,
     "totalLost": 377.82
   },
   "featured": [
@@ -79,8 +79,8 @@
     {
       "game": "Dodgers vs Pirates",
       "date": "Jun 12",
-      "pnl": 52.76,
-      "pct": 52.8,
+      "pnl": 53.27,
+      "pct": 53.3,
       "result": "win",
       "away": "lad",
       "home": "pit",
@@ -240,8 +240,8 @@
     },
     {
       "game": "LAD vs PIT",
-      "pnl": 52.76,
-      "pct": 52.8,
+      "pnl": 53.27,
+      "pct": 53.3,
       "result": "win",
       "away": "lad",
       "home": "pit",
