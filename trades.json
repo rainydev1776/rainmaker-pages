@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-17T21:52:43.028Z",
+  "updated": "2026-06-18T02:39:57.098Z",
   "period": "Jun 7 – Jun 17",
   "lookbackDays": 14,
   "strategies": [
@@ -12,12 +12,12 @@
     "losses": 4,
     "winRate": 73,
     "startBalance": 100,
-    "endBalance": 442,
+    "endBalance": 441,
     "days": 11,
     "gameCount": 15,
-    "avgWinPnl": 65.44,
+    "avgWinPnl": 65.38,
     "avgLossPnl": -94.45,
-    "totalWon": 719.83,
+    "totalWon": 719.18,
     "totalLost": 377.82
   },
   "featured": [
@@ -79,8 +79,8 @@
     {
       "game": "Dodgers vs Pirates",
       "date": "Jun 12",
-      "pnl": 53.41,
-      "pct": 53.4,
+      "pnl": 52.76,
+      "pct": 52.8,
       "result": "win",
       "away": "lad",
       "home": "pit",
@@ -172,8 +172,8 @@
       "result": "win",
       "away": "nym",
       "home": "sd",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_1",
+      "laser": "Laser 1"
     },
     {
       "game": "Nationals vs AZ",
@@ -240,8 +240,8 @@
     },
     {
       "game": "LAD vs PIT",
-      "pnl": 53.41,
-      "pct": 53.4,
+      "pnl": 52.76,
+      "pct": 52.8,
       "result": "win",
       "away": "lad",
       "home": "pit",
@@ -325,8 +325,8 @@
       "result": "win",
       "away": "nym",
       "home": "sd",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_1",
+      "laser": "Laser 1"
     },
     {
       "game": "WSH vs AZ",
