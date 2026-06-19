@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-19T02:55:46.636Z",
+  "updated": "2026-06-19T08:58:08.405Z",
   "period": "Jun 7 – Jun 17",
   "lookbackDays": 14,
   "strategies": [
@@ -17,7 +17,7 @@
     "gameCount": 15,
     "avgWinPnl": 65.4,
     "avgLossPnl": -94.45,
-    "totalWon": 719.38,
+    "totalWon": 719.35,
     "totalLost": 377.82
   },
   "featured": [
@@ -57,8 +57,8 @@
     {
       "game": "Yankees vs Blue Jays",
       "date": "Jun 14",
-      "pnl": 59.26,
-      "pct": 59.3,
+      "pnl": 59.23,
+      "pct": 59.2,
       "result": "win",
       "away": "nyy",
       "home": "tor",
@@ -172,8 +172,8 @@
       "result": "win",
       "away": "nym",
       "home": "sd",
-      "model": "mlb_laser_1",
-      "laser": "Laser 1"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     },
     {
       "game": "Nationals vs AZ",
@@ -220,8 +220,8 @@
     },
     {
       "game": "NYY vs TOR",
-      "pnl": 59.26,
-      "pct": 59.3,
+      "pnl": 59.23,
+      "pct": 59.2,
       "result": "win",
       "away": "nyy",
       "home": "tor",
@@ -325,8 +325,8 @@
       "result": "win",
       "away": "nym",
       "home": "sd",
-      "model": "mlb_laser_1",
-      "laser": "Laser 1"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     },
     {
       "game": "WSH vs AZ",
