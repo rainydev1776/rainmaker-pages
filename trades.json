@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-18T21:56:33.165Z",
+  "updated": "2026-06-19T02:55:46.636Z",
   "period": "Jun 7 – Jun 17",
   "lookbackDays": 14,
   "strategies": [
@@ -15,9 +15,9 @@
     "endBalance": 442,
     "days": 11,
     "gameCount": 15,
-    "avgWinPnl": 65.43,
+    "avgWinPnl": 65.4,
     "avgLossPnl": -94.45,
-    "totalWon": 719.69,
+    "totalWon": 719.38,
     "totalLost": 377.82
   },
   "featured": [
@@ -57,13 +57,13 @@
     {
       "game": "Yankees vs Blue Jays",
       "date": "Jun 14",
-      "pnl": 59.57,
-      "pct": 59.6,
+      "pnl": 59.26,
+      "pct": 59.3,
       "result": "win",
       "away": "nyy",
       "home": "tor",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
     },
     {
       "game": "Phillies vs Brewers",
@@ -220,13 +220,13 @@
     },
     {
       "game": "NYY vs TOR",
-      "pnl": 59.57,
-      "pct": 59.6,
+      "pnl": 59.26,
+      "pct": 59.3,
       "result": "win",
       "away": "nyy",
       "home": "tor",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
     },
     {
       "game": "PHI vs MIL",
