@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-20T17:15:08.469Z",
+  "updated": "2026-06-20T21:03:41.641Z",
   "period": "Jun 7 – Jun 17",
   "lookbackDays": 14,
   "strategies": [
@@ -18,7 +18,7 @@
     "avgWinPnl": 65.43,
     "avgLossPnl": -94.01,
     "totalWon": 719.69,
-    "totalLost": 376.05
+    "totalLost": 376.04
   },
   "featured": [
     {
@@ -35,7 +35,7 @@
     {
       "game": "White Sox vs Yankees",
       "date": "Jun 17",
-      "pnl": -94.54,
+      "pnl": -94.53,
       "pct": -94.5,
       "result": "loss",
       "away": "chw",
@@ -62,8 +62,8 @@
       "result": "win",
       "away": "nyy",
       "home": "tor",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
     },
     {
       "game": "Phillies vs Brewers",
@@ -200,7 +200,7 @@
     },
     {
       "game": "CWS vs NYY",
-      "pnl": -94.54,
+      "pnl": -94.53,
       "pct": -94.5,
       "result": "loss",
       "away": "chw",
@@ -225,8 +225,8 @@
       "result": "win",
       "away": "nyy",
       "home": "tor",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
     },
     {
       "game": "PHI vs MIL",
