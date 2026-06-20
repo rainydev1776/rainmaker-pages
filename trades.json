@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-20T02:28:44.390Z",
+  "updated": "2026-06-20T07:42:52.446Z",
   "period": "Jun 7 – Jun 17",
   "lookbackDays": 14,
   "strategies": [
@@ -16,9 +16,9 @@
     "days": 11,
     "gameCount": 15,
     "avgWinPnl": 65.43,
-    "avgLossPnl": -93.85,
+    "avgLossPnl": -94.01,
     "totalWon": 719.69,
-    "totalLost": 375.4
+    "totalLost": 376.05
   },
   "featured": [
     {
@@ -35,8 +35,8 @@
     {
       "game": "White Sox vs Yankees",
       "date": "Jun 17",
-      "pnl": -93.89,
-      "pct": -93.9,
+      "pnl": -94.54,
+      "pct": -94.5,
       "result": "loss",
       "away": "chw",
       "home": "nyy",
@@ -200,8 +200,8 @@
     },
     {
       "game": "CWS vs NYY",
-      "pnl": -93.89,
-      "pct": -93.9,
+      "pnl": -94.54,
+      "pct": -94.5,
       "result": "loss",
       "away": "chw",
       "home": "nyy",
