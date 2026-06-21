@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-20T21:03:41.641Z",
+  "updated": "2026-06-21T02:43:25.534Z",
   "period": "Jun 7 – Jun 17",
   "lookbackDays": 14,
   "strategies": [
@@ -12,13 +12,13 @@
     "losses": 4,
     "winRate": 73,
     "startBalance": 100,
-    "endBalance": 444,
+    "endBalance": 442,
     "days": 11,
     "gameCount": 15,
     "avgWinPnl": 65.43,
-    "avgLossPnl": -94.01,
+    "avgLossPnl": -94.45,
     "totalWon": 719.69,
-    "totalLost": 376.04
+    "totalLost": 377.82
   },
   "featured": [
     {
@@ -35,8 +35,8 @@
     {
       "game": "White Sox vs Yankees",
       "date": "Jun 17",
-      "pnl": -94.53,
-      "pct": -94.5,
+      "pnl": -96.31,
+      "pct": -96.3,
       "result": "loss",
       "away": "chw",
       "home": "nyy",
@@ -62,8 +62,8 @@
       "result": "win",
       "away": "nyy",
       "home": "tor",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     },
     {
       "game": "Phillies vs Brewers",
@@ -200,8 +200,8 @@
     },
     {
       "game": "CWS vs NYY",
-      "pnl": -94.53,
-      "pct": -94.5,
+      "pnl": -96.31,
+      "pct": -96.3,
       "result": "loss",
       "away": "chw",
       "home": "nyy",
@@ -225,8 +225,8 @@
       "result": "win",
       "away": "nyy",
       "home": "tor",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     },
     {
       "game": "PHI vs MIL",
