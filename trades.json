@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-22T02:45:47.540Z",
+  "updated": "2026-06-22T09:38:23.888Z",
   "period": "Jun 7 – Jun 17",
   "lookbackDays": 21,
   "strategies": [
@@ -15,10 +15,10 @@
     "endBalance": 446,
     "days": 11,
     "gameCount": 15,
-    "avgWinPnl": 65.22,
-    "avgLossPnl": -92.82,
-    "totalWon": 717.37,
-    "totalLost": 371.3
+    "avgWinPnl": 65.32,
+    "avgLossPnl": -93.1,
+    "totalWon": 718.53,
+    "totalLost": 372.42
   },
   "featured": [
     {
@@ -35,8 +35,8 @@
     {
       "game": "White Sox vs Yankees",
       "date": "Jun 17",
-      "pnl": -91.75,
-      "pct": -91.8,
+      "pnl": -94,
+      "pct": -94,
       "result": "loss",
       "away": "chw",
       "home": "nyy",
@@ -123,8 +123,8 @@
     {
       "game": "Twins vs Tigers",
       "date": "Jun 10",
-      "pnl": 81.44,
-      "pct": 81.4,
+      "pnl": 82.21,
+      "pct": 82.2,
       "result": "win",
       "away": "min",
       "home": "det",
@@ -156,8 +156,8 @@
     {
       "game": "Brewers vs ATH",
       "date": "Jun 9",
-      "pnl": 57.62,
-      "pct": 57.6,
+      "pnl": 58.01,
+      "pct": 58,
       "result": "win",
       "away": "mil",
       "home": "ath",
@@ -178,8 +178,8 @@
     {
       "game": "Nationals vs AZ",
       "date": "Jun 7",
-      "pnl": -93.39,
-      "pct": -93.4,
+      "pnl": -92.26,
+      "pct": -92.3,
       "result": "loss",
       "away": "wsh",
       "home": "az",
@@ -200,8 +200,8 @@
     },
     {
       "game": "CWS vs NYY",
-      "pnl": -91.75,
-      "pct": -91.8,
+      "pnl": -94,
+      "pct": -94,
       "result": "loss",
       "away": "chw",
       "home": "nyy",
@@ -280,8 +280,8 @@
     },
     {
       "game": "MIN vs DET",
-      "pnl": 81.44,
-      "pct": 81.4,
+      "pnl": 82.21,
+      "pct": 82.2,
       "result": "win",
       "away": "min",
       "home": "det",
@@ -310,8 +310,8 @@
     },
     {
       "game": "MIL vs ATH",
-      "pnl": 57.62,
-      "pct": 57.6,
+      "pnl": 58.01,
+      "pct": 58,
       "result": "win",
       "away": "mil",
       "home": "ath",
@@ -330,8 +330,8 @@
     },
     {
       "game": "WSH vs AZ",
-      "pnl": -93.39,
-      "pct": -93.4,
+      "pnl": -92.26,
+      "pct": -92.3,
       "result": "loss",
       "away": "wsh",
       "home": "az",
