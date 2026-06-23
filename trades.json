@@ -1,6 +1,6 @@
 {
-  "updated": "2026-06-23T02:11:50.725Z",
-  "period": "Jun 8 – Jun 23",
+  "updated": "2026-06-23T07:39:21.001Z",
+  "period": "Jun 9 – Jun 23",
   "lookbackDays": 21,
   "strategies": [
     "mlb_laser_1",
@@ -8,27 +8,38 @@
     "mlb_laser_3"
   ],
   "summary": {
-    "wins": 12,
-    "losses": 3,
-    "winRate": 80,
+    "wins": 11,
+    "losses": 4,
+    "winRate": 73,
     "startBalance": 100,
-    "endBalance": 573,
-    "days": 17,
+    "endBalance": 454,
+    "days": 15,
     "gameCount": 15,
-    "avgWinPnl": 62.95,
-    "avgLossPnl": -94.16,
-    "totalWon": 755.45,
-    "totalLost": 282.47
+    "avgWinPnl": 66.51,
+    "avgLossPnl": -94.31,
+    "totalWon": 731.57,
+    "totalLost": 377.24
   },
   "featured": [
     {
       "game": "Dodgers vs Twins",
       "date": "Jun 23",
-      "pnl": 37.01,
-      "pct": 37,
+      "pnl": 59.99,
+      "pct": 60,
       "result": "win",
       "away": "lad",
       "home": "min",
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
+    },
+    {
+      "game": "Astros vs Blue Jays",
+      "date": "Jun 23",
+      "pnl": -94.85,
+      "pct": -94.9,
+      "result": "loss",
+      "away": "hou",
+      "home": "tor",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
     },
@@ -79,8 +90,8 @@
     {
       "game": "Phillies vs Brewers",
       "date": "Jun 14",
-      "pnl": -97.66,
-      "pct": -97.7,
+      "pnl": -97.58,
+      "pct": -97.6,
       "result": "loss",
       "away": "phi",
       "home": "mil",
@@ -101,8 +112,8 @@
     {
       "game": "AZ vs Marlins",
       "date": "Jun 11",
-      "pnl": 68.74,
-      "pct": 68.7,
+      "pnl": 69.64,
+      "pct": 69.6,
       "result": "win",
       "away": "az",
       "home": "mia",
@@ -167,34 +178,33 @@
     {
       "game": "Brewers vs ATH",
       "date": "Jun 9",
-      "pnl": 57.92,
-      "pct": 57.9,
+      "pnl": 58.27,
+      "pct": 58.3,
       "result": "win",
       "away": "mil",
       "home": "ath",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
-    },
-    {
-      "game": "Mets vs Padres",
-      "date": "Jun 8",
-      "pnl": 48.11,
-      "pct": 48.1,
-      "result": "win",
-      "away": "nym",
-      "home": "sd",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
     }
   ],
   "feed": [
     {
       "game": "LAD vs MIN",
-      "pnl": 37.01,
-      "pct": 37,
+      "pnl": 59.99,
+      "pct": 60,
       "result": "win",
       "away": "lad",
       "home": "min",
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
+    },
+    {
+      "game": "HOU vs TOR",
+      "pnl": -94.85,
+      "pct": -94.9,
+      "result": "loss",
+      "away": "hou",
+      "home": "tor",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
     },
@@ -240,8 +250,8 @@
     },
     {
       "game": "PHI vs MIL",
-      "pnl": -97.66,
-      "pct": -97.7,
+      "pnl": -97.58,
+      "pct": -97.6,
       "result": "loss",
       "away": "phi",
       "home": "mil",
@@ -260,8 +270,8 @@
     },
     {
       "game": "AZ vs MIA",
-      "pnl": 68.74,
-      "pct": 68.7,
+      "pnl": 69.64,
+      "pct": 69.6,
       "result": "win",
       "away": "az",
       "home": "mia",
@@ -320,23 +330,13 @@
     },
     {
       "game": "MIL vs ATH",
-      "pnl": 57.92,
-      "pct": 57.9,
+      "pnl": 58.27,
+      "pct": 58.3,
       "result": "win",
       "away": "mil",
       "home": "ath",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
-    },
-    {
-      "game": "NYM vs SD",
-      "pnl": 48.11,
-      "pct": 48.1,
-      "result": "win",
-      "away": "nym",
-      "home": "sd",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
     }
   ]
 }
