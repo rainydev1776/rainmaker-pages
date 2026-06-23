@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-23T17:44:30.463Z",
+  "updated": "2026-06-23T21:23:50.441Z",
   "period": "Jun 9 – Jun 23",
   "lookbackDays": 21,
   "strategies": [
@@ -12,13 +12,13 @@
     "losses": 4,
     "winRate": 73,
     "startBalance": 100,
-    "endBalance": 455,
+    "endBalance": 454,
     "days": 15,
     "gameCount": 15,
     "avgWinPnl": 66.51,
-    "avgLossPnl": -94.16,
+    "avgLossPnl": -94.33,
     "totalWon": 731.57,
-    "totalLost": 376.66
+    "totalLost": 377.32
   },
   "featured": [
     {
@@ -90,8 +90,8 @@
     {
       "game": "Phillies vs Brewers",
       "date": "Jun 14",
-      "pnl": -97,
-      "pct": -97,
+      "pnl": -97.66,
+      "pct": -97.7,
       "result": "loss",
       "away": "phi",
       "home": "mil",
@@ -250,8 +250,8 @@
     },
     {
       "game": "PHI vs MIL",
-      "pnl": -97,
-      "pct": -97,
+      "pnl": -97.66,
+      "pct": -97.7,
       "result": "loss",
       "away": "phi",
       "home": "mil",
