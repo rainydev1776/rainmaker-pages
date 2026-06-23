@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-23T07:39:21.001Z",
+  "updated": "2026-06-23T10:54:30.075Z",
   "period": "Jun 9 – Jun 23",
   "lookbackDays": 21,
   "strategies": [
@@ -12,13 +12,13 @@
     "losses": 4,
     "winRate": 73,
     "startBalance": 100,
-    "endBalance": 454,
+    "endBalance": 455,
     "days": 15,
     "gameCount": 15,
     "avgWinPnl": 66.51,
-    "avgLossPnl": -94.31,
+    "avgLossPnl": -94.03,
     "totalWon": 731.57,
-    "totalLost": 377.24
+    "totalLost": 376.14
   },
   "featured": [
     {
@@ -84,14 +84,14 @@
       "result": "win",
       "away": "nyy",
       "home": "tor",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
     },
     {
       "game": "Phillies vs Brewers",
       "date": "Jun 14",
-      "pnl": -97.58,
-      "pct": -97.6,
+      "pnl": -96.48,
+      "pct": -96.5,
       "result": "loss",
       "away": "phi",
       "home": "mil",
@@ -245,13 +245,13 @@
       "result": "win",
       "away": "nyy",
       "home": "tor",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
     },
     {
       "game": "PHI vs MIL",
-      "pnl": -97.58,
-      "pct": -97.6,
+      "pnl": -96.48,
+      "pct": -96.5,
       "result": "loss",
       "away": "phi",
       "home": "mil",
