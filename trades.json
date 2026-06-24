@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-24T14:05:47.673Z",
+  "updated": "2026-06-24T17:47:19.237Z",
   "period": "Jun 9 – Jun 23",
   "lookbackDays": 21,
   "strategies": [
@@ -12,12 +12,12 @@
     "losses": 4,
     "winRate": 73,
     "startBalance": 100,
-    "endBalance": 454,
+    "endBalance": 453,
     "days": 15,
     "gameCount": 15,
-    "avgWinPnl": 66.46,
+    "avgWinPnl": 66.37,
     "avgLossPnl": -94.33,
-    "totalWon": 731.05,
+    "totalWon": 730.06,
     "totalLost": 377.32
   },
   "featured": [
@@ -84,8 +84,8 @@
       "result": "win",
       "away": "nyy",
       "home": "tor",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
     },
     {
       "game": "Phillies vs Brewers",
@@ -101,8 +101,8 @@
     {
       "game": "Dodgers vs Pirates",
       "date": "Jun 12",
-      "pnl": 52.75,
-      "pct": 52.8,
+      "pnl": 52.96,
+      "pct": 53,
       "result": "win",
       "away": "lad",
       "home": "pit",
@@ -167,8 +167,8 @@
     {
       "game": "Phillies vs Blue Jays",
       "date": "Jun 9",
-      "pnl": 58.98,
-      "pct": 59,
+      "pnl": 57.78,
+      "pct": 57.8,
       "result": "win",
       "away": "phi",
       "home": "tor",
@@ -245,8 +245,8 @@
       "result": "win",
       "away": "nyy",
       "home": "tor",
-      "model": "mlb_laser_2",
-      "laser": "Laser 2"
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
     },
     {
       "game": "PHI vs MIL",
@@ -260,8 +260,8 @@
     },
     {
       "game": "LAD vs PIT",
-      "pnl": 52.75,
-      "pct": 52.8,
+      "pnl": 52.96,
+      "pct": 53,
       "result": "win",
       "away": "lad",
       "home": "pit",
@@ -320,8 +320,8 @@
     },
     {
       "game": "PHI vs TOR",
-      "pnl": 58.98,
-      "pct": 59,
+      "pnl": 57.78,
+      "pct": 57.8,
       "result": "win",
       "away": "phi",
       "home": "tor",
