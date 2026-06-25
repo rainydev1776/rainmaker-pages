@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-25T02:14:10.036Z",
+  "updated": "2026-06-25T07:33:34.481Z",
   "period": "Jun 10 – Jun 25",
   "lookbackDays": 21,
   "strategies": [
@@ -12,20 +12,20 @@
     "losses": 5,
     "winRate": 67,
     "startBalance": 100,
-    "endBalance": 288,
-    "days": 16,
+    "endBalance": 298,
+    "days": 17,
     "gameCount": 15,
-    "avgWinPnl": 66.92,
-    "avgLossPnl": -96.2,
-    "totalWon": 669.21,
-    "totalLost": 481.01
+    "avgWinPnl": 67.87,
+    "avgLossPnl": -96.19,
+    "totalWon": 678.67,
+    "totalLost": 480.96
   },
   "featured": [
     {
       "game": "Brewers vs Reds",
       "date": "Jun 25",
-      "pnl": 54.89,
-      "pct": 54.9,
+      "pnl": 64.35,
+      "pct": 64.4,
       "result": "win",
       "away": "mil",
       "home": "cin",
@@ -35,8 +35,8 @@
     {
       "game": "Red Sox vs Rockies",
       "date": "Jun 24",
-      "pnl": -100,
-      "pct": -100.6,
+      "pnl": -99.95,
+      "pct": -100,
       "result": "loss",
       "away": "bos",
       "home": "col",
@@ -106,8 +106,8 @@
       "result": "win",
       "away": "nyy",
       "home": "tor",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     },
     {
       "game": "Phillies vs Brewers",
@@ -190,8 +190,8 @@
   "feed": [
     {
       "game": "MIL vs CIN",
-      "pnl": 54.89,
-      "pct": 54.9,
+      "pnl": 64.35,
+      "pct": 64.4,
       "result": "win",
       "away": "mil",
       "home": "cin",
@@ -200,8 +200,8 @@
     },
     {
       "game": "BOS vs COL",
-      "pnl": -100,
-      "pct": -100.6,
+      "pnl": -99.95,
+      "pct": -100,
       "result": "loss",
       "away": "bos",
       "home": "col",
@@ -265,8 +265,8 @@
       "result": "win",
       "away": "nyy",
       "home": "tor",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
+      "model": "mlb_laser_2",
+      "laser": "Laser 2"
     },
     {
       "game": "PHI vs MIL",
