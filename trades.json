@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-25T14:03:24.900Z",
+  "updated": "2026-06-25T18:02:49.365Z",
   "period": "Jun 10 – Jun 25",
   "lookbackDays": 21,
   "strategies": [
@@ -16,9 +16,9 @@
     "days": 17,
     "gameCount": 15,
     "avgWinPnl": 67.87,
-    "avgLossPnl": -96.19,
+    "avgLossPnl": -96.2,
     "totalWon": 678.67,
-    "totalLost": 480.96
+    "totalLost": 481.01
   },
   "featured": [
     {
@@ -35,8 +35,8 @@
     {
       "game": "Red Sox vs Rockies",
       "date": "Jun 24",
-      "pnl": -99.95,
-      "pct": -100,
+      "pnl": -100,
+      "pct": -100.6,
       "result": "loss",
       "away": "bos",
       "home": "col",
@@ -200,8 +200,8 @@
     },
     {
       "game": "BOS vs COL",
-      "pnl": -99.95,
-      "pct": -100,
+      "pnl": -100,
+      "pct": -100.6,
       "result": "loss",
       "away": "bos",
       "home": "col",
