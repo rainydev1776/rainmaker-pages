@@ -1,6 +1,6 @@
 {
-  "updated": "2026-06-25T21:21:21.008Z",
-  "period": "Jun 10 – Jun 25",
+  "updated": "2026-06-26T02:26:53.571Z",
+  "period": "Jun 10 – Jun 26",
   "lookbackDays": 21,
   "strategies": [
     "mlb_laser_1",
@@ -8,19 +8,30 @@
     "mlb_laser_3"
   ],
   "summary": {
-    "wins": 10,
-    "losses": 5,
-    "winRate": 67,
+    "wins": 9,
+    "losses": 6,
+    "winRate": 60,
     "startBalance": 100,
-    "endBalance": 298,
+    "endBalance": 126,
     "days": 17,
     "gameCount": 15,
-    "avgWinPnl": 67.87,
-    "avgLossPnl": -96.2,
-    "totalWon": 678.67,
-    "totalLost": 481.01
+    "avgWinPnl": 67.28,
+    "avgLossPnl": -96.61,
+    "totalWon": 605.54,
+    "totalLost": 579.64
   },
   "featured": [
+    {
+      "game": "ATH vs Giants",
+      "date": "Jun 26",
+      "pnl": -98.63,
+      "pct": -98.6,
+      "result": "loss",
+      "away": "ath",
+      "home": "sf",
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
+    },
     {
       "game": "Brewers vs Reds",
       "date": "Jun 25",
@@ -174,20 +185,19 @@
       "home": "det",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
-    },
-    {
-      "game": "AZ vs Marlins",
-      "date": "Jun 10",
-      "pnl": 73.13,
-      "pct": 73.1,
-      "result": "win",
-      "away": "az",
-      "home": "mia",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
     }
   ],
   "feed": [
+    {
+      "game": "ATH vs SF",
+      "pnl": -98.63,
+      "pct": -98.6,
+      "result": "loss",
+      "away": "ath",
+      "home": "sf",
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
+    },
     {
       "game": "MIL vs CIN",
       "pnl": 64.35,
@@ -325,16 +335,6 @@
       "result": "win",
       "away": "min",
       "home": "det",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
-    },
-    {
-      "game": "AZ vs MIA",
-      "pnl": 73.13,
-      "pct": 73.1,
-      "result": "win",
-      "away": "az",
-      "home": "mia",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
     }
