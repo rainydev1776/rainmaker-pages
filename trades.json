@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-26T02:26:53.571Z",
+  "updated": "2026-06-26T07:42:11.638Z",
   "period": "Jun 10 – Jun 26",
   "lookbackDays": 21,
   "strategies": [
@@ -8,19 +8,30 @@
     "mlb_laser_3"
   ],
   "summary": {
-    "wins": 9,
-    "losses": 6,
-    "winRate": 60,
+    "wins": 8,
+    "losses": 7,
+    "winRate": 53,
     "startBalance": 100,
-    "endBalance": 126,
+    "endBalance": -52,
     "days": 17,
     "gameCount": 15,
-    "avgWinPnl": 67.28,
-    "avgLossPnl": -96.61,
-    "totalWon": 605.54,
-    "totalLost": 579.64
+    "avgWinPnl": 65.3,
+    "avgLossPnl": -96.29,
+    "totalWon": 522.43,
+    "totalLost": 674.03
   },
   "featured": [
+    {
+      "game": "Yankees vs Red Sox",
+      "date": "Jun 26",
+      "pnl": -94.39,
+      "pct": -94.4,
+      "result": "loss",
+      "away": "nyy",
+      "home": "bos",
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
+    },
     {
       "game": "ATH vs Giants",
       "date": "Jun 26",
@@ -174,20 +185,19 @@
       "home": "sd",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
-    },
-    {
-      "game": "Twins vs Tigers",
-      "date": "Jun 10",
-      "pnl": 83.11,
-      "pct": 83.1,
-      "result": "win",
-      "away": "min",
-      "home": "det",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
     }
   ],
   "feed": [
+    {
+      "game": "NYY vs BOS",
+      "pnl": -94.39,
+      "pct": -94.4,
+      "result": "loss",
+      "away": "nyy",
+      "home": "bos",
+      "model": "mlb_laser_3",
+      "laser": "Laser 3"
+    },
     {
       "game": "ATH vs SF",
       "pnl": -98.63,
@@ -325,16 +335,6 @@
       "result": "win",
       "away": "cin",
       "home": "sd",
-      "model": "mlb_laser_3",
-      "laser": "Laser 3"
-    },
-    {
-      "game": "MIN vs DET",
-      "pnl": 83.11,
-      "pct": 83.1,
-      "result": "win",
-      "away": "min",
-      "home": "det",
       "model": "mlb_laser_3",
       "laser": "Laser 3"
     }
