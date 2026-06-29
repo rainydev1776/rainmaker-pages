@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-28T20:51:53.026Z",
+  "updated": "2026-06-29T02:32:17.040Z",
   "period": "Jun 11 – Jun 28",
   "lookbackDays": 21,
   "strategies": [
@@ -12,20 +12,20 @@
     "losses": 7,
     "winRate": 53,
     "startBalance": 100,
-    "endBalance": -120,
-    "days": 18,
+    "endBalance": -52,
+    "days": 19,
     "gameCount": 15,
-    "avgWinPnl": 57.36,
-    "avgLossPnl": -96.96,
-    "totalWon": 458.85,
-    "totalLost": 678.74
+    "avgWinPnl": 65.67,
+    "avgLossPnl": -96.74,
+    "totalWon": 525.32,
+    "totalLost": 677.17
   },
   "featured": [
     {
       "game": "Astros vs Tigers",
       "date": "Jun 28",
-      "pnl": 11.45,
-      "pct": 11.4,
+      "pnl": 78.47,
+      "pct": 78.5,
       "result": "win",
       "away": "hou",
       "home": "det",
@@ -46,8 +46,8 @@
     {
       "game": "Yankees vs Red Sox",
       "date": "Jun 26",
-      "pnl": -94.39,
-      "pct": -94.4,
+      "pnl": -92.82,
+      "pct": -92.8,
       "result": "loss",
       "away": "nyy",
       "home": "bos",
@@ -68,8 +68,8 @@
     {
       "game": "Brewers vs Reds",
       "date": "Jun 25",
-      "pnl": 64.9,
-      "pct": 64.9,
+      "pnl": 64.35,
+      "pct": 64.4,
       "result": "win",
       "away": "mil",
       "home": "cin",
@@ -190,8 +190,8 @@
   "feed": [
     {
       "game": "HOU vs DET",
-      "pnl": 11.45,
-      "pct": 11.4,
+      "pnl": 78.47,
+      "pct": 78.5,
       "result": "win",
       "away": "hou",
       "home": "det",
@@ -210,8 +210,8 @@
     },
     {
       "game": "NYY vs BOS",
-      "pnl": -94.39,
-      "pct": -94.4,
+      "pnl": -92.82,
+      "pct": -92.8,
       "result": "loss",
       "away": "nyy",
       "home": "bos",
@@ -230,8 +230,8 @@
     },
     {
       "game": "MIL vs CIN",
-      "pnl": 64.9,
-      "pct": 64.9,
+      "pnl": 64.35,
+      "pct": 64.4,
       "result": "win",
       "away": "mil",
       "home": "cin",
