@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-29T21:16:14.209Z",
+  "updated": "2026-06-30T02:27:13.244Z",
   "period": "Jun 11 – Jun 28",
   "lookbackDays": 21,
   "strategies": [
@@ -12,13 +12,13 @@
     "losses": 7,
     "winRate": 53,
     "startBalance": 100,
-    "endBalance": -52,
+    "endBalance": -53,
     "days": 19,
     "gameCount": 15,
     "avgWinPnl": 65.67,
-    "avgLossPnl": -96.74,
+    "avgLossPnl": -96.96,
     "totalWon": 525.32,
-    "totalLost": 677.17
+    "totalLost": 678.74
   },
   "featured": [
     {
@@ -46,8 +46,8 @@
     {
       "game": "Yankees vs Red Sox",
       "date": "Jun 26",
-      "pnl": -92.82,
-      "pct": -92.8,
+      "pnl": -94.39,
+      "pct": -94.4,
       "result": "loss",
       "away": "nyy",
       "home": "bos",
@@ -80,7 +80,7 @@
       "game": "Red Sox vs Rockies",
       "date": "Jun 24",
       "pnl": -100,
-      "pct": -100.6,
+      "pct": -100.5,
       "result": "loss",
       "away": "bos",
       "home": "col",
@@ -210,8 +210,8 @@
     },
     {
       "game": "NYY vs BOS",
-      "pnl": -92.82,
-      "pct": -92.8,
+      "pnl": -94.39,
+      "pct": -94.4,
       "result": "loss",
       "away": "nyy",
       "home": "bos",
@@ -241,7 +241,7 @@
     {
       "game": "BOS vs COL",
       "pnl": -100,
-      "pct": -100.6,
+      "pct": -100.5,
       "result": "loss",
       "away": "bos",
       "home": "col",
