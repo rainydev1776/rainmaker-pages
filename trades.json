@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-30T02:27:13.244Z",
+  "updated": "2026-06-30T07:41:55.746Z",
   "period": "Jun 11 – Jun 28",
   "lookbackDays": 21,
   "strategies": [
@@ -80,7 +80,7 @@
       "game": "Red Sox vs Rockies",
       "date": "Jun 24",
       "pnl": -100,
-      "pct": -100.5,
+      "pct": -100.6,
       "result": "loss",
       "away": "bos",
       "home": "col",
@@ -241,7 +241,7 @@
     {
       "game": "BOS vs COL",
       "pnl": -100,
-      "pct": -100.5,
+      "pct": -100.6,
       "result": "loss",
       "away": "bos",
       "home": "col",
